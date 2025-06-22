@@ -8,7 +8,7 @@ assert(SMODS.load_file("./modules/food_rarities.lua"))()
 assert(SMODS.load_file("./modules/weapons.lua"))()
 assert(SMODS.load_file("./modules/vouchers.lua"))()
 assert(SMODS.load_file("./modules/blinds.lua"))()
-assert(SMODS.load_file("./modules/enemies.lua"))()
+--assert(SMODS.load_file("./modules/enemies.lua"))()
 --assert(SMODS.load_file("./modules/debug.lua"))()
 
 --Debug allows for the use of the Rot fruit for testing rot! Wet fruit as well for wet cards!
