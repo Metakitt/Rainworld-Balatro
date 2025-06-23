@@ -113,12 +113,6 @@ SMODS.Joker({
 				end
 			end
 			-- Any time: Jokers, consumeables
-			-- local omnipresent_areas = { G.jokers, G.consumeables }
-			-- for _, area in ipairs(omnipresent_areas) do
-			-- 	for _, _card in ipairs(area.cards) do
-			-- 		table.insert(edibles, _card)
-			-- 	end
-			-- end
 			for _, joker in ipairs(G.jokers.cards) do
 				local t = { card = joker, type = "owned_joker" }
 				table.insert(edibles, t)
