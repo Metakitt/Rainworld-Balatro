@@ -1,5 +1,5 @@
 SMODS.Booster({
-	key = "usefood_normal_1",
+	key = "regularfoodpack",
 	loc_txt = {
 		name = "Regular Food Pack",
 		text = {
@@ -29,7 +29,7 @@ SMODS.Booster({
 })
 
 SMODS.Booster({
-	key = "keepfood_normal_1",
+	key = "selectfoodpack",
 	loc_txt = {
 		name = "Select Food Pack",
 		text = {
