@@ -890,8 +890,9 @@ return {
 			j_rw_hunger = {
 				name = "Hunger",
 				text = {
-					"{s:1.5}He hungers.",
-				}
+					"{s:1.5}He hungers...",
+					"{s:0.8,C:inactive}({s:0.8,C:blue}+#1#{s:0.8,C:inactive} Chips, {s:0.8,C:red}+#2#{s:0.8,C:inactive} Mult, {s:0.8,C:white,X:red}X#3#{s:0.8,C:inactive} Mult)",
+				},
 			},
 		},
 	},
