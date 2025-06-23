@@ -1,5 +1,6 @@
 -- Things it will eat:
 
+
 SMODS.Joker({
 	key = "hunger",
 	config = {
@@ -124,4 +125,4 @@ SMODS.Joker({
             end
         end
     end
-}
+})
