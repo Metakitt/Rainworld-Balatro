@@ -1,17 +1,17 @@
-SMODS.Blind {
-key = 'rotblind',
- loc_txt = {
-        name = 'Rot',
+SMODS.Blind({
+	key = "rotblind",
+	loc_txt = {
+		name = "Rot",
 		text = {
-		'All cards of a played',
-		'hand become Rot.'
-		}
+			"All cards of a played",
+			"hand become Rot.",
 		},
-boss = {min = 4, max = 10},
-boss_colour = HEX('1b5699'),
-atlas = "theblinds",
-pos = { x = 0, y = 0 },
-}
+	},
+	boss = { min = 4, max = 10 },
+	boss_colour = HEX("1b5699"),
+	atlas = "theblinds",
+	pos = { x = 0, y = 0 },
+})
 
 --[[
 SMODS.Blind {
