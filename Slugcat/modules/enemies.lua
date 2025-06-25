@@ -1,72 +1,238 @@
+assert(SMODS.load_file("modules/enemies/greenlizard.lua"))() 
+assert(SMODS.load_file("modules/enemies/pinklizard.lua"))() 
+assert(SMODS.load_file("modules/enemies/youngcentipede.lua"))() 
+assert(SMODS.load_file("modules/enemies/wormgrass.lua"))() 
+assert(SMODS.load_file("modules/enemies/brotherlonglegs.lua"))() 
+assert(SMODS.load_file("modules/enemies/bluelizard.lua"))() 
 --[[
-Ante 1 enemies:
-= Green Lizard
-= Pink Lizard
-= Young Centipede
-= Worm Grass
-= Brother Long Legs
+Ante 1 enemies (Count:6):
+= Green Lizard [ X ] (Also appears in 2, 3, 4)
+= Pink Lizard [ X ] (Also appears in 2, 3, 4)
+= Young Centipede [ X ] (Also appears in 2, 3)
+= Worm Grass [ X ] (Also appears in 2, 3, 4, 5,)
+= Brother Long Legs [ X ] (Also appears in 2, 3, 4)
+= Red Leech [ ] (Also appears in 2)
 
-Ante 1 has a 1 in 10 chance to roll an enemy on each blind.
+Ante 2 enemies(Count:10):
+= Blue Lizard [ X ] (Also appears in 3)
+= Coalescipede [ ] (Also appears in 3, 4, 6)
+= Inspectors [ ] (Also appears in 3)
+= Jungle Leech [ ] (Also appears in 3, 4)
+
+Ante 3 enemies(Count:15):
+= White Lizard [ ] (Also appears in 4, 5)
+= Pole Plant [ ] (Appears from 3 onwards)
+= Cyan Lizard [ ] (Also appears in 4, 5)
+= Dropwig [ ] (Also appears in 4)
+= Big Spider [ ] (Also appears in 6)
+= Sea Leech [ ] (Appears 3,6,7)
+
+Ante 4 enemies(Count:15):
+= Monster Kelp [ ] (Also appears in 5)
+= Salamander [ ] (Also appears in 5)
+= Eel Lizard [ ] (Also appears in 5)
+= Caramel Lizard [ ] (Exclusive to Ante 4)
+= Spitter Spider [ ] (Also appears in 6)
+= Giant Jellyfish [ ] (Also appears in 5,7,8)
+
+Ante 5 enemies(Count:15):
+= Yellow Lizard [ ] (Appears from 5 onwards)
+= Black Lizard [ ] (Appears from 5 onwards)
+= Vulture [ ] (Appears from 5 onwards)
+= Mature Centipede [ ] (Exclusive to Ante 5)
+= Overgrown Centipede [ ] (Exclusive to Ante 5)
+= Daddy Long Legs [ ] (Appears from 5 onwards)
+= King Vulture [ ] (Appears from 5 onwards)
+
+
+Ante 6 enemies(Count:15):
+= Strawberry Lizard [ ] (Exclusive to Ante 6)
+= Centiwing [ ] (Also appears in 7)
+= Miros Bird [ ] (Also appears in 7)
+= Mother Long Legs [ ] (Appears from 6 onwards)
+= Hunter Long Legs [ ] (Exclusive to Ante 6)
+= Stowaway [ ] (Also appears in 7)
+
+Ante 7 enemies(Count:15):
+= Red Lizard [ ] (Also appears in 8)
+= Mother Spider [ ] (Exclusive to Ante 7)
+= Aquapede [ ] (Exclusive to Ante 7)
+= Miros Vulture [ ] (Also appears in 8)
+= Firebugs [ ] (Exclusive to Ante 7)
+
+Ante 8 enemies(Count:13):
+= Train Lizard [ ] (Exclusive to Ante 8)
+= Leviathan [ ] (Exclusive to Ante 8)
+= Red Centipede [ ] (Exclusive to Ante 8)
+= Chieftain [ ] (Exclusive to Ante 8)
+
+Ante 1 and 2 have a 1 in 10 chance to roll an enemy on each blind.
+Ante 3 through 5 have a 1 in 8 chance to roll an enemy on each blind.
+Ante 6 and 7 have a 1 in 4 chance to roll an enemy on each blind.
+Ante 8 has a 1 in 3 chance to roll an enemy on each blind.
+The exception is for the Red centipede, Train Lizard and Leviathan, which can only be rolled on the Boss Blind AND only have a 1 in 6 chance to roll.
+
+Full list per ante:
+
+Ante 1
+Green Lizard (5/20 or 1/4) (25%)
+Pink Lizard  (5/20 or 1/4) (25%)
+Young Centipede (3/20 or 1.5/10) (15%)
+Worm Grass (3/20 or 1.5/10) (15%)
+Brother Long Legs (1/20 or 0.5/10) (5%)
+Red Leech (3/20 or 1.5/10) (15%)
+If there are 20 numbers to pick for:
+1: Brother Long Legs
+2,3,4,5,6: Green Lizard
+7,8,9,10,11: Pink Lizard
+12,13,14:Young Centipede
+15,16,17 Wormgrass
+18,19,20 Red Leech
+
+
+Ante 2
+Green Lizard
+Pink Lizard
+Young Centipede
+Worm Grass
+Brother Long Legs
+Red Leech
+Blue Lizard
+Coalescipede
+Inspectors
+Jungle Leech
+1,2,3: Blue Lizard
+4,5,6: Inspectors
+7,8,9: Coalescipede
+10,11,12: Jungle Leech
+13,14: Red Leech
+15,16: Worm Grass
+17: Green Lizard
+18: Pink Lizard
+19: Young Centipede
+20: Brother Long Legs
+
+Ante 3
+Green Lizard
+Pink Lizard
+Young Centipede
+Worm Grass
+Brother Long Legs
+Blue Lizard
+Coalescipede
+Inspectors
+Jungle Leech
+White Lizard
+Pole Plant
+Cyan Lizard
+Dropgwig
+Big Spider
+Sea Leech
+(on 30)
+1,2: Green Lizard
+3,4: Pink Lizard
+5,6: Young Centipede
+7,8,9: Worm Grass
+10: Brother Long Legs
+11,12: Coalescipede
+13,14: Inspectors
+15,16: Jungle Leech
+17,18,19: White Lizard
+20,21,22: Pole Plant
+23,24: Cyan Lizard
+25,26: Dropwig
+27,28: Big Spider
+29,30: Sea Leech
+
+Ante 4
+Green Lizard
+Pink Lizard
+Worm Grass
+Brother Long Legs
+Coalescipede
+Jungle Leech
+White Lizard
+Pole Plant
+Cyan Lizard
+Dropwig
+Monster Kelp
+Salamander
+Eel Lizard
+Caramel Lizard
+Spitter Spider
+Giant Jellyfish
+
+Ante 5
+Worm Grass
+White Lizard
+Pole Plant
+Cyan Lizard
+Monster Kelp
+Salamander
+Eel Lizard
+Giant Jellyfish
+Yellow Lizard
+Black Lizard
+Vulture
+Mature Centipede
+Overgrown Centipede
+Daddy Long Legs
+King Vulture
+
+Ante 6
+Coalescipede
+Pole Plant
+Big Spider
+Sea Leech
+Spitter Spider
+Yellow Lizard
+Black Lizard
+Vulture
+Daddy Long Legs
+King Vulture
+Strawberry Lizard
+Centiwing
+Miros Bird
+Mother Long Legs
+Hunter Long Legs
+Stowaway
+
+Ante 7
+Pole Plant
+Sea Leech
+Giant Jellyfish
+Yellow Lizard
+Black Lizard
+Vulture
+Daddy Long Legs
+King Vulture
+Centiwing
+Miros Bird
+Mother Long Legs
+Stowaway
+Red Lizard
+Mother Spider
+Aquapede
+Miros Vulture
+Firebugs
+
+Ante 8
+Pole Plant
+Giant Jellyfish
+Yellow Lizard
+Black Lizard
+Vulture
+Daddy Long Legs
+King Vulture
+Mother Long Legs
+Red Lizard
+Miros Vulture
+Train Lizard
+Leviathan
+Red Centipede
+Chieftain
+
 
 --]]
 
-SMODS.Joker({
-	key = "greenlizard",
-	atlas = "slugpups",
-	rarity = 1,
-	cost = 4,
-	pos = { x = 0, y = 0 },
-	unlocked = true,
-	discovered = true,
-	blueprint_compat = true,
-	config = { extra = { defeat = false }, enemy = true },
-	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
-	end,
-	add_to_deck = function(self, card, from_debuff)
-		SMODS.Stickers["eternal"]:apply(card, true)
-	end,
-	calculate = function(self, card, context)
-		--Threat
-		if context.main_eval and context.end_of_round and not G.GAME.blind.boss then
-			local destroyablejokers = EMPTY(destroyablejokers)
-			for k, v in pairs(G.jokers.cards) do
-				if v.ability.set == "Joker" and not v.ability.eternal then
-					table.insert(destroyablejokers, v)
-				end
-			end
 
-			local chosen_card = pseudorandom_element(destroyablejokers, pseudoseed("test"))
-			if chosen_card ~= nil and pseudorandom("bite") < 0.5 and not chosen_card.getting_sliced then
-				chosen_card:start_dissolve()
-			end
-		end
-		--Defeat
-		if context.before then
-			if next(context.poker_hands["Flush"]) and not context.blueprint then
-				card.ability.extra.defeat = true
-			end
-		end
-		if context.after and card.ability.extra.defeat == true then
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 1.3,
-				func = function()
-					card:start_dissolve()
-					return true
-				end,
-				blocking = false,
-			}))
-		end
-		--Undefeated
-		if context.main_eval and context.end_of_round and G.GAME.blind.boss then
-			for i = 1, #G.jokers.cards do
-				if pseudorandom("bite") < 0.3 and not G.jokers.cards[i].ability.eternal then
-					G.jokers.cards[i]:start_dissolve()
-				else
-					--print('Safe')
-				end
-			end
-		end
-	end,
-})
