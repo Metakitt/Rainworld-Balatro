@@ -10,6 +10,20 @@ in_pool = function (self, args)
 return false
 end,
 config = { extra = {defeat = false}, enemy = true},
+blueprint_compat = false,
+perishable_compat = false,
+rw_wbeehive_compat = false,
+rw_wcherrybomb_compat = false,
+rw_wspear_ele_compat = false,
+rw_wspear_exp_compat = false,
+rw_wspear_fire_compat = false,
+rw_wflashbang_compat = false,
+rw_wgrenade_compat = false,
+rw_wjokerifle_compat = false,
+rw_wrock_compat = false,
+rw_wsingularity_compat = false,
+rw_wspear_compat = false,
+rw_wsporepuff_compat = false,
 loc_vars = function(self, info_queue, card)
     return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
     end,
@@ -28,10 +42,10 @@ return {remove = true}
 end
 
 --Defeat
- if G.GAME.chips > 1000 then
+ if G.GAME.chips > 1000 and not context.blueprint then
  card.ability.extra.defeat = true
 end
- if card.ability.extra.defeat == true then
+ if card.ability.extra.defeat == true and not context.blueprint then
  G.E_MANAGER:add_event(Event({
     trigger = "after", 
     delay = 1.3, 
