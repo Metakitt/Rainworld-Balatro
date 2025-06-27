@@ -536,7 +536,7 @@ return {
 	    c_rw_mushroom = {
 		name = 'Mushroom',
 		text = {
-            '{C:green}#1# in #2#{} chance to halve',
+                        '{C:green}#1# in #2#{} chance to halve',
 			'current {C:attention}Blind{} chip',
 			'requirement.',
 			'{C:green}#1# in #3# chance to add',
@@ -555,7 +555,7 @@ return {
 	    c_rw_neuronfly = {
 		name = 'Neuron Fly',
 		text = {
-            '+1 {C:attention}hand{} size.'
+                        '+1 {C:attention}hand{} size.'
 		}
 	},
 	
@@ -566,12 +566,12 @@ return {
 		j_rw_greenlizard = {
 		name = "Green Lizard",
 		text = {
-		    "{C:green}Enemy{}",
+		        "{C:green}Enemy{}",
 			"{C:attention}Threat{}: {C:green}1 in 2{} chance",
 			"to destroy a random joker",
 			"at the {C:attention}end of round{}.",
 			"{C:attention}To Defeat{}: Score a {C:attention}Flush{}.",
-			"{C:attention}Undefeated{}: {C:green}1 in 2{} chance to destroy",
+			"{C:attention}Undefeated{}: {C:green}1 in 3{} chance to destroy",
 			"each of your jokers at the",
 			"end of {C:attention}Boss Blind{}."
 			},
@@ -580,60 +580,87 @@ return {
 			j_rw_pinklizard = {
 		name = "Pink Lizard",
 		text = {
-		    "{C:green}Enemy{}",
+		        "{C:green}Enemy{}",
 			"{C:attention}Threat{}: {C:green}1 in 2{} chance",
 			"to destroy a random card",
-            "in the deck after playing a hand.",
+                        "in the deck after playing a hand.",
 			"{C:attention}To Defeat{}: Score a {C:attention}Straight{}.",
-			"{C:attention}Undefeated{}: {C:green}1 in 2{} chance to destroy",
+			"{C:attention}Undefeated{}: {C:green}1 in 20{} chance to destroy",
 			"each card in your deck at the",
 			"end of {C:attention}Boss Blind{}."
 			},
 			},
 			
-				j_rw_youngcentipede = {
+			j_rw_youngcentipede = {
 		name = "Young Centipede",
 		text = {
 		    "{C:green}Enemy{}",
 			"{C:attention}Threat{}: None.",
 			"{C:attention}To Defeat{}: Score a {C:attention}Four of a Kind{}.",
 			"{C:attention}Undefeated{}: -{C:attention} 10${} at",
-			"end of {C:attention}Boss Blind{}."
+			"the end of {C:attention}Boss Blind{}."
 			},
 			},
 			
 			j_rw_wormgrass = {
 		name = "Wormgrass",
 		text = {
-		    "{C:green}Enemy{}",
-			"{C:attention}Threat{}: .",
-			"{C:attention}To Defeat{}: .",
-			"{C:attention}Undefeated{}:  at",
-			"end of {C:attention}Boss Blind{}."
+		        "{C:green}Enemy{}",
+			"{C:attention}Threat{}: Destroys cards after they've been played.",
+			"{C:attention}To Defeat{}: Score 1000 chips.",
+			"{C:attention}Undefeated{}: Nothing."
 			},
 			},
 			
-				j_rw_brotherlonglegs = {
+			j_rw_brotherlonglegs = {
 		name = "Brother Long Legs",
 		text = {
 		    "{C:green}Enemy{}",
-			"{C:attention}Threat{}: .",
-			"{C:attention}To Defeat{}: .",
-			"{C:attention}Undefeated{}:  at",
-			"end of {C:attention}Boss Blind{}."
+			"{C:attention}Threat{}: At the start of each blind,", 
+			"1 in 20 chance for each card",
+                        "in your deck to become rot.",
+			"{C:attention}To Defeat{}: Score a hand while holding an explosive spear.",
+			"{C:attention}Undefeated{}:Chooses a random rank and turns it",  
+			" to rot at end of {C:attention}Boss Blind{}."
 			},
 			},
 			
-				j_rw_bluelizard = {
+			j_rw_bluelizard = {
 		name = "Blue Lizard",
 		text = {
 		    "{C:green}Enemy{}",
-			"{C:attention}Threat{}: .",
-			"{C:attention}To Defeat{}: .",
-			"{C:attention}Undefeated{}:  at",
+			"{C:attention}Threat{}: x0.75 Chips .",
+			"{C:attention}To Defeat{}: Score a card with at least 10 extra chips.",
+			"{C:attention}Undefeated{}: Each card in your", 
+			"deck gets -5 extra chips at the",
 			"end of {C:attention}Boss Blind{}."
 			},
 			},
+
+			j_rw_redleech = {
+		name = "Red Leech",
+		text = {
+		        "{C:green}Enemy{}",
+			"{C:attention}Threat{}:-20 Chips. Each played hand has a {C:green}1 in 3{}", 
+			"chance to spawn a new red leech.",
+			"{C:attention}To Defeat{}: Play two High Cards hands.",
+			"{C:attention}Undefeated{}:  Destroys a random joker at",
+			"the end of {C:attention}Boss Blind{}."
+			},
+			},
+
+			j_rw_coalescipede = {
+		name = "Coalescipede",
+		text = {
+		    "{C:green}Enemy{}",
+			"{C:attention}Threat{}: -1 Chips per Coalescipede.",
+			"{C:attention}To Defeat{}: Have a Joker with a Flashbang.",
+			"{C:attention}Undefeated{}: Spawns two more Coalescipede at",
+			"the end of {C:attention}Boss Blind{}."
+			},
+			},
+
+			
 		
 		j_rw_abundance = { 
 		name = "Abundance",
