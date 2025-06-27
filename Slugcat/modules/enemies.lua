@@ -3,19 +3,43 @@ assert(SMODS.load_file("modules/enemies/pinklizard.lua"))()
 assert(SMODS.load_file("modules/enemies/youngcentipede.lua"))() 
 assert(SMODS.load_file("modules/enemies/wormgrass.lua"))() 
 assert(SMODS.load_file("modules/enemies/brotherlonglegs.lua"))() 
+assert(SMODS.load_file("modules/enemies/redleech.lua"))() 
 assert(SMODS.load_file("modules/enemies/bluelizard.lua"))() 
+assert(SMODS.load_file("modules/enemies/coalescipede.lua"))() 
 --[[
+Enemy general format:
+Spawn Antes: Antes the enemy can spawn in.
+Threat: What the enemy does to disadvantage the player in any way. This can be any kind of condition, as long as it provides an obstacle.
+Defeat Condition: What the player must do to defeat (destroy) the enemy. When an enemy is defeated, its 'defeat' ability becomes "True".
+Undefeated: What happens when the enemy is left undefeated at the end of boss blind. This triggers everytime the enemy is dragged through a Boss Blind.
+
+Some general ideas or notes:
+= Undefeated condition loop must ALWAYS include the "defeat" ability as false; as to prevent it from triggering if the enemy is defeated during the end of a boss blind. [Done on current set]
+= All enemies must have the following:
+  - No blueprint, perishable or any weapon compat. [Done on current set]
+  - not context.blueprint on all statements.  [Done on current set]
+= Maybe on the lower stakes; Enemies are destroyed after their undefeated condition triggers.
+= Similarly, lower stakes reduce enemy spawn rate and higher stakes boosts it.
+= An enemy that doubles other enemies' Undefeated conditions.
+= Jokers that interact with enemies;
+  - For each enemy defeated, gain (something). (Survival of the Fittest) (Slugcat standing proudly with a spear in the air over a dead creature)
+  - For each enemy present, gain (something). (Threat) (Many creatures forming a pattern over the card)
+  - For each enemy spawned this run, gain (something). (Ecoboost) (A Slugcat hiding behind an obstacle/pipe with a whole ecosystem behind)
+  - If there are more enemies than jokers do something. (Surrounded) (Maybe a slugcat by itself surrounded by lizards?)
+  - If there are more jokers than enemies do something. (Family Power) (Four slugcats surrounding a strong enemy)
+
+
 Ante 1 enemies (Count:6):
 = Green Lizard [ X ] (Also appears in 2, 3, 4)
 = Pink Lizard [ X ] (Also appears in 2, 3, 4)
 = Young Centipede [ X ] (Also appears in 2, 3)
 = Worm Grass [ X ] (Also appears in 2, 3, 4, 5,)
 = Brother Long Legs [ X ] (Also appears in 2, 3, 4)
-= Red Leech [ ] (Also appears in 2)
+= Red Leech [ X ] (Also appears in 2)
 
 Ante 2 enemies(Count:10):
 = Blue Lizard [ X ] (Also appears in 3)
-= Coalescipede [ ] (Also appears in 3, 4, 6)
+= Coalescipede [ X ] (Also appears in 3, 4, 6)
 = Inspectors [ ] (Also appears in 3)
 = Jungle Leech [ ] (Also appears in 3, 4)
 
