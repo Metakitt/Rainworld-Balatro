@@ -684,6 +684,16 @@ return {
 			},
 			},
 			
+			j_rw_poleplant = {
+		name = "Pole Plant",
+		text = {
+		    "{C:green}Enemy{}",
+			"{C:attention}Threat{}: -3 Mult", 
+			"{C:attention}To Defeat{}: Score two Mult cards.",
+			"{C:attention}Undefeated{}: All playing cards get -1 Extra Mult."
+			},
+			},
+			
 		--Slugcats + Other Jokers
 			
 		j_rw_abundance = { 

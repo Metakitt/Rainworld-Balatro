@@ -7,6 +7,7 @@ assert(SMODS.load_file("modules/enemies/redleech.lua"))()
 assert(SMODS.load_file("modules/enemies/bluelizard.lua"))() 
 assert(SMODS.load_file("modules/enemies/coalescipede.lua"))() 
 assert(SMODS.load_file("modules/enemies/whitelizard.lua"))() 
+assert(SMODS.load_file("modules/enemies/poleplant.lua"))() 
 --[[
 Enemy general format:
 Spawn Antes: Antes the enemy can spawn in.
@@ -46,7 +47,7 @@ Ante 2 enemies(Count:10):
 
 Ante 3 enemies(Count:15):
 = White Lizard [ X ] (Also appears in 4, 5)
-= Pole Plant [ ] (Appears from 3 onwards)
+= Pole Plant [ X ] (Appears from 3 onwards)
 = Cyan Lizard [ ] (Also appears in 4, 5)
 = Dropwig [ ] (Also appears in 4)
 = Big Spider [ ] (Also appears in 6)
@@ -153,21 +154,21 @@ Cyan Lizard
 Dropgwig
 Big Spider
 Sea Leech
-(on 30)
-1,2: Green Lizard
-3,4: Pink Lizard
-5,6: Young Centipede
-7,8,9: Worm Grass
-10: Brother Long Legs
-11,12: Coalescipede
-13,14: Inspectors
-15,16: Jungle Leech
-17,18,19: White Lizard
-20,21,22: Pole Plant
-23,24: Cyan Lizard
-25,26: Dropwig
-27,28: Big Spider
-29,30: Sea Leech
+(on 30) Maybe instead it can be on 20(?)
+1: Green Lizard
+2: Pink Lizard
+3: Young Centipede
+4: Worm Grass
+5: Brother Long Legs
+6: Coalescipede
+7: Inspectors
+8: Jungle Leech
+9,10: White Lizard
+11,12: Pole Plant
+13,14: Cyan Lizard
+15,16: Dropwig
+17,18: Big Spider
+19,20: Sea Leech
 
 Ante 4
 Green Lizard
