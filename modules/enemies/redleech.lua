@@ -15,7 +15,7 @@ discovered = true,
 in_pool = function (self, args)
     return false
 end,
-config = { extra = {defeat = false, highcardcount = 0}, enemy = true},
+config = { extra = {defeat = false, highcardcount = 0, dying = false}, enemy = true},
 blueprint_compat = false,
 perishable_compat = false,
 rw_wbeehive_compat = false,
@@ -45,12 +45,12 @@ chips = -20
 }
 end
 
- if context.after and pseudorandom('moreleech') < 0.3 and not context.blueprint then
+ if context.after and pseudorandom('moreleech') < 0.3 and card.ability.extra.dying == false and not context.blueprint then
  G.E_MANAGER:add_event(Event({
     trigger = "after", 
     delay = 1.3, 
     func = function() 
-        SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_redleech'})
+        SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_redleech', no_edition = true})
         return true 
     end,
 	 blocking = false
@@ -60,10 +60,11 @@ end
 
 --Defeat
  if context.before and not context.blueprint then
- if next(context.poker_hands['High Card']) and not context.blueprint then
- card.ability.extra.highcardcount = card.ability.extra.highcardcount +1
+ if next(context.poker_hands['High Card']) and context.scoring_name == "High Card" and not context.blueprint then
+ card.ability.extra.highcardcount = card.ability.extra.highcardcount + 1
  if card.ability.extra.highcardcount == 2 and not context.blueprint then
   card.ability.extra.defeat = true
+  card.ability.extra.dying = true
  end
 end
 end
