@@ -59,15 +59,18 @@ end
 end
 
 --Defeat
- if context.before and not context.blueprint then
- if next(context.poker_hands['High Card']) and context.scoring_name == "High Card" and not context.blueprint then
- card.ability.extra.highcardcount = card.ability.extra.highcardcount + 1
- if card.ability.extra.highcardcount == 2 and not context.blueprint then
+if context.before 
+and not context.blueprint then
+if next(context.poker_hands['High Card']) and context.scoring_name == "High Card" and not context.blueprint then
+card.ability.extra.highcardcount = card.ability.extra.highcardcount + 1
+end
+end
+
+if card.ability.extra.highcardcount == 2 and not context.blueprint then
   card.ability.extra.defeat = true
   card.ability.extra.dying = true
  end
-end
-end
+
  if context.after and card.ability.extra.defeat == true and not context.blueprint then
  G.E_MANAGER:add_event(Event({
     trigger = "after", 

@@ -659,7 +659,19 @@ return {
 			"the end of {C:attention}Boss Blind{}."
 			},
 			},
-
+			
+         j_rw_jungleleech = {
+		name = "Jungle Leech",
+		text = {
+		    "{C:green}Enemy{}",
+			"{C:attention}Threat{}: -0.5 Mult.", 
+			"{C:green}1 in 2{} chance to gain -0.1 Mult",
+			"and {C:green}1 in 10{} chance to spawn another", 
+			"Jungle Leech each hand played.",
+			"{C:attention}To Defeat{}: Sell a {C:food}Food{} card and play five High Card hands.",
+			"{C:attention}Undefeated{}: {C:green}1 in 20{} chance to remove {C:food}Food{} cards from the shop."
+			},
+			},
 			
 		
 		j_rw_abundance = { 

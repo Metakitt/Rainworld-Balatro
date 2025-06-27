@@ -162,7 +162,7 @@ elseif enemy_roster_ante2 >= 4 and enemy_roster_ante2 <= 6 then
 elseif enemy_roster_ante2 >= 7 and enemy_roster_ante2 <= 9  then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_edition = true})
 elseif enemy_roster_ante2 >= 10 and enemy_roster_ante2 <= 12  then
---SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_jungleleech', no_edition = true})
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_jungleleech', no_edition = true})
 elseif enemy_roster_ante2 >= 13 and enemy_roster_ante2 <= 14  then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_redleech', no_edition = true})
 elseif enemy_roster_ante2 >= 15 and enemy_roster_ante2 <= 16  then
@@ -228,7 +228,7 @@ end
 
 elseif G.GAME.round_resets.ante > 8 then
 -- Ante 9+ can roll ANY creature as a spawn. Currently it only rolls for coded enemies.
-local enemy_roster_ante9 = pseudorandom_element({1,2,3,4,5,6,7,8,9}, pseudoseed("seed"))
+local enemy_roster_ante9 = pseudorandom_element({1,2,3,4,5,6,7,8,9,11}, pseudoseed("seed"))
 if enemy_roster_ante9 == 1 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
 elseif enemy_roster_ante9 == 2 then
@@ -247,8 +247,8 @@ elseif enemy_roster_ante9 == 9 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_edition = true})
 --elseif enemy_roster_ante9 == 10 then
 --SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_inspector', no_edition = true})
---elseif enemy_roster_ante9 == 11 then
---SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_jungleleech', no_edition = true})
+elseif enemy_roster_ante9 == 11 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_jungleleech', no_edition = true})
 end
 
 end
