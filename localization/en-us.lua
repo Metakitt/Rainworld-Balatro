@@ -563,6 +563,7 @@ return {
 		},
         Joker = {
 		
+		--Enemies
 		j_rw_greenlizard = {
 		name = "Green Lizard",
 		text = {
@@ -673,7 +674,18 @@ return {
 			},
 			},
 			
-		
+			j_rw_whitelizard = {
+		name = "White Lizard",
+		text = {
+		    "{C:green}Enemy{}",
+			"{C:attention}Threat{}: 0.9x Mult", 
+			"{C:attention}To Defeat{}: Play a hand with a Wild Card.",
+			"{C:attention}Undefeated{}: Sets your most played hand back to level 1."
+			},
+			},
+			
+		--Slugcats + Other Jokers
+			
 		j_rw_abundance = { 
 		name = "Abundance",
 		text = {

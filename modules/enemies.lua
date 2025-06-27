@@ -6,6 +6,7 @@ assert(SMODS.load_file("modules/enemies/brotherlonglegs.lua"))()
 assert(SMODS.load_file("modules/enemies/redleech.lua"))() 
 assert(SMODS.load_file("modules/enemies/bluelizard.lua"))() 
 assert(SMODS.load_file("modules/enemies/coalescipede.lua"))() 
+assert(SMODS.load_file("modules/enemies/whitelizard.lua"))() 
 --[[
 Enemy general format:
 Spawn Antes: Antes the enemy can spawn in.
@@ -41,10 +42,10 @@ Ante 2 enemies(Count:10):
 = Blue Lizard [ X ] (Also appears in 3)
 = Coalescipede [ X ] (Also appears in 3, 4, 6)
 = Inspectors [ ] (Also appears in 3)
-= Jungle Leech [ ] (Also appears in 3, 4)
+= Jungle Leech [ X ] (Also appears in 3, 4)
 
 Ante 3 enemies(Count:15):
-= White Lizard [ ] (Also appears in 4, 5)
+= White Lizard [ X ] (Also appears in 4, 5)
 = Pole Plant [ ] (Appears from 3 onwards)
 = Cyan Lizard [ ] (Also appears in 4, 5)
 = Dropwig [ ] (Also appears in 4)
