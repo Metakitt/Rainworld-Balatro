@@ -180,10 +180,34 @@ end
 --Starting Ante 3 onwards; It's just a temporary placeholder set just to keep the structure going.
 elseif G.GAME.round_resets.ante == 3 then
 local enemy_roster_ante3 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
-if enemy_roster_ante3 >= 1 and enemy_roster_ante3 <= 10 then
+if enemy_roster_ante3 == 1 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
-elseif enemy_roster_ante3 >= 11 and enemy_roster_ante3 <= 20 then
+elseif enemy_roster_ante3 == 2 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_pinklizard', no_edition = true})
+elseif enemy_roster_ante3 == 3 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_youngcentipede', no_edition = true})
+elseif enemy_roster_ante3 == 4 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_wormgrass', no_edition = true})
+elseif enemy_roster_ante3 == 5 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_brotherlonglegs', no_edition = true})
+elseif enemy_roster_ante3 == 6 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_edition = true})
+--elseif enemy_roster_ante3 == 7 then
+--SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_inspectors', no_edition = true})
+elseif enemy_roster_ante3 == 8 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_jungleleech', no_edition = true})
+elseif enemy_roster_ante3 >= 9 and enemy_roster_ante3 <= 10 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_whitelizard', no_edition = true})
+elseif enemy_roster_ante3 >= 11 and enemy_roster_ante3 <= 12 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
+--elseif enemy_roster_ante3 >= 13 and enemy_roster_ante3 <= 14 then
+--SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_cyanlizard', no_edition = true})
+--elseif enemy_roster_ante3 >= 15 and enemy_roster_ante3 <= 16 then
+--SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_dropwig', no_edition = true})
+--elseif enemy_roster_ante3 >= 17 and enemy_roster_ante3 <= 18 then
+--SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_bigspider', no_edition = true})
+--elseif enemy_roster_ante3 >= 19 and enemy_roster_ante3 <= 20 then
+--SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_sealeech', no_edition = true})
 end
 
 elseif G.GAME.round_resets.ante == 4 then
