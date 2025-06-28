@@ -202,8 +202,8 @@ elseif enemy_roster_ante3 >= 11 and enemy_roster_ante3 <= 12 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
 --elseif enemy_roster_ante3 >= 13 and enemy_roster_ante3 <= 14 then
 --SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_cyanlizard', no_edition = true})
---elseif enemy_roster_ante3 >= 15 and enemy_roster_ante3 <= 16 then
---SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_dropwig', no_edition = true})
+elseif enemy_roster_ante3 >= 15 and enemy_roster_ante3 <= 16 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_dropwig', no_edition = true})
 --elseif enemy_roster_ante3 >= 17 and enemy_roster_ante3 <= 18 then
 --SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_bigspider', no_edition = true})
 --elseif enemy_roster_ante3 >= 19 and enemy_roster_ante3 <= 20 then
@@ -242,13 +242,13 @@ SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_whitelizard', no_edi
 elseif enemy_roster_ante4 == 11 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
 
---[[elseif enemy_roster_ante4 >= 12 and enemy_roster_ante4 <= 13 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_cyanlizard', no_edition = true})
+--elseif enemy_roster_ante4 >= 12 and enemy_roster_ante4 <= 13 then
+--SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_cyanlizard', no_edition = true})
 
 elseif enemy_roster_ante4 >= 14 and enemy_roster_ante4 <= 15 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_dropwig', no_edition = true})
 
-elseif enemy_roster_ante4 == 16 then
+--[[elseif enemy_roster_ante4 == 16 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_salamander', no_edition = true})
 
 elseif enemy_roster_ante4 == 17 then
@@ -407,7 +407,7 @@ end
 
 elseif G.GAME.round_resets.ante > 8 then
 -- Ante 9+ can roll ANY creature as a spawn. Currently it only rolls for coded enemies.
-local enemy_roster_ante9 = pseudorandom_element({1,2,3,4,5,6,7,8,9,11,12,13}, pseudoseed("seed"))
+local enemy_roster_ante9 = pseudorandom_element({1,2,3,4,5,6,7,8,9,11,12,13,14}, pseudoseed("seed"))
 if enemy_roster_ante9 == 1 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
 elseif enemy_roster_ante9 == 2 then
@@ -432,6 +432,8 @@ elseif enemy_roster_ante9 == 12 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_whitelizard', no_edition = true})
 elseif enemy_roster_ante9 == 13 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
+elseif enemy_roster_ante9 == 14 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_dropwig', no_edition = true})
 end
 
 end

@@ -8,6 +8,7 @@ assert(SMODS.load_file("modules/enemies/bluelizard.lua"))()
 assert(SMODS.load_file("modules/enemies/coalescipede.lua"))() 
 assert(SMODS.load_file("modules/enemies/whitelizard.lua"))() 
 assert(SMODS.load_file("modules/enemies/poleplant.lua"))() 
+assert(SMODS.load_file("modules/enemies/dropwig.lua"))() 
 --[[
 Enemy general format:
 Spawn Antes: Antes the enemy can spawn in.
@@ -49,7 +50,7 @@ Ante 3 enemies(Count:15):
 = White Lizard [ X ] (Also appears in 4, 5)
 = Pole Plant [ X ] (Appears from 3 onwards)
 = Cyan Lizard [ ] (Also appears in 4, 5)
-= Dropwig [ ] (Also appears in 4)
+= Dropwig [ X ] (Also appears in 4)
 = Big Spider [ ] (Also appears in 6)
 = Sea Leech [ ] (Appears 3,6,7)
 
