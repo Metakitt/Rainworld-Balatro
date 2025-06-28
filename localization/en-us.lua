@@ -681,7 +681,6 @@ return {
 			},
 			},
 			
-
 			j_rw_dropwig = {
 		name = "Dropwig",
 		text = {
@@ -690,14 +689,12 @@ return {
 			"{C:attention}Undefeated{}: Nothing."
 			},
 			},
-			
 
 			j_rw_inspectors = {
 				name = "Inspectors",
 				text = {
-					"{C:green}Enemy{}",
-					"{C:attention}Threat: {C:green}1 in #1#{} chance to {C:red}reject{} played hand,",
-					"shuffling the cards back into your deck and {C:blue}refunding{} the hand.",
+					"{C:attention}Threat: {C:green}1 in #1#{} chance to {C:red}reject{} played hand.",
+					"{s:0.8,C:inactive}(Shuffles cards back into deck, {s:0.8,C:blue}refunds{s:0.8,C:inactive} the hand)",
 					"{C:attention}Defeat:{} Score a hand while holding an {C:attention}explosive spear{}.",
 					"{C:attention}Not Defeated:{} Chance goes up. Maxes out at {C:green}1 in 2{}."
 				}

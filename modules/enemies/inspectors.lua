@@ -6,8 +6,8 @@ SMODS.Joker({
 		extra = {
 			odds = 6,
 			defeat = false,
-            smacked = false,
-            reload = {}
+			smacked = false,
+			reload = {},
 		},
 		enemy = true,
 	},
@@ -30,9 +30,9 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
-    in_pool = function (self, args)
-        return false
-    end,
+	in_pool = function(self, args)
+		return false
+	end,
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
@@ -45,7 +45,7 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-        -- Defeat
+		-- Defeat
 		if context.before and not context.blueprint then
 			for _, joker in ipairs(G.jokers.cards) do
 				if
@@ -72,89 +72,113 @@ SMODS.Joker({
 			}))
 		end
 		-- Undefeated
-        if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint then
-            if card.ability.extra.odds > 2 then
-                card.ability.extra.odds = card.ability.extra.odds + 1
-            end
-        end
-        -- Threat pt.1
-        if context.debuffed_hand then
-            for _,v in ipairs(context.full_hand) do
-                table.insert(card.ability.extra.reload, v)
-            end
-            print(#card.ability.extra.reload)
-        end
-        if context.after then
-            G.E_MANAGER:add_event(Event({
-                blocking = false,
-                func = function()
-                    local function all_in_discard()
-                        local check_table = {}
-                        for i=1,#card.ability.extra.reload do
-                            for j=1,#G.discard.cards do
-                                if G.discard.cards[j] == card.ability.extra.reload[i] then
-                                    check_table[i] = true
-                                end
-                            end
-                        end
-                        -- print(#check_table, #card.ability.extra.reload)
-                        return #check_table == #card.ability.extra.reload
-                    end
+		if
+			context.main_eval
+			and context.end_of_round
+			and G.GAME.blind.boss
+			and card.ability.extra.defeat == false
+			and not context.blueprint
+		then
+			if card.ability.extra.odds > 2 then
+				card.ability.extra.odds = card.ability.extra.odds + 1
+			end
+		end
+		-- Threat pt.1
+		if context.debuffed_hand then
+			for _, v in ipairs(context.full_hand) do
+				table.insert(card.ability.extra.reload, v)
+			end
+			print(#card.ability.extra.reload)
+		end
+		if context.after then
+			G.E_MANAGER:add_event(
+				Event({
+					blocking = false,
+					func = function()
+						local function all_in_discard()
+							local check_table = {}
+							for i = 1, #card.ability.extra.reload do
+								for j = 1, #G.discard.cards do
+									if G.discard.cards[j] == card.ability.extra.reload[i] then
+										check_table[i] = true
+									end
+								end
+							end
+							-- print(#check_table, #card.ability.extra.reload)
+							return #check_table == #card.ability.extra.reload
+						end
 
-                    if all_in_discard() then
-                        if card.ability.extra.smacked then
-                            G.E_MANAGER:add_event(Event({
-                                trigger = 'immediate',
-                                func = function()
-                                    local num_undiscard = #card.ability.extra.reload
-                                    for i=1,num_undiscard do
-                                        -- print("attempting undiscard")
-                                        local undiscard = card.ability.extra.reload[i]
-                                        draw_card(G.discard, G.deck, i*100/num_undiscard, 'up', nil, undiscard, 0.005, i%2==0, nil, math.max((21-i)/20,0.7))
-                                    end
-                                    card.ability.extra.smacked = false
-                                    return true
-                                end
-                            }))
-                            ease_hands_played(1)
-                        end
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                for k,_ in pairs(card.ability.extra.reload) do
-                                    card.ability.extra.reload[k] = nil
-                                end
-                                return true
-                            end
-                        }))
-                        return true
-                    else return false end
-                end
-            }), "other")
-            
-        end
+						if all_in_discard() then
+							if card.ability.extra.smacked then
+								G.E_MANAGER:add_event(Event({
+									trigger = "immediate",
+									func = function()
+										local num_undiscard = #card.ability.extra.reload
+										for i = 1, num_undiscard do
+											-- print("attempting undiscard")
+											local undiscard = card.ability.extra.reload[i]
+											-- Evil LocalThunk code
+											draw_card(
+												G.discard,
+												G.deck,
+												i * 100 / num_undiscard,
+												"up",
+												nil,
+												undiscard,
+												0.005,
+												i % 2 == 0,
+												nil,
+												math.max((21 - i) / 20, 0.7)
+											)
+										end
+										card.ability.extra.smacked = false
+										return true
+									end,
+								}))
+								-- Your hand back :)
+								ease_hands_played(1)
+							end
+							-- Clear table
+							G.E_MANAGER:add_event(Event({
+								func = function()
+									for k, _ in pairs(card.ability.extra.reload) do
+										card.ability.extra.reload[k] = nil
+									end
+									return true
+								end,
+							}))
+							return true
+						else
+							return false
+						end
+					end,
+				}),
+				"other"
+			)
+		end
 	end,
 })
 
 -- Threat pt.2 (The evil)
 local Blind_debuff_hand = Blind.debuff_hand
 function Blind:debuff_hand(cards, hand, handname, check)
-    local ret = Blind_debuff_hand(self, cards, hand, handname, check)
-    if not ret and not check then
-        for _,k in ipairs(G.jokers.cards) do
-            if k.config.center_key == "j_rw_inspectors" then
-                if pseudorandom("rw_inspected") < (1 / k.ability.extra.odds) then
-                    -- Lets you know who screwed you over
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            k:juice_up()
-                            k.ability.extra.smacked = true
-                            return true
-                        end
-                    }))
-                    return true
-                end
-            end
-        end
-    end
-    return ret
+	local ret = Blind_debuff_hand(self, cards, hand, handname, check)
+	if not ret and not check then
+		for _, k in ipairs(G.jokers.cards) do
+			if k.config.center_key == "j_rw_inspectors" then
+				if pseudorandom("rw_inspected") < (1 / k.ability.extra.odds) then
+					-- Lets you know who screwed you over
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							k:juice_up()
+							k.ability.extra.smacked = true
+							return true
+						end,
+					}))
+					return true
+				end
+			end
+		end
+	end
+	return ret
 end
