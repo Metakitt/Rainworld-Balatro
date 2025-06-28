@@ -187,6 +187,21 @@ Eel Lizard
 Caramel Lizard
 Spitter Spider
 Giant Jellyfish
+On 20:
+1: Green Lizard or Pink Lizard (50/50)
+2: Worm Grass or Monster Kelp (50/50)
+3,4: Brother Long Legs
+5,6: Coalescipede
+7,8: Jungle Leech
+9,10: White Lizard
+11: Pole Plant
+12,13: Cyan Lizard
+14,15: Dropwig
+16: Salamander
+17: Eel Lizard
+18: Caramel Lizard
+19: Spitter Spider
+20: Giant Jellyfish
 
 Ante 5
 Worm Grass
@@ -204,6 +219,21 @@ Mature Centipede
 Overgrown Centipede
 Daddy Long Legs
 King Vulture
+On 20:
+1: Worm Grass
+2,3: White Lizard
+4,5: Pole Plant
+6: Cyan Lizard
+7: Monster Kelp
+8,9:Salamander
+10,11:Eel Lizard
+12,13: Giant Jellyfish
+14: Yellow Lizard
+15: Black Lizard
+16,17: Vulture
+18: Mature Centipede / Overgrown Centipede (50/50)
+19: Daddy Long Legs
+20: King Vulture
 
 Ante 6
 Coalescipede
@@ -222,6 +252,21 @@ Miros Bird
 Mother Long Legs
 Hunter Long Legs
 Stowaway
+(On 20)
+1,2: Coalescipede
+3,4: Pole Plant
+5: Big Spider
+6,7: Sea Leech
+8: Spitter Spider
+9,10:Yellow Lizard
+11,12: Black Lizard
+13: Vulture
+14,15: Strawberry Lizard
+16: Centiwing
+17: Miros Bird
+18: Mother Long Legs
+19: Hunter Long Legs
+20: Stowaway
 
 Ante 7
 Pole Plant
@@ -241,6 +286,23 @@ Mother Spider
 Aquapede
 Miros Vulture
 Firebugs
+(On 20)
+1,2: Pole Plant
+3,4: Sea Leech
+5,6: Giant Jellyfish
+7: Yellow Lizard
+8: Black Lizard
+9: Vulture 
+10,11: Daddy Long Legs
+12: King Vulture / Miros Vulture 50/50
+13: Centiwing
+14: Miros Bird 
+15: Mother Long Legs
+16: Stowaway
+17: Red Lizard
+18: Mother Spider
+19: Aquapede
+20: Firebug
 
 Ante 8
 Pole Plant
@@ -257,7 +319,20 @@ Train Lizard
 Leviathan
 Red Centipede
 Chieftain
-
+1: Pole Plant
+2,3: Giant Jellyfish
+4: Yellow Lizard
+5: Black Lizard
+6,7,8: Vulture
+9,10: Daddy Long Legs
+11,12: King Vulture
+13,14: Mother Long Legs
+15: Red Lizard
+16: Miros Vulture
+17: Train Lizard
+18: Leviathan
+19: Red Centipede
+20: Chieftain
 
 --]]
 

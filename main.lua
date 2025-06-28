@@ -212,47 +212,202 @@ end
 
 elseif G.GAME.round_resets.ante == 4 then
 local enemy_roster_ante4 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
-if enemy_roster_ante4 >= 1 and enemy_roster_ante4 <= 10 then
+if enemy_roster_ante4 == 1 then
+
+if pseudorandom('lizard') < 0.5 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
-elseif enemy_roster_ante4 >= 11 and enemy_roster_ante4 <= 20 then
+else
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_pinklizard', no_edition = true})
+end
+
+elseif enemy_roster_ante4 == 2 then
+if pseudorandom('plant') < 0.5 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_wormgrass', no_edition = true})
+else
+--SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_monsterkelp', no_edition = true})
+end
+
+elseif enemy_roster_ante4 >= 3 and enemy_roster_ante4 <= 4 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_brotherlonglegs', no_edition = true})
+
+elseif enemy_roster_ante4 >= 5 and enemy_roster_ante4 <= 6 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_edition = true})
+
+elseif enemy_roster_ante4 >= 7 and enemy_roster_ante4 <= 8 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_jungleleech', no_edition = true})
+
+elseif enemy_roster_ante4 >= 9 and enemy_roster_ante4 <= 10 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_whitelizard', no_edition = true})
+
+elseif enemy_roster_ante4 == 11 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
+
+--[[elseif enemy_roster_ante4 >= 12 and enemy_roster_ante4 <= 13 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_cyanlizard', no_edition = true})
+
+elseif enemy_roster_ante4 >= 14 and enemy_roster_ante4 <= 15 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_dropwig', no_edition = true})
+
+elseif enemy_roster_ante4 == 16 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_salamander', no_edition = true})
+
+elseif enemy_roster_ante4 == 17 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_eellizard', no_edition = true})
+
+elseif enemy_roster_ante4 == 18 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_caramellizard', no_edition = true})
+
+elseif enemy_roster_ante4 == 19 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_spitterspider', no_edition = true})
+
+elseif enemy_roster_ante4 == 20 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_giantjellyfish', no_edition = true})]]
+
 end
 
 elseif G.GAME.round_resets.ante == 5 then
 local enemy_roster_ante5 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
-if enemy_roster_ante5 >= 1 and enemy_roster_ante5 <= 10 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
-elseif enemy_roster_ante5 >= 11 and enemy_roster_ante5 <= 20 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_pinklizard', no_edition = true})
+if enemy_roster_ante5 == 1 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_wormgrass', no_edition = true})
+elseif enemy_roster_ante5 >= 2 and enemy_roster_ante5 <= 3 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_whitelizard', no_edition = true})
+elseif enemy_roster_ante5 >= 4 and enemy_roster_ante5 <= 5 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
+--[[elseif enemy_roster_ante5 == 6 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_cyanlizard', no_edition = true})
+elseif enemy_roster_ante5 == 7 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_monsterkelp', no_edition = true})
+elseif enemy_roster_ante5 >= 8 and enemy_roster_ante5 <= 9 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_salamander', no_edition = true})
+elseif enemy_roster_ante5 >= 10 and enemy_roster_ante5 <= 11 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_eellizard', no_edition = true})
+elseif enemy_roster_ante5 >= 12 and enemy_roster_ante5 <= 13 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_giantjellyfish', no_edition = true})
+elseif enemy_roster_ante5 == 14 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_yellowlizard', no_edition = true})
+elseif enemy_roster_ante5 == 15 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_blacklizard', no_edition = true})
+elseif enemy_roster_ante5 == 18 then
+if pseudorandom('pede') < 0.5 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_maturecentipede', no_edition = true})
+else
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_overgrowncentipede', no_edition = true})
+end
+elseif enemy_roster_ante5 == 19 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_daddylonglegs', no_edition = true})
+elseif enemy_roster_ante5 == 20 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_kingvulture', no_edition = true})]]
 end
 
 elseif G.GAME.round_resets.ante == 6 then
 local enemy_roster_ante6 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
-if enemy_roster_ante6 >= 1 and enemy_roster_ante6 <= 10 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
-elseif enemy_roster_ante6 >= 11 and enemy_roster_ante6 <= 20 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_pinklizard', no_edition = true})
+if enemy_roster_ante6 >= 1 and enemy_roster_ante6 <= 2 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_edition = true})
+elseif enemy_roster_ante6 >= 3 and enemy_roster_ante6 <= 4 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
+--[[elseif enemy_roster_ante6 == 5 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_bigspider', no_edition = true})
+elseif enemy_roster_ante6 >= 6 and enemy_roster_ante6 <= 7 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_sealeech', no_edition = true})
+elseif enemy_roster_ante6 == 8 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_spitterspider', no_edition = true})
+elseif enemy_roster_ante6 >= 9 and enemy_roster_ante6 <= 10 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_yellowlizard', no_edition = true})
+elseif enemy_roster_ante6 >= 11 and enemy_roster_ante6 <= 12 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_blacklizard', no_edition = true})
+elseif enemy_roster_ante6 == 13 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_vulture', no_edition = true})
+elseif enemy_roster_ante6 >= 14 and enemy_roster_ante6 <= 15 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_strawberrylizard', no_edition = true})
+elseif enemy_roster_ante6 == 16 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_centiwing', no_edition = true})
+elseif enemy_roster_ante6 == 17 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_mirosbird', no_edition = true})
+elseif enemy_roster_ante6 == 18 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_motherlonglegs', no_edition = true})
+elseif enemy_roster_ante6 == 19 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_hunterlonglegs', no_edition = true})
+elseif enemy_roster_ante6 == 20 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_stowaway', no_edition = true})]]
 end
 
 elseif G.GAME.round_resets.ante == 7 then
 local enemy_roster_ante7 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
-if enemy_roster_ante7 >= 1 and enemy_roster_ante7 <= 10 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
-elseif enemy_roster_ante7 >= 11 and enemy_roster_ante7 <= 20 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_pinklizard', no_edition = true})
+if enemy_roster_ante7 >= 1 and enemy_roster_ante7 <= 2 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
+--[[elseif enemy_roster_ante7 >= 3 and enemy_roster_ante7 <= 4 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_sealeech', no_edition = true})
+elseif enemy_roster_ante7 >= 5 and enemy_roster_ante7 <= 6 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_giantjellyfish', no_edition = true})
+elseif enemy_roster_ante7 == 7 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_yellowlizard', no_edition = true})
+elseif enemy_roster_ante7 == 8 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_blacklizard', no_edition = true})
+elseif enemy_roster_ante7 == 9 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_vulture', no_edition = true})
+elseif enemy_roster_ante7 >= 10 and enemy_roster_ante7 <= 11 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_daddylonglegs', no_edition = true})
+elseif enemy_roster_ante7 == 12 then
+if pseudorandom('pede') < 0.5 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_kingvulture', no_edition = true})
+else
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_mirosvulture', no_edition = true})
+end
+elseif enemy_roster_ante7 == 13 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_centiwing', no_edition = true})
+elseif enemy_roster_ante7 == 14 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_mirosbird', no_edition = true})
+elseif enemy_roster_ante7 == 15 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_motherlonglegs', no_edition = true})
+elseif enemy_roster_ante7 == 16 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_stowaway', no_edition = true})
+elseif enemy_roster_ante7 == 17 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_redlizard', no_edition = true})
+elseif enemy_roster_ante7 == 18 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_motherspider', no_edition = true})
+elseif enemy_roster_ante7 == 19 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_aquapede', no_edition = true})
+elseif enemy_roster_ante7 == 20 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_firebug', no_edition = true})]]
 end
 
 elseif G.GAME.round_resets.ante == 8 then
 local enemy_roster_ante8 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
-if enemy_roster_ante8 >= 1 and enemy_roster_ante8 <= 10 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
-elseif enemy_roster_ante8 >= 11 and enemy_roster_ante8 <= 20 then
-SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_pinklizard', no_edition = true})
+if enemy_roster_ante8 == 1 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
+--[[elseif enemy_roster_ante8 >= 2 and enemy_roster_ante8 <= 3 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_giantjellyfish', no_edition = true})
+elseif enemy_roster_ante8 == 4 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_yellowlizard', no_edition = true})
+elseif enemy_roster_ante8 == 5 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_blacklizard', no_edition = true})
+elseif enemy_roster_ante8 >= 6 and enemy_roster_ante8 <= 8 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_vulture', no_edition = true})
+elseif enemy_roster_ante8 >= 9 and enemy_roster_ante8 <= 10 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_daddylonglegs', no_edition = true})
+elseif enemy_roster_ante8 >= 11 and enemy_roster_ante8 <= 12 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_kingvulture', no_edition = true})
+elseif enemy_roster_ante8 >= 13 and enemy_roster_ante8 <= 14 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_motherlonglegs', no_edition = true})
+elseif enemy_roster_ante8 == 15 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_redlizard', no_edition = true})
+elseif enemy_roster_ante8 == 16 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_mirosvulture', no_edition = true})
+elseif enemy_roster_ante8 == 17 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_trainlizard', no_edition = true})
+elseif enemy_roster_ante8 == 18 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_leviathan', no_edition = true})
+elseif enemy_roster_ante8 == 19 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_redcentipede', no_edition = true})
+elseif enemy_roster_ante8 == 20 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_chieftain', no_edition = true})
+]]
+
 end
 
 elseif G.GAME.round_resets.ante > 8 then
 -- Ante 9+ can roll ANY creature as a spawn. Currently it only rolls for coded enemies.
-local enemy_roster_ante9 = pseudorandom_element({1,2,3,4,5,6,7,8,9,11}, pseudoseed("seed"))
+local enemy_roster_ante9 = pseudorandom_element({1,2,3,4,5,6,7,8,9,11,12,13}, pseudoseed("seed"))
 if enemy_roster_ante9 == 1 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
 elseif enemy_roster_ante9 == 2 then
@@ -273,6 +428,10 @@ SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_ed
 --SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_inspector', no_edition = true})
 elseif enemy_roster_ante9 == 11 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_jungleleech', no_edition = true})
+elseif enemy_roster_ante9 == 12 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_whitelizard', no_edition = true})
+elseif enemy_roster_ante9 == 13 then
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
 end
 
 end
