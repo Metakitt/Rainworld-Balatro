@@ -1,7 +1,7 @@
 SMODS.Rarity({
 	key = "foodcommon",
 	loc_txt = {
-		name = Common,
+		name = 'Common',
 	},
 	pools = {
 		-- ["foods"] = true,
@@ -14,7 +14,7 @@ SMODS.Rarity({
 SMODS.Rarity({
 	key = "fooduncommon",
 	loc_txt = {
-		name = Uncommon,
+		name = 'Uncommon',
 	},
 	pools = {
 		-- ["foods"] = true,
@@ -27,7 +27,7 @@ SMODS.Rarity({
 SMODS.Rarity({
 	key = "foodrare",
 	loc_txt = {
-		name = Rare,
+		name = 'Rare',
 	},
 	pools = {
 		-- ["foods"] = true,
@@ -35,4 +35,13 @@ SMODS.Rarity({
 	},
 	badge_colour = HEX("1b5699"),
 	default_weight = 0.02,
+})
+
+SMODS.Rarity({
+	key = "enemy",
+	loc_txt = {
+		name = 'Enemy',
+	},
+	badge_colour = HEX("811331"),
+	default_weight = 0,
 })

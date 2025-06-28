@@ -7,7 +7,7 @@ If not defeated: Destroys a random joker.]]
 SMODS.Joker {
 key = 'redleech',
 atlas = 'slugpups',
-rarity = 1,
+rarity = 'rw_enemy',
 cost = 4,
 pos = { x = 0, y = 0 },
 unlocked = true,

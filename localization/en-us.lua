@@ -13,8 +13,6 @@ return {
 		},
 	},
 		
-		
-		
         },	
 		Other = {
 		
@@ -567,7 +565,6 @@ return {
 		j_rw_greenlizard = {
 		name = "Green Lizard",
 		text = {
-		        "{C:green}Enemy{}",
 			"{C:attention}Threat{}: {C:green}1 in 2{} chance",
 			"to destroy a random joker",
 			"at the {C:attention}end of round{}.",
@@ -581,10 +578,9 @@ return {
 			j_rw_pinklizard = {
 		name = "Pink Lizard",
 		text = {
-		        "{C:green}Enemy{}",
 			"{C:attention}Threat{}: {C:green}1 in 2{} chance",
 			"to destroy a random card",
-                        "in the deck after playing a hand.",
+            "in the deck after playing a hand.",
 			"{C:attention}To Defeat{}: Score a {C:attention}Straight{}.",
 			"{C:attention}Undefeated{}: {C:green}1 in 20{} chance to destroy",
 			"each card in your deck at the",
@@ -595,7 +591,6 @@ return {
 			j_rw_youngcentipede = {
 		name = "Young Centipede",
 		text = {
-		    "{C:green}Enemy{}",
 			"{C:attention}Threat{}: None.",
 			"{C:attention}To Defeat{}: Score a {C:attention}Four of a Kind{}.",
 			"{C:attention}Undefeated{}: -{C:attention} 10${} at",
@@ -606,7 +601,6 @@ return {
 			j_rw_wormgrass = {
 		name = "Wormgrass",
 		text = {
-		        "{C:green}Enemy{}",
 			"{C:attention}Threat{}: Destroys cards after they've been played.",
 			"{C:attention}To Defeat{}: Score 1000 chips.",
 			"{C:attention}Undefeated{}: Nothing."
@@ -616,10 +610,9 @@ return {
 			j_rw_brotherlonglegs = {
 		name = "Brother Long Legs",
 		text = {
-		    "{C:green}Enemy{}",
 			"{C:attention}Threat{}: At the start of each blind,", 
 			"1 in 20 chance for each card",
-                        "in your deck to become rot.",
+            "in your deck to become rot.",
 			"{C:attention}To Defeat{}: Score a hand while holding an explosive spear.",
 			"{C:attention}Undefeated{}:Chooses a random rank and turns it",  
 			" to rot at end of {C:attention}Boss Blind{}."
@@ -629,7 +622,6 @@ return {
 			j_rw_bluelizard = {
 		name = "Blue Lizard",
 		text = {
-		    "{C:green}Enemy{}",
 			"{C:attention}Threat{}: x0.75 Chips .",
 			"{C:attention}To Defeat{}: Score a card with at least 10 extra chips.",
 			"{C:attention}Undefeated{}: Each card in your", 
@@ -641,7 +633,6 @@ return {
 			j_rw_redleech = {
 		name = "Red Leech",
 		text = {
-		        "{C:green}Enemy{}",
 			"{C:attention}Threat{}:-20 Chips. Each played hand has a {C:green}1 in 3{}", 
 			"chance to spawn a new red leech.",
 			"{C:attention}To Defeat{}: Play two High Cards hands.",
@@ -653,7 +644,6 @@ return {
 			j_rw_coalescipede = {
 		name = "Coalescipede",
 		text = {
-		    "{C:green}Enemy{}",
 			"{C:attention}Threat{}: -1 Chips per Coalescipede.",
 			"{C:attention}To Defeat{}: Have a Joker with a Flashbang.",
 			"{C:attention}Undefeated{}: Spawns two more Coalescipede at",
@@ -664,7 +654,6 @@ return {
          j_rw_jungleleech = {
 		name = "Jungle Leech",
 		text = {
-		    "{C:green}Enemy{}",
 			"{C:attention}Threat{}: -0.5 Mult.", 
 			"{C:green}1 in 2{} chance to gain -0.1 Mult",
 			"and {C:green}1 in 10{} chance to spawn another", 
@@ -677,7 +666,6 @@ return {
 			j_rw_whitelizard = {
 		name = "White Lizard",
 		text = {
-		    "{C:green}Enemy{}",
 			"{C:attention}Threat{}: 0.9x Mult", 
 			"{C:attention}To Defeat{}: Play a hand with a Wild Card.",
 			"{C:attention}Undefeated{}: Sets your most played hand back to level 1."
@@ -687,7 +675,6 @@ return {
 			j_rw_poleplant = {
 		name = "Pole Plant",
 		text = {
-		    "{C:green}Enemy{}",
 			"{C:attention}Threat{}: -3 Mult", 
 			"{C:attention}To Defeat{}: Score two Mult cards.",
 			"{C:attention}Undefeated{}: All playing cards get -1 Extra Mult."
@@ -1127,6 +1114,7 @@ return {
 	k_foodcommon = "Common",
 	k_fooduncommon = "Uncommon",
 	k_foodrare = "Rare",
+	k_enemy = "Enemy",
 	
 	},
 	},
