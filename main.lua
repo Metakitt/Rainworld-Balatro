@@ -18,6 +18,14 @@ SCUG = SMODS.current_mod
 SCUG.big = function(x) return (Talisman and to_big(x)) or x end
 SCUG.num = function(x) return (Talisman and to_number(x)) or x end
 
+---@param min integer Minimum number that can be picked. Defaults to 1.
+---@param max integer Maximum number that can be picked. Defaults to 20.
+---@param seed string Pseudorandom seed. Defaults to "Rainworld"
+---@return integer
+---Returns a random integer between two numbers, including those numbers.
+SCUG.number_in_range = function(min, max, seed)
+    return math.floor(((max or 20) - (min or 1) + 1) * pseudorandom(seed or "Rainworld")) + min
+end
 
 SMODS.Sound {
 key = 'crunch',
@@ -135,13 +143,13 @@ new_roundref()
 -- Enemy Selection
 
 -- This checks if an enemy spawns or not.
-local enemy_spawn = pseudorandom_element({1,2,3,4,5}, pseudoseed("seed"))
+local enemy_spawn = pseudorandom("enemyspawn") < 0.2 -- 1 in 5
 print(enemy_spawn)
 
 -- It's a 1 in 10 chance so if its a 5, it goes through.
-if enemy_spawn == 5 then
+if enemy_spawn then
 if G.GAME.round_resets.ante == 1 then
-local enemy_roster_ante1 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
+local enemy_roster_ante1 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.round_resets.ante)
 print(enemy_roster_ante1)
 if enemy_roster_ante1 == 1 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_brotherlonglegs', no_edition = true})
@@ -159,7 +167,7 @@ end
 
 elseif G.GAME.round_resets.ante == 2 then
 --Unimplemented enemies commented out to prevent crashing.
-local enemy_roster_ante2 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
+local enemy_roster_ante2 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.round_resets.ante)
 if enemy_roster_ante2 >= 1 and enemy_roster_ante2 <= 3  then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_bluelizard', no_edition = true})
 elseif enemy_roster_ante2 >= 4 and enemy_roster_ante2 <= 6 then
@@ -184,7 +192,7 @@ end
 
 --Starting Ante 3 onwards; It's just a temporary placeholder set just to keep the structure going.
 elseif G.GAME.round_resets.ante == 3 then
-local enemy_roster_ante3 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
+local enemy_roster_ante3 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.round_resets.ante)
 if enemy_roster_ante3 == 1 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_greenlizard', no_edition = true})
 elseif enemy_roster_ante3 == 2 then
@@ -216,7 +224,7 @@ SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_dropwig', no_edition
 end
 
 elseif G.GAME.round_resets.ante == 4 then
-local enemy_roster_ante4 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
+local enemy_roster_ante4 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.round_resets.ante)
 if enemy_roster_ante4 == 1 then
 
 if pseudorandom('lizard') < 0.5 then
@@ -271,7 +279,7 @@ SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_giantjellyfish', no_
 end
 
 elseif G.GAME.round_resets.ante == 5 then
-local enemy_roster_ante5 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
+local enemy_roster_ante5 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.round_resets.ante)
 if enemy_roster_ante5 == 1 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_wormgrass', no_edition = true})
 elseif enemy_roster_ante5 >= 2 and enemy_roster_ante5 <= 3 then
@@ -305,7 +313,7 @@ SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_kingvulture', no_edi
 end
 
 elseif G.GAME.round_resets.ante == 6 then
-local enemy_roster_ante6 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
+local enemy_roster_ante6 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.round_resets.ante)
 if enemy_roster_ante6 >= 1 and enemy_roster_ante6 <= 2 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_edition = true})
 elseif enemy_roster_ante6 >= 3 and enemy_roster_ante6 <= 4 then
@@ -337,7 +345,7 @@ SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_stowaway', no_editio
 end
 
 elseif G.GAME.round_resets.ante == 7 then
-local enemy_roster_ante7 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
+local enemy_roster_ante7 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.round_resets.ante)
 if enemy_roster_ante7 >= 1 and enemy_roster_ante7 <= 2 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
 --[[elseif enemy_roster_ante7 >= 3 and enemy_roster_ante7 <= 4 then
@@ -377,7 +385,7 @@ SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_firebug', no_edition
 end
 
 elseif G.GAME.round_resets.ante == 8 then
-local enemy_roster_ante8 = pseudorandom_element({1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}, pseudoseed("seed"))
+local enemy_roster_ante8 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.round_resets.ante)
 if enemy_roster_ante8 == 1 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_poleplant', no_edition = true})
 --[[elseif enemy_roster_ante8 >= 2 and enemy_roster_ante8 <= 3 then
@@ -447,7 +455,7 @@ end
 
 
 -- Joke Rifle's random effect
-local cr = math.random(1,11)
+local cr = SCUG.number_in_range(1, 11, "rw_wjokerifle")
 if cr <= 5 then
 G.GAME.jokerifle = pseudorandom_element({'bluefruit', 'rock', 'cherrybomb', 'none', 'pearl'}, pseudoseed('common'))
 elseif cr > 5 and cr <= 9 then
@@ -487,8 +495,8 @@ if x.config.center == G.P_CENTERS.m_rw_rotting and not x.debuff then
     end
  
  -- 1 in 5 chance to make another random card a rot card.
- local timeforrot = math.random (1,5)
- if timeforrot == 5 then
+ local timeforrot = pseudorandom("rw_rot") < 0.2 -- Also 1 in 5
+ if timeforrot then
  
   local notrot = {}
                 for i = 1, #G.deck.cards do
