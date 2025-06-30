@@ -13,6 +13,11 @@ assert(SMODS.load_file("./modules/enemies.lua"))()
 
 --Debug allows for the use of the Rot fruit for testing rot! Wet fruit as well for wet cards!
 
+SCUG = SMODS.current_mod
+-- Possible Talisman compatibility
+SCUG.big = function(x) return (Talisman and to_big(x)) or x end
+SCUG.num = function(x) return (Talisman and to_number(x)) or x end
+
 
 SMODS.Sound {
 key = 'crunch',
