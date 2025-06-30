@@ -1,7 +1,7 @@
 -- There's evil in here.
 
 SMODS.Joker({
-	key = "inspectors",
+	key = "inspector",
 	config = {
 		extra = {
 			odds = 6,
@@ -165,7 +165,7 @@ function Blind:debuff_hand(cards, hand, handname, check)
 	local ret = Blind_debuff_hand(self, cards, hand, handname, check)
 	if not ret and not check then
 		for _, k in ipairs(G.jokers.cards) do
-			if k.config.center_key == "j_rw_inspectors" then
+			if k.config.center_key == "j_rw_inspector" then
 				if pseudorandom("rw_inspected") < (1 / k.ability.extra.odds) then
 					-- Lets you know who screwed you over
 					G.E_MANAGER:add_event(Event({

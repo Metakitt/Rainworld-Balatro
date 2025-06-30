@@ -206,7 +206,7 @@ SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_brotherlonglegs', no
 elseif enemy_roster_ante3 == 6 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_edition = true})
 --elseif enemy_roster_ante3 == 7 then
---SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_inspectors', no_edition = true})
+--SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_inspector', no_edition = true})
 elseif enemy_roster_ante3 == 8 then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_jungleleech', no_edition = true})
 elseif enemy_roster_ante3 >= 9 and enemy_roster_ante3 <= 10 then
