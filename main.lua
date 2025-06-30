@@ -171,7 +171,7 @@ local enemy_roster_ante2 = SCUG.number_in_range(1, 20, "enemychoice" .. G.GAME.r
 if enemy_roster_ante2 >= 1 and enemy_roster_ante2 <= 3  then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_bluelizard', no_edition = true})
 elseif enemy_roster_ante2 >= 4 and enemy_roster_ante2 <= 6 then
---SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_inspector', no_edition = true})
+SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_inspector', no_edition = true})
 elseif enemy_roster_ante2 >= 7 and enemy_roster_ante2 <= 9  then
 SMODS.add_card({set = "Joker", area = G.jokers, key = 'j_rw_coalescipede', no_edition = true})
 elseif enemy_roster_ante2 >= 10 and enemy_roster_ante2 <= 12  then
