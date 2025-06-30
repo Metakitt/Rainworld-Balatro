@@ -46,7 +46,7 @@ Ante 1 enemies (Count:6):
 Ante 2 enemies(Count:10):
 = Blue Lizard [ X ] (Also appears in 3)
 = Coalescipede [ X ] (Also appears in 3, 4, 6)
-= Inspectors [ ] (Also appears in 3)
+= Inspectors [ X ] (Also appears in 3)
 = Jungle Leech [ X ] (Also appears in 3, 4)
 
 Ante 3 enemies(Count:15):
