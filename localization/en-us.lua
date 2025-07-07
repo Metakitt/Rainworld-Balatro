@@ -722,6 +722,18 @@ return {
 			"{C:attention}Undefeated{}:Wet cards become Rot Cards."
 			},
 			},
+			
+			j_rw_monsterkelp = {
+		name = "Monster Kelp",
+		text = {
+			"{C:attention}Threat{}: -60 chips",
+			"{C:attention}To Defeat{}: Score two hands while holding",
+			"a Flashbang or Spear.",
+			"{C:attention}Undefeated{}: Each card in your", 
+			"deck gets -10 extra chips at the",
+			"end of {C:attention}Boss Blind{}."
+			},
+			},
 
 		--Slugcats + Other Jokers
 			

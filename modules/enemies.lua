@@ -13,6 +13,7 @@ assert(SMODS.load_file("modules/enemies/inspector.lua"))()
 assert(SMODS.load_file("modules/enemies/jungleleech.lua"))()
 assert(SMODS.load_file("modules/enemies/daddylonglegs.lua"))()
 assert(SMODS.load_file("modules/enemies/salamander.lua"))()
+assert(SMODS.load_file("modules/enemies/monsterkelp.lua"))()
 
 --[[
 Enemy general format:
@@ -60,8 +61,8 @@ Ante 3 enemies(Count:15):
 = Sea Leech [ ] (Appears 3,6,7)
 
 Ante 4 enemies(Count:15):
-= Monster Kelp [ ] (Also appears in 5)
-= Salamander [ ] (Also appears in 5)
+= Monster Kelp [ X ] (Also appears in 5)
+= Salamander [ X ] (Also appears in 5)
 = Eel Lizard [ ] (Also appears in 5)
 = Caramel Lizard [ ] (Exclusive to Ante 4)
 = Spitter Spider [ ] (Also appears in 6)
