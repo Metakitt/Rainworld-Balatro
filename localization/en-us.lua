@@ -699,6 +699,18 @@ return {
 					"{C:attention}Not Defeated:{} Chance goes up. Maxes out at {C:green}1 in 2{}."
 				}
 			},
+			
+			j_rw_daddylonglegs = {
+		name = "Daddy Long Legs",
+		text = {
+			"{C:attention}Threat{}: At the start of each blind,", 
+			"1 in 12 chance for each card",
+            "in your deck to become rot.",
+			"{C:attention}To Defeat{}: Score two hands while holding an explosive spear.",
+			"{C:attention}Undefeated{}:Chooses a random suit and turns it",  
+			" to rot at end of {C:attention}Boss Blind{}."
+			},
+			},
 
 		--Slugcats + Other Jokers
 			

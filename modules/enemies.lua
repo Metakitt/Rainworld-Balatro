@@ -11,6 +11,7 @@ assert(SMODS.load_file("modules/enemies/poleplant.lua"))()
 assert(SMODS.load_file("modules/enemies/dropwig.lua"))()
 assert(SMODS.load_file("modules/enemies/inspector.lua"))()
 assert(SMODS.load_file("modules/enemies/jungleleech.lua"))()
+assert(SMODS.load_file("modules/enemies/daddylonglegs.lua"))()
 
 --[[
 Enemy general format:
@@ -71,7 +72,7 @@ Ante 5 enemies(Count:15):
 = Vulture [ ] (Appears from 5 onwards)
 = Mature Centipede [ ] (Exclusive to Ante 5)
 = Overgrown Centipede [ ] (Exclusive to Ante 5)
-= Daddy Long Legs [ ] (Appears from 5 onwards)
+= Daddy Long Legs [ X ] (Appears from 5 onwards)
 = King Vulture [ ] (Appears from 5 onwards)
 
 
