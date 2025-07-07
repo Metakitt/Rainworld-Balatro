@@ -1,14 +1,14 @@
-assert(SMODS.load_file("modules/enemies/greenlizard.lua"))() 
-assert(SMODS.load_file("modules/enemies/pinklizard.lua"))() 
-assert(SMODS.load_file("modules/enemies/youngcentipede.lua"))() 
-assert(SMODS.load_file("modules/enemies/wormgrass.lua"))() 
-assert(SMODS.load_file("modules/enemies/brotherlonglegs.lua"))() 
-assert(SMODS.load_file("modules/enemies/redleech.lua"))() 
-assert(SMODS.load_file("modules/enemies/bluelizard.lua"))() 
-assert(SMODS.load_file("modules/enemies/coalescipede.lua"))() 
-assert(SMODS.load_file("modules/enemies/whitelizard.lua"))() 
-assert(SMODS.load_file("modules/enemies/poleplant.lua"))() 
-assert(SMODS.load_file("modules/enemies/dropwig.lua"))() 
+assert(SMODS.load_file("modules/enemies/greenlizard.lua"))()
+assert(SMODS.load_file("modules/enemies/pinklizard.lua"))()
+assert(SMODS.load_file("modules/enemies/youngcentipede.lua"))()
+assert(SMODS.load_file("modules/enemies/wormgrass.lua"))()
+assert(SMODS.load_file("modules/enemies/brotherlonglegs.lua"))()
+assert(SMODS.load_file("modules/enemies/redleech.lua"))()
+assert(SMODS.load_file("modules/enemies/bluelizard.lua"))()
+assert(SMODS.load_file("modules/enemies/coalescipede.lua"))()
+assert(SMODS.load_file("modules/enemies/whitelizard.lua"))()
+assert(SMODS.load_file("modules/enemies/poleplant.lua"))()
+assert(SMODS.load_file("modules/enemies/dropwig.lua"))()
 assert(SMODS.load_file("modules/enemies/inspector.lua"))()
 assert(SMODS.load_file("modules/enemies/jungleleech.lua"))()
 
@@ -339,5 +339,3 @@ Chieftain
 20: Chieftain
 
 --]]
-
-
