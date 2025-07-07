@@ -12,6 +12,7 @@ assert(SMODS.load_file("modules/enemies/dropwig.lua"))()
 assert(SMODS.load_file("modules/enemies/inspector.lua"))()
 assert(SMODS.load_file("modules/enemies/jungleleech.lua"))()
 assert(SMODS.load_file("modules/enemies/daddylonglegs.lua"))()
+assert(SMODS.load_file("modules/enemies/salamander.lua"))()
 
 --[[
 Enemy general format:

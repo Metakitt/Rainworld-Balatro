@@ -711,6 +711,17 @@ return {
 			" to rot at end of {C:attention}Boss Blind{}."
 			},
 			},
+			
+			j_rw_salamander = {
+		name = "Salamander",
+		text = {
+			"{C:attention}Threat{}: At the start of each blind,", 
+			"1 in 4 chance for each card",
+            "in your deck to become wet.",
+			"{C:attention}To Defeat{}: Use 4 {C:tarot}Tarot{} Cards.",
+			"{C:attention}Undefeated{}:Wet cards become Rot Cards."
+			},
+			},
 
 		--Slugcats + Other Jokers
 			
