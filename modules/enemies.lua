@@ -101,10 +101,29 @@ Ante 3 through 5 have a 1 in 8 chance to roll an enemy on each blind.
 Ante 6 and 7 have a 1 in 4 chance to roll an enemy on each blind.
 Ante 8 has a 1 in 3 chance to roll an enemy on each blind.
 The exception is for the Red centipede, Train Lizard and Leviathan, which can only be rolled on the Boss Blind AND only have a 1 in 6 chance to roll.
+--]]
 
-Full list per ante:
+-- TODO: Test what decreasing by 1 each ante does.
+-- Leads to same initial and end values (10 for Ante 1, 3 for Ante 8)
+local ENEMY_SPAWN_DENOMINATORS = {
+	10,
+	10,
+	8,
+	8,
+	8,
+	4,
+	4,
+	3,
+}
+ENEMY_SPAWN_DENOMINATORS[0] = 10 -- Ante 0- spawn chance
+ENEMY_SPAWN_DENOMINATORS[9] = 5 -- Ante 9+ spawn chance
 
-Ante 1
+-- Full list per ante:
+-- This is a table of tables. First index is what ante, second index is what the picked value is.
+-- Returns the card's key.
+local ENEMY_ANTE_TABLES = {
+
+	--[[Ante 1
 Green Lizard (5/20 or 1/4) (25%)
 Pink Lizard  (5/20 or 1/4) (25%)
 Young Centipede (3/20 or 1.5/10) (15%)
@@ -118,9 +137,32 @@ If there are 20 numbers to pick for:
 12,13,14:Young Centipede
 15,16,17 Wormgrass
 18,19,20 Red Leech
+]]
 
+	{
+		"j_rw_brotherlonglegs",
+		"j_rw_greenlizard",
+		"j_rw_greenlizard",
+		"j_rw_greenlizard",
+		"j_rw_greenlizard",
+		"j_rw_greenlizard",
+		"j_rw_pinklizard",
+		"j_rw_pinklizard",
+		"j_rw_pinklizard",
+		"j_rw_pinklizard",
+		"j_rw_pinklizard",
+		"j_rw_youngcentipede",
+		"j_rw_youngcentipede",
+		"j_rw_youngcentipede",
+		"j_rw_wormgrass",
+		"j_rw_wormgrass",
+		"j_rw_wormgrass",
+		"j_rw_redleech",
+		"j_rw_redleech",
+		"j_rw_redleech",
+	},
 
-Ante 2
+	--[[Ante 2
 Green Lizard
 Pink Lizard
 Young Centipede
@@ -141,8 +183,32 @@ Jungle Leech
 18: Pink Lizard
 19: Young Centipede
 20: Brother Long Legs
+]]
 
-Ante 3
+	{
+		"j_rw_bluelizard",
+		"j_rw_bluelizard",
+		"j_rw_bluelizard",
+		"j_rw_inspector",
+		"j_rw_inspector",
+		"j_rw_inspector",
+		"j_rw_coalescipede",
+		"j_rw_coalescipede",
+		"j_rw_coalescipede",
+		"j_rw_jungleleech",
+		"j_rw_jungleleech",
+		"j_rw_jungleleech",
+		"j_rw_redleech",
+		"j_rw_redleech",
+		"j_rw_wormgrass",
+		"j_rw_wormgrass",
+		"j_rw_greenlizard",
+		"j_rw_pinklizard",
+		"j_rw_youngcentipede",
+		"j_rw_brotherlonglegs",
+	},
+
+	--[[Ante 3
 Green Lizard
 Pink Lizard
 Young Centipede
@@ -173,8 +239,30 @@ Sea Leech
 15,16: Dropwig
 17,18: Big Spider
 19,20: Sea Leech
+]]
 
-Ante 4
+	{
+		"j_rw_greenlizard",
+		"j_rw_pinklizard",
+		"j_rw_youngcentipede",
+		"j_rw_wormgrass",
+		"j_rw_brotherlonglegs",
+		"j_rw_coalescipede",
+		"j_rw_inspector",
+		"j_rw_jungleleech",
+		"j_rw_poleplant",
+		"j_rw_poleplant",
+		"j_rw_cyanlizard",
+		"j_rw_cyanlizard",
+		"j_rw_dropwig",
+		"j_rw_dropwig",
+		"j_rw_bigspider",
+		"j_rw_bigspider",
+		"j_rw_sealeech",
+		"j_rw_sealeech",
+	},
+
+	--[[Ante 4
 Green Lizard
 Pink Lizard
 Worm Grass
@@ -206,8 +294,32 @@ On 20:
 18: Caramel Lizard
 19: Spitter Spider
 20: Giant Jellyfish
+]]
 
-Ante 5
+	{
+		{ "j_rw_greenlizard", "j_rw_pinklizard" },
+		{ "j_rw_wormgrass", "j_rw_monsterkelp" },
+		"j_rw_brotherlonglegs",
+		"j_rw_brotherlonglegs",
+		"j_rw_coalescipede",
+		"j_rw_coalescipede",
+		"j_rw_jungleleech",
+		"j_rw_jungleleech",
+		"j_rw_whitelizard",
+		"j_rw_whitelizard",
+		"j_rw_poleplant",
+		"j_rw_cyanlizard",
+		"j_rw_cyanlizard",
+		"j_rw_dropwig",
+		"j_rw_dropwig",
+		"j_rw_salamander",
+		"j_rw_eellizard",
+		"j_rw_caramellizard",
+		"j_rw_spitterspider",
+		"j_rw_giantjellyfish",
+	},
+
+	--[[Ante 5
 Worm Grass
 White Lizard
 Pole Plant
@@ -238,8 +350,31 @@ On 20:
 18: Mature Centipede / Overgrown Centipede (50/50)
 19: Daddy Long Legs
 20: King Vulture
+]]
+	{
+		"j_rw_wormgrass",
+		"j_rw_whitelizard",
+		"j_rw_whitelizard",
+		"j_rw_poleplant",
+		"j_rw_poleplant",
+		"j_rw_cyanlizard",
+		"j_rw_monsterkelp",
+		"j_rw_salamander",
+		"j_rw_salamander",
+		"j_rw_eellizard",
+		"j_rw_eellizard",
+		"j_rw_giantjellyfish",
+		"j_rw_giantjellyfish",
+		"j_rw_yellowlizard",
+		"j_rw_blacklizard",
+		"j_rw_vulture",
+		"j_rw_vulture",
+		{ "j_rw_maturecentipede", "j_rw_overgrowncentipede" },
+		"j_rw_daddylonglegs",
+		"j_rw_kingvulture",
+	},
 
-Ante 6
+	--[[Ante 6
 Coalescipede
 Pole Plant
 Big Spider
@@ -271,8 +406,32 @@ Stowaway
 18: Mother Long Legs
 19: Hunter Long Legs
 20: Stowaway
+]]
 
-Ante 7
+	{
+		"j_rw_coalescipede",
+		"j_rw_coalescipede",
+		"j_rw_poleplant",
+		"j_rw_poleplant",
+		"j_rw_bigspider",
+		"j_rw_sealeech",
+		"j_rw_sealeech",
+		"j_rw_spitterspider",
+		"j_rw_yellowlizard",
+		"j_rw_yellowlizard",
+		"j_rw_blacklizard",
+		"j_rw_blacklizard",
+		"j_rw_vulture",
+		"j_rw_strawberrylizard",
+		"j_rw_strawberrylizard",
+		"j_rw_centiwing",
+		"j_rw_mirosbird",
+		"j_rw_motherlonglegs",
+		"j_rw_hunterlonglegs",
+		"j_rw_stowaway",
+	},
+
+	--[[Ante 7
 Pole Plant
 Sea Leech
 Giant Jellyfish
@@ -307,8 +466,32 @@ Firebugs
 18: Mother Spider
 19: Aquapede
 20: Firebug
+]]
 
-Ante 8
+	{
+		"j_rw_poleplant",
+		"j_rw_poleplant",
+		"j_rw_sealeech",
+		"j_rw_sealeech",
+		"j_rw_giantjellyfish",
+		"j_rw_giantjellyfish",
+		"j_rw_yellowlizard",
+		"j_rw_blacklizard",
+		"j_rw_vulture",
+		"j_rw_daddylonglegs",
+		"j_rw_daddylonglegs",
+		{ "j_rw_kingvulture", "j_rw_mirosvulture" },
+		"j_rw_centiwing",
+		"j_rw_mirosbird",
+		"j_rw_motherlonglegs",
+		"j_rw_stowaway",
+		"j_rw_redlizard",
+		"j_rw_motherspider",
+		"j_rw_aquapede",
+		"j_rw_firebug",
+	},
+
+	--[[Ante 8
 Pole Plant
 Giant Jellyfish
 Yellow Lizard
@@ -337,5 +520,100 @@ Chieftain
 18: Leviathan
 19: Red Centipede
 20: Chieftain
+]]
 
---]]
+	{
+		"j_rw_poleplant",
+		"j_rw_giantjellyfish",
+		"j_rw_giantjellyfish",
+		"j_rw_yellowlizard",
+		"j_rw_blacklizard",
+		"j_rw_vulture",
+		"j_rw_vulture",
+		"j_rw_vulture",
+		"j_rw_daddylonglegs",
+		"j_rw_daddylonglegs",
+		"j_rw_kingvulture",
+		"j_rw_kingvulture",
+		"j_rw_motherlonglegs",
+		"j_rw_motherlonglegs",
+		"j_rw_redlizard",
+		"j_rw_mirosvulture",
+		"j_rw_trainlizard",
+		"j_rw_leviathan",
+		"j_rw_redcentipede",
+		"j_rw_chieftain",
+	},
+}
+
+local endless_table = {}
+for _, ante_table in pairs(ENEMY_ANTE_TABLES) do
+	for _, key in pairs(ante_table) do
+		if type(key) == "string" then
+			if not SCUG.in_table(key, endless_table) then
+				endless_table[#endless_table + 1] = key
+			end
+		elseif type(key) == "table" then
+			for _, real_key in pairs(key) do
+				if not SCUG.in_table(real_key, endless_table) then
+					endless_table[#endless_table + 1] = real_key
+				end
+			end
+		end
+	end
+end
+ENEMY_ANTE_TABLES[9] = endless_table
+
+local new_roundref = new_round
+function new_round()
+	new_roundref()
+
+	-- Enemy Selection
+	-- This checks if an enemy spawns or not.
+	-- TODO: Set limits to 0 and 9. Ante 9+ picks a random enemy equally. There should be SOME Ante 0- table, I think.
+	local ante_num = SCUG.clamp(G.GAME.round_resets.ante, 1, 9)
+	if pseudorandom("rw_spawn_enemy") < 1 / ENEMY_SPAWN_DENOMINATORS[ante_num] then
+		sendDebugMessage("Spawning an enemy!", "Rainworld")
+		local valid_selection = false
+		local enemy_key = "j_rw_greenlizard" -- Fallback value
+		local enemy_pool = ENEMY_ANTE_TABLES[ante_num]
+		local enemy_choice = SCUG.number_in_range(1, #enemy_pool, "rw_enemy_selection")
+		repeat
+			local _enemy = enemy_pool[enemy_choice]
+			if type(_enemy) == "table" then
+				enemy_key = _enemy[SCUG.number_in_range(i, #_enemy, "rw_enemy_selection")]
+			elseif type(_enemy) == "string" then
+				enemy_key = _enemy
+			end
+
+			-- If this enemy exists, use it
+			if G.P_CENTERS[enemy_key] then
+				valid_selection = true
+			-- Otherwise, use one lower on the list (more likely to exist, probably)
+			else
+				sendWarnMessage("Enemy " .. enemy_key .. " not implemented yet!", "Rainworld")
+				enemy_choice = enemy_choice - 1
+			end
+
+			-- If we can't find one, break the loop and use the fallback
+			if enemy_choice < 1 then
+				sendErrorMessage(
+					"Couldn't find a suitable enemy for Ante "
+						.. G.GAME.round_resets.ante
+						.. "! Falling back to "
+						.. enemy_key
+						.. "...",
+					"Rainworld"
+				)
+				break
+			end
+		until valid_selection
+		-- Here's your awful prize
+		sendDebugMessage("Chose " .. ((not string.find(enemy_key, "^j_")) and G.P_CENTERS[enemy_key].name or localize({
+			type = "name_text",
+			set = "Joker",
+			key = enemy_key,
+		})) .. "!", "Rainworld")
+		SMODS.add_card({ set = "Joker", area = G.jokers, key = enemy_key, no_edition = true })
+	end
+end
