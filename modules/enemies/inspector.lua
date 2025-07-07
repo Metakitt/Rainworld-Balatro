@@ -11,7 +11,7 @@ SMODS.Joker({
 		},
 		enemy = true,
 	},
-	rarity = 'rw_enemy',
+	rarity = "rw_enemy",
 	cost = 0,
 	atlas = "slugpups",
 	pos = { x = 0, y = 0 },
