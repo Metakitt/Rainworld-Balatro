@@ -73,7 +73,7 @@ end
 	if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint then
     local suit = pseudorandom_element(SMODS.Suits, pseudoseed("rotten_suit"))
     for _, v in ipairs(G.deck.cards) do
-        if v:get_id() == suit.id and not context.blueprint then
+        if v:is_suit(suit, true, true) and not context.blueprint then
             v:set_ability(G.P_CENTERS.m_rw_rotting)
         end
     end
