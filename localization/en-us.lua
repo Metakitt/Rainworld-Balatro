@@ -709,20 +709,20 @@ return {
 				text = {
 					"At the start of {C:attention}Blind{},",
 					"if there are no empty Joker spaces,",
-					"create {C:attention}1{} random {C:food}Food{} card.",
+					"create a random {C:food}Food{} card.",
 					"If there are empty Joker spaces,",
-					"create {C:attention}1{} Slugpup instead.",
+					"create a {C:attention}Slugpup{} instead.",
 				},
 			},
 			j_rw_artificer = {
 				name = "Artificer",
 				text = {
-					"Each playing card {C:attention}destroyed{}",
-					"gives {C:chips}+50{} chips.",
-					"{C:green}#2# in #3#{} chance to {C:attention}destroy{}",
+					"Each playing card {C:attention}destroyed",
+					"gives {C:chips}+#4#{} chips.",
+					"{C:green}#2# in #3#{} chance to {C:attention}destroy",
 					"a card when drawing a hand.",
 					"Cards {C:attention}destroyed{} with this",
-					"ability only give {C:chips}+25{} chips.",
+					"ability only give {C:chips}+#5#{} chips.",
 					"(Currently {C:chips}#1#{} Chips)",
 				},
 			},
@@ -730,16 +730,16 @@ return {
 				name = "Big and Greedy",
 				text = {
 					"Each {C:food}Food{} card used",
-					"gives {X:mult,C:white}0.25x{} Mult.",
-					"Currently {X:mult,C:white}x#1#{} Mult",
+					"gives {X:mult,C:white}X#2#{} Mult.",
+					"Currently {X:mult,C:white}X#1#{} Mult",
 				},
 			},
 			j_rw_greedyscugsmall = {
 				name = "Small and Greedy",
 				text = {
 					"Each {C:food}Food{} card used",
-					"gives {X:mult,C:white}0.25x{} Mult.",
-					"Currently {X:mult,C:white}x#1#{} Mult",
+					"gives {X:mult,C:white}X#2#{} Mult.",
+					"Currently {X:mult,C:white}X#1#{} Mult",
 				},
 			},
 			j_rw_hunger = {
@@ -753,11 +753,11 @@ return {
 				name = "Gourmand",
 				text = {
 					"{C:blue}Common{} Food Jokers",
-					"give {X:mult,C:white}0.25x{} Mult,",
+					"give {X:mult,C:white}X#2#{} Mult,",
 					"{C:green}Uncommon{} Food Jokers",
-					"give {X:mult,C:white}0.50x{} Mult,",
+					"give {X:mult,C:white}X#3#{} Mult,",
 					"{C:food}Food{} cards",
-					"give {X:mult,C:white}0.10x{} Mult.",
+					"give {X:mult,C:white}X#4#{} Mult.",
 					"and are {C:attention}destroyed{}.",
 					"Currently {C:mult}x#1#{} Mult",
 				},
@@ -765,7 +765,7 @@ return {
 			j_rw_hunter = {
 				name = "Hunter",
 				text = {
-					"{C:mult}+8{} Mult per hand played.",
+					"{C:mult}+#4#{} Mult per hand played.",
 					"When {C:attention}Blind{} is selected,",
 					"{C:green}#1# in #2# chance{} to",
 					"increase {C:attention}Ante{} by 1.",
@@ -776,8 +776,8 @@ return {
 				name = "Inv",
 				text = {
 					"{C:green}#1# in #2#{} chance to create",
-					"a Negative Slugpup at the",
-					"end of a {C:attention}Blind{}.",
+					"a {C:dark_edition}Negative{} Slugpup at the",
+					"end of each {C:attention}Blind{}.",
 				},
 			},
 			j_rw_monk = {
@@ -799,33 +799,41 @@ return {
 			j_rw_saintneutral = {
 				name = "Saint",
 				text = {
-					"Every {C:attention}25{}[#1#] cards discarded,",
+					"After discarding {C:attention}#2#{} cards,",
 					"Saint becomes {C:edition}Attuned{}.",
-					"Recharging?: #2#",
+					"(#1# more cards)",
 				},
 			},
 			j_rw_saintattuned = {
-				name = "{C:edition}Saint(Attuned)",
+				name = "Saint {C:edition}(Attuned)",
 				text = {
 					"At the start of {C:attention}Boss Blind{}",
 					"a random Joker is",
 					"{C:attention}destroyed{} and",
 					"another Joker becomes",
-					"{C:purple}Eternal{} AND {C:edition}Negative{}.",
+					"{C:purple}Eternal{} AND {C:dark_edition}Negative{}.",
+				},
+			},
+			j_rw_saintrecharging = {
+				name = "Saint {C:inactive}(Recharging)",
+				text = {
+					"Saint is tired...",
+					"Discard {C:attention}#1#{} more",
+					"cards to recover"
 				},
 			},
 			j_rw_slugpup = {
 				name = "Slugpup",
 				text = {
-					"{C:mult}+4{} Mult",
-					"{C:chips}+10{} Chips",
+					"{C:mult}+#1#{} Mult",
+					"{C:chips}+#2#{} Chips",
 				},
 			},
 			j_rw_spearmaster = {
 				name = "Spearmaster",
 				text = {
-					"{C:mult}3x Mult{} if all scoring",
-					"cards are Enhanced.",
+					"{C:mult}X#1#{} Mult if all scoring",
+					"cards are {C:attention}Enhanced",
 				},
 			},
 			j_rw_survivor = {
@@ -864,8 +872,8 @@ return {
 				name = "Magician",
 				text = {
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_artificer = {
@@ -876,8 +884,8 @@ return {
 					"card in hand then",
 					"gains {C:chips}+50{} Chips.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_bng = {
@@ -886,8 +894,8 @@ return {
 					"Each {C:food}Food{} card used",
 					"gives {X:mult,C:white}0.25x{} Mult.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_hunter = {
@@ -895,8 +903,8 @@ return {
 				text = {
 					"{C:mult}+6{} Mult per {C:attention}hand{} played.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_monk = {
@@ -904,8 +912,8 @@ return {
 				text = {
 					"{C:chips}+12{} Chips per {C:attention}hand{} played.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_inv = {
@@ -914,8 +922,8 @@ return {
 					"Creates a {C:edition}Negative{} Slugpup",
 					"at the start of {C:attention}Blind{}.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_scugbo = {
@@ -924,8 +932,8 @@ return {
 					"{C:mult}+4{} Mult for",
 					"each Slugcat Joker.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_slugpup = {
@@ -934,8 +942,8 @@ return {
 					"{C:mult}+4{} Mult",
 					"{C:chips}+10{} Chips",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_gourmand = {
@@ -945,8 +953,8 @@ return {
 					"cards give {X:mult,C:white}0.25x{} Mult",
 					"each and are destroyed.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_rivulet = {
@@ -958,8 +966,8 @@ return {
 					"and randomizes its",
 					"current effect.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_spearmaster = {
@@ -968,8 +976,8 @@ return {
 					"{C:mult}3x Mult{} if all scoring",
 					"cards are {C:attention}Enhanced{}.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_survivor = {
@@ -977,8 +985,8 @@ return {
 				text = {
 					"{C:attention}+2{} hand size",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_pathfinder = {
@@ -989,8 +997,8 @@ return {
 					"gain a random",
 					"{C:tarot}Tarot{} card.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_blurred = {
@@ -1001,8 +1009,8 @@ return {
 					"when a {C:attention}hand{}",
 					"is played.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_alacrity = {
@@ -1012,8 +1020,8 @@ return {
 					"the first {C:attention}hand{}",
 					"of round.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_magician = {
@@ -1024,8 +1032,8 @@ return {
 					"{C:chips}+2{} Chips, {C:mult}+2{} Mult",
 					"{X:chips,C:white}0.5x{} Chips and {X:mult,C:white}0.5x{} Mult.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_enfys = {
@@ -1035,8 +1043,8 @@ return {
 					"creates a random,",
 					"{C:edition}negative{} Food Joker.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_saint = {
@@ -1047,8 +1055,8 @@ return {
 					"to turn a random",
 					"Joker {C:edition}Negative{}.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_lacuna = {
@@ -1073,8 +1081,8 @@ return {
 					"random {C:weapon}weapon{}",
 					"to a random Joker.",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			j_rw_magician_ranger = {
@@ -1082,8 +1090,8 @@ return {
 				text = {
 					"{C:attention}+3{} hand size",
 					"(Currently: {C:chips}+#3#{} Chips,",
-					"{C:mult}+#5#{} Mult, {X:mult,C:white}#4#x{} Mult",
-					"and {X:chips,C:white}#6#x{} Chips.)",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
 			--endregion

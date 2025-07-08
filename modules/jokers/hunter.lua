@@ -10,7 +10,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds, card.ability.extra.mult } }
+		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds, card.ability.extra.mult, card.ability.extra.mult_gain } }
 	end,
 
 	calculate = function(self, card, context)

@@ -11,13 +11,17 @@ SMODS.Joker({
 
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.food_used_total <= 6 then
-			return { vars = { card.ability.extra.xmult_mod, card.ability.extra.food_used_total }, key = self.key
-				.. "small" }
+			return {
+				vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_food },
+				key = self.key .. "small",
+			}
 		end
 
 		if card.ability.extra.food_used_total >= 7 then
-			return { vars = { card.ability.extra.xmult_mod, card.ability.extra.food_used_total }, key = self.key
-				.. "big" }
+			return {
+				vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_food },
+				key = self.key .. "big",
+			}
 		end
 	end,
 
