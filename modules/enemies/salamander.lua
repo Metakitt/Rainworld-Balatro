@@ -41,7 +41,7 @@ SMODS.Joker({
 		if context.setting_blind and not context.blueprint then
 			for i = 1, #G.deck.cards do
 				if pseudorandom("bite") < 0.25 and not context.blueprint then
-					G.deck.cards[i]:set_ability(G.P_CENTERS.m_rw_wet)
+					G.deck.cards[i]:set_ability(G.P_CENTERS.m_rw_wetasscard)
 				else
 					--print('Safe')
 				end
@@ -75,7 +75,7 @@ SMODS.Joker({
 			and not context.blueprint
 		then
 			for _, v in ipairs(G.deck.cards) do
-				if G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wet then
+				if G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard then
 					v:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
