@@ -767,6 +767,15 @@ return {
 			"in the deck are debuffed permanently."
 			},
 			},
+			
+				j_rw_cyanlizard = {
+		name = "Cyan Lizard",
+		text = {
+			"{C:attention}Threat{}: Always selects a card.",
+			"{C:attention}To Defeat{}: Use 2 Planet cards.",
+			"{C:attention}Undefeated{}: Sets all your poker hands to level 1.",
+			},
+			},
 
 		--Slugcats + Other Jokers
 			

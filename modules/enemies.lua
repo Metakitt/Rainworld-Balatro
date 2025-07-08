@@ -17,6 +17,7 @@ assert(SMODS.load_file("modules/enemies/monsterkelp.lua"))()
 assert(SMODS.load_file("modules/enemies/yellowlizard.lua"))()
 assert(SMODS.load_file("modules/enemies/aquapede.lua"))()
 assert(SMODS.load_file("modules/enemies/centiwing.lua"))()
+assert(SMODS.load_file("modules/enemies/cyanlizard.lua"))()
 
 --[[
 Enemy general format:
@@ -58,7 +59,7 @@ Ante 2 enemies(Count:10):
 Ante 3 enemies(Count:15):
 = White Lizard [ X ] (Also appears in 4, 5)
 = Pole Plant [ X ] (Appears from 3 onwards)
-= Cyan Lizard [ ] (Also appears in 4, 5)
+= Cyan Lizard [ X ] (Also appears in 4, 5)
 = Dropwig [ X ] (Also appears in 4)
 = Big Spider [ ] (Also appears in 6)
 = Sea Leech [ ] (Appears 3,6,7)
