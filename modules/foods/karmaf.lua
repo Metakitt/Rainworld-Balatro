@@ -8,11 +8,11 @@ SMODS.Consumable({
 	unlocked = true,
 	discovered = true,
 	config = { extra = { center_table = -1 }, name = "karmaflower" },
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.center_table }}
+	end,
 	set_badges = function(self, card, badges)
 		badges[#badges + 1] = create_badge(localize("k_foodrare"), G.C.RED, G.C.WHITE, 1.2)
-	end,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds, card.ability.extra.replication } }
 	end,
 	can_use = function(self, card)
 		return true
