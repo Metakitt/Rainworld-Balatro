@@ -573,53 +573,59 @@ ENEMY_ANTE_TABLES[9] = endless_table
 local new_roundref = new_round
 function new_round()
 	new_roundref()
+	if not G.GAME.challenge_tab then
+		-- Enemy Selection
+		-- This checks if an enemy spawns or not.
+		-- TODO: Set limits to 0 and 9. Ante 9+ picks a random enemy equally. There should be SOME Ante 0- table, I think.
+		local ante_num = SCUG.clamp(G.GAME.round_resets.ante, 1, 9)
+		if pseudorandom("rw_spawn_enemy") < 1 / ENEMY_SPAWN_DENOMINATORS[ante_num] then
+			sendDebugMessage("Spawning an enemy!", "Rainworld")
+			local valid_selection = false
+			local enemy_key = "j_rw_greenlizard" -- Fallback value
+			local enemy_pool = ENEMY_ANTE_TABLES[ante_num]
+			local enemy_choice = SCUG.number_in_range(1, #enemy_pool, "rw_enemy_selection")
+			repeat
+				local _enemy = enemy_pool[enemy_choice]
+				if type(_enemy) == "table" then
+					enemy_key = _enemy[SCUG.number_in_range(1, #_enemy, "rw_enemy_selection")]
+				elseif type(_enemy) == "string" then
+					enemy_key = _enemy
+				end
 
-	-- Enemy Selection
-	-- This checks if an enemy spawns or not.
-	-- TODO: Set limits to 0 and 9. Ante 9+ picks a random enemy equally. There should be SOME Ante 0- table, I think.
-	local ante_num = SCUG.clamp(G.GAME.round_resets.ante, 1, 9)
-	if pseudorandom("rw_spawn_enemy") < 1 / ENEMY_SPAWN_DENOMINATORS[ante_num] then
-		sendDebugMessage("Spawning an enemy!", "Rainworld")
-		local valid_selection = false
-		local enemy_key = "j_rw_greenlizard" -- Fallback value
-		local enemy_pool = ENEMY_ANTE_TABLES[ante_num]
-		local enemy_choice = SCUG.number_in_range(1, #enemy_pool, "rw_enemy_selection")
-		repeat
-			local _enemy = enemy_pool[enemy_choice]
-			if type(_enemy) == "table" then
-				enemy_key = _enemy[SCUG.number_in_range(1, #_enemy, "rw_enemy_selection")]
-			elseif type(_enemy) == "string" then
-				enemy_key = _enemy
-			end
+				-- If this enemy exists, use it
+				if G.P_CENTERS[enemy_key] then
+					valid_selection = true
+				-- Otherwise, use one lower on the list (more likely to exist, probably)
+				else
+					sendWarnMessage("Enemy " .. enemy_key .. " not implemented yet!", "Rainworld")
+					enemy_choice = enemy_choice - 1
+				end
 
-			-- If this enemy exists, use it
-			if G.P_CENTERS[enemy_key] then
-				valid_selection = true
-			-- Otherwise, use one lower on the list (more likely to exist, probably)
-			else
-				sendWarnMessage("Enemy " .. enemy_key .. " not implemented yet!", "Rainworld")
-				enemy_choice = enemy_choice - 1
-			end
-
-			-- If we can't find one, break the loop and use the fallback
-			if enemy_choice < 1 then
-				sendErrorMessage(
-					"Couldn't find a suitable enemy for Ante "
-						.. G.GAME.round_resets.ante
-						.. "! Falling back to "
-						.. enemy_key
-						.. "...",
-					"Rainworld"
-				)
-				break
-			end
-		until valid_selection
-		-- Here's your awful prize
-		sendDebugMessage("Chose " .. ((not string.find(enemy_key, "^j_")) and G.P_CENTERS[enemy_key].name or localize({
-			type = "name_text",
-			set = "Joker",
-			key = enemy_key,
-		})) .. "!", "Rainworld")
-		SMODS.add_card({ set = "Joker", area = G.jokers, key = enemy_key, no_edition = true })
+				-- If we can't find one, break the loop and use the fallback
+				if enemy_choice < 1 then
+					sendErrorMessage(
+						"Couldn't find a suitable enemy for Ante "
+							.. G.GAME.round_resets.ante
+							.. "! Falling back to "
+							.. enemy_key
+							.. "...",
+						"Rainworld"
+					)
+					break
+				end
+			until valid_selection
+			-- Here's your awful prize
+			sendDebugMessage(
+				"Chose "
+					.. ((not string.find(enemy_key, "^j_")) and G.P_CENTERS[enemy_key].name or localize({
+						type = "name_text",
+						set = "Joker",
+						key = enemy_key,
+					}))
+					.. "!",
+				"Rainworld"
+			)
+			SMODS.add_card({ set = "Joker", area = G.jokers, key = enemy_key, no_edition = true })
+		end
 	end
 end
