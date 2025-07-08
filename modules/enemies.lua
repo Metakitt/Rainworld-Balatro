@@ -14,6 +14,7 @@ assert(SMODS.load_file("modules/enemies/jungleleech.lua"))()
 assert(SMODS.load_file("modules/enemies/daddylonglegs.lua"))()
 assert(SMODS.load_file("modules/enemies/salamander.lua"))()
 assert(SMODS.load_file("modules/enemies/monsterkelp.lua"))()
+assert(SMODS.load_file("modules/enemies/yellowlizard.lua"))()
 
 --[[
 Enemy general format:
@@ -69,7 +70,7 @@ Ante 4 enemies(Count:15):
 = Giant Jellyfish [ ] (Also appears in 5,7,8)
 
 Ante 5 enemies(Count:15):
-= Yellow Lizard [ ] (Appears from 5 onwards)
+= Yellow Lizard [ X ] (Appears from 5 onwards)
 = Black Lizard [ ] (Appears from 5 onwards)
 = Vulture [ ] (Appears from 5 onwards)
 = Mature Centipede [ ] (Exclusive to Ante 5)

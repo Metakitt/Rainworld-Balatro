@@ -734,6 +734,17 @@ return {
 			"end of {C:attention}Boss Blind{}."
 			},
 			},
+			
+			j_rw_yellowlizard = {
+		name = "Yellow Lizard",
+		text = {
+			"{C:attention}Threat{}: At the end of round, -2$ and",
+			"1 in 5 chance to summon", 
+			"another Yellow Lizard.",
+			"{C:attention}To Defeat{}: Reroll Shop 5 Times.",
+			"{C:attention}Undefeated{}: Sets Money to -20$."
+			},
+			},
 
 		--Slugcats + Other Jokers
 			
