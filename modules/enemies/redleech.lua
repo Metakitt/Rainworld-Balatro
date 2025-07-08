@@ -66,7 +66,7 @@ card.ability.extra.highcardcount = card.ability.extra.highcardcount + 1
 end
 end
 
-if card.ability.extra.highcardcount == 2 and not context.blueprint then
+if card.ability.extra.highcardcount >= 2 and not context.blueprint then
   card.ability.extra.defeat = true
   card.ability.extra.dying = true
  end
