@@ -16,6 +16,7 @@ assert(SMODS.load_file("modules/enemies/salamander.lua"))()
 assert(SMODS.load_file("modules/enemies/monsterkelp.lua"))()
 assert(SMODS.load_file("modules/enemies/yellowlizard.lua"))()
 assert(SMODS.load_file("modules/enemies/aquapede.lua"))()
+assert(SMODS.load_file("modules/enemies/centiwing.lua"))()
 
 --[[
 Enemy general format:
@@ -82,7 +83,7 @@ Ante 5 enemies(Count:15):
 
 Ante 6 enemies(Count:15):
 = Strawberry Lizard [ ] (Exclusive to Ante 6)
-= Centiwing [ ] (Also appears in 7)
+= Centiwing [ X ] (Also appears in 7)
 = Miros Bird [ ] (Also appears in 7)
 = Mother Long Legs [ ] (Appears from 6 onwards)
 = Hunter Long Legs [ ] (Exclusive to Ante 6)

@@ -757,6 +757,16 @@ return {
 			"{C:attention}Undefeated{}: All Wet cards are destroyed."
 			},
 			},
+			
+			j_rw_centiwing = {
+		name = "Centiwing",
+		text = {
+			"{C:attention}Threat{}: -3000 Chips after scoring.",
+			"{C:attention}To Defeat{}: Score 3 cards with 20 or more Extra Chips.",
+			"{C:attention}Undefeated{}: All cards with 5 or more extra chips",
+			"in the deck are debuffed permanently."
+			},
+			},
 
 		--Slugcats + Other Jokers
 			
