@@ -15,6 +15,7 @@ assert(SMODS.load_file("modules/enemies/daddylonglegs.lua"))()
 assert(SMODS.load_file("modules/enemies/salamander.lua"))()
 assert(SMODS.load_file("modules/enemies/monsterkelp.lua"))()
 assert(SMODS.load_file("modules/enemies/yellowlizard.lua"))()
+assert(SMODS.load_file("modules/enemies/aquapede.lua"))()
 
 --[[
 Enemy general format:
@@ -90,7 +91,7 @@ Ante 6 enemies(Count:15):
 Ante 7 enemies(Count:15):
 = Red Lizard [ ] (Also appears in 8)
 = Mother Spider [ ] (Exclusive to Ante 7)
-= Aquapede [ ] (Exclusive to Ante 7)
+= Aquapede [ X ] (Exclusive to Ante 7)
 = Miros Vulture [ ] (Also appears in 8)
 = Firebugs [ ] (Exclusive to Ante 7)
 

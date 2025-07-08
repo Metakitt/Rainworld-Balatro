@@ -717,7 +717,7 @@ return {
 		text = {
 			"{C:attention}Threat{}: At the start of each blind,", 
 			"1 in 4 chance for each card",
-            "in your deck to become wet.",
+            "in your deck to become Wet.",
 			"{C:attention}To Defeat{}: Use 4 {C:tarot}Tarot{} Cards.",
 			"{C:attention}Undefeated{}:Wet cards become Rot Cards."
 			},
@@ -743,6 +743,18 @@ return {
 			"another Yellow Lizard.",
 			"{C:attention}To Defeat{}: Reroll Shop 5 Times.",
 			"{C:attention}Undefeated{}: Sets Money to -20$."
+			},
+			},
+			
+			j_rw_aquapede = {
+		name = "Aquapede",
+		text = {
+			"{C:attention}Threat{}: At the start of Blind,",
+			"1 in 20 chance for each card",
+			"in the deck to become Wet.", 
+			"Each played hand becomes Wet.",
+			"{C:attention}To Defeat{}: Have a Joker with a +20 Mult Grenade.",
+			"{C:attention}Undefeated{}: All Wet cards are destroyed."
 			},
 			},
 
