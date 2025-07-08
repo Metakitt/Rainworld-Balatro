@@ -6,7 +6,7 @@ SMODS.Sticker({
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 4, y = 2 },
-	default_compat = "true",
+	default_compat = true,
 	compat_exceptions = {},
 	sets = {
 		Joker = true,
