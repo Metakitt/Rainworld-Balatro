@@ -22,10 +22,7 @@ SMODS.Consumable({
 			G.hand:change_size(-card.ability.extra.h_size)
 			card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_mod
 			G.hand:change_size(card.ability.extra.h_size)
-			return {
-				message = localize("k_upgrade_ex"),
-				colour = G.C.MULT,
-			}
+			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.ORANGE }, card)
 		end
 	end,
 })
