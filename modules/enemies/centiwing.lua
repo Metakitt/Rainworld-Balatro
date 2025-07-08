@@ -4,10 +4,10 @@ If not defeated: All cards with 5 or more extra chips in the deck are debuffed.]
 
 SMODS.Joker {
 key = 'centiwing',
-atlas = 'slugpups',
+atlas = 'enemies',
 rarity = 'rw_enemy',
 cost = 4,
-pos = { x = 0, y = 0 },
+pos = { x = 6, y = 3 },
 unlocked = true,
 discovered = true,
 in_pool = function (self, args)

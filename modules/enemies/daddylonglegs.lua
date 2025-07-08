@@ -4,10 +4,10 @@ If not defeated: Chooses a random suit. Turns it to rot.]]
 
 SMODS.Joker {
 key = 'daddylonglegs',
-atlas = 'slugpups',
+atlas = 'enemies',
 rarity = 'rw_enemy',
 cost = 4,
-pos = { x = 0, y = 0 },
+pos = { x = 3, y = 3 },
 unlocked = true,
 discovered = true,
 in_pool = function (self, args)

@@ -1,9 +1,9 @@
 SMODS.Joker {
 key = 'poleplant',
-atlas = 'slugpups',
+atlas = 'enemies',
 rarity = 'rw_enemy',
 cost = 4,
-pos = { x = 0, y = 0 },
+pos = { x = 3, y = 1 },
 unlocked = true,
 discovered = true,
 in_pool = function (self, args)

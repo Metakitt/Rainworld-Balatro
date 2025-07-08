@@ -1,6 +1,6 @@
 SMODS.Joker {
 key = 'greenlizard',
-atlas = 'slugpups',
+atlas = "enemies",
 rarity = 'rw_enemy',
 cost = 4,
 pos = { x = 0, y = 0 },

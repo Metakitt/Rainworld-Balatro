@@ -4,10 +4,10 @@ If not defeated: Chooses a random rank. Turns it to rot.]]
 
 SMODS.Joker {
 key = 'brotherlonglegs',
-atlas = 'slugpups',
+atlas = 'enemies',
 rarity = 'rw_enemy',
 cost = 4,
-pos = { x = 0, y = 0 },
+pos = { x = 4, y = 0 },
 unlocked = true,
 discovered = true,
 in_pool = function (self, args)

@@ -40,6 +40,14 @@ SMODS.Atlas({
 	py = 95,
 })
 
+-- Enemies
+SMODS.Atlas {
+	key = "enemies",
+	path = "enemies.png",
+	px = 71,
+	py = 95
+}
+
 --Enhancements + Weapons
 SMODS.Atlas({
 	key = "enhancedcards_scug",

@@ -4,10 +4,10 @@ If not defeated: Sets money to -20$. ]]
 
 SMODS.Joker({
 	key = "yellowlizard",
-	atlas = "slugpups",
+	atlas = "enemies",
 	rarity = "rw_enemy",
 	cost = 4,
-	pos = { x = 0, y = 0 },
+	pos = { x = 6, y = 2 },
 	unlocked = true,
 	discovered = true,
 	in_pool = function(self, args)

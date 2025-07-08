@@ -6,10 +6,10 @@ Currently, it turns cards wet and not moldy, as moldy cards are not currently im
 
 SMODS.Joker({
 	key = "salamander",
-	atlas = "slugpups",
+	atlas = "enemies",
 	rarity = "rw_enemy",
 	cost = 4,
-	pos = { x = 0, y = 0 },
+	pos = { x = 1, y = 2 },
 	unlocked = true,
 	discovered = true,
 	in_pool = function(self, args)
