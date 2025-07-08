@@ -684,8 +684,8 @@ return {
 			j_rw_dropwig = {
 		name = "Dropwig",
 		text = {
-			"{C:attention}Threat{}: If you score 25% over the Blind's chips 5 times, you lose the run.",
-			"{C:attention}To Defeat{}: Win 5 blinds without going over the threshold.",
+			"{C:attention}Threat{}: If you score 25% over the Blind's chips {C:attention}#2#{} times, you lose the run.",
+			"{C:attention}To Defeat{}: Win {C:attention}#1#{} blinds without going over the threshold.",
 			"{C:attention}Undefeated{}: Nothing."
 			},
 			},
