@@ -80,7 +80,7 @@ SMODS.Joker({
 			and not context.blueprint
 		then
 			if card.ability.extra.odds > 2 then
-				card.ability.extra.odds = card.ability.extra.odds + 1
+				card.ability.extra.odds = card.ability.extra.odds - 1
 			end
 		end
 		-- Threat pt.1

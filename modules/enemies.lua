@@ -587,7 +587,7 @@ function new_round()
 		repeat
 			local _enemy = enemy_pool[enemy_choice]
 			if type(_enemy) == "table" then
-				enemy_key = _enemy[SCUG.number_in_range(i, #_enemy, "rw_enemy_selection")]
+				enemy_key = _enemy[SCUG.number_in_range(1, #_enemy, "rw_enemy_selection")]
 			elseif type(_enemy) == "string" then
 				enemy_key = _enemy
 			end
