@@ -8,7 +8,9 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	config = { extra = { mult = 4, chips = 10 }, slugcat = true },
-
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.mult, card.ability.extra.chips }}
+	end,
 	add_to_deck = function(self, card, from_debuff)
 		local spupx = math.random(0, 9)
 		local spupy = math.random(0, 6)

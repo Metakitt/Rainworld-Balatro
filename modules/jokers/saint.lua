@@ -8,26 +8,32 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = false,
 	config = {
-		extra = { attuned = false, discards = 25, saint_discards = 25, recharge = false, xmult = 1, recharging = "No." },
+		extra = { attuned = false, discards = 25, saint_discards = 25, recharge = false, xmult = 1, recharging = "Ready" },
 		name = "Saint",
 		blessed = false,
 		slugcat = true,
 	},
 
 	loc_vars = function(self, info_queue, card)
-		if card.ability.extra.attuned == true then
-			return {
-				vars = { card.ability.extra.saint_discards, card.ability.extra.recharging },
-				key = self.key .. "attuned",
-			}
-		end
+		-- if card.ability.extra.attuned == true then
+		-- 	return {
+		-- 		-- vars = { card.ability.extra.saint_discards, card.ability.extra.recharging },
+		-- 		key = self.key .. "attuned",
+		-- 	}
+		-- end
 
-		if card.ability.extra.attuned == false then
-			return {
-				vars = { card.ability.extra.saint_discards, card.ability.extra.recharging },
-				key = self.key .. "neutral",
-			}
+		-- if card.ability.extra.attuned == false then
+		-- 	return {
+		-- 		vars = { card.ability.extra.saint_discards, card.ability.extra.recharging },
+		-- 		key = self.key .. "neutral",
+		-- 	}
+		-- end
+		local ret_table = { key = self.key, vars = { card.ability.extra.saint_discards, card.ability.extra.discards } }
+		ret_table["key"] = self.key .. ((card.ability.extra.attuned and "attuned") or (card.ability.extra.recharge and "recharging") or "neutral")
+		if card.ability.extra.recharge then
+			ret_table.vars[1] = card.ability.extra.discards - ret_table.vars[1]
 		end
+		return ret_table
 	end,
 
 	calculate = function(self, card, context)
@@ -57,11 +63,11 @@ SMODS.Joker({
 			and not context.blueprint
 		then
 			card.children.center:set_sprite_pos({ x = 7, y = 0 })
-			if card.ability.extra.saint_discards < 25 then
+			if card.ability.extra.saint_discards < card.ability.extra.discards then
 				card.ability.extra.saint_discards = card.ability.extra.saint_discards + 1
 			else
 				card.ability.extra.recharge = false
-				card.ability.extra.recharging = "No."
+				-- card.ability.extra.recharging = "Ready"
 			end
 
 			return
@@ -76,7 +82,7 @@ SMODS.Joker({
 		then
 			local jokers = {}
 			for i, v in pairs(G.jokers.cards) do
-				if not v:get_edition() and v ~= self then
+				if not v:get_edition() and v ~= card then
 					jokers[#jokers + 1] = v
 				end
 			end
@@ -88,7 +94,7 @@ SMODS.Joker({
 				SMODS.Stickers["eternal"]:apply(chosen_joker, true)
 				card.ability.extra.recharge = true
 				card.ability.extra.attuned = false
-				card.ability.extra.recharging = "Yes."
+				-- card.ability.extra.recharging = "Recharging"
 				card.ability.extra.blessed = true
 
 				if card.ability.extra.blessed == true and not context.blueprint then
@@ -96,6 +102,7 @@ SMODS.Joker({
 					for i = 1, #G.jokers.cards do
 						if
 							G.jokers.cards[i] ~= card
+							and G.jokers.cards[i] ~= chosen_joker
 							and not G.jokers.cards[i].ability.eternal
 							and not G.jokers.cards[i].getting_sliced
 						then

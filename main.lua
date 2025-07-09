@@ -27,7 +27,7 @@ SMODS.Enhancement({
 	atlas = "enhancedcards_scug",
 	pos = { x = 0, y = 0 },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.countdown_to_destruction } }
+		return { vars = { card.ability.countdown_to_destruction, card.ability.bonus } }
 	end,
 	weight = 5,
 	in_pool = function(self, args)
@@ -41,18 +41,11 @@ SMODS.Enhancement({
 
 SMODS.Enhancement({
 	key = "wetasscard",
-	loc_txt = {
-		name = "Wet",
-		text = {
-			"Wet",
-			"#1#",
-		},
-	},
 	config = { x_chips = 1.5, countdown_to_dry = 5 },
 	atlas = "enhancedcards_scug",
 	pos = { x = 2, y = 0 },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.countdown_to_dry } }
+		return { vars = { card.ability.x_chips, card.ability.countdown_to_dry } }
 	end,
 	weight = 5,
 	always_scores = true,

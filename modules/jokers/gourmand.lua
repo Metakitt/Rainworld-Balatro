@@ -34,7 +34,9 @@ SMODS.Joker({
 	},
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.xmult_mod } }
+		return {
+			vars = { card.ability.extra.xmult_mod, xmult_gain_common, xmult_gain_uncommon, xmult_gain_food },
+		}
 	end,
 
 	calculate = function(self, card, context)

@@ -38,22 +38,22 @@ SMODS.Joker({
 		--Threat
 		if context.main_eval and context.end_of_round and not context.blueprint then
 			ease_dollars(card.ability.extra.takeyourmoney)
+			if pseudorandom("morelizard") < 0.2 then
+				G.E_MANAGER:add_event(Event({
+					trigger = "after",
+					delay = 1.3,
+					func = function()
+						SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_yellowlizard", no_edition = true })
+						return true
+					end,
+					blocking = false,
+				}))
+			end
 			return {
 				message = localize("$") .. card.ability.extra.takeyourmoney,
 				colour = G.C.MONEY,
 				delay = 0.45,
 			}
-		end
-		if pseudorandom("morelizard") < 0.2 then
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 1.3,
-				func = function()
-					SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_yellowlizard", no_edition = true })
-					return true
-				end,
-				blocking = false,
-			}))
 		end
 
 		--Defeat
