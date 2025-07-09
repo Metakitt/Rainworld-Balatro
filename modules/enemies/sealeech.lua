@@ -7,7 +7,7 @@ SMODS.Joker({
 	atlas = "enemies",
 	rarity = "rw_enemy",
 	cost = 4,
-	pos = { x = 7, y = 0 },
+	pos = { x = 7, y = 1 },
 	unlocked = true,
 	discovered = true,
 	in_pool = function(self, args)
