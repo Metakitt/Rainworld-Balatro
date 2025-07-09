@@ -702,6 +702,19 @@ return {
 					"{C:attention}Undefeated{}: Sets all your poker hands to level 1.",
 				},
 			},
+			
+			j_rw_sealeech = {
+		        name = "Sea Leech",
+		        text = {
+					"{C:attention}Threat{}: -1 Chips and -1 Mult per Sea Leech.",
+					"1 in 5 chance to spawn a", 
+					"Sea Leech after playing a hand.",
+					"{C:attention}To Defeat{}: Play a hand with an Electric Spear.",
+					"{C:attention}Undefeated{}: Spawns a new Sea Leech at",
+					"the end of {C:attention}Boss Blind{}."
+				},
+			},
+			
 			--endregion
 			--region Slugcats + Other Jokers
 			j_rw_abundance = {
