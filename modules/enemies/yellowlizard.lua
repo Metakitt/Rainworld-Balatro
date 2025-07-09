@@ -77,7 +77,7 @@ SMODS.Joker({
 			}))
 		end
 		--Undefeated
-
+		-- Something about this doesn't SEEM to be working but I don't know what or why
 		if
 			context.main_eval
 			and context.end_of_round
