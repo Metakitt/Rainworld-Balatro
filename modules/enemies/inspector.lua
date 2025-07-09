@@ -88,7 +88,7 @@ SMODS.Joker({
 			for _, v in ipairs(context.full_hand) do
 				table.insert(card.ability.extra.reload, v)
 			end
-			print(#card.ability.extra.reload)
+			-- print(#card.ability.extra.reload)
 		end
 		if context.after then
 			G.E_MANAGER:add_event(
