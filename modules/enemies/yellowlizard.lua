@@ -36,7 +36,7 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		--Threat
-		if context.main_eval and context.end_of_round and not context.blueprint then
+		if context.main_eval and context.end_of_round and not G.GAME.blind.boss and not context.blueprint then
 			ease_dollars(card.ability.extra.takeyourmoney)
 			if pseudorandom("morelizard") < 0.2 then
 				G.E_MANAGER:add_event(Event({
@@ -77,7 +77,6 @@ SMODS.Joker({
 			}))
 		end
 		--Undefeated
-		-- Something about this doesn't SEEM to be working but I don't know what or why
 		if
 			context.main_eval
 			and context.end_of_round
