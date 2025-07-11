@@ -101,8 +101,8 @@ function end_round()
 end
 
 local rotting_blind = G.FUNCS.evaluate_play
-function G.FUNCS.evaluate_play()
-	rotting_blind()
+function G.FUNCS.evaluate_play(e)
+	rotting_blind(e)
 
 	if G.GAME.blind.config.blind.key == "bl_rw_rotblind" and not G.GAME.blind.disabled then
 		local rot = {}
