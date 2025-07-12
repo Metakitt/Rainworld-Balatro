@@ -40,9 +40,9 @@ calculate = function(self, card, context)
 if context.before and not context.blueprint then
 for i = 1, #G.play.cards do
 		local wet = {}
-			if G.play.cards[i].config.center ~= G.P_CENTERS.m_rw_wet then
+			if G.play.cards[i].config.center ~= G.P_CENTERS.m_rw_wetasscard then
 				wet = G.play.cards[i]
-				wet:set_ability(G.P_CENTERS.m_rw_wet)
+				wet:set_ability(G.P_CENTERS.m_rw_wetasscard)
 				wet:juice_up()
 			end
 		end
@@ -51,7 +51,7 @@ for i = 1, #G.play.cards do
 if context.setting_blind and not context.blueprint then
 for i = 1, #G.deck.cards do
 if pseudorandom('wet') < 0.05 and not context.blueprint then
-G.deck.cards[i]:set_ability(G.P_CENTERS.m_rw_wet)
+G.deck.cards[i]:set_ability(G.P_CENTERS.m_rw_wetasscard)
 end
 end
 end
@@ -81,19 +81,19 @@ end
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
 for _, v in ipairs(G.deck.cards) do
-	if G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wet then
+	if G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard then
             v:start_dissolve()
         end
     end
 	
 	for _, v in ipairs(G.hand.cards) do
-	if G.hand.cards[i].config.center == G.P_CENTERS.m_rw_wet then
+	if G.hand.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard then
             v:start_dissolve()
         end
     end
 	
 for _, v in ipairs(G.discard.cards) do
-	if G.discard.cards[i].config.center == G.P_CENTERS.m_rw_wet then
+	if G.discard.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard then
             v:start_dissolve()
         end
     end
