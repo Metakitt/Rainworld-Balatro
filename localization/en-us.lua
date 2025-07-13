@@ -93,40 +93,40 @@ return {
 			rw_wrock = {
 				name = "Rock",
 				text = {
-					"{X:chips,C:white}2x{} Chips",
+					"{X:chips,C:white}X2{} Chips",
 				},
 			},
 			rw_wspear = {
 				name = "Spear",
 				text = {
-					"{X:mult,C:white}1.5x{} Mult",
+					"{X:mult,C:white}X1.5{} Mult",
 				},
 			},
 			rw_hunter_wspear = {
 				name = "2nd Spear",
-				text = { "1.75x Mult when Held" },
+				text = { "X1.75 Mult when Held" },
 			},
 			rw_wspear_monk_inv = {
 				name = "Spear",
-				text = { "{X:mult,C:white}1.25x{} Mult" },
+				text = { "{X:mult,C:white}X1.25{} Mult" },
 			},
 			rw_wspear_hunter_artificer_spearmaster = {
 				name = "Spear",
-				text = { "{X:mult,C:white}1.75x{} Mult" },
+				text = { "{X:mult,C:white}X1.75{} Mult" },
 			},
 			rw_wspear_gourmand = {
 				name = "Spear",
 				text = {
-					"{X:mult,C:white}3x{} Mult",
+					"{X:mult,C:white}X3{} Mult",
 					"{C:green}1 in 4{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}0.9x{}Mult instead.",
+					"{X:mult,C:white}X0.9{}Mult instead.",
 				},
 			},
 			rw_wspear_exp = {
 				name = "Explosive Spear",
 				text = {
-					"{X:mult,C:white}3x{} Mult",
+					"{X:mult,C:white}X3{} Mult",
 					"{C:green}1 in 6{} chance to",
 					"{C:attention}destroy{} a random card",
 					"in {C:attention}hand{} when scoring.",
@@ -135,7 +135,7 @@ return {
 			rw_wspear_exp_monk_inv = {
 				name = "Explosive Spear",
 				text = {
-					"{X:mult,C:white}2.5x{} Mult",
+					"{X:mult,C:white}X2.5{} Mult",
 					"{C:green}1 in 6{} chance to",
 					"{C:attention}destroy{} a random card",
 					"in {C:attention}hand{} when scoring.",
@@ -144,7 +144,7 @@ return {
 			rw_wspear_exp_hunter_artificer_spearmaster = {
 				name = "Explosive Spear",
 				text = {
-					"{X:mult,C:white}3.5x{} Mult",
+					"{X:mult,C:white}X3.5{} Mult",
 					"{C:green}1 in 6{} chance to",
 					"{C:attention}destroy{} a random card",
 					"in {C:attention}hand{} when scoring.",
@@ -153,10 +153,10 @@ return {
 			rw_wspear_exp_gourmand = {
 				name = "Explosive Spear",
 				text = {
-					"{X:mult,C:white}6x{} Mult",
+					"{X:mult,C:white}X6{} Mult",
 					"{C:green}1 in 4{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}0.9x{} Mult instead.",
+					"{X:mult,C:white}X0.9{} Mult instead.",
 					"{C:green}1 in 6{} chance to",
 					"{C:attention}destroy{} a random card",
 					"in {C:attention}hand{} when scoring.",
@@ -165,46 +165,46 @@ return {
 			rw_wspear_ele = {
 				name = "Electric Spear",
 				text = {
-					"{X:mult,C:white}1.5x{} Mult",
+					"{X:mult,C:white}X1.5{} Mult",
 					"If Seltzer or Splash",
 					"is present, gives",
-					"{X:chips,C:white}1.5x{} Chips as well.",
+					"{X:chips,C:white}X1.5{} Chips as well.",
 				},
 			},
 			rw_wspear_ele_monk_inv = {
 				name = "Electric Spear",
 				text = {
-					"{X:mult,C:white}1.25x{} Mult",
+					"{X:mult,C:white}X1.25{} Mult",
 					"If Seltzer or Splash",
 					"is present, gives",
-					"{X:chips,C:white}1.25x{} Chips as well.",
+					"{X:chips,C:white}X1.25{} Chips as well.",
 				},
 			},
 			rw_wspear_ele_hunter_artificer_spearmaster = {
 				name = "Electric Spear",
 				text = {
-					"{X:mult,C:white}1.75x{} Mult",
+					"{X:mult,C:white}X1.75{} Mult",
 					"If Seltzer or Splash",
 					"is present, gives",
-					"{X:chips,C:white}1.75x{} Chips as well.",
+					"{X:chips,C:white}X1.75{} Chips as well.",
 				},
 			},
 			rw_wspear_ele_gourmand = {
 				name = "Electric Spear",
 				text = {
-					"{X:mult,C:white}3x{} Mult",
+					"{X:mult,C:white}X3{} Mult",
 					"If Seltzer or Splash",
 					"is present, gives",
-					"{X:chips,C:white}3x{} Chips as well.",
+					"{X:chips,C:white}X3{} Chips as well.",
 					"{C:green}1 in 4{} chance to be",
-					"exhausted and give {X:mult,C:white}0.9x Mult{}",
-					"and {X:chips,C:white}0.9x{} Chips{C:inactive}(With Seltzer/Splash){} instead.",
+					"exhausted and give {X:mult,C:white}X0.9 Mult{}",
+					"and {X:chips,C:white}X0.9{} Chips{C:inactive}(With Seltzer/Splash){} instead.",
 				},
 			},
 			rw_wspear_fire = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}4.5x{} Mult",
+					"{X:mult,C:white}X4.5{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 				},
@@ -212,7 +212,7 @@ return {
 			rw_wspear_fire_monk_inv = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}3.25x{} Mult",
+					"{X:mult,C:white}X3.25{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 				},
@@ -220,7 +220,7 @@ return {
 			rw_wspear_fire_hunter_artificer_spearmaster = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}5.25x{} Mult",
+					"{X:mult,C:white}X5.25{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 				},
@@ -228,18 +228,18 @@ return {
 			rw_wspear_fire_gourmand = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}9x{} Mult",
+					"{X:mult,C:white}X9{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 					"{C:green}1 in 4{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}0.5x{} Mult instead.",
+					"{X:mult,C:white}X0.5{} Mult instead.",
 				},
 			},
 			rw_wspear_fire_saint = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}10x{} Mult",
+					"{X:mult,C:white}X10{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 				},
@@ -276,7 +276,7 @@ return {
 					"selects a",
 					"random effect.",
 					"{C:inactive}(Loaded with: Rock){}",
-					"{X:chips,C:white}2x{} Chips",
+					"{X:chips,C:white}X2{} Chips",
 				},
 			},
 			rw_wjokerifle_pearl = {
@@ -775,7 +775,7 @@ return {
 					"{C:food}Food{} cards",
 					"give {X:mult,C:white}X#4#{} Mult.",
 					"and are {C:attention}destroyed{}.",
-					"Currently {C:mult}x#1#{} Mult",
+					"Currently {C:mult}X#1#{} Mult",
 				},
 			},
 			j_rw_hunter = {
@@ -908,7 +908,7 @@ return {
 				name = "Magician",
 				text = {
 					"Each {C:food}Food{} card used",
-					"gives {X:mult,C:white}0.25x{} Mult.",
+					"gives {X:mult,C:white}X0.25{} Mult.",
 					"(Currently: {C:chips}+#3#{} Chips,",
 					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
 					"and {X:chips,C:white}X#6#{} Chips.)",
@@ -966,7 +966,7 @@ return {
 				name = "Magician",
 				text = {
 					"Food Jokers and {C:food}Food{}",
-					"cards give {X:mult,C:white}0.25x{} Mult",
+					"cards give {X:mult,C:white}X0.25{} Mult",
 					"each and are destroyed.",
 					"(Currently: {C:chips}+#3#{} Chips,",
 					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
@@ -989,7 +989,7 @@ return {
 			j_rw_magician_spearmaster = {
 				name = "Magician",
 				text = {
-					"{C:mult}3x Mult{} if all scoring",
+					"{C:mult}X3 Mult{} if all scoring",
 					"cards are {C:attention}Enhanced{}.",
 					"(Currently: {C:chips}+#3#{} Chips,",
 					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
@@ -1032,7 +1032,7 @@ return {
 			j_rw_magician_alacrity = {
 				name = "Magician",
 				text = {
-					"{X:chips,C:white}2x{} Chips on",
+					"{X:chips,C:white}X2{} Chips on",
 					"the first {C:attention}hand{}",
 					"of round.",
 					"(Currently: {C:chips}+#3#{} Chips,",
@@ -1046,7 +1046,7 @@ return {
 					"At the start of {C:attention}Blind{},",
 					"permanently gains",
 					"{C:chips}+2{} Chips, {C:mult}+2{} Mult",
-					"{X:chips,C:white}0.5x{} Chips and {X:mult,C:white}0.5x{} Mult.",
+					"{X:chips,C:white}X0.5{} Chips and {X:mult,C:white}X0.5{} Mult.",
 					"(Currently: {C:chips}+#3#{} Chips,",
 					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
 					"and {X:chips,C:white}X#6#{} Chips.)",
