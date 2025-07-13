@@ -13,7 +13,7 @@ discovered = true,
 in_pool = function (self, args)
     return false
 end,
-config = { extra = {defeat = false}, enemy = true},
+config = { extra = {defeat = false, wetodds = 20, mult_threshold = 20}, enemy = true},
 blueprint_compat = false,
 perishable_compat = false,
 rw_wbeehive_compat = false,
@@ -29,7 +29,9 @@ rw_wsingularity_compat = false,
 rw_wspear_compat = false,
 rw_wsporepuff_compat = false,
 loc_vars = function(self, info_queue, card)
-    return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+    info_queue[#info_queue+1] = G.P_CENTERS.m_rw_wetasscard
+    info_queue[#info_queue+1] = {key = "rw_wgrenade2", set = "Other"}
+    return { vars = { card.ability.extra.wetodds, card.ability.extra.mult_threshold } }
     end,
 add_to_deck = function(self, card, from_debuff) 
 SMODS.Stickers["eternal"]:apply(card,true)
@@ -50,7 +52,7 @@ for i = 1, #G.play.cards do
 		
 if context.setting_blind and not context.blueprint then
 for i = 1, #G.deck.cards do
-if pseudorandom('wet') < 0.05 and not context.blueprint then
+if pseudorandom('wet') < 1 / card.ability.extra.wetodds and not context.blueprint then
 G.deck.cards[i]:set_ability(G.P_CENTERS.m_rw_wetasscard)
 end
 end
@@ -59,7 +61,7 @@ end
 --Defeat
 if context.joker_main and not context.blueprint then
 for i = 1, #G.jokers.cards do
-if G.jokers.cards[i].ability.rw_wgrenade and G.GAME.grenademult >= 20 and not context.blueprint then
+if G.jokers.cards[i].ability.rw_wgrenade and G.GAME.grenademult >= card.ability.extra.mult_threshold and not context.blueprint then
 card.ability.extra.defeat = true
 end
 end

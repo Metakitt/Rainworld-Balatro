@@ -9,7 +9,7 @@ SMODS.Joker({
 	in_pool = function(self, args)
 		return false
 	end,
-	config = { extra = { defeat = false }, enemy = true },
+	config = { extra = { defeat = false, xmult = 0.9 }, enemy = true },
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,
@@ -25,7 +25,8 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		info_queue[#info_queue+1] = G.P_CENTERS.m_wild
+		return { vars = { card.ability.extra.xmult } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
@@ -34,7 +35,7 @@ SMODS.Joker({
 		--Threat
 		if context.joker_main and not context.blueprint then
 			return {
-				x_mult = 0.9,
+				x_mult = card.ability.extra.xmult,
 			}
 		end
 

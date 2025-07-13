@@ -9,7 +9,7 @@ discovered = true,
 in_pool = function (self, args)
     return false
 end,
-config = { extra = {defeat = false, takeyourmoney = -10}, enemy = true},
+config = { extra = {defeat = false, four_count = 0, takeyourmoney = -10}, enemy = true},
 blueprint_compat = false,
 perishable_compat = false,
 rw_wbeehive_compat = false,
@@ -25,7 +25,7 @@ rw_wsingularity_compat = false,
 rw_wspear_compat = false,
 rw_wsporepuff_compat = false,
 loc_vars = function(self, info_queue, card)
-    return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+    return { vars = { card.ability.extra.four_count, math.abs(card.ability.extra.takeyourmoney) } }
     end,
 add_to_deck = function(self, card, from_debuff) 
 SMODS.Stickers["eternal"]:apply(card,true)
@@ -38,6 +38,7 @@ calculate = function(self, card, context)
 --Defeat
  if context.before and not context.blueprint then
  if next(context.poker_hands['Four of a Kind']) and not context.blueprint then
+    card.ability.extra.four_count = card.ability.extra.four_count + 1
  card.ability.extra.defeat = true
 end
 end

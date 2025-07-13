@@ -13,7 +13,7 @@ discovered = true,
 in_pool = function (self, args)
     return false
 end,
-config = { extra = {defeat = false, bonuscards = 0}, enemy = true},
+config = { extra = {defeat = false, bonuscards = 0, unchips = -3000}, enemy = true},
 blueprint_compat = false,
 perishable_compat = false,
 rw_wbeehive_compat = false,
@@ -29,7 +29,7 @@ rw_wsingularity_compat = false,
 rw_wspear_compat = false,
 rw_wsporepuff_compat = false,
 loc_vars = function(self, info_queue, card)
-    return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+    return { vars = { number_format(card.ability.extra.unchips), card.ability.extra.bonuscards } }
     end,
 add_to_deck = function(self, card, from_debuff) 
 SMODS.Stickers["eternal"]:apply(card,true)
@@ -38,7 +38,7 @@ calculate = function(self, card, context)
 
 --Threat
 if context.after and not context.blueprint then
-G.GAME.chips = G.GAME.chips - 3000
+G.GAME.chips = G.GAME.chips + SCUG.big(card.ability.extra.unchips)
 end
 
 --Defeat

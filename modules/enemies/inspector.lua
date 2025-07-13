@@ -34,6 +34,7 @@ SMODS.Joker({
 		return false
 	end,
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {key = "rw_wspear_exp", set = "Other"}
 		return {
 			vars = {
 				-- Fixed chance; Does not use G.GAME.probabilities.normal

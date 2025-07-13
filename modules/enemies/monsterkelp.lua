@@ -13,7 +13,7 @@ discovered = true,
 in_pool = function (self, args)
     return false
 end,
-config = { extra = {defeat = false, handcount = 0, dying = false}, enemy = true},
+config = { extra = {defeat = false, handcount = 0, dying = false, unchips = -60, card_unchips = -10}, enemy = true},
 blueprint_compat = false,
 perishable_compat = false,
 rw_wbeehive_compat = false,
@@ -29,7 +29,9 @@ rw_wsingularity_compat = false,
 rw_wspear_compat = false,
 rw_wsporepuff_compat = false,
 loc_vars = function(self, info_queue, card)
-    return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+    info_queue[#info_queue+1] = {key = "rw_wspear", set = "Other"}
+    info_queue[#info_queue+1] = {key = "rw_wflashbang", set = "Other"}
+    return { vars = { card.ability.extra.unchips, card.ability.extra.handcount, card.ability.extra.card_unchips } }
     end,
 add_to_deck = function(self, card, from_debuff) 
 SMODS.Stickers["eternal"]:apply(card,true)
@@ -39,7 +41,7 @@ calculate = function(self, card, context)
 --Threat
 if context.joker_main and not context.blueprint then
 return {
-chips = -60
+chips = card.ability.extra.unchips
 }
 end
 
@@ -71,13 +73,13 @@ end
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint then
 for i=1, #G.deck.cards do
-G.deck.cards[i].ability.perma_bonus = G.deck.cards[i].ability.perma_bonus - 10
+G.deck.cards[i].ability.perma_bonus = G.deck.cards[i].ability.perma_bonus + card.ability.extra.card_unchips
 end
 for i=1, #G.hand.cards do
-G.hand.cards[i].ability.perma_bonus = G.hand.cards[i].ability.perma_bonus - 10
+G.hand.cards[i].ability.perma_bonus = G.hand.cards[i].ability.perma_bonus + card.ability.extra.card_unchips
 end
 for i=1, #G.discard.cards do
-G.discard.cards[i].ability.perma_bonus = G.discard.cards[i].ability.perma_bonus - 10
+G.discard.cards[i].ability.perma_bonus = G.discard.cards[i].ability.perma_bonus + card.ability.extra.card_unchips
 end
 end
 end

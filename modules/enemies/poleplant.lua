@@ -9,7 +9,7 @@ discovered = true,
 in_pool = function (self, args)
     return false
 end,
-config = { extra = {defeat = false, multcards = 0}, enemy = true},
+config = { extra = {defeat = false, multcards = 0, mult = -3, card_mult = -1}, enemy = true},
 blueprint_compat = false,
 perishable_compat = false,
 rw_wbeehive_compat = false,
@@ -25,7 +25,8 @@ rw_wsingularity_compat = false,
 rw_wspear_compat = false,
 rw_wsporepuff_compat = false,
 loc_vars = function(self, info_queue, card)
-    return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+    info_queue[#info_queue+1] =G.P_CENTERS.m_mult
+    return { vars = { card.ability.extra.mult, card.ability.extra.multcards, card.ability.extra.card_mult } }
     end,
 add_to_deck = function(self, card, from_debuff) 
 SMODS.Stickers["eternal"]:apply(card,true)
@@ -35,7 +36,7 @@ calculate = function(self, card, context)
 --Threat
 if context.joker_main and not context.blueprint then
 return {
-mult = -3
+mult = card.ability.extra.mult
 }
 end
 
@@ -68,13 +69,13 @@ end
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
 for i=1, #G.deck.cards do
-G.deck.cards[i].ability.perma_mult = G.deck.cards[i].ability.perma_mult - 1
+G.deck.cards[i].ability.perma_mult = G.deck.cards[i].ability.perma_mult + card.ability.extra.card_mult
 end
 for i=1, #G.hand.cards do
-G.hand.cards[i].ability.perma_mult = G.hand.cards[i].ability.perma_mult - 1
+G.hand.cards[i].ability.perma_mult = G.hand.cards[i].ability.perma_mult + card.ability.extra.card_mult
 end
 for i=1, #G.discard.cards do
-G.discard.cards[i].ability.perma_mult = G.discard.cards[i].ability.perma_mult - 1
+G.discard.cards[i].ability.perma_mult = G.discard.cards[i].ability.perma_mult + card.ability.extra.card_mult
 end
 
 end

@@ -14,9 +14,9 @@ return {
 				name = "Wet",
 				text = {
 					"{X:chips,C:white}X#1#{} chips, always scores",
-					"{C:attention}#2#{} round(s) until dry"
-				}
-			}
+					"{C:attention}#2#{} round(s) until dry",
+				},
+			},
 		},
 		Other = {
 			rw_wsporepuff = {
@@ -510,125 +510,128 @@ return {
 			j_rw_greenlizard = {
 				name = "Green Lizard",
 				text = {
-					"{C:attention}Threat{}: {C:green}1 in 2{} chance",
-					"to destroy a random joker",
+					"{C:attention}Threat{}: {C:green}1 in #1#{} chance",
+					"to {C:red}destroy{} a random Joker",
 					"at the {C:attention}end of round{}.",
-					"{C:attention}To Defeat{}: Score a {C:attention}Flush{}.",
-					"{C:attention}Undefeated{}: {C:green}1 in 3{} chance to destroy",
-					"each of your jokers at the",
+					"{C:attention}To Defeat{}: Score a {C:attention}Flush{}. [{C:attention}#3#{}/1]",
+					"{C:attention}Undefeated{}: {C:green}1 in #2#{} chance to {C:red}destroy",
+					"{C:attention}each{} of your Jokers at the",
 					"end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_pinklizard = {
 				name = "Pink Lizard",
 				text = {
-					"{C:attention}Threat{}: {C:green}1 in 2{} chance",
-					"to destroy a random card",
+					"{C:attention}Threat{}: {C:green}1 in #1#{} chance",
+					"to {C:red}destroy{} a random card",
 					"in the deck after playing a hand.",
-					"{C:attention}To Defeat{}: Score a {C:attention}Straight{}.",
-					"{C:attention}Undefeated{}: {C:green}1 in 20{} chance to destroy",
-					"each card in your deck at the",
+					"{C:attention}To Defeat{}: Score a {C:attention}Straight{}. [{C:attention}#3#{}/1]",
+					"{C:attention}Undefeated{}: {C:green}1 in #2#{} chance to {C:red}destroy",
+					"{C:attention}each{} card in your deck at the",
 					"end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_youngcentipede = {
 				name = "Young Centipede",
 				text = {
-					"{C:attention}Threat{}: None.",
-					"{C:attention}To Defeat{}: Score a {C:attention}Four of a Kind{}.",
-					"{C:attention}Undefeated{}: -{C:attention} 10${} at",
+					"{C:attention}Threat{}: {C:inactive}None.{}",
+					"{C:attention}To Defeat{}: Score a {C:attention}Four of a Kind{}. [{C:attention}#1#{}/1]",
+					"{C:attention}Undefeated{}: Lose {C:money}$#2#{} at",
 					"the end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_wormgrass = {
 				name = "Wormgrass",
 				text = {
-					"{C:attention}Threat{}: Destroys cards after they've been played.",
-					"{C:attention}To Defeat{}: Score 1000 chips.",
-					"{C:attention}Undefeated{}: Nothing.",
+					"{C:attention}Threat{}: {C:red}Destroys{} cards after they've been played.",
+					"{C:attention}To Defeat{}: Score #1# chips or more.",
+					"{C:attention}Undefeated{}: {C:inactive}Nothing.{}",
 				},
 			},
 			j_rw_brotherlonglegs = {
 				name = "Brother Long Legs",
 				text = {
 					"{C:attention}Threat{}: At the start of each blind,",
-					"1 in 20 chance for each card",
-					"in your deck to become rot.",
-					"{C:attention}To Defeat{}: Score a hand while holding an explosive spear.",
-					"{C:attention}Undefeated{}:Chooses a random rank and turns it",
-					" to rot at end of {C:attention}Boss Blind{}.",
+					"{C:green}1 in #1#{} chance for each card",
+					"in your deck to become Rot.",
+					"{C:attention}To Defeat{}: Score a hand while holding an {C:attention}Explosive Spear{}.",
+					"{C:attention}Undefeated{}: Chooses a random {C:attention}rank{} and turns it",
+					"to Rot at end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_bluelizard = {
 				name = "Blue Lizard",
 				text = {
-					"{C:attention}Threat{}: x0.75 Chips .",
-					"{C:attention}To Defeat{}: Score a card with at least 10 extra chips.",
+					"{C:attention}Threat{}: {X:chips,C:white}X#1#{} Chips.",
+					"{C:attention}To Defeat{}: Score a card with at least {C:chips}#2#{} extra chips.",
 					"{C:attention}Undefeated{}: Each card in your",
-					"deck gets -5 extra chips at the",
+					"deck gets {C:chips}#3#{} extra chips at the",
 					"end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_redleech = {
 				name = "Red Leech",
 				text = {
-					"{C:attention}Threat{}:-20 Chips. Each played hand has a {C:green}1 in 3{}",
-					"chance to spawn a new red leech.",
-					"{C:attention}To Defeat{}: Play two High Cards hands.",
-					"{C:attention}Undefeated{}:  Destroys a random joker at",
+					"{C:attention}Threat{}: {C:chips}#1#{} Chips. Each played hand has a {C:green}1 in #2#{}",
+					"chance to spawn a new Red Leech.",
+					"{C:attention}To Defeat{}: Play two {C:attention}High Card{} hands. [{C:attention}#3#{}/2]",
+					"{C:attention}Undefeated{}: {C:red}Destroys{} a random Joker at",
 					"the end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_coalescipede = {
 				name = "Coalescipede",
 				text = {
-					"{C:attention}Threat{}: -1 Chips per Coalescipede.",
-					"{C:attention}To Defeat{}: Have a Joker with a Flashbang.",
-					"{C:attention}Undefeated{}: Spawns two more Coalescipede at",
+					"{C:attention}Threat{}: {C:chips}-1{} Chip per {C:attention}Coalescipede{}. {C:inactive}[{C:chips}#1#{C:inactive} from all]",
+					"Each played hand has a {C:green}1 in #2# chance",
+					"to spawn another {C:attention}Coalescipede{}.",
+					"{C:attention}To Defeat{}: Have a Joker with a {C:attention}Flashbang{}.",
+					"{C:attention}Undefeated{}: Spawns two more {C:attention}Coalescipedes{} at",
 					"the end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_jungleleech = {
 				name = "Jungle Leech",
 				text = {
-					"{C:attention}Threat{}: -0.5 Mult.",
-					"{C:green}1 in 2{} chance to gain -0.1 Mult",
-					"and {C:green}1 in 10{} chance to spawn another",
-					"Jungle Leech each hand played.",
-					"{C:attention}To Defeat{}: Sell a {C:food}Food{} card and play five High Card hands.",
-					"{C:attention}Undefeated{}: {C:green}1 in 20{} chance to remove {C:food}Food{} cards from the shop.",
+					"{C:attention}Threat{}: {C:mult}#1#{} Mult.",
+					"{C:green}1 in #3#{} chance to gain {C:mult}#2#{} Mult",
+					"and {C:green}1 in #4#{} chance to spawn another",
+					"{C:attention}Jungle Leech{} each hand played.",
+					"{C:attention}To Defeat{}: Sell a {C:food}Food{} card and play five {C:attention}High Card{} hands.",
+					"{C:inactive}[{C:attention}#5#{C:inactive} sold, {C:attention}#6#{C:inactive}/5 played]",
+					"{C:attention}Undefeated{}: {C:green}1 in #7#{} chance to remove {C:food}Food{} cards from the shop.",
 				},
 			},
 			j_rw_whitelizard = {
 				name = "White Lizard",
 				text = {
-					"{C:attention}Threat{}: 0.9x Mult",
-					"{C:attention}To Defeat{}: Play a hand with a Wild Card.",
-					"{C:attention}Undefeated{}: Sets your most played hand back to level 1.",
+					"{C:attention}Threat{}: {X:mult,C:white}X#1#{} Mult",
+					"{C:attention}To Defeat{}: Play a hand with a {C:attention}Wild Card{}.",
+					"{C:attention}Undefeated{}: Sets your most played","{C:purple}poker hand{} back to level 1.",
 				},
 			},
 			j_rw_poleplant = {
 				name = "Pole Plant",
 				text = {
-					"{C:attention}Threat{}: -3 Mult",
-					"{C:attention}To Defeat{}: Score two Mult cards.",
-					"{C:attention}Undefeated{}: All playing cards get -1 Extra Mult.",
+					"{C:attention}Threat{}: {C:mult}#1#{} Mult",
+					"{C:attention}To Defeat{}: Score two {C:attention}Mult Cards{}. [{C:attention}#2#{}/2]",
+					"{C:attention}Undefeated{}: All playing cards get {C:mult}#3#{} Extra Mult.",
 				},
 			},
 			j_rw_dropwig = {
 				name = "Dropwig",
 				text = {
-					"{C:attention}Threat{}: If you score 25% over the Blind's chips {C:attention}#2#{} times, you lose the run.",
-					"{C:attention}To Defeat{}: Win {C:attention}#1#{} blinds without going over the threshold.",
-					"{C:attention}Undefeated{}: Nothing.",
+					"{C:attention}Threat{}: If you score {C:attention}#3#% or more{} of the Blind's","chips {C:attention}#2#{} more time(s), you {C:red}lose the run{}.",
+					"{C:attention}To Defeat{}: Win {C:attention}#1#{} more blind(s) without","going over the threshold.",
+					"{C:attention}Undefeated{}: {C:inactive}Nothing.{}",
 				},
 			},
 			j_rw_inspector = {
 				name = "Inspector",
 				text = {
-					"{C:attention}Threat: {C:attention}Fixed {C:green}1 in #1#{} chance to {C:red}reject{} played hand.",
+					"{C:attention}Threat: {C:green}1 in #1#{} chance to {C:red}reject{} played hand.",
 					"{s:0.8,C:inactive}(Shuffles cards back into deck, {s:0.8,C:blue}refunds{s:0.8,C:inactive} the hand)",
-					"{C:attention}Defeat:{} Score a hand while holding an {C:attention}explosive spear{}.",
+					"{C:attention}Defeat:{} Score a hand while holding an {C:attention}Explosive Spear{}.",
 					"{C:attention}Not Defeated:{} Chance goes up. Maxes out at {C:green}1 in 2{}.",
 				},
 			},
@@ -636,85 +639,85 @@ return {
 				name = "Daddy Long Legs",
 				text = {
 					"{C:attention}Threat{}: At the start of each blind,",
-					"1 in 12 chance for each card",
-					"in your deck to become rot.",
-					"{C:attention}To Defeat{}: Score two hands while holding an explosive spear.",
-					"{C:attention}Undefeated{}:Chooses a random suit and turns it",
-					" to rot at end of {C:attention}Boss Blind{}.",
+					"{C:green}1 in #1#{} chance for each card",
+					"in your deck to become Rot.",
+					"{C:attention}To Defeat{}: Score two hands while holding","an {C:attention}Explosive Spear{}. [{C:attention}#2#{}/2]",
+					"{C:attention}Undefeated{}: Chooses a random {C:attention}suit{} and turns it",
+					"to Rot at end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_salamander = {
 				name = "Salamander",
 				text = {
 					"{C:attention}Threat{}: At the start of each blind,",
-					"1 in 4 chance for each card",
+					"{C:green}1 in #1#{} chance for each card",
 					"in your deck to become Wet.",
-					"{C:attention}To Defeat{}: Use 4 {C:tarot}Tarot{} Cards.",
-					"{C:attention}Undefeated{}:Wet cards become Rot Cards.",
+					"{C:attention}To Defeat{}: Use 4 {C:tarot}Tarot{} Cards. [{C:attention}#2#{}/4]",
+					"{C:attention}Undefeated{}: Wet cards become Rot Cards.",
 				},
 			},
 			j_rw_monsterkelp = {
 				name = "Monster Kelp",
 				text = {
-					"{C:attention}Threat{}: -60 chips",
+					"{C:attention}Threat{}: {C:chips}#1#{} chips",
 					"{C:attention}To Defeat{}: Score two hands while holding",
-					"a Flashbang or Spear.",
+					"a {C:attention}Flashbang or Spear{}. [{C:attention}#2#{}/2]",
 					"{C:attention}Undefeated{}: Each card in your",
-					"deck gets -10 extra chips at the",
+					"deck gets {C:chips}#3#{} extra chips at the",
 					"end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_yellowlizard = {
 				name = "Yellow Lizard",
 				text = {
-					"{C:attention}Threat{}: At the end of round, -2$ and",
-					"1 in 5 chance to summon",
+					"{C:attention}Threat{}: At the end of round, {C:money}-$#1#{} and",
+					"{C:green}1 in #2#{} chance to summon",
 					"another Yellow Lizard.",
-					"{C:attention}To Defeat{}: Reroll Shop 5 Times.",
-					"{C:attention}Undefeated{}: Sets Money to -20$.",
+					"{C:attention}To Defeat{}: Reroll the Shop {C:attention}#3#{} more times.",
+					"{C:attention}Undefeated{}: Sets Money to {C:money}-$20{}.",
 				},
 			},
 			j_rw_aquapede = {
 				name = "Aquapede",
 				text = {
 					"{C:attention}Threat{}: At the start of Blind,",
-					"1 in 20 chance for each card",
+					"{C:green}1 in #1#{} chance for each card",
 					"in the deck to become Wet.",
 					"Each played hand becomes Wet.",
-					"{C:attention}To Defeat{}: Have a Joker with a +20 Mult Grenade.",
-					"{C:attention}Undefeated{}: All Wet cards are destroyed.",
+					"{C:attention}To Defeat{}: Have a Joker with a {C:mult}+#2#{} Mult {C:attention}Grenade{}.",
+					"{C:attention}Undefeated{}: {C:attention}All{} Wet cards are {C:red}destroyed{}.",
 				},
 			},
 			j_rw_centiwing = {
 				name = "Centiwing",
 				text = {
-					"{C:attention}Threat{}: -3000 Chips after scoring.",
-					"{C:attention}To Defeat{}: Score 3 cards with 20 or more Extra Chips.",
-					"{C:attention}Undefeated{}: All cards with 5 or more extra chips",
-					"in the deck are debuffed permanently.",
+					"{C:attention}Threat{}: #1# Chips after scoring.",
+					"{C:attention}To Defeat{}: Score 3 cards with {C:chips}20 or more{} Extra Chips. [{C:attention}#2#{}/3]",
+					"{C:attention}Undefeated{}: All cards with {C:chips}5 or more{} extra chips",
+					"in the deck are {C:red}debuffed permanently{}.",
 				},
 			},
 			j_rw_cyanlizard = {
 				name = "Cyan Lizard",
 				text = {
 					"{C:attention}Threat{}: Always selects a card.",
-					"{C:attention}To Defeat{}: Use 2 Planet cards.",
-					"{C:attention}Undefeated{}: Sets all your poker hands to level 1.",
+					"{C:attention}To Defeat{}: Use 2 {C:planet}Planet{} cards. [{C:attention}#1#{}/2]",
+					"{C:attention}Undefeated{}: Sets all your {C:purple}poker hands{} to level 1.",
 				},
 			},
-			
+
 			j_rw_sealeech = {
-		        name = "Sea Leech",
-		        text = {
-					"{C:attention}Threat{}: -1 Chips and -1 Mult per Sea Leech.",
-					"1 in 5 chance to spawn a", 
-					"Sea Leech after playing a hand.",
-					"{C:attention}To Defeat{}: Play a hand with an Electric Spear.",
+				name = "Sea Leech",
+				text = {
+					"{C:attention}Threat{}: {C:chips}#1#{} Chips and {C:mult}#1#{} Mult per {C:attention}Sea Leech{}.",
+					"{C:green}1 in #2#{} chance to spawn a",
+					"{C:attention}Sea Leech{} after playing a hand.",
+					"{C:attention}To Defeat{}: Play a hand with an {C:attention}Electric Spear{}.",
 					"{C:attention}Undefeated{}: Spawns a new Sea Leech at",
-					"the end of {C:attention}Boss Blind{}."
+					"the end of {C:attention}Boss Blind{}.",
 				},
 			},
-			
+
 			--endregion
 			--region Slugcats + Other Jokers
 			j_rw_abundance = {
@@ -832,7 +835,7 @@ return {
 				text = {
 					"Saint is tired...",
 					"Discard {C:attention}#1#{} more",
-					"cards to recover"
+					"cards to recover",
 				},
 			},
 			j_rw_slugpup = {

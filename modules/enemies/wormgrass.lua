@@ -9,7 +9,7 @@ SMODS.Joker({
 	in_pool = function(self, args)
 		return false
 	end,
-	config = { extra = { defeat = false }, enemy = true },
+	config = { extra = { defeat = false, threshold = 1000 }, enemy = true },
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,
@@ -25,7 +25,7 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		return { vars = { number_format(card.ability.extra.threshold) } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
@@ -41,7 +41,7 @@ SMODS.Joker({
 		end
 
 		--Defeat
-		if G.GAME.chips > SCUG.big(1000) and not context.blueprint then
+		if G.GAME.chips > SCUG.big(card.ability.extra.threshold) and not context.blueprint then
 			card.ability.extra.defeat = true
 		end
 		if card.ability.extra.defeat == true and not context.blueprint then

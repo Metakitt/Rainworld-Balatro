@@ -13,7 +13,7 @@ SMODS.Joker({
 	in_pool = function(self, args)
 		return false
 	end,
-	config = { extra = { defeat = false, takeyourmoney = -2, rerolldone = 0 }, enemy = true },
+	config = { extra = { defeat = false, takeyourmoney = -2, rerollneeded = 5, lizodds = 5 }, enemy = true },
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,
@@ -29,7 +29,7 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		return { vars = { math.abs(card.ability.extra.takeyourmoney), card.ability.extra.lizodds, card.ability.extra.rerollneeded } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
@@ -38,7 +38,7 @@ SMODS.Joker({
 		--Threat
 		if context.main_eval and context.end_of_round and not G.GAME.blind.boss and not context.blueprint then
 			ease_dollars(card.ability.extra.takeyourmoney)
-			if pseudorandom("morelizard") < 0.2 then
+			if pseudorandom("morelizard") < 1 / card.ability.extra.lizodds then
 				G.E_MANAGER:add_event(Event({
 					trigger = "after",
 					delay = 1.3,
@@ -58,10 +58,10 @@ SMODS.Joker({
 
 		--Defeat
 		if context.reroll_shop then
-			card.ability.extra.rerolldone = card.ability.extra.rerolldone + 1
+			card.ability.extra.rerollneeded = card.ability.extra.rerollneeded - 1
 		end
 
-		if card.ability.extra.rerolldone >= 5 then
+		if card.ability.extra.rerollneeded <= 0 then
 			card.ability.extra.defeat = true
 		end
 

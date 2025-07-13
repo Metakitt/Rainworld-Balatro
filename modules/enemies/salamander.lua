@@ -15,7 +15,7 @@ SMODS.Joker({
 	in_pool = function(self, args)
 		return false
 	end,
-	config = { extra = { defeat = false, tarotcount = 0 }, enemy = true },
+	config = { extra = { defeat = false, tarotcount = 0, wetodds = 4 }, enemy = true },
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,
@@ -31,7 +31,9 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		info_queue[#info_queue+1] = G.P_CENTERS.m_rw_wetasscard
+		info_queue[#info_queue+1] = G.P_CENTERS.m_rw_rotting
+		return { vars = { card.ability.extra.wetodds, card.ability.extra.tarotcount } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
@@ -40,7 +42,7 @@ SMODS.Joker({
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			for i = 1, #G.deck.cards do
-				if pseudorandom("bite") < 0.25 and not context.blueprint then
+				if pseudorandom("bite") < 1 / card.ability.extra.wetodds and not context.blueprint then
 					G.deck.cards[i]:set_ability(G.P_CENTERS.m_rw_wetasscard)
 				else
 					--print('Safe')

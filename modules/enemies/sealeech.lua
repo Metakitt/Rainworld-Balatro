@@ -13,7 +13,7 @@ SMODS.Joker({
 	in_pool = function(self, args)
 		return false
 	end,
-	config = { extra = { defeat = false }, enemy = true, sealeech = true },
+	config = { extra = { defeat = false, unchult = -1, leechodds = 5 }, enemy = true, sealeech = true },
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,
@@ -29,7 +29,8 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		info_queue[#info_queue+1] = {key = "rw_wspear_ele", set = "Other"}
+		return { vars = { card.ability.extra.unchult, card.ability.extra.leechodds } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
@@ -37,19 +38,19 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		--Threat
 		if context.joker_main and not context.blueprint then
-			local leech = 0
-			for k, v in ipairs(G.jokers.cards) do
-				if v.ability.sealeech == true then
-					leech = leech - 1
-				end
-			end
+			local leech = #SMODS.find_card("j_rw_sealeech")
+			-- for k, v in ipairs(G.jokers.cards) do
+			-- 	if v.ability.sealeech == true then
+			-- 		leech = leech - 1
+			-- 	end
+			-- end
 			return {
-				chips = leech,
-				mult = leech,
+				chips = card.ability.extra.unchult * leech,
+				mult = card.ability.extra.unchult * leech,
 			}
 		end
 
-		if context.after and pseudorandom("moreleech") < 0.2 and not context.blueprint then
+		if context.after and pseudorandom("moreleech") < 1 / card.ability.extra.leechodds and not context.blueprint then
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 1.3,
