@@ -75,7 +75,7 @@ SMODS.Joker({
 			and not context.blueprint
 		then
 			for _, v in ipairs(G.deck.cards) do
-				if G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard then
+				if v.config.center_key == "m_rw_wetasscard" then
 					v:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
