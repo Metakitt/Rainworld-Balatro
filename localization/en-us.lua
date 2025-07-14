@@ -733,6 +733,22 @@ return {
 					"{C:attention}Undefeated{}: Nothing.",
 				},
 			},
+			j_rw_eellizard = {
+				name = "Eel Lizard",
+				text = {
+					"{C:attention}Threat:{} {C:spades}Dark {C:clubs}suits{} are {C:red}debuffed{}.",
+					"{C:attention}To Defeat:{} Score 2 {C:attention}Wet Cards{}. [{C:attention}#1#{}/2]",
+					"{C:attention}Undefeated:{} {C:spades}Dark {C:clubs}suits{} stay {C:red}permanently debuffed{}."
+				}
+			},
+			j_rw_blacklizard = {
+				name = "Black Lizard",
+				text = {
+					"{C:attention}Threat:{} {C:hearts}Light {C:diamonds}suits{} are {C:red}debuffed{}.",
+					"{C:attention}To Defeat:{} Score a {C:attention}Flush House{} with a {C:spades}dark {C:clubs}suit{}.",
+					"{C:attention}Undefeated:{} {C:hearts}Light {C:diamonds}suits{} stay {C:red}permanently debuffed{}."
+				}
+			},
 
 			--endregion
 			--region Slugcats + Other Jokers

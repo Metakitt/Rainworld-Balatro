@@ -20,6 +20,8 @@ assert(SMODS.load_file("modules/enemies/centiwing.lua"))()
 assert(SMODS.load_file("modules/enemies/cyanlizard.lua"))()
 assert(SMODS.load_file("modules/enemies/sealeech.lua"))()
 assert(SMODS.load_file("modules/enemies/bigspider.lua"))()
+assert(SMODS.load_file("modules/enemies/eellizard.lua"))()
+assert(SMODS.load_file("modules/enemies/blacklizard.lua"))()
 
 --[[
 Enemy general format:
