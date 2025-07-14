@@ -21,6 +21,7 @@ assert(SMODS.load_file("modules/enemies/cyanlizard.lua"))()
 assert(SMODS.load_file("modules/enemies/sealeech.lua"))()
 assert(SMODS.load_file("modules/enemies/bigspider.lua"))()
 assert(SMODS.load_file("modules/enemies/spitterspider.lua"))()
+assert(SMODS.load_file("modules/enemies/motherspider.lua"))()
 assert(SMODS.load_file("modules/enemies/eellizard.lua"))()
 assert(SMODS.load_file("modules/enemies/blacklizard.lua"))()
 
@@ -66,7 +67,7 @@ Ante 3 enemies(Count:15):
 = Pole Plant [ X ] (Appears from 3 onwards)
 = Cyan Lizard [ X ] (Also appears in 4, 5)
 = Dropwig [ X ] (Also appears in 4)
-= Big Spider [ ] (Also appears in 6)
+= Big Spider [ X ] (Also appears in 6)
 = Sea Leech [ X ] (Appears 3,6,7)
 
 Ante 4 enemies(Count:15):
@@ -97,7 +98,7 @@ Ante 6 enemies(Count:15):
 
 Ante 7 enemies(Count:15):
 = Red Lizard [ ] (Also appears in 8)
-= Mother Spider [ ] (Exclusive to Ante 7)
+= Mother Spider [ X ] (Exclusive to Ante 7)
 = Aquapede [ X ] (Exclusive to Ante 7)
 = Miros Vulture [ ] (Also appears in 8)
 = Firebugs [ ] (Exclusive to Ante 7)

@@ -762,6 +762,17 @@ return {
 					"{C:attention}Undefeated{}: Nothing.",
 				},
 			},
+			
+			j_rw_motherspider = {
+				name = "Mother Spider",
+				text = {
+					"{C:attention}Threat{}: Only {C:attention}High Card{} and {C:attention}Flush House{}",
+					"hands count for scoring.",
+					"{C:attention}To Defeat{}: Play 5 {C:attention}High Card{} and 1 {C:attention}Flush House.{}",
+					"{C:inactive}Scored: High Card[#1#], Flush House[#2#]{}",
+					"{C:attention}Undefeated{}: Nothing.",
+				},
+			},
 
 			--endregion
 			--region Slugcats + Other Jokers
