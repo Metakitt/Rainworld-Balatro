@@ -634,8 +634,8 @@ return {
 				text = {
 					"{C:attention}Threat: {C:green}1 in #1#{} chance to {C:red}reject{} played hand.",
 					"{s:0.8,C:inactive}(Shuffles cards back into deck, {s:0.8,C:blue}refunds{s:0.8,C:inactive} the hand)",
-					"{C:attention}Defeat:{} Score a hand while holding an {C:attention}Explosive Spear{}.",
-					"{C:attention}Not Defeated:{} Chance goes up. Maxes out at {C:green}1 in 2{}.",
+					"{C:attention}To Defeat:{} Score a hand while holding an {C:attention}Explosive Spear{}.",
+					"{C:attention}Undefeated:{} Chance goes up. Maxes out at {C:green}1 in 2{}.",
 				},
 			},
 			j_rw_daddylonglegs = {
@@ -719,6 +719,18 @@ return {
 					"{C:attention}To Defeat{}: Play a hand with an {C:attention}Electric Spear{}.",
 					"{C:attention}Undefeated{}: Spawns a new Sea Leech at",
 					"the end of {C:attention}Boss Blind{}.",
+				},
+			},
+			
+			j_rw_bigspider = {
+				name = "Big Spider",
+				text = {
+					"{C:attention}Threat{}: Only {C:attention}Flush{}, {C:attention}Full House{}",
+					"or {C:attention}Straight{} hands count for scoring.",
+					"{C:attention}To Defeat{}: Play 3 {C:attention}Flush{}, 2 {C:attention}Full House{}",
+					"and 1 {C:attention}Straight{}.",
+					"{C:inactive}Scored: Flush[#1#], Full House[#2#], Straight[#3#]{}",
+					"{C:attention}Undefeated{}: Nothing.",
 				},
 			},
 
