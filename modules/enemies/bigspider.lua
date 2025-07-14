@@ -54,7 +54,7 @@ if context.before and not context.blueprint then
 				card.ability.extra.flush_count = card.ability.extra.flush_count + 1
 			elseif (next(context.poker_hands["Straight"])
 			and context.scoring_name == "Straight"
-			and not context.blueprint
+			and not context.blueprint)
 			then
 			card.ability.extra.straight_count = card.ability.extra.straight_count + 1
 			elseif next(context.poker_hands["Full House"])
