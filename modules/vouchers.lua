@@ -21,7 +21,8 @@ SMODS.Voucher({
 	key = "weaponboss",
 	loc_txt = {
 		name = "Scavenger Stash",
-		text = { "{C:green}#1# in #2#{}chance to get a weapon at the end of a Boss Blind." },
+		text = { "{C:green}#1# in #2#{} chance to get a ",
+		"weapon at the end of a Boss Blind." },
 	},
 	atlas = "scugvouchers",
 	pos = { x = 0, y = 1 },
