@@ -607,7 +607,8 @@ return {
 				text = {
 					"{C:attention}Threat{}: {X:mult,C:white}X#1#{} Mult",
 					"{C:attention}To Defeat{}: Play a hand with a {C:attention}Wild Card{}.",
-					"{C:attention}Undefeated{}: Sets your most played","{C:purple}poker hand{} back to level 1.",
+					"{C:attention}Undefeated{}: Sets your most played",
+					"{C:purple}poker hand{} back to level 1.",
 				},
 			},
 			j_rw_poleplant = {
@@ -621,8 +622,10 @@ return {
 			j_rw_dropwig = {
 				name = "Dropwig",
 				text = {
-					"{C:attention}Threat{}: If you score {C:attention}#3#% or more{} of the Blind's","chips {C:attention}#2#{} more time(s), you {C:red}lose the run{}.",
-					"{C:attention}To Defeat{}: Win {C:attention}#1#{} more blind(s) without","going over the threshold.",
+					"{C:attention}Threat{}: If you score {C:attention}#3#% or more{} of the Blind's",
+					"chips {C:attention}#2#{} more time(s), you {C:red}lose the run{}.",
+					"{C:attention}To Defeat{}: Win {C:attention}#1#{} more blind(s) without",
+					"going over the threshold.",
 					"{C:attention}Undefeated{}: {C:inactive}Nothing.{}",
 				},
 			},
@@ -641,7 +644,8 @@ return {
 					"{C:attention}Threat{}: At the start of each blind,",
 					"{C:green}1 in #1#{} chance for each card",
 					"in your deck to become Rot.",
-					"{C:attention}To Defeat{}: Score two hands while holding","an {C:attention}Explosive Spear{}. [{C:attention}#2#{}/2]",
+					"{C:attention}To Defeat{}: Score two hands while holding",
+					"an {C:attention}Explosive Spear{}. [{C:attention}#2#{}/2]",
 					"{C:attention}Undefeated{}: Chooses a random {C:attention}suit{} and turns it",
 					"to Rot at end of {C:attention}Boss Blind{}.",
 				},
@@ -882,6 +886,14 @@ return {
 					"{C:green} #1# in 15{} chance to give a",
 					"random {C:weapon}weapon{}",
 					"to a random Joker.",
+				},
+			},
+			j_rw_alacrity = {
+				name = "Alacrity",
+				text = {
+					"{X:chips,C:white}X2{} Chips on",
+					"the {C:attention}first hand{}",
+					"of round.",
 				},
 			},
 			j_rw_magician = {
