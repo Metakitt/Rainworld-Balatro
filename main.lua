@@ -188,33 +188,12 @@ end
 G.C.FOOD = HEX("0736f3")
 G.C.WEAPON = HEX("875796")
 
+local loc_colour_RW = loc_colour
 function loc_colour(_c, _default)
-	G.ARGS.LOC_COLOURS = G.ARGS.LOC_COLOURS
-		or {
-			food = G.C.FOOD,
-			weapon = G.C.WEAPON,
-			red = G.C.RED,
-			mult = G.C.MULT,
-			blue = G.C.BLUE,
-			chips = G.C.CHIPS,
-			green = G.C.GREEN,
-			money = G.C.MONEY,
-			gold = G.C.GOLD,
-			attention = G.C.FILTER,
-			purple = G.C.PURPLE,
-			white = G.C.WHITE,
-			inactive = G.C.UI.TEXT_INACTIVE,
-			spades = G.C.SUITS.Spades,
-			hearts = G.C.SUITS.Hearts,
-			clubs = G.C.SUITS.Clubs,
-			diamonds = G.C.SUITS.Diamonds,
-			tarot = G.C.SECONDARY_SET.Tarot,
-			planet = G.C.SECONDARY_SET.Planet,
-			spectral = G.C.SECONDARY_SET.Spectral,
-			edition = G.C.EDITION,
-			dark_edition = G.C.DARK_EDITION,
-			legendary = G.C.RARITY[4],
-			enhanced = G.C.SECONDARY_SET.Enhanced,
-		}
-	return G.ARGS.LOC_COLOURS[_c] or _default or G.C.UI.TEXT_DARK
+if not G.ARGS.LOC_COLOURS then
+loc_colour_RW()
+end
+G.ARGS.LOC_COLOURS.weapon = G.C.WEAPON
+G.ARGS.LOC_COLOURS.food = G.C.FOOD
+	return loc_colour_RW(_c, _default)
 end
