@@ -83,19 +83,20 @@ end
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
 for _, v in ipairs(G.deck.cards) do
-	if G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard then
+		if v.config.center == G.P_CENTERS.m_rw_wetasscard then
             v:start_dissolve()
+			
         end
     end
 	
 	for _, v in ipairs(G.hand.cards) do
-	if G.hand.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard then
+	if v.config.center == G.P_CENTERS.m_rw_wetasscard then
             v:start_dissolve()
         end
     end
 	
 for _, v in ipairs(G.discard.cards) do
-	if G.discard.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard then
+	if v.config.center == G.P_CENTERS.m_rw_wetasscard then
             v:start_dissolve()
         end
     end
