@@ -733,6 +733,7 @@ return {
 					"{C:attention}Undefeated{}: Nothing.",
 				},
 			},
+			
 			j_rw_eellizard = {
 				name = "Eel Lizard",
 				text = {
@@ -748,6 +749,18 @@ return {
 					"{C:attention}To Defeat:{} Score a {C:attention}Flush House{} with a {C:spades}dark {C:clubs}suit{}.",
 					"{C:attention}Undefeated:{} {C:hearts}Light {C:diamonds}suits{} stay {C:red}permanently debuffed{}."
 				}
+			},
+			
+			j_rw_spitterspider = {
+				name = "Spitter Spider",
+				text = {
+					"{C:attention}Threat{}: Only {C:attention}Five of a Kind{}, {C:attention}Four of a Kind{}",
+					"or {C:attention}Three of a Kind{} hands count for scoring.",
+					"{C:attention}To Defeat{}: Play 3 {C:attention}Three of a Kind{}, 2 {C:attention}Four of a Kind{}",
+					"and 1 {C:attention}Five of a Kind{}.",
+					"{C:inactive}Scored: Five of a Kind[#1#], Four of a Kind[#2#], Three of a Kind[#3#]{}",
+					"{C:attention}Undefeated{}: Nothing.",
+				},
 			},
 
 			--endregion

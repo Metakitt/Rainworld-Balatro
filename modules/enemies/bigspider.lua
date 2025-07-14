@@ -44,13 +44,15 @@ end
 end
 
 if context.before and not context.blueprint then
+-- Add other hands that are "Flush" or "Straight" (Straight Flush, Royal Flush, Flush House...)
+
 			if
-				next(context.poker_hands["Flush"])
-				and context.scoring_name == "Flush"
+				(next(context.poker_hands["Flush"]) or next(context.poker_hands["Flush Five"]))
+				and (context.scoring_name == "Flush" or context.scoring_name == "Flush Five")
 				and not context.blueprint
 			then
 				card.ability.extra.flush_count = card.ability.extra.flush_count + 1
-			elseif next(context.poker_hands["Straight"])
+			elseif (next(context.poker_hands["Straight"])
 			and context.scoring_name == "Straight"
 			and not context.blueprint
 			then
