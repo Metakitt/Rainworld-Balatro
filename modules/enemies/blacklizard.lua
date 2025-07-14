@@ -32,7 +32,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		-- Defeat
 		if context.before and not context.blueprint then
-            if context.poker_hands["Flush House"] then
+            if #context.poker_hands["Flush House"] > 0 then
                 local valid = true
                 for _,v in ipairs(context.poker_hands["Flush House"][1]) do
                     valid = valid and not (v:is_suit("Hearts", true) or v:is_suit("Diamonds", true))
