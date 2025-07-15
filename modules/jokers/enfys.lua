@@ -11,7 +11,7 @@ SMODS.Joker({
 	},
 	pos = { x = 4, y = 3 },
 	soul_pos = { x = 5, y = 3 },
-	rarity = 3,
+	rarity = 4,
 	cost = 7,
 	unlocked = true,
 	discovered = true,

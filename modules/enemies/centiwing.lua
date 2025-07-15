@@ -13,7 +13,7 @@ discovered = true,
 in_pool = function (self, args)
     return false
 end,
-config = { extra = {defeat = false, bonuscards = 0, unchips = -3000}, enemy = true},
+config = { extra = {defeat = false, bonuscards = 0, unchips = -8000}, enemy = true},
 blueprint_compat = false,
 perishable_compat = false,
 rw_wbeehive_compat = false,
@@ -35,6 +35,14 @@ add_to_deck = function(self, card, from_debuff)
 SMODS.Stickers["eternal"]:apply(card,true)
     end,
 calculate = function(self, card, context)
+
+if G.GAME.round_resets.ante == 7 then
+card.ability.extra.unchips = -8000
+elseif G.GAME.round_resets.ante == 8 then
+card.ability.extra.unchips = -12000
+elseif G.GAME.round_resets.ante > 8 then
+card.ability.extra.unchips = -8000 * (G.GAME.round_resets.ante/2)
+end
 
 --Threat
 if context.final_scoring_step and context.cardarea == G.jokers and not context.blueprint then
