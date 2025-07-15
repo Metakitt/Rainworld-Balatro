@@ -76,7 +76,7 @@ Ante 4 enemies(Count:15):
 = Monster Kelp [ X ] (Also appears in 5)
 = Salamander [ X ] (Also appears in 5)
 = Eel Lizard [ X ] (Also appears in 5)
-= Caramel Lizard [ ] (Exclusive to Ante 4)
+= Caramel Lizard [ X ] (Exclusive to Ante 4)
 = Spitter Spider [ X ] (Also appears in 6)
 = Giant Jellyfish [ ] (Also appears in 5,7,8)
 
