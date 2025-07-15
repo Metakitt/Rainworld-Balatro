@@ -18,7 +18,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { slugcat = 0, upgrade = 4 } },
+	config = { extra = { upgrade = 4 }, slugcat = true },
 
 	calculate = function(self, card, context)
 		if context.joker_main and not context.blueprint then

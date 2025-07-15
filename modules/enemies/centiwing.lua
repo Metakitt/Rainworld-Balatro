@@ -37,7 +37,7 @@ SMODS.Stickers["eternal"]:apply(card,true)
 calculate = function(self, card, context)
 
 --Threat
-if context.after and not context.blueprint then
+if context.final_scoring_step and context.cardarea == G.jokers and not context.blueprint then
 G.GAME.chips = G.GAME.chips + SCUG.big(card.ability.extra.unchips)
 end
 
@@ -71,19 +71,19 @@ end
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
 
 for _, v in ipairs(G.deck.cards) do
-	if G.deck.cards[i].ability.perma_bonus >= 5 then
+	if v.ability.perma_bonus >= 5 then
 	SMODS.debuff_card(v, true, "centiwing")
         end
     end
 	
 	for _, v in ipairs(G.hand.cards) do
-	if G.play.cards[i].ability.perma_bonus >= 5  then
+	if v.ability.perma_bonus >= 5  then
        SMODS.debuff_card(v, true, "centiwing")
         end
     end
 	
 for _, v in ipairs(G.discard.cards) do
-	if G.discard.cards[i].ability.perma_bonus >= 5  then
+	if v.ability.perma_bonus >= 5  then
          SMODS.debuff_card(v, true, "centiwing")
         end
     end

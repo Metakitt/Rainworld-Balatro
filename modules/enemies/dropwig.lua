@@ -9,7 +9,7 @@ SMODS.Joker({
 	in_pool = function(self, args)
 		return false
 	end,
-	config = { extra = { defeat = false, counter = 0, deathcounter = 5, threshold = 1.25 }, enemy = true },
+	config = { extra = { defeat = false, counter = 0, deathcounter = 5, threshold = 1.50 }, enemy = true },
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,
@@ -32,8 +32,8 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind then
-			print(card.ability.extra.counter)
-			print(card.ability.extra.deathcounter)
+		--	print(card.ability.extra.counter)
+			--print(card.ability.extra.deathcounter)
 		end
 		--Threat
 		if context.main_eval and context.end_of_round and not context.blueprint then
