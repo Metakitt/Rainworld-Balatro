@@ -773,6 +773,17 @@ return {
 					"{C:attention}Undefeated{}: Nothing.",
 				},
 			},
+			
+			j_rw_strawberrylizard = {
+				name = "Strawberry Lizard",
+				text = {
+					"{C:attention}Threat{}: A random joker is {C:attention}debuffed{}",
+					"at the start of {C:attention}Blind{}.",
+					"{C:attention}To Defeat{}: Sell a joker.",
+					"{C:attention}Undefeated{}: The last debuffed joker becomes",
+					"{C:purple}Eternal{} and remains debuffed permanently.",
+				},
+			},
 
 			--endregion
 			--region Slugcats + Other Jokers
