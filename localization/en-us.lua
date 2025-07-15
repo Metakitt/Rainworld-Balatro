@@ -582,7 +582,7 @@ return {
 			j_rw_coalescipede = {
 				name = "Coalescipede",
 				text = {
-					"{C:attention}Threat{}: {C:chips}-1{} Chip per {C:attention}Coalescipede{}. {C:inactive}[{C:chips}#1#{C:inactive} from all]",
+					"{C:attention}Threat{}: Each {C:attention}Coalescipede{} gives {C:chips}#1#{} Chips. {C:inactive}[{C:chips}#3#{C:inactive} from all]",
 					"Each played hand has a {C:green}1 in #2# chance",
 					"to spawn another {C:attention}Coalescipede{}.",
 					"{C:attention}To Defeat{}: Have a Joker with a {C:weapon}Flashbang{}.",
