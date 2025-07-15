@@ -26,7 +26,8 @@ SMODS.Joker({
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {key = "rw_wflashbang", set = "Other"}
-		return { vars = { -#SMODS.find_card("j_rw_coalescipede") or -1, card.ability.extra.odds } }
+		local num_pedes = (G.GAME and G.jokers and #SMODS.find_card("j_rw_coalescipede")) or 1
+		return { vars = { -num_pedes, card.ability.extra.odds, number_format(-(num_pedes ^ 2)) } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
