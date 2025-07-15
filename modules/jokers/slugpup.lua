@@ -17,11 +17,7 @@ SMODS.Joker({
 		card.ability.extra.generated = true
 		card.children.center:set_sprite_pos({ x = card.ability.extra.spupx, y = card.ability.extra.spupy })
 	end,
-
 	calculate = function(self, card, context)
-	if card.ability.extra.generated == true then
-	card.children.center:set_sprite_pos({ x = card.ability.extra.spupx, y = card.ability.extra.spupy })
-	end
 	
 		if context.joker_main then
 			return {

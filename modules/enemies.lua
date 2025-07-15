@@ -25,6 +25,7 @@ assert(SMODS.load_file("modules/enemies/motherspider.lua"))()
 assert(SMODS.load_file("modules/enemies/eellizard.lua"))()
 assert(SMODS.load_file("modules/enemies/blacklizard.lua"))()
 assert(SMODS.load_file("modules/enemies/strawberrylizard.lua"))()
+assert(SMODS.load_file("modules/enemies/caramellizard.lua"))()
 
 --[[
 Enemy general format:

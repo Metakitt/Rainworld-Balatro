@@ -37,6 +37,10 @@ SMODS.Joker({
 			card.ability.extra.food_used_total = card.ability.extra.food_used_total + 1
 			SMODS.calculate_effect({ message = "Upgrade!" }, card)
 		end
+		
+		if card.ability.extra.food_used_total == 0 then
+			card.children.center:set_sprite_pos({ x = 0, y = 2 })
+		end
 
 		if card.ability.extra.food_used_total == 1 then
 			card.children.center:set_sprite_pos({ x = 1, y = 2 })

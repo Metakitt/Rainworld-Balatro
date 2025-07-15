@@ -784,6 +784,20 @@ return {
 					"{C:purple}Eternal{} and remains debuffed permanently.",
 				},
 			},
+			
+			j_rw_caramellizard = {
+				name = "Caramel Lizard",
+				text = {
+					"{C:attention}Threat{}:{C:food}Food{} cards and {C:food}Food{} packs",
+					"no longer appear in the shop.",
+					"Jokers that benefit from {C:food}Food{} cards are",
+					"{C:attention}reset{} to their default values.",
+					"{C:attention}To Defeat{}: Score a lucky card.",
+					"{C:attention}Undefeated{}: {C:food}Food{} cards and {C:food}Food{} packs",
+					"no longer appear for the rest of the run.",
+					"Caramel Lizard leaves."
+				},
+			},
 
 			--endregion
 			--region Slugcats + Other Jokers
