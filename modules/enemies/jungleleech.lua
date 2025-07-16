@@ -94,7 +94,7 @@ SMODS.Joker({
 
 		if
 			context.selling_card
-			and context.card.ability.set == "Food"
+			and context.card.ability.set == "foods"
 			and context.card ~= card
 			and not context.blueprint
 		then
