@@ -51,7 +51,7 @@ SMODS.Joker({
 		end
 
 		if
-			#SMODS.find_card("j_rw_hunger") > 0 -- Make sure to replace this with the actual key
+			#SMODS.find_card("j_rw_hunger") > 0
 			and card.ability.extra.grace <= 0
 			and card.ability.extra.can_munch
 			and (pseudorandom(pseudoseed("crumchy")) < G.GAME.probabilities.normal / card.ability.extra.munch_chance)
@@ -60,14 +60,6 @@ SMODS.Joker({
 			local edibles = {}
 			-- Shop: Shop cards, booster packs, vouchers
 			if G.STATE == G.STATES.SHOP then
-				-- local shop_areas = { G.shop_vouchers, G.shop_booster, G.shop_jokers }
-				-- for _, area in ipairs(shop_areas) do
-				-- 	if area then
-				-- 		for _, v in ipairs(area.cards) do
-				-- 			table.insert(edibles, v)
-				-- 		end
-				-- 	end
-				-- end
 				if G.shop_vouchers then
 					for _, voucher in ipairs(G.shop_vouchers.cards) do
 						local t = { card = voucher, type = "voucher" }
@@ -124,7 +116,7 @@ SMODS.Joker({
 
 			local snack, key = pseudorandom_element(edibles, "crumchy", {})
 			if snack and snack.card ~= card then
-				sendDebugMessage(snack.card.config.center.key, "Rainworld")
+				-- sendDebugMessage(snack.card.config.center.key, "Rainworld")
 				card.ability.extra.can_munch = false
 				if snack.card.ability.eternal then
 					G.E_MANAGER:add_event(Event({
