@@ -9,7 +9,7 @@ SMODS.Joker({
 	rarity = "rw_enemy",
 	cost = 3,
 	atlas = "enemies",
-	pos = { x = 4, y = 5 },
+	pos = { x = 7, y = 5 },
 	discovered = true,
 	blueprint_compat = false,
 	perishable_compat = false,
