@@ -817,6 +817,15 @@ return {
 					"{C:attention}Undefeated{}: {C:red}Die{}."
 				}
 			},
+			j_rw_blackholelizard = {
+				name = "Black Hole Lizard",
+				text = {
+					"{C:attention}Threat{}: {C:inactive}None.",
+					"{C:attention}To Defeat{}: Have a Joker with a {C:weapon}Singularity Bomb{}",
+					"{s:0.8,C:inactive}(Destroys the Singularity Bomb)",
+					"{C:attention}Undefeated{}: {s:1.2,E:1,C:dark_edition}?????"
+				}
+			},
 
 			--endregion
 			--region Slugcats + Other Jokers
