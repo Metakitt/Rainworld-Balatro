@@ -92,7 +92,7 @@ SMODS.Joker({
                 delay = 2.0,
                 ref_table = G.GAME,
                 ref_value = "chips",
-                ease_to = to_big(0),
+                ease_to = SCUG.big(0),
 				func = (function(x) return math.floor(x) end)
             }))
             end_round()
