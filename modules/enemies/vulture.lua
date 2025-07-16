@@ -50,11 +50,12 @@ SMODS.Joker({
 			and not card.ability.extra.defeat
 			and pseudorandom("vulched") < 1 / card.ability.extra.nope_odds
 			and not context.blueprint
+			and not card.ability.extra.defeat
 		then
-            card_eval_status_text(card, "extra", nil, nil, nil, {
-                message = localize("k_nope_ex"),
-                colour = G.C.RED
-            })
+			card_eval_status_text(card, "extra", nil, nil, nil, {
+				message = localize("k_nope_ex"),
+				colour = G.C.RED,
+			})
 			return {
 				x_chips = 0,
 				x_mult = 0,
@@ -93,10 +94,10 @@ SMODS.Joker({
 					end
 				end
 			end
-            card_eval_status_text(card, "extra", nil, nil, nil, {
-                message = "Yoinked!",
-                colour = G.C.RED
-            })
+			card_eval_status_text(card, "extra", nil, nil, nil, {
+				message = "Yoinked!",
+				colour = G.C.RED,
+			})
 		end
 	end,
 })
