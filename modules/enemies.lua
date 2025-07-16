@@ -609,7 +609,7 @@ function new_round()
 					valid_selection = true
 				-- Otherwise, use one lower on the list (more likely to exist, probably)
 				else
-					sendWarnMessage("Enemy " .. enemy_key .. " not implemented yet!", "Rainworld")
+					sendWarnMessage("Enemy " .. enemy_key .. " not enabled!", "Rainworld")
 					enemy_choice = enemy_choice - 1
 				end
 
