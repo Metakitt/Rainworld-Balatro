@@ -70,9 +70,9 @@ end
 end
 --Undefeated
 	if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint then
-    local rank = pseudorandom_element(SMODS.Ranks, pseudoseed("rotten_rank"))
+    local rank = SCUG.get_rank_in_deck() --pseudorandom_element(SMODS.Ranks, pseudoseed("rotten_rank"))
     for _, v in ipairs(G.deck.cards) do
-        if v:get_id() == rank.id and not context.blueprint then
+        if v.config.card.value == rank and not context.blueprint then
             v:set_ability(G.P_CENTERS.m_rw_rotting)
         end
     end

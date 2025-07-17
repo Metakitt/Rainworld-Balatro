@@ -19,9 +19,9 @@ SMODS.Consumable({
 	end,
 	use = function(self, card, area, copier)
 		if card.ability.name == "popcornplant" then
-			local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
+			local suit = SCUG.get_suit_in_deck() --pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
 			for _, other_card in ipairs(G.deck.cards) do
-				if other_card:is_suit(suit.key) then
+				if other_card:is_suit(suit) then
 					other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
 					other_card.ability.perma_bonus = other_card.ability.perma_bonus + card.ability.extra.upgrade
 					other_card.ability.perma_mult = other_card.ability.perma_mult or 0
