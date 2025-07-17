@@ -46,7 +46,15 @@ end
 
 --Threat
 if context.final_scoring_step and context.cardarea == G.jokers and not context.blueprint then
-G.GAME.chips = G.GAME.chips + SCUG.big(card.ability.extra.unchips)
+    local lower_chips = G.GAME.chips + SCUG.big(card.ability.extra.unchips)
+    G.E_MANAGER:add_event(Event({
+        trigger = "ease",
+        delay = 2.0,
+        ref_table = G.GAME,
+        ref_value = "chips",
+        ease_to = lower_chips,
+        func = (function(x) return math.floor(x) end)
+    }))
 end
 
 --Defeat
