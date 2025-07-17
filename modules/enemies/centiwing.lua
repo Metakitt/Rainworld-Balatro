@@ -40,14 +40,21 @@ card.ability.extra.unchips = get_blind_amount(G.GAME.round_resets.ante) / -5
 
 --Threat
 if context.after and context.cardarea == G.jokers and not context.blueprint and not card.ability.extra.defeat then
-    local lower_chips = G.GAME.chips + SCUG.big(card.ability.extra.unchips)
     G.E_MANAGER:add_event(Event({
-        trigger = "ease",
-        delay = 2.0,
-        ref_table = G.GAME,
-        ref_value = "chips",
-        ease_to = lower_chips,
-        func = (function(x) return math.floor(x) end)
+        trigger = "after",
+        delay = 0.1,
+        func = function()
+            G.GAME.chips = G.GAME.chips + SCUG.big(card.ability.extra.unchips)
+            card_eval_status_text(card, "extra", nil, nil, nil, {
+                message = card.ability.extra.unchips .. " Score",
+                colour = G.C.PURPLE
+            })
+            -- Evil LocalThunk "disable SFX" code
+            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.06*G.SETTINGS.GAMESPEED, blockable = false, blocking = false, func = function()
+                play_sound('tarot2', 0.76, 0.4);return true end}))
+            play_sound('tarot2', 1, 0.4)
+            return true
+        end
     }))
 end
 
