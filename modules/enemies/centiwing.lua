@@ -36,16 +36,10 @@ SMODS.Stickers["eternal"]:apply(card,true)
     end,
 calculate = function(self, card, context)
 
-if G.GAME.round_resets.ante == 7 then
-card.ability.extra.unchips = -8000
-elseif G.GAME.round_resets.ante == 8 then
-card.ability.extra.unchips = -12000
-elseif G.GAME.round_resets.ante > 8 then
-card.ability.extra.unchips = -8000 * (G.GAME.round_resets.ante/2)
-end
+card.ability.extra.unchips = get_blind_amount(G.GAME.round_resets.ante) / -5
 
 --Threat
-if context.final_scoring_step and context.cardarea == G.jokers and not context.blueprint then
+if context.after and context.cardarea == G.jokers and not context.blueprint and not card.ability.extra.defeat then
     local lower_chips = G.GAME.chips + SCUG.big(card.ability.extra.unchips)
     G.E_MANAGER:add_event(Event({
         trigger = "ease",
