@@ -884,7 +884,7 @@ return {
 					"{C:food}Food{} cards",
 					"give {X:mult,C:white}X#4#{} Mult.",
 					"and are {C:attention}destroyed{}.",
-					"Currently {C:mult}X#1#{} Mult",
+					"Currently {X:mult,C:white}X#1#{} Mult",
 				},
 			},
 			j_rw_hunter = {
