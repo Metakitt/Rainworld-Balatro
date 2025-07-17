@@ -8,6 +8,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	perishable_compat = false,
 	config = {
 		extra = {
 			effect = "none",

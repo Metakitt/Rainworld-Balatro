@@ -22,6 +22,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	perishable_compat = false,
 	config = {
 		extra = {
 			xmult_mod = 1,

@@ -8,7 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	config = { extra = { center_table = 1, odds = 10, mult = 0, mult_gain = 8, spear = false }, slugcat = true },
 	blueprint_compat = true,
-
+	perishable_compat = false,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds, card.ability.extra.mult, card.ability.extra.mult_gain } }
 	end,

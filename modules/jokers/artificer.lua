@@ -7,6 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	perishable_compat = false,
 	config = { extra = { chips = 0, bonus_chips = 50, odds = 6 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
