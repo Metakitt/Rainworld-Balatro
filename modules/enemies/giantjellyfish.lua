@@ -37,7 +37,7 @@ SMODS.Joker({
 				card.ability.extra.pct_per_joker,
 				card.ability.extra.spears_needed,
 				card.ability.extra.spears_tanked,
-				card.ability.extra.pct_per_joker * (G.GAME and #G.jokers.cards or 0),
+				card.ability.extra.pct_per_joker * (G and G.jokers and #G.jokers.cards or 0),
 			},
 		}
 	end,
