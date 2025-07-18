@@ -835,6 +835,23 @@ return {
 					"{C:attention}Undefeated:{} Lose a random Voucher you've redeemed"
 				}
 			},
+			j_rw_stowaway = {
+				name = "Stowaway",
+				text = {
+					"{C:attention}Threat: {C:green}#1# in #2#{} chance to spawn an Enemy",
+					"when Blind is selected",
+					"{C:red}Cannot be Defeated: {C:green}#1# in #3#{} chance to go",
+					"dormant at end of round",
+					"{C:attention}Undefeated: {C:green}#1# in #4#{} chance to destroy",
+					"a random Joker"
+				}
+			},
+			j_rw_stowaway_dormant = {
+				name = "Stowaway",
+				text = {
+					"{C:inactive}Sleeping for {C:attention}#1#","{C:inactive}more round(s)..."
+				}
+			},
 
 			--endregion
 			--region Slugcats + Other Jokers

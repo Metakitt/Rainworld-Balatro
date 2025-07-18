@@ -583,18 +583,14 @@ for _, ante_table in pairs(ENEMY_ANTE_TABLES) do
 end
 ENEMY_ANTE_TABLES[9] = endless_table
 
-local new_roundref = new_round
-function new_round()
-	new_roundref()
-	if not G.GAME.challenge_tab then
-		-- Enemy Selection
-		-- This checks if an enemy spawns or not.
-		-- TODO: Set limits to 0 and 9. Ante 9+ picks a random enemy equally. There should be SOME Ante 0- table, I think.
-		local ante_num = SCUG.clamp(G.GAME.round_resets.ante, 1, 9)
-		if pseudorandom("rw_spawn_enemy") < 1 / ENEMY_SPAWN_DENOMINATORS[ante_num] then
-			sendDebugMessage("Spawning an enemy!", "Rainworld")
-			local valid_selection = false
-			local enemy_key = "j_rw_greenlizard" -- Fallback value
+SCUG.spawn_enemy = function(args)
+	local _ante = args.ante or G.GAME.round_resets.ante
+	local ante_num = SCUG.clamp(_ante, 1, 9)
+	if args.guarantee or pseudorandom("rw_spawn_enemy") < 1 / ENEMY_SPAWN_DENOMINATORS[ante_num] then
+		sendDebugMessage("Spawning an enemy!", "Rainworld")
+		local valid_selection = false
+		local enemy_key = "j_rw_greenlizard" -- Fallback value
+		if not args.enemy_key then
 			local enemy_pool = ENEMY_ANTE_TABLES[ante_num]
 			local enemy_choice = SCUG.number_in_range(1, #enemy_pool, "rw_enemy_selection")
 			repeat
@@ -608,7 +604,7 @@ function new_round()
 				-- If this enemy exists, use it
 				if G.P_CENTERS[enemy_key] then
 					valid_selection = true
-				-- Otherwise, use one lower on the list (more likely to exist, probably)
+					-- Otherwise, use one lower on the list (more likely to exist, probably)
 				else
 					sendWarnMessage("Enemy " .. enemy_key .. " not enabled!", "Rainworld")
 					enemy_choice = enemy_choice - 1
@@ -618,7 +614,7 @@ function new_round()
 				if enemy_choice < 1 then
 					sendErrorMessage(
 						"Couldn't find a suitable enemy for Ante "
-							.. G.GAME.round_resets.ante
+							.. _ante
 							.. "! Falling back to "
 							.. enemy_key
 							.. "...",
@@ -627,18 +623,26 @@ function new_round()
 					break
 				end
 			until valid_selection
-			-- Here's your awful prize
-			sendDebugMessage(
-				"Chose "
-					.. ((not string.find(enemy_key, "^j_")) and G.P_CENTERS[enemy_key].name or localize({
-						type = "name_text",
-						set = "Joker",
-						key = enemy_key,
-					}))
-					.. "!",
-				"Rainworld"
-			)
-			SMODS.add_card({ set = "Joker", area = G.jokers, key = enemy_key, no_edition = true })
+		else
+			enemy_key = args.enemy_key
 		end
+		-- Here's your awful prize
+		sendDebugMessage("Chose " .. ((not string.find(enemy_key, "^j_")) and G.P_CENTERS[enemy_key].name or localize({
+			type = "name_text",
+			set = "Joker",
+			key = enemy_key,
+		})) .. "!", "Rainworld")
+		SMODS.add_card({ set = "Joker", area = G.jokers, key = enemy_key, no_edition = true })
+	end
+end
+
+local new_roundref = new_round
+function new_round()
+	new_roundref()
+	if not G.GAME.challenge_tab then
+		-- Enemy Selection
+		-- This checks if an enemy spawns or not.
+		-- TODO: Set limits to 0 and 9. Ante 9+ picks a random enemy equally. There should be SOME Ante 0- table, I think.
+		SCUG.spawn_enemy()
 	end
 end
