@@ -826,6 +826,14 @@ return {
 					"{C:attention}Undefeated{}: {s:1.2,E:1,C:dark_edition}?????"
 				}
 			},
+			j_rw_giantjellyfish = {
+				name = "Giant Jellyfish",
+				text = {
+					"{C:attention}Threat:{} Blinds are #1#% larger per Joker",
+					"{C:attention}To Defeat:{} Score #2# {C:weapon}Spears{} of any kind [{C:attention}#3#{}/#2#]",
+					"{C:attention}Undefeated:{} Lose a random Voucher you've redeemed"
+				}
+			},
 
 			--endregion
 			--region Slugcats + Other Jokers

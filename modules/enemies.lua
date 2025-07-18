@@ -81,7 +81,7 @@ Ante 4 enemies(Count:15):
 = Eel Lizard [ X ] (Also appears in 5)
 = Caramel Lizard [ X ] (Exclusive to Ante 4)
 = Spitter Spider [ X ] (Also appears in 6)
-= Giant Jellyfish [ ] (Also appears in 5,7,8)
+= Giant Jellyfish [ X ] (Also appears in 5,7,8)
 
 Ante 5 enemies(Count:15):
 = Yellow Lizard [ X ] (Appears from 5 onwards)
