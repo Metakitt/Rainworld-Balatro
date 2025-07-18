@@ -26,6 +26,7 @@ SMODS.Joker({
 				card.ability.extra.pct_per_joker,
 				card.ability.extra.spears_needed,
 				card.ability.extra.spears_tanked,
+				card.ability.extra.pct_per_joker * #G.jokers.cards,
 			},
 		}
 	end,
@@ -63,17 +64,19 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			local unvoucher, key = pseudorandom_element(G.GAME.used_vouchers, "rw_giant_jellyfish", {})
-			G.GAME.used_vouchers[key] = nil
-			card_eval_status_text(card, "extra", nil, nil, nil, {
-				message = "Lost " .. localize({
-					type = "name_text",
-					set = "Voucher",
-					key = key,
-				}) .. "...",
-				colour = G.C.RED,
-				delay = 1.5,
-			})
+			if #G.GAME.used_vouchers > 0 then
+				local unvoucher, key = pseudorandom_element(G.GAME.used_vouchers, "rw_giant_jellyfish", {})
+				G.GAME.used_vouchers[key] = nil
+				card_eval_status_text(card, "extra", nil, nil, nil, {
+					message = "Lost " .. localize({
+						type = "name_text",
+						set = "Voucher",
+						key = key,
+					}) .. "...",
+					colour = G.C.RED,
+					delay = 1.5,
+				})
+			end
 		end
 	end,
 })

@@ -829,7 +829,8 @@ return {
 			j_rw_giantjellyfish = {
 				name = "Giant Jellyfish",
 				text = {
-					"{C:attention}Threat:{} Blinds are #1#% larger per Joker",
+					"{C:attention}Threat:{} Blinds are {C:attention}#1#%{} larger per Joker",
+					"{s:0.8,C:inactive}(Currently {s:0.8,C:attention}+#4#%{s:0.8,C:inactive})",
 					"{C:attention}To Defeat:{} Score #2# {C:weapon}Spears{} of any kind [{C:attention}#3#{}/#2#]",
 					"{C:attention}Undefeated:{} Lose a random Voucher you've redeemed"
 				}
