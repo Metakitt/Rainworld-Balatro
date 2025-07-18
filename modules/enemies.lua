@@ -584,6 +584,7 @@ end
 ENEMY_ANTE_TABLES[9] = endless_table
 
 SCUG.spawn_enemy = function(args)
+	args = args or {}
 	local _ante = args.ante or G.GAME.round_resets.ante
 	local ante_num = SCUG.clamp(_ante, 1, 9)
 	if args.guarantee or pseudorandom("rw_spawn_enemy") < 1 / ENEMY_SPAWN_DENOMINATORS[ante_num] then
