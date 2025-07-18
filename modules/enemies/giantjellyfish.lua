@@ -17,9 +17,20 @@ SMODS.Joker({
 	atlas = "enemies",
 	pos = { x = 5, y = 2 },
 	discovered = true,
-	blueprint_compat = true,
-	eternal_compat = true,
-	perishable_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rw_wbeehive_compat = false,
+	rw_wcherrybomb_compat = false,
+	rw_wspear_ele_compat = false,
+	rw_wspear_exp_compat = false,
+	rw_wspear_fire_compat = false,
+	rw_wflashbang_compat = false,
+	rw_wgrenade_compat = false,
+	rw_wjokerifle_compat = false,
+	rw_wrock_compat = false,
+	rw_wsingularity_compat = false,
+	rw_wspear_compat = false,
+	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
@@ -29,6 +40,9 @@ SMODS.Joker({
 				card.ability.extra.pct_per_joker * #G.jokers.cards,
 			},
 		}
+	end,
+	add_to_deck = function(self, card, from_debuff)
+		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
 		-- Threat
