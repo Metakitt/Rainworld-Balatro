@@ -23,24 +23,24 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		local awake = {
 			vars = {
-				G.GAME and G.GAME.probabilities.normal or 1,
+				1, -- G.GAME and G.GAME.probabilities.normal or 1,
 				card.ability.extra.enemy_chance,
 				card.ability.extra.dormant_chance,
 				card.ability.extra.joker_chance,
 			},
 		}
 		local asleep = {
-			key = self.key + "_dormant",
+			key = self.key .. "_dormant",
 			vars = {
 				card.ability.extra.dormant_timer,
 			},
 		}
-		return dormant_timer > 0 and asleep or awake
+		return card.ability.extra.dormant_timer > 0 and asleep or awake
 	end,
 	calculate = function(self, card, context)
 		-- Threat
 		if context.setting_blind and not context.blueprint and card.ability.extra.dormant_timer == 0 then
-			if pseudorandom("rw_stowaway_spawn") < G.GAME.probabilities.normal / card.ability.extra.enemy_chance then
+			if pseudorandom("rw_stowaway_spawn") < 1 / card.ability.extra.enemy_chance then
 				SCUG.spawn_enemy({ guarantee = true })
 			end
 		end
@@ -49,7 +49,7 @@ SMODS.Joker({
 			if card.ability.extra.dormant_timer == 0 then
 				if
 					pseudorandom("rw_stowaway_sleep")
-					< G.GAME.probabilities.normal / card.ability.extra.dormant_chance
+					< 1 / card.ability.extra.dormant_chance
 				then
 					card.ability.extra.dormant_timer = SCUG.number_in_range(3, 6, "rw_stowaway_eepy")
 					card_eval_status_text(card, "extra", nil, nil, nil, {
@@ -74,7 +74,7 @@ SMODS.Joker({
 			and not context.blueprint
 			and card.ability.extra.dormant_timer == 0
 		then
-			if pseudorandom("rw_stowaway_kill") < G.GAME.probabilities.normal / card.ability.extra.joker_chance then
+			if pseudorandom("rw_stowaway_kill") < 1 / card.ability.extra.joker_chance then
 				local random_joker = pseudorandom_element(G.jokers.cards, "rw_stowaway_kill", {})
 				if not SMODS.is_eternal(random_joker) then
 					SMODS.destroy_cards(random_joker)
