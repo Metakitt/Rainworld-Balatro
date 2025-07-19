@@ -65,7 +65,6 @@ SMODS.Sticker({
 				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
 				if #notrot > 0 then
 				rotted:set_rotted()
-				SMODS.Stickers["rw_rotted"]:apply(rotted, true)
 				end
 			end
 	end
@@ -80,15 +79,15 @@ function Game:init_game_object()
 end
 
 function Card:set_rotted(_rotted) 
-    self.ability.rotted = nil
-    if self.config.center.rotted_compat ~= false then 
-        self.ability.rotted = true
+    self.ability.rw_rotted = nil
+    if self.config.center.rw_rotted_compat ~= false then 
+        self.ability.rw_rotted = true
         self.ability.rotted_tally = G.GAME.rottedjoker
     end
 end
 
 function Card:calculate_rotted()
-    if self.ability.rotted and self.ability.rotted_tally > 0 then
+    if self.ability.rw_rotted and self.ability.rotted_tally > 0 then
         if self.ability.rotted_tally == 1 then
             self.ability.rotted_tally = 0
             card_eval_status_text(self, 'extra', nil, nil, nil, {message = 'Rotted Away!',colour = G.C.FILTER, delay = 0.45})
