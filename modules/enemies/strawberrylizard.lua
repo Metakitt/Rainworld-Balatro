@@ -46,7 +46,7 @@ local jokers = {}
 			end
 			if #G.jokers.cards >= 2 then
 			local chosen_joker = jokers[math.random(1, #jokers)]
-			print(chosen_joker)
+			-- print(chosen_joker)
 			card.ability.last_joker = chosen_joker
 			--chosen_joker:set_debuff(true, "strawberry")
 			SMODS.debuff_card(chosen_joker, true, "strawberry")
