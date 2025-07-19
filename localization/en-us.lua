@@ -564,10 +564,10 @@ return {
 				text = {
 					"{C:attention}Threat{}: At the start of each blind,",
 					"{C:green}1 in #1#{} chance for each card",
-					"in your deck to become Rot.",
+					"in your deck to become {C:rot}Rot{}.",
 					"{C:attention}To Defeat{}: Score a hand while holding an {C:weapon}Explosive Spear{}.",
 					"{C:attention}Undefeated{}: Chooses a random {C:attention}rank{} and turns it",
-					"to Rot at end of {C:attention}Boss Blind{}.",
+					"to {C:rot}Rot{} at end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_bluelizard = {
@@ -654,11 +654,11 @@ return {
 				text = {
 					"{C:attention}Threat{}: At the start of each blind,",
 					"{C:green}1 in #1#{} chance for each card",
-					"in your deck to become Rot.",
+					"in your deck to become {C:rot}Rot{}.",
 					"{C:attention}To Defeat{}: Score two hands while holding",
 					"an {C:weapon}Explosive Spear{}. [{C:attention}#2#{}/2]",
 					"{C:attention}Undefeated{}: Chooses a random {C:attention}suit{} and turns it",
-					"to Rot at end of {C:attention}Boss Blind{}.",
+					"to {C:rot}Rot{} at end of {C:attention}Boss Blind{}.",
 				},
 			},
 			j_rw_salamander = {
@@ -668,7 +668,7 @@ return {
 					"{C:green}1 in #1#{} chance for each card",
 					"in your deck to become Wet.",
 					"{C:attention}To Defeat{}: Use 4 {C:tarot}Tarot{} Cards. [{C:attention}#2#{}/4]",
-					"{C:attention}Undefeated{}: Wet cards become Rot Cards.",
+					"{C:attention}Undefeated{}: Wet cards become {C:rot}Rot Cards{}.",
 				},
 			},
 			j_rw_monsterkelp = {

@@ -26,7 +26,7 @@ SMODS.Sticker({
 	loc_txt = {
 		label = "Rot",
 	},
-	badge_colour = HEX("875796"),
+	badge_colour = HEX("000070"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 4, y = 0 },
 	default_compat = true,
@@ -273,6 +273,7 @@ end
 --Definitions for Localization
 G.C.FOOD = HEX("0736f3")
 G.C.WEAPON = HEX("875796")
+G.C.ROT = HEX("000070")
 
 local loc_colour_RW = loc_colour
 function loc_colour(_c, _default)
@@ -281,5 +282,6 @@ loc_colour_RW()
 end
 G.ARGS.LOC_COLOURS.weapon = G.C.WEAPON
 G.ARGS.LOC_COLOURS.food = G.C.FOOD
+G.ARGS.LOC_COLOURS.rot = G.C.ROT
 	return loc_colour_RW(_c, _default)
 end
