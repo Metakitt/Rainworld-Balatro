@@ -381,6 +381,17 @@ return {
 					"and wins the blind.",
 				},
 			},
+			
+			rw_rotted = {
+				name = "Rot",
+				text = {
+				 "{C:chips}-25{} Chips",
+				 "{C:green}1 in 20 chance to spread",
+				 "to another {C:attention}Joker{} at the end of {C:attention}Blind{}",
+				 "{C:attention}#1#{} round(s) to destruction",
+				},
+			},
+			
 		},
 		foods = {
 			c_rw_bluefruit = {
