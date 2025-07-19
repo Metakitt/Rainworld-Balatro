@@ -31,10 +31,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-		if context.setting_blind then
-		--	print(card.ability.extra.counter)
-			--print(card.ability.extra.deathcounter)
-		end
 		--Threat
 		if context.main_eval and context.end_of_round and not context.blueprint then
 			local score_ratio = G.GAME.chips / G.GAME.blind.chips
@@ -44,30 +40,18 @@ SMODS.Joker({
 					message = "Over...",
 					colour = G.C.RED
 				})
+			-- Defeat
 			else
 				card.ability.extra.deathcounter = card.ability.extra.deathcounter - 1
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = "Under!",
 					colour = G.C.GREEN
 				})
+				if card.ability.extra.deathcounter <= 0 then
+					card.ability.extra.defeat = true
+					SMODS.destroy_cards(card, true)
+				end
 			end
-		end
-
-		--Defeat
-		if card.ability.extra.deathcounter <= 0 and not context.blueprint then
-			card.ability.extra.defeat = true
-		end
-
-		if context.after and card.ability.extra.defeat == true and not context.blueprint then
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 1.3,
-				func = function()
-					card:start_dissolve()
-					return true
-				end,
-				blocking = false,
-			}))
 		end
 		--Undefeated
 		-- It doesn't have an undefeated condition but if its counter goes up to 5, you die.
