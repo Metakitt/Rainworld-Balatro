@@ -866,7 +866,7 @@ return {
 			},
 
 			--endregion
-			--region Slugcats + Other Jokers
+			--region Slugcats
 			j_rw_abundance = {
 				name = "Abundance",
 				text = {
@@ -1264,6 +1264,16 @@ return {
 					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
+			},
+			--endregion
+			--region Not-Slugcats
+			j_rw_arsenal = {
+				name = "Arsenal",
+				text = {
+					"{C:mult}+#1#{} Mult for every {C:weapon}Weapon",
+					"held by your Jokers",
+					"{C:inactive}(Currently {C:mult}+#2# {C:inactive}Mult)"
+				}
 			},
 			--endregion
 		},
