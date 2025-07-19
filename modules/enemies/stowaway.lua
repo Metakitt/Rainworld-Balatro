@@ -45,12 +45,9 @@ SMODS.Joker({
 			end
 		end
 		-- "Defeat"
-		if context.end_of_round and not context.blueprint then
+		if context.end_of_round and not context.blueprint and context.main_eval then
 			if card.ability.extra.dormant_timer == 0 then
-				if
-					pseudorandom("rw_stowaway_sleep")
-					< 1 / card.ability.extra.dormant_chance
-				then
+				if pseudorandom("rw_stowaway_sleep") < 1 / card.ability.extra.dormant_chance then
 					card.ability.extra.dormant_timer = SCUG.number_in_range(3, 6, "rw_stowaway_eepy")
 					card_eval_status_text(card, "extra", nil, nil, nil, {
 						message = "Dormant...",
@@ -60,7 +57,8 @@ SMODS.Joker({
 			else
 				card.ability.extra.dormant_timer = card.ability.extra.dormant_timer - 1
 				card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = card.ability.extra.dormant_timer == 0 and "Awake!" or card.ability.extra.dormant_timer,
+					message = card.ability.extra.dormant_timer == 0 and "Awake!"
+						or tostring(card.ability.extra.dormant_timer),
 					colour = G.C.FILTER,
 				})
 			end

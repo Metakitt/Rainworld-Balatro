@@ -721,7 +721,7 @@ return {
 					"the end of {C:attention}Boss Blind{}.",
 				},
 			},
-			
+
 			j_rw_bigspider = {
 				name = "Big Spider",
 				text = {
@@ -733,24 +733,24 @@ return {
 					"{C:attention}Undefeated{}: Nothing.",
 				},
 			},
-			
+
 			j_rw_eellizard = {
 				name = "Eel Lizard",
 				text = {
 					"{C:attention}Threat:{} {C:spades}Dark {C:clubs}suits{} are {C:red}debuffed{}.",
 					"{C:attention}To Defeat:{} Score 2 {C:attention}Wet Cards{}. [{C:attention}#1#{}/2]",
-					"{C:attention}Undefeated:{} {C:spades}Dark {C:clubs}suits{} stay {C:red}permanently debuffed{}."
-				}
+					"{C:attention}Undefeated:{} {C:spades}Dark {C:clubs}suits{} stay {C:red}permanently debuffed{}.",
+				},
 			},
 			j_rw_blacklizard = {
 				name = "Black Lizard",
 				text = {
 					"{C:attention}Threat:{} {C:hearts}Light {C:diamonds}suits{} are {C:red}debuffed{}.",
 					"{C:attention}To Defeat:{} Score a {C:attention}Flush House{} with a {C:spades}dark {C:clubs}suit{}.",
-					"{C:attention}Undefeated:{} {C:hearts}Light {C:diamonds}suits{} stay {C:red}permanently debuffed{}."
-				}
+					"{C:attention}Undefeated:{} {C:hearts}Light {C:diamonds}suits{} stay {C:red}permanently debuffed{}.",
+				},
 			},
-			
+
 			j_rw_spitterspider = {
 				name = "Spitter Spider",
 				text = {
@@ -762,7 +762,7 @@ return {
 					"{C:attention}Undefeated{}: Nothing.",
 				},
 			},
-			
+
 			j_rw_motherspider = {
 				name = "Mother Spider",
 				text = {
@@ -773,7 +773,7 @@ return {
 					"{C:attention}Undefeated{}: Nothing.",
 				},
 			},
-			
+
 			j_rw_strawberrylizard = {
 				name = "Strawberry Lizard",
 				text = {
@@ -784,7 +784,7 @@ return {
 					"{C:purple}Eternal{} and remains debuffed permanently.",
 				},
 			},
-			
+
 			j_rw_caramellizard = {
 				name = "Caramel Lizard",
 				text = {
@@ -795,7 +795,7 @@ return {
 					"{C:attention}To Defeat{}: Score a lucky card.",
 					"{C:attention}Undefeated{}: {C:food}Food{} cards and {C:food}Food{} packs",
 					"no longer appear for the rest of the run.",
-					"Caramel Lizard leaves."
+					"Caramel Lizard leaves.",
 				},
 			},
 			j_rw_vulture = {
@@ -805,8 +805,8 @@ return {
 					"{C:attention}To Defeat{}: Score #2# {C:weapon}Spears{} of any kind. [{C:attention}#3#{}/#2#]",
 					"{s:0.8,C:weapon}(Normal, Explosive, Electric, Fire)",
 					"{C:attention}Undefeated{}: All {C:weapon}Weapons{} are",
-					"removed from {C:attention}all{} Jokers."
-				}
+					"removed from {C:attention}all{} Jokers.",
+				},
 			},
 			j_rw_kingvulture = {
 				name = "King Vulture",
@@ -814,8 +814,8 @@ return {
 					"{C:attention}Threat{}: {C:green}1 in #1#{} chance that hand scores {C:red}0{}.",
 					"{C:attention}To Defeat{}: Score #2# {C:weapon}Spears{} of any kind. [{C:attention}#3#{}/#2#]",
 					"{s:0.8,C:weapon}(Normal, Explosive, Electric, Fire)",
-					"{C:attention}Undefeated{}: {C:red}Die{}."
-				}
+					"{C:attention}Undefeated{}: {C:red}Die{}.",
+				},
 			},
 			j_rw_blackholelizard = {
 				name = "Black Hole Lizard",
@@ -823,8 +823,8 @@ return {
 					"{C:attention}Threat{}: {C:inactive}None.",
 					"{C:attention}To Defeat{}: Have a Joker with a {C:weapon}Singularity Bomb{}",
 					"{s:0.8,C:inactive}(Destroys the Singularity Bomb)",
-					"{C:attention}Undefeated{}: {s:1.2,E:1,C:dark_edition}?????"
-				}
+					"{C:attention}Undefeated{}: {s:1.2,E:1,C:dark_edition}?????",
+				},
 			},
 			j_rw_giantjellyfish = {
 				name = "Giant Jellyfish",
@@ -832,8 +832,8 @@ return {
 					"{C:attention}Threat:{} Blinds are {C:attention}#1#%{} larger per Joker",
 					"{s:0.8,C:inactive}(Currently {s:0.8,C:attention}+#4#%{s:0.8,C:inactive})",
 					"{C:attention}To Defeat:{} Score #2# {C:weapon}Spears{} of any kind [{C:attention}#3#{}/#2#]",
-					"{C:attention}Undefeated:{} Lose a random Voucher you've redeemed"
-				}
+					"{C:attention}Undefeated:{} Lose a random Voucher you've redeemed",
+				},
 			},
 			j_rw_stowaway = {
 				name = "Stowaway",
@@ -843,14 +843,15 @@ return {
 					"{C:red}Cannot be Defeated: {C:green}#1# in #3#{} chance to go",
 					"dormant at end of round",
 					"{C:attention}Undefeated: {C:green}#1# in #4#{} chance to destroy",
-					"a random Joker"
-				}
+					"a random Joker",
+				},
 			},
 			j_rw_stowaway_dormant = {
 				name = "Stowaway",
 				text = {
-					"{C:inactive}Sleeping for {C:attention}#1#","{C:inactive}more round(s)..."
-				}
+					"{C:inactive}Sleeping for {C:attention}#1#",
+					"{C:inactive}more round(s)...",
+				},
 			},
 
 			--endregion
