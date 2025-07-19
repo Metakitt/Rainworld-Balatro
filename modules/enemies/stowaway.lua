@@ -71,8 +71,11 @@ SMODS.Joker({
 			else
 				card.ability.extra.dormant_timer = card.ability.extra.dormant_timer - 1
 				card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = card.ability.extra.dormant_timer == 0 and "Awake!"
-						or tostring(card.ability.extra.dormant_timer),
+					message = card.ability.extra.dormant_timer == 0 and "Awake!" or localize({
+						type = "variable",
+						key = "a_remaining",
+						vars = { card.ability.extra.dormant_timer },
+					}), --tostring(card.ability.extra.dormant_timer),
 					colour = G.C.FILTER,
 				})
 			end
