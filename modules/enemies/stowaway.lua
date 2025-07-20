@@ -55,6 +55,7 @@ SMODS.Joker({
 		-- Threat
 		if context.setting_blind and not context.blueprint and card.ability.extra.dormant_timer == 0 then
 			if pseudorandom("rw_stowaway_spawn") < 1 / card.ability.extra.enemy_chance then
+				sendDebugMessage("Stowaway spawn!", "Rainworld")
 				SCUG.spawn_enemy({ guarantee = true })
 			end
 		end
