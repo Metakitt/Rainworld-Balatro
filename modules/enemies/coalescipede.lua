@@ -84,24 +84,17 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			G.E_MANAGER:add_event(Event({
+			for i=1,2 do
+				G.E_MANAGER:add_event(Event({
 				trigger = "after",
-				delay = 1.3,
+				delay = 1.3 + (i-1)/2,
 				func = function()
 					SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_coalescipede", no_edition = true })
 					return true
 				end,
 				blocking = false,
 			}))
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 1.3,
-				func = function()
-					SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_coalescipede", no_edition = true })
-					return true
-				end,
-				blocking = false,
-			}))
+			end
 		end
 	end,
 })

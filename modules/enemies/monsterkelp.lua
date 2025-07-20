@@ -72,14 +72,8 @@ end
 --Undefeated
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint then
-for i=1, #G.deck.cards do
-G.deck.cards[i].ability.perma_bonus = G.deck.cards[i].ability.perma_bonus + card.ability.extra.card_unchips
-end
-for i=1, #G.hand.cards do
-G.hand.cards[i].ability.perma_bonus = G.hand.cards[i].ability.perma_bonus + card.ability.extra.card_unchips
-end
-for i=1, #G.discard.cards do
-G.discard.cards[i].ability.perma_bonus = G.discard.cards[i].ability.perma_bonus + card.ability.extra.card_unchips
+for _,v in pairs(G.playing_cards) do
+    v.ability.perma_bonus = v.ability.perma_bonus + card.ability.extra.card_unchips
 end
 end
 end

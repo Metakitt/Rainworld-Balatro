@@ -86,24 +86,11 @@ end
 --Undefeated
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
-
-for _, v in ipairs(G.deck.cards) do
-	if v.ability.perma_bonus >= 5 then
-	SMODS.debuff_card(v, true, "centiwing")
-        end
+for _,v in pairs(G.playing_cards) do
+    if v.ability.perma_bonus >= 5 then
+        SMODS.debuff_card(v, true, "centiwing")
     end
-	
-	for _, v in ipairs(G.hand.cards) do
-	if v.ability.perma_bonus >= 5  then
-       SMODS.debuff_card(v, true, "centiwing")
-        end
-    end
-	
-for _, v in ipairs(G.discard.cards) do
-	if v.ability.perma_bonus >= 5  then
-         SMODS.debuff_card(v, true, "centiwing")
-        end
-    end
+end
 
 
 end

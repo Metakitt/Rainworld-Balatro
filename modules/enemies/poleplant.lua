@@ -68,16 +68,9 @@ end
 --Undefeated
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
-for i=1, #G.deck.cards do
-G.deck.cards[i].ability.perma_mult = G.deck.cards[i].ability.perma_mult + card.ability.extra.card_mult
+for _,v in pairs(G.playing_cards) do
+    v.ability.perma_mult = v.ability.perma_mult + card.ability.extra.card_mult
 end
-for i=1, #G.hand.cards do
-G.hand.cards[i].ability.perma_mult = G.hand.cards[i].ability.perma_mult + card.ability.extra.card_mult
-end
-for i=1, #G.discard.cards do
-G.discard.cards[i].ability.perma_mult = G.discard.cards[i].ability.perma_mult + card.ability.extra.card_mult
-end
-
 end
 end
 	}
