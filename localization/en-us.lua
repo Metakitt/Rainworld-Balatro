@@ -871,7 +871,7 @@ return {
 					"{C:attention}Undefeated: {C:red}Die",
 				},
 			},
-			
+
 			j_rw_maturecentipede = {
 				name = "Mature Centipede",
 				text = {
@@ -881,7 +881,7 @@ return {
 					"{C:attention}Undefeated: {C:attention}Destroys{} all disabled Jokers.",
 				},
 			},
-			
+
 			j_rw_overgrowncentipede = {
 				name = "Overgrown Centipede",
 				text = {
@@ -891,7 +891,7 @@ return {
 					"{C:attention}Undefeated: {C:attention}Destroys{} all disabled Jokers.",
 				},
 			},
-			
+
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {
@@ -1302,6 +1302,33 @@ return {
 					"{C:inactive}(Currently {C:mult}+#2# {C:inactive}Mult)",
 				},
 			},
+			j_rw_scavenger_neutral = {
+				name = "Scavenger",
+				text = {
+					"When Blind is selected, {C:green}#1# in #2#",
+					"chance to trade a {C:food}Food{} card",
+					"for a {C:weapon}Weapon{} card",
+					"{C:inactive}[Reputation: {C:attention}#3#{C:inactive}]",
+				},
+			},
+			j_rw_scavenger_enemy = {
+				name = "Scavenger",
+				text = {
+					"{C:attention}Threat: {C:green}#1# in #2#{} chance to steal",
+					"a {C:weapon}Weapon{} from a Joker each hand,",
+					"if successful, gives {X:chips,C:white}X#3#{} Chips",
+					"{C:inactive}[Reputation: {C:attention}#4#{C:inactive}]",
+				},
+			},
+			j_rw_scavenger_friendly = {
+				name = "Scavenger",
+				text = {
+					"When Blind is selected, {C:green}#1# in #2#",
+					"chance to receive a {C:weapon}Weapon{} card;",
+					"Otherwise, receive a {C:food}Food{} card",
+					"{C:inactive}[Reputation: {C:attention}#3#{C:inactive}]",
+				},
+			},
 			--endregion
 		},
 	},
@@ -1311,6 +1338,10 @@ return {
 			k_fooduncommon = "Uncommon",
 			k_foodrare = "Rare",
 			k_enemy = "Enemy",
+		},
+		v_dictionary = {
+			a_scav_rep = "+#1# Reputation",
+			a_scav_rep_minus = "-#1# Reputation",
 		},
 	},
 }

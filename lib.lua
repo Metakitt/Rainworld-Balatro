@@ -55,3 +55,15 @@ SCUG.get_rank_in_deck = function()
 	local chosen_rank, _ = pseudorandom_element(all_ranks, "get_rank", {})
 	return chosen_rank
 end
+
+SCUG.scav_rep = function(card)
+	local scug_rep = (1 * #SMODS.find_card("j_rw_monk", true))
+		+ (-1 * #SMODS.find_card("j_rw_rivulet", true))
+		+ (-2 * (#SMODS.find_card("j_rw_hunter", true) + #SMODS.find_card("j_rw_spearmaster", true)))
+	local reputation = scug_rep
+		+ (card and card.ability and card.ability.extra and card.ability.extra.permanent_reputation or 0)
+	if #SMODS.find_card("j_rw_artificer", true) > 0 then
+		reputation = -1000
+	end
+	return SCUG.clamp(reputation, -4, 4)
+end

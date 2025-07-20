@@ -12,6 +12,7 @@ assert(SMODS.load_file("modules/jokers/slugpup.lua"))()
 assert(SMODS.load_file("modules/jokers/spearmaster.lua"))()
 assert(SMODS.load_file("modules/jokers/survivor.lua"))()
 assert(SMODS.load_file("modules/jokers/arsenal.lua"))()
+assert(SMODS.load_file("modules/jokers/scavenger.lua"))()
 -- Slugcats underneath this line are to be added in the next big update and are unfinished, experimental or in need of cleaning. Uncomment and load them at your own risk!
 assert(SMODS.load_file("modules/jokers/pathfinder.lua"))()
 assert(SMODS.load_file("modules/jokers/blurred.lua"))()
