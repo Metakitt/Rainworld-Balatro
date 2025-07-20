@@ -1022,7 +1022,7 @@ return {
 			j_rw_spearmaster = {
 				name = "Spearmaster",
 				text = {
-					"{C:mult}X#1#{} Mult if all scoring",
+					"{C:white,X:mult}X#1#{} Mult if all scoring",
 					"cards are {C:attention}Enhanced",
 				},
 			},
@@ -1171,7 +1171,7 @@ return {
 			j_rw_magician_spearmaster = {
 				name = "Magician",
 				text = {
-					"{C:mult}X3 Mult{} if all scoring",
+					"{C:white,X:mult}X3{} Mult if all scoring",
 					"cards are {C:attention}Enhanced{}.",
 					"(Currently: {C:chips}+#3#{} Chips,",
 					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
