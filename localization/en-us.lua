@@ -1329,6 +1329,14 @@ return {
 					"{C:inactive}[Reputation: {C:attention}#3#{C:inactive}]",
 				},
 			},
+			j_rw_ecoboost = {
+				name = "Ecoboost",
+				text = {
+					"This Joker gains {X:chips,C:white}X#1#{} Chips",
+					"whenever an {V:1}Enemy{} spawns",
+					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)"
+				}
+			},
 			--endregion
 		},
 	},
