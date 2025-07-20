@@ -32,6 +32,8 @@ assert(SMODS.load_file("modules/enemies/blackholelizard.lua"))()
 assert(SMODS.load_file("modules/enemies/giantjellyfish.lua"))()
 assert(SMODS.load_file("modules/enemies/stowaway.lua"))()
 assert(SMODS.load_file("modules/enemies/redlizard.lua"))()
+assert(SMODS.load_file("modules/enemies/maturecentipede.lua"))()
+assert(SMODS.load_file("modules/enemies/overgrowncentipede.lua"))()
 
 
 --[[
@@ -91,8 +93,8 @@ Ante 5 enemies(Count:15):
 = Yellow Lizard [ X ] (Appears from 5 onwards)
 = Black Lizard [ X ] (Appears from 5 onwards)
 = Vulture [ X ] (Appears from 5 onwards)
-= Mature Centipede [ ] (Exclusive to Ante 5)
-= Overgrown Centipede [ ] (Exclusive to Ante 5)
+= Mature Centipede [ X ] (Exclusive to Ante 5)
+= Overgrown Centipede [ X ] (Exclusive to Ante 5)
 = Daddy Long Legs [ X ] (Appears from 5 onwards)
 = King Vulture [ X ] (Appears from 5 onwards)
 

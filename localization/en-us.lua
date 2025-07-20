@@ -871,6 +871,27 @@ return {
 					"{C:attention}Undefeated: {C:red}Die",
 				},
 			},
+			
+			j_rw_maturecentipede = {
+				name = "Mature Centipede",
+				text = {
+					"{C:attention}Threat:{} xMult Jokers are {C:attention}disabled{}.",
+					"Jokers with xMult {C:weapon}weapons{} are {C:attention}disabled{}.",
+					"{C:attention}To Defeat:{} Score {C:attention}3[#1#/3]{} hands.",
+					"{C:attention}Undefeated: {C:attention}Destroys{} all disabled Jokers.",
+				},
+			},
+			
+			j_rw_overgrowncentipede = {
+				name = "Overgrown Centipede",
+				text = {
+					"{C:attention}Threat:{} xMult and xChips Jokers are {C:attention}disabled{}.",
+					"Jokers with xMult or xChips {C:weapon}weapons{} are {C:attention}disabled{}.",
+					"{C:attention}To Defeat:{} Score {C:attention}3[#1#/3]{} hands.",
+					"{C:attention}Undefeated: {C:attention}Destroys{} all disabled Jokers.",
+				},
+			},
+			
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {
