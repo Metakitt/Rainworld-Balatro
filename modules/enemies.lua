@@ -103,10 +103,10 @@ Ante 6 enemies(Count:15):
 = Miros Bird [ ] (Also appears in 7)
 = Mother Long Legs [ ] (Appears from 6 onwards)
 = Hunter Long Legs [ ] (Exclusive to Ante 6)
-= Stowaway [ ] (Also appears in 7)
+= Stowaway [ X ] (Also appears in 7)
 
 Ante 7 enemies(Count:15):
-= Red Lizard [ ] (Also appears in 8)
+= Red Lizard [ X ] (Also appears in 8)
 = Mother Spider [ X ] (Exclusive to Ante 7)
 = Aquapede [ X ] (Exclusive to Ante 7)
 = Miros Vulture [ ] (Also appears in 8)
