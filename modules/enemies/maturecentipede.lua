@@ -69,7 +69,7 @@ rw_wsingularity_compat = false,
 rw_wspear_compat = false,
 rw_wsporepuff_compat = false,
 loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.hand_count) } }
+    return { vars = { card.ability.extra.hand_count } }
     end,
 add_to_deck = function(self, card, from_debuff) 
 SMODS.Stickers["eternal"]:apply(card,true)
@@ -81,7 +81,7 @@ if context.main_eval and not context.blueprint then
 			for _, center in ipairs(x_mult_jokers_keys) do
 				if #SMODS.find_card(center, true) then
 					for _, v in pairs(SMODS.find_card(center, true)) do
-					SMODS.debuff_card(v, "true", "maturecentipede")
+					SMODS.debuff_card(v, true, "maturecentipede")
 					end
 				end
 			end
@@ -91,7 +91,7 @@ if context.main_eval and not context.blueprint then
  or v.ability.rw_wspear_ele == true  
  or v.ability.rw_wspear_fire == true)
  and not context.blueprint then
- SMODS.debuff_card(v, "true", "maturecentipede")
+ SMODS.debuff_card(v, true, "maturecentipede")
  end
 		end
 
@@ -129,6 +129,7 @@ end
 end
 
 
+end
 end
 end
 	}
