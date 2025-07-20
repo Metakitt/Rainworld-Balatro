@@ -68,12 +68,17 @@ SCUG.scav_rep = function(card)
 	return SCUG.clamp(reputation, -4, 4)
 end
 
-SCUG.enhancement_count = function(enhancement_key)
+---param enhancement_key string
+---param count_debuffed boolean|nil
+SCUG.enhancement_count = function(enhancement_key, count_debuffed)
+	count_debuffed = count_debuffed or false
 	local cards = {}
 	if G and G.playing_cards then
 		for _, v in ipairs(G.playing_cards) do
 			if v.config.center_key == enhancement_key then
-				table.insert(cards, v)
+				if v:can_calculate(count_debuffed) then
+					table.insert(cards, v)
+				end
 			end
 		end
 	end

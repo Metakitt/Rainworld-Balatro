@@ -82,27 +82,9 @@ end
 --Undefeated
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
-for _, v in ipairs(G.deck.cards) do
-		if v.config.center == G.P_CENTERS.m_rw_wetasscard then
-            v:start_dissolve()
-			
-        end
-    end
-	
-	for _, v in ipairs(G.hand.cards) do
-	if v.config.center == G.P_CENTERS.m_rw_wetasscard then
-            v:start_dissolve()
-        end
-    end
-	
-for _, v in ipairs(G.discard.cards) do
-	if v.config.center == G.P_CENTERS.m_rw_wetasscard then
-            v:start_dissolve()
-        end
-    end
+    local _, wet_cards = SCUG.enhancement_count("m_rw_wetasscard", true)
+    SMODS.destroy_cards(wet_cards)
 
 end
-
 end
-
 	}
