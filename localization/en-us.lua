@@ -381,17 +381,16 @@ return {
 					"and wins the blind.",
 				},
 			},
-			
+
 			rw_rotted = {
 				name = "Rot",
 				text = {
-				 "{C:chips}-25{} Chips",
-				 "{C:green}1 in 20 chance to spread",
-				 "to another {C:attention}Joker{} at the end of {C:attention}Blind{}",
-				 "{C:attention}#1#{} round(s) to destruction",
+					"{C:chips}-25{} Chips",
+					"{C:green}1 in 20 chance to spread",
+					"to another {C:attention}Joker{} at the end of {C:attention}Blind{}",
+					"{C:attention}#1#{} round(s) to destruction",
 				},
 			},
-			
 		},
 		foods = {
 			c_rw_bluefruit = {
@@ -864,7 +863,14 @@ return {
 					"{C:inactive}more round(s)...",
 				},
 			},
-
+			j_rw_redlizard = {
+				name = "Red Lizard",
+				text = {
+					"{C:attention}Threat:{} Halves your Mult before score is totalled",
+					"{C:attention}To Defeat:{} Score {C:attention}#1#%{} of the Blind's chips",
+					"{C:attention}Undefeated: {C:red}Die",
+				},
+			},
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {
@@ -1272,8 +1278,8 @@ return {
 				text = {
 					"{C:mult}+#1#{} Mult for every {C:weapon}Weapon",
 					"held by your Jokers",
-					"{C:inactive}(Currently {C:mult}+#2# {C:inactive}Mult)"
-				}
+					"{C:inactive}(Currently {C:mult}+#2# {C:inactive}Mult)",
+				},
 			},
 			--endregion
 		},

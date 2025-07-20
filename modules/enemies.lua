@@ -31,6 +31,8 @@ assert(SMODS.load_file("modules/enemies/kingvulture.lua"))()
 assert(SMODS.load_file("modules/enemies/blackholelizard.lua"))()
 assert(SMODS.load_file("modules/enemies/giantjellyfish.lua"))()
 assert(SMODS.load_file("modules/enemies/stowaway.lua"))()
+assert(SMODS.load_file("modules/enemies/redlizard.lua"))()
+
 
 --[[
 Enemy general format:
