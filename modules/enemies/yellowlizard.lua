@@ -59,11 +59,14 @@ SMODS.Joker({
 		--Defeat
 		if context.reroll_shop then
 			card.ability.extra.rerollneeded = card.ability.extra.rerollneeded - 1
-		end
-
 		if card.ability.extra.rerollneeded <= 0 then
 			card.ability.extra.defeat = true
+			SMODS.destroy_cards(card, true)
 		end
+
+		end
+
+		
 
 		if context.after and card.ability.extra.defeat == true and not context.blueprint then
 			G.E_MANAGER:add_event(Event({
