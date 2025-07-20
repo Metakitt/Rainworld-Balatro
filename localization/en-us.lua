@@ -1334,8 +1334,16 @@ return {
 				text = {
 					"This Joker gains {X:chips,C:white}X#1#{} Chips",
 					"whenever an {V:1}Enemy{} spawns",
-					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)"
-				}
+					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
+				},
+			},
+			j_rw_stupid_wet_rat = {
+				name = "Stupid Wet Rat",
+				text = {
+					"{X:chips,C:white}X#1#{} Chips for every",
+					"Wet Card in your deck",
+					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
+				},
 			},
 			--endregion
 		},

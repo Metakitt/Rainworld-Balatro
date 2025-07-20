@@ -67,3 +67,15 @@ SCUG.scav_rep = function(card)
 	end
 	return SCUG.clamp(reputation, -4, 4)
 end
+
+SCUG.enhancement_count = function(enhancement_key)
+	local cards = {}
+	if G and G.playing_cards then
+		for _, v in ipairs(G.playing_cards) do
+			if v.config.center_key == enhancement_key then
+				table.insert(cards, v)
+			end
+		end
+	end
+	return #cards, cards
+end
