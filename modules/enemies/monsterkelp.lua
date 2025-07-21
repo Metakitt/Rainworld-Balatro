@@ -47,14 +47,15 @@ end
 
 --Defeat
 if context.joker_main and not context.blueprint then
- for i = 1, #G.jokers.cards do
- if (G.jokers.cards[i].ability.rw_wflashbang or G.jokers.cards[i].ability.rw_wspear) and not context.blueprint then
- card.ability.extra.handcount = card.ability.extra.handcount + 1
+--  for i = 1, #G.jokers.cards do
+--  if (G.jokers.cards[i].ability.rw_wflashbang or G.jokers.cards[i].ability.rw_wspear) and not context.blueprint then
+--  card.ability.extra.handcount = card.ability.extra.handcount + 1
+card.ability.extra.handcount = card.ability.extra.handcount + SCUG.weapon_count("rw_wspear") + SCUG.weapon_count("rw_wflashbang")
  if card.ability.extra.handcount >= 2 then
  card.ability.extra.defeat = true
  end
-end
-end
+-- end
+-- end
 end
 
  if context.after and card.ability.extra.defeat == true and not context.blueprint then

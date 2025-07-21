@@ -59,11 +59,12 @@ SMODS.Joker({
 
 		--Defeat
 		if context.main_eval and not context.blueprint then
-			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i].ability.rw_wflashbang and not context.blueprint then
-					card.ability.extra.defeat = true
-				end
-			end
+			-- for i = 1, #G.jokers.cards do
+			-- 	if G.jokers.cards[i].ability.rw_wflashbang and not context.blueprint then
+			-- 		card.ability.extra.defeat = true
+			-- 	end
+			-- end
+			if SCUG.weapon_count("rw_wflashbang") > 0 then card.ability.extra.defeat = true end
 		end
 		if context.after and card.ability.extra.defeat == true then
 			G.E_MANAGER:add_event(Event({

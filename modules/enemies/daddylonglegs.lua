@@ -47,17 +47,21 @@ else
 end
 end
 end
---Defeat
- if context.joker_main and not context.blueprint then
- for i = 1, #G.jokers.cards do
- if G.jokers.cards[i].ability.rw_wspear_exp and not context.blueprint then
- card.ability.extra.spearattack = card.ability.extra.spearattack + 1
- if card.ability.extra.spearattack >= 2 then
- card.ability.extra.defeat = true
- end
-end
-end
-end
+	--Defeat
+	if context.joker_main and not context.blueprint then
+		-- for i = 1, #G.jokers.cards do
+		-- 	if G.jokers.cards[i].ability.rw_wspear_exp and not context.blueprint then
+		-- 		card.ability.extra.spearattack = card.ability.extra.spearattack + 1
+		-- 		if card.ability.extra.spearattack >= 2 then
+		-- 			card.ability.extra.defeat = true
+		-- 		end
+		-- 	end
+		-- end
+		card.ability.extra.spearattack = card.ability.extra.spearattack + SCUG.weapon_count("rw_wspear_exp")
+		if card.ability.extra.spearattack >= 2 then
+			card.ability.extra.defeat = true
+		end
+	end
  if context.after and card.ability.extra.defeat == true and not context.blueprint then
  G.E_MANAGER:add_event(Event({
     trigger = "after", 

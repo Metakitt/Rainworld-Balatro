@@ -49,12 +49,13 @@ end
 end
 end
 --Defeat
- if context.joker_main and not context.blueprint then
- for i = 1, #G.jokers.cards do
- if G.jokers.cards[i].ability.rw_wspear_exp and not context.blueprint then
- card.ability.extra.defeat = true
-end
-end
+if context.joker_main and not context.blueprint then
+    -- for i = 1, #G.jokers.cards do
+    --     if G.jokers.cards[i].ability.rw_wspear_exp and not context.blueprint then
+    --         card.ability.extra.defeat = true
+    --     end
+    -- end
+    if SCUG.weapon_count("rw_wspear_exp") > 0 then card.ability.extra.defeat = true end
 end
  if context.after and card.ability.extra.defeat == true and not context.blueprint then
  G.E_MANAGER:add_event(Event({
