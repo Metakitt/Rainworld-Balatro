@@ -891,7 +891,17 @@ return {
 					"{C:attention}Undefeated: {C:attention}Destroys{} all disabled Jokers.",
 				},
 			},
-
+			j_rw_jokelizard = {
+				name = "Joke Lizard",
+				text = {
+					"{C:attention}Threat: When Blind is selected, {C:green}1 in #1#{}",
+					"chance to replace all your Jokers with new ones",
+					"{s:0.8,C:inactive}(New Jokers have equal or lesser rarity)",
+					"{C:attention}To Defeat: {}Have a Joker with a {C:weapon}Joke Rifle",
+					"{C:attention}Undefeated: {C:green}Guaranteed{} to replace your",
+					"Jokers, then escapes",
+				},
+			},
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {

@@ -84,3 +84,18 @@ SCUG.enhancement_count = function(enhancement_key, count_debuffed)
 	end
 	return #cards, cards
 end
+
+SCUG.weapon_count = function(weapon_key, count_debuffed)
+	count_debuffed = count_debuffed or false
+	local cards_with_weapon = {}
+	if G.jokers then
+		for _,v in ipairs(G.jokers.cards) do
+			for k,_ in pairs(v.ability) do
+				if k == weapon_key then
+					table.insert(cards_with_weapon, v)
+				end
+			end
+		end
+	end
+	return #cards_with_weapon, cards_with_weapon
+end
