@@ -21,7 +21,7 @@ SMODS.Voucher({
 	key = "weaponboss",
 	loc_txt = {
 		name = "Scavenger Stash",
-		text = { "{C:green}#1# in #2#{} chance to get a ",
+		text = { "{C:green}#1# in #2#{} chance to get a",
 		"weapon at the end of a Boss Blind." },
 	},
 	atlas = "scugvouchers",
@@ -55,31 +55,32 @@ SMODS.Voucher({
 			end
 
 			if #G.consumeables.cards ~= G.consumeables.config.card_limit then
-				if weaponselected == "beehive" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_beehive" }) --
-				elseif weaponselected == "cherrybomb" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_cherrybomb" }) --
-				elseif weaponselected == "electricspear" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_ele" }) --
-				elseif weaponselected == "explosivespear" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_exp" }) --
-				elseif weaponselected == "firespear" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_fire" }) --
-				elseif weaponselected == "flashbang" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_flashbang" }) --
-				elseif weaponselected == "grenade" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_grenade" }) --
-				elseif weaponselected == "jokerifle" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_jokerifle" }) --
-				elseif weaponselected == "rock" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_rock" }) --
-				elseif weaponselected == "singularity" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_singularity" }) --
-				elseif weaponselected == "spear" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear" }) --
-				elseif weaponselected == "sporepuff" then
-					SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_sporepuff" }) --
-				end
+				-- if weaponselected == "beehive" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_beehive" }) --
+				-- elseif weaponselected == "cherrybomb" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_cherrybomb" }) --
+				-- elseif weaponselected == "electricspear" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_ele" }) --
+				-- elseif weaponselected == "explosivespear" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_exp" }) --
+				-- elseif weaponselected == "firespear" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_fire" }) --
+				-- elseif weaponselected == "flashbang" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_flashbang" }) --
+				-- elseif weaponselected == "grenade" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_grenade" }) --
+				-- elseif weaponselected == "jokerifle" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_jokerifle" }) --
+				-- elseif weaponselected == "rock" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_rock" }) --
+				-- elseif weaponselected == "singularity" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_singularity" }) --
+				-- elseif weaponselected == "spear" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear" }) --
+				-- elseif weaponselected == "sporepuff" then
+				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_sporepuff" }) --
+				-- end
+				SMODS.add_card {set = "obtainweapon", area = G.consumeables, key = "c_rw_" .. weaponselected}
 			end
 		end
 	end,
