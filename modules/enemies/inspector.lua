@@ -34,7 +34,7 @@ SMODS.Joker({
 		return false
 	end,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {key = "rw_wspear_exp", set = "Other"}
+		info_queue[#info_queue + 1] = { key = "rw_wspear_exp", set = "Other" }
 		return {
 			vars = {
 				-- Fixed chance; Does not use G.GAME.probabilities.normal
@@ -48,19 +48,11 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		-- Defeat
 		if context.before and not context.blueprint then
-			for _, joker in ipairs(G.jokers.cards) do
-				if
-					not card.ability.extra.defeat
-					and (
-						joker.ability.rw_wspear_exp
-						or joker.ability.rw_wspear_exp_gourmand
-						or joker.ability.rw_wspear_exp_monk_inv
-						or joker.ability.rw_wspear_exp_hunter_artificer_spearmaster
-					)
-				then
-					card.ability.extra.defeat = true
-				end
+			-- for _, joker in ipairs(G.jokers.cards) do
+			if not card.ability.extra.defeat and SCUG.weapon_count("rw_wspear_exp") > 0 then
+				card.ability.extra.defeat = true
 			end
+			-- end
 		end
 		if context.after and card.ability.extra.defeat then
 			G.E_MANAGER:add_event(Event({
@@ -157,29 +149,26 @@ SMODS.Joker({
 				"other"
 			)
 		end
-	end,
-})
-
--- Threat pt.2 (The evil)
-local Blind_debuff_hand = Blind.debuff_hand
-function Blind:debuff_hand(cards, hand, handname, check)
-	local ret = Blind_debuff_hand(self, cards, hand, handname, check)
-	if not ret and not check then
-		for _, k in ipairs(G.jokers.cards) do
-			if k.config.center_key == "j_rw_inspector" then
-				if pseudorandom("rw_inspected") < (1 / k.ability.extra.odds) then
-					-- Lets you know who screwed you over
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							k:juice_up()
-							k.ability.extra.smacked = true
-							return true
-						end,
-					}))
-					return true
+		if context.debuff_hand and not context.check then
+			for _, k in ipairs(G.jokers.cards) do
+				if k.config.center_key == "j_rw_inspector" then
+					if pseudorandom("rw_inspected") < (1 / k.ability.extra.odds) then
+						-- Lets you know who screwed you over
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								-- k:juice_up()
+								k.ability.extra.smacked = true
+								return true
+							end,
+						}))
+						return {
+							debuff = true,
+							debuff_source = card,
+							debuff_text = "Rejected!",
+						}
+					end
 				end
 			end
 		end
-	end
-	return ret
-end
+	end,
+})
