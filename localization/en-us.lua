@@ -894,12 +894,24 @@ return {
 			j_rw_jokelizard = {
 				name = "Joke Lizard",
 				text = {
-					"{C:attention}Threat: When Blind is selected, {C:green}1 in #1#{}",
+					"{C:attention}Threat:{} When Blind is selected, {C:green}1 in #1#{}",
 					"chance to replace all your Jokers with new ones",
 					"{s:0.8,C:inactive}(New Jokers have equal or lesser rarity)",
 					"{C:attention}To Defeat: {}Have a Joker with a {C:weapon}Joke Rifle",
 					"{C:attention}Undefeated: {C:green}Guaranteed{} to replace your",
 					"Jokers, then escapes",
+				},
+			},
+			"Decreases required",
+					"chips by {C:attention}5%{}."
+			
+			j_rw_mirosbird = {
+				name = "Miros Bird",
+				text = {
+					"{C:attention}Threat: Blinds{} require double the amount of chips until defeated.",
+					"{C:attention}To Defeat:{} Use {C:attention}2{} {C:weapon}Flashbangs{}{C:attention}[#1#/2]{}",
+					"{C:attention}Undefeated: All Blinds{} permanently require double the amount of chips."
+					"This effect stacks with it's threat effect.",
 				},
 			},
 			--endregion

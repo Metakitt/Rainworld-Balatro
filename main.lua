@@ -75,6 +75,7 @@ local rotjoker = Game.init_game_object
 function Game:init_game_object()
 	local ret = rotjoker(self)
 	ret.rottedjoker = 5
+	ret.mirosbird = 1
 	return ret
 end
 
@@ -266,7 +267,6 @@ function new_round()
 		for i = 1, #G.jokers.cards do
 		    G.jokers.cards[i]:calculate_rotted()
 			end
-		
 	
 end
 

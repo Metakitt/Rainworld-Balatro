@@ -1,3 +1,6 @@
+local common_keys = {
+	"j_rw_mirosbird"
+}
 SMODS.Sticker({
 	key = "wflashbang",
 	loc_txt = {
@@ -17,12 +20,25 @@ SMODS.Sticker({
 	rate = 0.03,
 	needs_enable_flag = false,
 	calculate = function(self, card, context)
-		if context.skip_blind then
-			G.from_boss_tag = true
-			G.FUNCS.reroll_boss()
-			SMODS.Stickers.rw_wflashbang:apply(card)
+	
+   if context.skip_blind then
+		for _, center in ipairs(common_keys) do
+        if #SMODS.find_card('j_rw_mirosbird',true) then
+		for _, v in pairs(SMODS.find_card(center, true)) do
+		v.ability.extra.flashbang = v.ability.extra.flashbang + 1
+		G.from_boss_tag = true
+		G.FUNCS.reroll_boss()
+		SMODS.Stickers.rw_wflashbang:apply(card)
 		end
-	end,
+		else
+		G.from_boss_tag = true
+		G.FUNCS.reroll_boss()
+		SMODS.Stickers.rw_wflashbang:apply(card)
+		end
+		end
+		end
+	    
+		end,
 })
 
 SMODS.Consumable({

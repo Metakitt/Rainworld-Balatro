@@ -35,7 +35,7 @@ assert(SMODS.load_file("modules/enemies/redlizard.lua"))()
 assert(SMODS.load_file("modules/enemies/maturecentipede.lua"))()
 assert(SMODS.load_file("modules/enemies/overgrowncentipede.lua"))()
 assert(SMODS.load_file("modules/enemies/jokelizard.lua"))()
-
+assert(SMODS.load_file("modules/enemies/mirosbird.lua"))()
 
 --[[
 Enemy general format:
