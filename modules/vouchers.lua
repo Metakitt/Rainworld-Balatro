@@ -10,7 +10,7 @@ SMODS.Voucher({
 	redeem = function(self)
 		G.E_MANAGER:add_event(Event({
 			func = function()
-				G.GAME.obtainweapon_rate = (G.GAME.obtainweapon or 0) + 2
+				G.GAME.obtainweapon_rate = (G.GAME.obtainweapon_rate or 0) + 2
 				return true
 			end,
 		}))

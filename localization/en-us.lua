@@ -1345,6 +1345,15 @@ return {
 					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
 				},
 			},
+			j_rw_scavendish = {
+				name = "Scavendish",
+				text = {
+					"{X:weapon,C:white} X#1# {} Shop Weapon rate",
+					"{C:green}#2# in #3#{} chance this",
+					"card is destroyed",
+					"at end of round",
+				},
+			},
 			--endregion
 		},
 	},
