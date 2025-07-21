@@ -1358,7 +1358,7 @@ return {
 			j_rw_scavendish = {
 				name = "Scavendish",
 				text = {
-					"{X:weapon,C:white} X#1# {} Shop Weapon rate",
+					"{X:weapon,C:white} X#1# {} Weapon spawn rate",
 					"{C:green}#2# in #3#{} chance this",
 					"card is destroyed",
 					"at end of round",

@@ -25,21 +25,24 @@ SMODS.Joker({
 		}
 	end,
 	add_to_deck = function(self, card, from_debuff)
-		G.GAME.obtainweapon_rate = (G.GAME.obtainweapon_rate or 0) * 3
-		if G.GAME.obtainweapon_rate == 0 then
-			card.ability.extra.force_boost = true
-			G.GAME.obtainweapon_rate = 3
+		for k,v in pairs(SMODS.Stickers) do
+			local st, nd = string.find(k, "rw_w")
+			if st == 1 and nd == 4 then
+				v.rate = v.rate * 3
+			end
 		end
 	end,
 	remove_from_deck = function(self, card, from_debuff)
-		if card.ability.extra.force_boost then
-			G.GAME.obtainweapon_rate = G.GAME.obtainweapon_rate - 3
+		for k,v in pairs(SMODS.Stickers) do
+			local st, nd = string.find(k, "rw_w")
+			if st == 1 and nd == 4 then
+				v.rate = v.rate / 3
+			end
 		end
-		G.GAME.obtainweapon_rate = (G.GAME.obtainweapon_rate or 0) / 3
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and context.cardarea == G.jokers and not context.blueprint_card then
-			if pseudorandom("rw_scavendish") < 1 / card.ability.extra.odds then
+			if pseudorandom("rw_scavendish") < G.GAME.probabilities.normal / card.ability.extra.odds then
 				SMODS.destroy_cards(card)
 				return { message = localize("k_extinct_ex") }
 			else
