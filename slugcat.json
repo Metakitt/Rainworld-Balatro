@@ -2,7 +2,7 @@
 	"id": "Slugcat",
 	"name": "Slugcat",
 	"display_name": "Rainworld",
-	"author": ["Meta"],
+	"author": ["Metakit", "blamperer"],
 	"description": "Funny little scugs!",
 	"prefix": "rw",
 	"main_file": "main.lua",
