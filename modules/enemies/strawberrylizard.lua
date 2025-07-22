@@ -60,7 +60,7 @@ end
 
  if card.ability.extra.defeat == true and not context.blueprint then
  for _,v in ipairs(G.jokers.cards) do
- SMODS.debuff_card(v, 'reset', "strawberry")
+ SMODS.debuff_card(v, remove, "strawberry")
  end
  G.E_MANAGER:add_event(Event({
     trigger = "after", 
