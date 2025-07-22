@@ -902,16 +902,13 @@ return {
 					"Jokers, then escapes",
 				},
 			},
-			"Decreases required",
-					"chips by {C:attention}5%{}."
-			
 			j_rw_mirosbird = {
 				name = "Miros Bird",
 				text = {
 					"{C:attention}Threat: Blinds{} require double the amount of chips until defeated.",
 					"{C:attention}To Defeat:{} Use {C:attention}2{} {C:weapon}Flashbangs{}{C:attention}[#1#/2]{}",
-					"{C:attention}Undefeated: All Blinds{} permanently require double the amount of chips."
-					"This effect stacks with it's threat effect.",
+					"{C:attention}Undefeated: All Blinds{} permanently require double the amount of chips.",
+					"This effect stacks with its threat effect.",
 				},
 			},
 			--endregion
