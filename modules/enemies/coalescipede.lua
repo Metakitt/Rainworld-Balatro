@@ -66,7 +66,7 @@ SMODS.Joker({
 			-- end
 			if SCUG.weapon_count("rw_wflashbang") > 0 then card.ability.extra.defeat = true end
 		end
-		if context.after and card.ability.extra.defeat == true then
+		if card.ability.extra.defeat == true and not context.blueprint then
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 1.3,
