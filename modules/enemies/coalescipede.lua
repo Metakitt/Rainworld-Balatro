@@ -9,7 +9,7 @@ SMODS.Joker({
 	in_pool = function(self, args)
 		return false
 	end,
-	config = { extra = { defeat = false, odds = 5 }, enemy = true, spider = true },
+	config = { extra = { defeat = false, odds = 10 }, enemy = true, spider = true },
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,
