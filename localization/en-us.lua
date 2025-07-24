@@ -1352,7 +1352,7 @@ return {
 				name = "Ecoboost",
 				text = {
 					"This Joker gains {X:chips,C:white}X#1#{} Chips",
-					"whenever an {V:1}Enemy{} spawns",
+					"whenever an {C:rw_enemy}Enemy{} spawns",
 					"{C:inactive}(Currently {X:chips,C:white}X#2#{C:inactive} Chips)",
 				},
 			},
@@ -1371,6 +1371,23 @@ return {
 					"{C:green}#2# in #3#{} chance this",
 					"card is destroyed",
 					"at end of round",
+				},
+			},
+			j_rw_threat = {
+				name = "Threat",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult for every",
+					"{C:rw_enemy}Enemy{} present",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
+			},
+			j_rw_surrounded = {
+				name = "Surrounded",
+				text = {
+					"+1 Joker Slot per {C:rw_enemy}Enemy",
+					"If there are {C:attention}more {C:rw_enemy}Enemies{} than",
+					"other Jokers, Shop cards are {C:money}half-price",
+					"{B:1,C:white}#1#",
 				},
 			},
 			--endregion

@@ -89,8 +89,8 @@ SCUG.weapon_count = function(weapon_key, count_debuffed)
 	count_debuffed = count_debuffed or false
 	local cards_with_weapon = {}
 	if G.jokers then
-		for _,v in ipairs(G.jokers.cards) do
-			for k,_ in pairs(v.ability) do
+		for _, v in ipairs(G.jokers.cards) do
+			for k, _ in pairs(v.ability) do
 				if k == weapon_key then
 					table.insert(cards_with_weapon, v)
 				end
@@ -98,4 +98,16 @@ SCUG.weapon_count = function(weapon_key, count_debuffed)
 		end
 	end
 	return #cards_with_weapon, cards_with_weapon
+end
+
+SCUG.enemy_count = function()
+	local enemy_count = 0
+	if G.jokers then
+		for _, v in pairs(G.jokers.cards) do
+			if v.config.center.rarity == "rw_enemy" then
+				enemy_count = enemy_count + 1
+			end
+		end
+	end
+	return enemy_count
 end
