@@ -911,7 +911,7 @@ return {
 					"This effect stacks with its threat effect.",
 				},
 			},
-			
+
 			j_rw_motherlonglegs = {
 				name = "Mother Long Legs",
 				text = {
@@ -924,7 +924,7 @@ return {
 					"and turns it to {C:rot}Rot{} at end of {C:attention}Boss Blind{}.",
 				},
 			},
-			
+
 			j_rw_hunterlonglegs = {
 				name = "Mother Long Legs",
 				text = {
@@ -935,7 +935,7 @@ return {
 					"{C:attention}Undefeated{}: {C:attention}+1{} Ante",
 				},
 			},
-			
+
 			j_rw_mirosvulture = {
 				name = "Miros Vulture",
 				text = {
@@ -943,20 +943,20 @@ return {
 					"{C:attention}To Defeat:{} Use {C:attention}2{} {C:weapon}Flashbangs{}{C:attention}[#1#/2]{}",
 					"{C:attention}Undefeated{}: All {C:weapon}Weapons{} are",
 					"removed from {C:attention}all{} owned Jokers.",
-					"{C:green}#2# in #3#{} chance to end the run."
+					"{C:green}#2# in #3#{} chance to end the run.",
 				},
 			},
-			
+
 			j_rw_firebug_neutral = {
 				name = "Firebug",
 				text = {
 					"Neutral unless provoked.",
 					"Having a joker with a {C:weapon}Sporepuff{} or a {C:weapon}Spear{}",
 					"has a {C:green}#1# in #2#{} chance to provoke it",
-					"at the start of {C:attention}Blind{}."
+					"at the start of {C:attention}Blind{}.",
 				},
 			},
-			
+
 			j_rw_firebug_aggressive = {
 				name = "Firebug",
 				text = {
@@ -965,10 +965,10 @@ return {
 					"{C:attention}To Defeat:{} #1# in #3# chance to defeat it each played hand",
 					"if you have a joker with a {C:weapon}Sporepuff{}.",
 					"{C:attention}Undefeated{}: Weapons are 4x less likely to",
-					"appear on jokers in the shop."
+					"appear on jokers in the shop.",
 				},
 			},
-			
+
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {
@@ -1446,6 +1446,16 @@ return {
 					"If there are {C:attention}more {C:rw_enemy}Enemies{} than",
 					"other Jokers, Shop cards are {C:money}half-price",
 					"{B:1,C:white}#1#",
+				},
+			},
+			j_rw_familypower = {
+				name = "Family Power",
+				text = {
+					"If there are more Jokers than",
+					"{C:rw_enemy}Enemies{}, {C:attention}all{} cards of {V:1}#1#",
+					"suit trigger {C:attention}#2#{} additional time",
+					"{s:0.8,C:inactive}(Suit changes at start of Blind)",
+					"{B:2,C:white}#3#",
 				},
 			},
 			--endregion

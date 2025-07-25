@@ -18,6 +18,7 @@ assert(SMODS.load_file("modules/jokers/stupidwetrat.lua"))()
 assert(SMODS.load_file("modules/jokers/scavendish.lua"))()
 assert(SMODS.load_file("modules/jokers/threat.lua"))()
 assert(SMODS.load_file("modules/jokers/surrounded.lua"))()
+assert(SMODS.load_file("modules/jokers/familypower.lua"))()
 -- Slugcats underneath this line are to be added in the next big update and are unfinished, experimental or in need of cleaning. Uncomment and load them at your own risk!
 assert(SMODS.load_file("modules/jokers/pathfinder.lua"))()
 assert(SMODS.load_file("modules/jokers/blurred.lua"))()
