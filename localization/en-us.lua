@@ -947,6 +947,28 @@ return {
 				},
 			},
 			
+			j_rw_firebug_neutral = {
+				name = "Firebug",
+				text = {
+					"Neutral unless provoked.",
+					"Having a joker with a {C:weapon}Sporepuff{} or a {C:weapon}Spear{}",
+					"has a {C:green}#1# in #2#{} chance to provoke it",
+					"at the start of {C:attention}Blind{}."
+				},
+			},
+			
+			j_rw_firebug_aggressive = {
+				name = "Firebug",
+				text = {
+					"{C:attention}Threat:{} #1# in #2# chance to destroy a random",
+					"{C:attention}rank{} in the deck at the end of round.",
+					"{C:attention}To Defeat:{} #1# in #3# chance to defeat it each played hand",
+					"if you have a joker with a {C:weapon}Sporepuff{}.",
+					"{C:attention}Undefeated{}: Weapons are 4x less likely to",
+					"appear on jokers in the shop."
+				},
+			},
+			
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {
