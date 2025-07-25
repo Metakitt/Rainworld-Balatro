@@ -1458,6 +1458,14 @@ return {
 					"{B:2,C:white}#3#",
 				},
 			},
+			j_rw_surv_fittest = {
+				name = "Survival of the Fittest",
+				text = {
+					"Each {C:rw_enemy}Enemy{} defeated this run",
+					"gives {C:money}$#1#{} at end of round",
+					"{C:inactive}(Currently {C:money}$#2#{C:inactive})"
+				}
+			}
 			--endregion
 		},
 	},

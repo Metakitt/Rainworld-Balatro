@@ -49,7 +49,7 @@ if card.ability.extra.flashbang >= 2 then
     trigger = "after", 
     delay = 1.3, 
     func = function() 
-        card:start_dissolve() 	
+        SMODS.destroy_cards(card, true) 	
         return true 
     end,
 	 blocking = false

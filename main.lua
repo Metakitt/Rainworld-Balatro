@@ -50,15 +50,14 @@ SMODS.Sticker({
 		return { vars = { card.ability.rotted_tally } }
 	end,
 	calculate = function(self, card, context)
-	if context.joker_main then
-	return
-	{
-	chips = -25
-	}
-	end
-	
-	if context.end_of_round and context.main_eval then
-	if pseudorandom("rottime") < 0.05 then
+		if context.joker_main then
+			return {
+				chips = -25,
+			}
+		end
+
+		if context.end_of_round and context.main_eval then
+			if pseudorandom("rottime") < 0.05 then
 				local notrot = {}
 				for i = 1, #G.jokers.cards do
 					if
@@ -71,41 +70,60 @@ SMODS.Sticker({
 				end
 				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
 				if #notrot > 0 then
-				rotted:set_rotted()
+					rotted:set_rotted()
 				end
 			end
-	end
+		end
 	end,
 })
 
-local rotjoker = Game.init_game_object
+local game_igo = Game.init_game_object
 function Game:init_game_object()
-	local ret = rotjoker(self)
+	local ret = game_igo(self)
 	ret.rottedjoker = 5
 	ret.mirosbird = 1
 	ret.mirosvulture = 1
+	ret.rw_enemies_slain = 0
 	return ret
 end
 
-function Card:set_rotted(_rotted) 
-    self.ability.rw_rotted = nil
-    if self.config.center.rw_rotted_compat ~= false then 
-        self.ability.rw_rotted = true
-        self.ability.rotted_tally = G.GAME.rottedjoker
-    end
+function Card:set_rotted(_rotted)
+	self.ability.rw_rotted = nil
+	if self.config.center.rw_rotted_compat ~= false then
+		self.ability.rw_rotted = true
+		self.ability.rotted_tally = G.GAME.rottedjoker
+	end
 end
 
 function Card:calculate_rotted()
-    if self.ability.rw_rotted and self.ability.rotted_tally > 0 then
-        if self.ability.rotted_tally == 1 then
-            self.ability.rotted_tally = 0
-            card_eval_status_text(self, 'extra', nil, nil, nil, {message = 'Rotted Away!',colour = G.C.FILTER, delay = 0.45})
-            self:start_dissolve()
-        else
-            self.ability.rotted_tally = self.ability.rotted_tally - 1
-            card_eval_status_text(self, 'extra', nil, nil, nil, {message = localize{type='variable',key='a_remaining',vars={self.ability.rotted_tally}},colour = G.C.FILTER, delay = 0.45})
-        end
-    end
+	if self.ability.rw_rotted and self.ability.rotted_tally > 0 then
+		if self.ability.rotted_tally == 1 then
+			self.ability.rotted_tally = 0
+			card_eval_status_text(
+				self,
+				"extra",
+				nil,
+				nil,
+				nil,
+				{ message = "Rotted Away!", colour = G.C.FILTER, delay = 0.45 }
+			)
+			self:start_dissolve()
+		else
+			self.ability.rotted_tally = self.ability.rotted_tally - 1
+			card_eval_status_text(
+				self,
+				"extra",
+				nil,
+				nil,
+				nil,
+				{
+					message = localize({ type = "variable", key = "a_remaining", vars = { self.ability.rotted_tally } }),
+					colour = G.C.FILTER,
+					delay = 0.45,
+				}
+			)
+		end
+	end
 end
 
 SMODS.Enhancement({
@@ -140,9 +158,9 @@ SMODS.Enhancement({
 
 -- Patches for Game Functions
 
-local wetcardedit = end_round
+local end_round_ref = end_round
 function end_round()
-	wetcardedit()
+	end_round_ref()
 	for k, x in pairs(G.deck.cards) do
 		if x.config.center == G.P_CENTERS.m_rw_wetasscard and not x.debuff then
 			local enhanced = {}
@@ -188,9 +206,9 @@ function end_round()
 	end
 end
 
-local rotting_blind = G.FUNCS.evaluate_play
+local GF_evaluate_play = G.FUNCS.evaluate_play
 function G.FUNCS.evaluate_play(e)
-	rotting_blind(e)
+	GF_evaluate_play(e)
 
 	if G.GAME.blind.config.blind.key == "bl_rw_rotblind" and not G.GAME.blind.disabled then
 		local rot = {}
@@ -221,7 +239,7 @@ function new_round()
 	end
 
 	-- This checks for rotting cards and triggers their countdown + destroys the card if its reached the end of its lifespan
-	
+
 	for k, x in pairs(G.deck.cards) do
 		if x.config.center == G.P_CENTERS.m_rw_rotting and not x.debuff then
 			local enhanced = {}
@@ -271,12 +289,11 @@ function new_round()
 			end
 		end
 	end
-	
+
 	-- This checks for joker cards to calculate the rot for
-		for i = 1, #G.jokers.cards do
-		    G.jokers.cards[i]:calculate_rotted()
-			end
-	
+	for i = 1, #G.jokers.cards do
+		G.jokers.cards[i]:calculate_rotted()
+	end
 end
 
 --Definitions for Localization
@@ -286,11 +303,11 @@ G.C.ROT = HEX("000070")
 
 local loc_colour_RW = loc_colour
 function loc_colour(_c, _default)
-if not G.ARGS.LOC_COLOURS then
-loc_colour_RW()
-end
-G.ARGS.LOC_COLOURS.weapon = G.C.WEAPON
-G.ARGS.LOC_COLOURS.food = G.C.FOOD
-G.ARGS.LOC_COLOURS.rot = G.C.ROT
+	if not G.ARGS.LOC_COLOURS then
+		loc_colour_RW()
+	end
+	G.ARGS.LOC_COLOURS.weapon = G.C.WEAPON
+	G.ARGS.LOC_COLOURS.food = G.C.FOOD
+	G.ARGS.LOC_COLOURS.rot = G.C.ROT
 	return loc_colour_RW(_c, _default)
 end

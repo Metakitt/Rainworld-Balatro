@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Patch to count up enemies slain
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''self:remove_from_deck()'''
+position = "after"
+payload = '''
+if G.GAME and self.config.center.rarity == "rw_enemy" then
+    G.GAME.rw_enemies_slain = G.GAME.rw_enemies_slain + 1
+end
+'''
+match_indent = true

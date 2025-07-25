@@ -114,7 +114,7 @@ end
     trigger = "after", 
     delay = 1.3, 
     func = function() 
-        card:start_dissolve() 
+        SMODS.destroy_cards(card, true) 
         return true 
     end,
 	 blocking = false
