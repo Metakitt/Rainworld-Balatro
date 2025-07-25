@@ -7,7 +7,7 @@ key = 'firebug',
 atlas = "enemies",
 rarity = 'rw_enemy',
 cost = 4,
-pos = { x = 2, y = 0 },
+pos = { x = 7, y = 4 },
 unlocked = true,
 discovered = true,
 in_pool = function (self, args)
