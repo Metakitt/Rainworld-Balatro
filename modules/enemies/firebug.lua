@@ -51,7 +51,7 @@ SMODS.Stickers["eternal"]:apply(card,true)
 calculate = function(self, card, context)
 
 --Threat
-if context.setting_blind and (SCUG.weapon_count("rw_wspear") or SCUG.weapon_count("rw_wsporepuff")) > 0 and card.ability.extra.aggressive == false then
+if context.setting_blind and (SCUG.weapon_count("rw_wspear") + SCUG.weapon_count("rw_wsporepuff")) > 0 and card.ability.extra.aggressive == false then
 if pseudorandom("fireboog") < 1 / card.ability.extra.aggodds and not context.blueprint then
 card.ability.extra.aggressive = true
 end
@@ -59,7 +59,7 @@ end
 		
 
 --Defeat
- if context.before and not context.blueprint and pseudorandom('boogdestruction') > 1 / card.ability.extra.odds then
+ if context.before and not context.blueprint and pseudorandom('boogdestruction') < 1 / card.ability.extra.odds then
  if SCUG.weapon_count("rw_wsporepuff") > 0 and not context.blueprint then
  card.ability.extra.defeat = true
 end
@@ -88,7 +88,7 @@ for k,v in pairs(SMODS.Stickers) do
 			end
 		end
 	
-	if pseudorandom('boogpowerup') > 1 / card.ability.extra.aggodds then
+	if pseudorandom('boogpowerup') < 1 / card.ability.extra.aggodds then
  local rank = SCUG.get_rank_in_deck()
     for _, v in ipairs(G.deck.cards) do
         if v.config.card.value == rank and not context.blueprint then
@@ -97,7 +97,7 @@ for k,v in pairs(SMODS.Stickers) do
     end
 end
 	
-elseif pseudorandom('boogpowerup') > 1 / card.ability.extra.aggodds and context.main_eval and context.end_of_round and card.ability.extra.defeat == false and not context.blueprint and not G.GAMEblind.boss then
+elseif pseudorandom('boogpowerup') < 1 / card.ability.extra.aggodds and context.main_eval and context.end_of_round and card.ability.extra.defeat == false and not context.blueprint and not G.GAMEblind.boss then
  local rank = SCUG.get_rank_in_deck()
     for _, v in ipairs(G.deck.cards) do
         if v.config.card.value == rank and not context.blueprint then
