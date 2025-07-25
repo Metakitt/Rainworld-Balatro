@@ -13,7 +13,7 @@ SMODS.Joker({
 	pos = { x = 5, y = 4 },
 	discovered = true,
 	blueprint_compat = true,
-	eternal_compat = true,
+	eternal_compat = false,
 	perishable_compat = true,
 	loc_vars = function(self, info_queue, card)
 		return {
@@ -43,7 +43,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if context.end_of_round and context.cardarea == G.jokers and not context.blueprint_card then
 			if pseudorandom("rw_scavendish") < G.GAME.probabilities.normal / card.ability.extra.odds then
-				SMODS.destroy_cards(card)
+				SMODS.destroy_cards(card, true)
 				return { message = localize("k_extinct_ex") }
 			else
 				return { message = localize("k_safe_ex") }
