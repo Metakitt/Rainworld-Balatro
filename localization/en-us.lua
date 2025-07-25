@@ -911,6 +911,20 @@ return {
 					"This effect stacks with its threat effect.",
 				},
 			},
+			
+			j_rw_motherlonglegs = {
+				name = "Mother Long Legs",
+				text = {
+					"{C:attention}Threat{}: At the start of each blind,",
+					"{C:green}1 in #1#{} chance for each card",
+					"in your deck, hand and jokers to become {C:rot}Rot{}.",
+					"{C:attention}To Defeat{}: Score a hand while holding",
+					"a {C:weapon}Singularity Bomb{}. [{C:attention}#2#{}/2]",
+					"{C:attention}Undefeated{}: Chooses a random {C:attention}rank{} and joker",
+					"and turns it to {C:rot}Rot{} at end of {C:attention}Boss Blind{}.",
+				},
+			},
+			
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {

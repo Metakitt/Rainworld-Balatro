@@ -14,6 +14,13 @@ assert(SMODS.load_file("./modules/enemies.lua"))()
 
 --Debug allows for the use of the Rot fruit for testing rot! Wet fruit as well for wet cards!
 
+local wet_keys = {
+	"j_splash",
+	"j_seltzer",
+	"j_dietcola",
+	"j_rw_rivulet",
+}
+
 SMODS.Sound({
 	key = "crunch",
 	path = {
@@ -140,6 +147,7 @@ function end_round()
 			local enhanced = {}
 			enhanced[#enhanced + 1] = x
 			x.ability.countdown_to_dry = x.ability.countdown_to_dry - 1
+			--[[Add check here if a joker is wet to increase rather than decrease]]
 
 			--Drying part of function
 			local z = {}
