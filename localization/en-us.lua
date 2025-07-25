@@ -925,6 +925,17 @@ return {
 				},
 			},
 			
+			j_rw_hunterlonglegs = {
+				name = "Mother Long Legs",
+				text = {
+					"{C:attention}Threat{}:{C:green}1 in #1#{} chance for a random",
+					"joker to become {C:rot}Rot{} each played hand.",
+					"{C:attention}To Defeat{}: Score a card with at least",
+					"{C:mult}+6{} extra mult.",
+					"{C:attention}Undefeated{}: {C:attention}+1{} Ante",
+				},
+			},
+			
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {
