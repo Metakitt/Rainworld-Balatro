@@ -83,6 +83,7 @@ function Game:init_game_object()
 	local ret = rotjoker(self)
 	ret.rottedjoker = 5
 	ret.mirosbird = 1
+	ret.mirosvulture = 1
 	return ret
 end
 

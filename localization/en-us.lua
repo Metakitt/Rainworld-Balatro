@@ -936,6 +936,17 @@ return {
 				},
 			},
 			
+			j_rw_mirosvulture = {
+				name = "Miros Vulture",
+				text = {
+					"{C:attention}Threat:{} Each {C:attention}played hand{} increases {C:attention}Blind{} requirement by 10%.",
+					"{C:attention}To Defeat:{} Use {C:attention}2{} {C:weapon}Flashbangs{}{C:attention}[#1#/2]{}",
+					"{C:attention}Undefeated{}: All {C:weapon}Weapons{} are",
+					"removed from {C:attention}all{} owned Jokers.",
+					"{C:green}#2# in #3#{} chance to end the run."
+				},
+			},
+			
 			--endregion
 			--region Slugcats
 			j_rw_abundance = {

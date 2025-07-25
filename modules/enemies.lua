@@ -38,6 +38,7 @@ assert(SMODS.load_file("modules/enemies/jokelizard.lua"))()
 assert(SMODS.load_file("modules/enemies/mirosbird.lua"))()
 assert(SMODS.load_file("modules/enemies/motherlonglegs.lua"))()
 assert(SMODS.load_file("modules/enemies/hunterlonglegs.lua"))()
+assert(SMODS.load_file("modules/enemies/mirosvulture.lua"))()
 
 --[[
 Enemy general format:

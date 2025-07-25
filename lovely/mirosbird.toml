@@ -12,7 +12,7 @@ self.chips = get_blind_amount(G.GAME.round_resets.ante)*self.mult*G.GAME.startin
 '''
 position = "at"
 payload = '''
-self.chips = get_blind_amount(G.GAME.round_resets.ante)*self.mult*G.GAME.starting_params.ante_scaling*G.GAME.mirosbird
+self.chips = get_blind_amount(G.GAME.round_resets.ante)*self.mult*G.GAME.starting_params.ante_scaling*G.GAME.mirosbird*G.GAME.mirosvulture
 '''
 match_indent = true
 
@@ -24,6 +24,6 @@ local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.
 '''
 position = "at"
 payload = '''
-local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling*G.GAME.mirosbird
+local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*blind_choice.config.mult*G.GAME.starting_params.ante_scaling*G.GAME.mirosbird*G.GAME.mirosvulture
 '''
 match_indent = true

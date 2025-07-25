@@ -23,7 +23,7 @@ SMODS.Sticker({
 	
    if context.skip_blind then
 		for _, center in ipairs(common_keys) do
-        if #SMODS.find_card('j_rw_mirosbird',true) then
+        if (#SMODS.find_card('j_rw_mirosbird',true) or #SMODS.find_card('j_rw_mirosvulture',true)) then
 		for _, v in pairs(SMODS.find_card(center, true)) do
 		v.ability.extra.flashbang = v.ability.extra.flashbang + 1
 		G.from_boss_tag = true
