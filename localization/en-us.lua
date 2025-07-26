@@ -968,6 +968,17 @@ return {
 					"appear on jokers in the shop.",
 				},
 			},
+			
+			j_rw_trainlizard = {
+				name = "Train Lizard",
+				text = {
+					"{C:attention}Threat:{} Debuffs a random {C:attention}rank{} every hand",
+					"or discard. Debuffs a random joker every {C:attention}round{}.",
+					"Joker remains debuffed even if defeated.",
+					"{C:attention}To Defeat:{} Sell 3 Jokers[#1#/3] and score 3 hands[#2#/3].",
+					"{C:attention}Undefeated{}: {C:red}Die{}.",
+				},
+			},
 
 			--endregion
 			--region Slugcats
