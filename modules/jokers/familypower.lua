@@ -39,11 +39,10 @@ SMODS.Joker({
 			and not context.repetition_only
 		then
 			if context.other_card:is_suit(card.ability.extra.suit) then
-				card:juice_up()
 				return {
 					repetitions = card.ability.extra.retriggers,
 					message = localize("k_again_ex"),
-					card = context.other_card,
+					card = card,
 				}
 			end
 		end
