@@ -25,7 +25,7 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {key = "rw_wflashbang", set = "Other"}
+		info_queue[#info_queue + 1] = { key = "rw_wflashbang", set = "Other" }
 		local num_pedes = (G.GAME and G.jokers and #SMODS.find_card("j_rw_coalescipede")) or 1
 		return { vars = { -num_pedes, card.ability.extra.odds, number_format(-(num_pedes ^ 2)) } }
 	end,
@@ -42,10 +42,15 @@ SMODS.Joker({
 			-- 	end
 			-- end
 			return {
-				chips = -#SMODS.find_card("j_rw_coalescipede")
+				chips = -#SMODS.find_card("j_rw_coalescipede"),
 			}
 		end
-		if context.after and pseudorandom("morepede") < 1 / card.ability.extra.odds and not context.blueprint and not card.ability.extra.defeat then
+		if
+			context.after
+			and pseudorandom("morepede") < 1 / card.ability.extra.odds
+			and not context.blueprint
+			and not card.ability.extra.defeat
+		then
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 1.3,
@@ -64,19 +69,20 @@ SMODS.Joker({
 			-- 		card.ability.extra.defeat = true
 			-- 	end
 			-- end
-			if SCUG.weapon_count("rw_wflashbang") > 0 then card.ability.extra.defeat = true end
+			if SCUG.weapon_count("rw_wflashbang") > 0 then
+				card.ability.extra.defeat = true
+				G.E_MANAGER:add_event(Event({
+					trigger = "after",
+					delay = 1.3,
+					func = function()
+						SMODS.destroy_cards(card, true)
+						return true
+					end,
+					blocking = false,
+				}))
+			end
 		end
-		if card.ability.extra.defeat == true and not context.blueprint then
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 1.3,
-				func = function()
-					SMODS.destroy_cards(card, true)
-					return true
-				end,
-				blocking = false,
-			}))
-		end
+
 		--Undefeated
 		if
 			context.main_eval
@@ -85,16 +91,16 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			for i=1,2 do
+			for i = 1, 2 do
 				G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 1.3 + (i-1)/2,
-				func = function()
-					SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_coalescipede", no_edition = true })
-					return true
-				end,
-				blocking = false,
-			}))
+					trigger = "after",
+					delay = 1.3 + (i - 1) / 2,
+					func = function()
+						SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_coalescipede", no_edition = true })
+						return true
+					end,
+					blocking = false,
+				}))
 			end
 		end
 	end,

@@ -3,7 +3,6 @@ SMODS.Joker({
 	config = {
 		extra = {
 			defeat = false,
-            singularity_card = nil
 		},
 	},
 	rarity = "rw_enemy",
@@ -27,23 +26,20 @@ SMODS.Joker({
 	rw_wsporepuff_compat = false,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
-        card:set_edition("e_negative")
+		card:set_edition("e_negative")
 	end,
 	calculate = function(self, card, context)
 		-- Defeat
 		if context.before and not context.blueprint then
-            for _,v in pairs(G.jokers.cards) do
-                for k,_ in pairs(v.ability) do
-                    if k == "rw_wsingularity" then
-                        card.ability.extra.defeat = true
-                        card.ability.extra.singularity_card = v
-                    end
-                end
-            end
-		end
-		if context.after and card.ability.extra.defeat then
-            SMODS.Stickers["rw_wsingularity"]:apply(card.ability.extra.singularity_card, nil)
-            SMODS.destroy_cards(card, true)
+			for _, v in pairs(G.jokers.cards) do
+				for k, _ in pairs(v.ability) do
+					if k == "rw_wsingularity" then
+						card.ability.extra.defeat = true
+						SMODS.Stickers["rw_wsingularity"]:apply(v, nil)
+						SMODS.destroy_cards(card, true)
+					end
+				end
+			end
 		end
 		-- Undefeated
 		if
@@ -53,7 +49,7 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-            G.FUNCS.start_run(nil, {})
+			G.FUNCS.start_run(nil, {})
 		end
 	end,
 })

@@ -63,12 +63,7 @@ if context.joker_main and not context.blueprint then
 for i = 1, #G.jokers.cards do
 if G.jokers.cards[i].ability.rw_wgrenade and G.GAME.grenademult >= card.ability.extra.mult_threshold and not context.blueprint then
 card.ability.extra.defeat = true
-end
-end
-end
-
- if context.after and card.ability.extra.defeat == true and not context.blueprint then
- G.E_MANAGER:add_event(Event({
+G.E_MANAGER:add_event(Event({
     trigger = "after", 
     delay = 1.3, 
     func = function() 
@@ -77,8 +72,10 @@ end
     end,
 	 blocking = false
 }))
- 
 end
+end
+end
+
 --Undefeated
 
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
