@@ -25,7 +25,7 @@ rw_wsingularity_compat = false,
 rw_wspear_compat = false,
 rw_wsporepuff_compat = false,
 loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.jokersold, card.ability.extra.scoredhand) } }
+    return { vars = { card.ability.extra.jokersold, card.ability.extra.scoredhand } }
     end,
 add_to_deck = function(self, card, from_debuff) 
 SMODS.Stickers["eternal"]:apply(card,true)
@@ -85,7 +85,7 @@ if card.ability.extra.scoredhand >= 3 and card.ability.extra.jokersold >= 3 then
  for _,v in ipairs(G.discard.cards) do
  SMODS.debuff_card(v, remove, "train")
  end
-card.ability.extra.defeat == true
+card.ability.extra.defeat = true
 end
 
 if card.ability.extra.defeat == true and not context.blueprint then
@@ -119,4 +119,5 @@ if
             }))
             end_round()
 		end
+    end
 })
