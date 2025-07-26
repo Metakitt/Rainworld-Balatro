@@ -97,7 +97,7 @@ for k,v in pairs(SMODS.Stickers) do
     end
 end
 	
-elseif pseudorandom('boogpowerup') < 1 / card.ability.extra.aggodds and context.main_eval and context.end_of_round and card.ability.extra.defeat == false and not context.blueprint and not G.GAMEblind.boss then
+elseif pseudorandom('boogpowerup') < 1 / card.ability.extra.aggodds and context.main_eval and context.end_of_round and card.ability.extra.defeat == false and not context.blueprint and not G.GAME.blind.boss then
  local rank = SCUG.get_rank_in_deck()
     for _, v in ipairs(G.deck.cards) do
         if v.config.card.value == rank and not context.blueprint then
