@@ -60,7 +60,7 @@ end
 	if context.joker_main and not context.blueprint then
 
 		card.ability.extra.bombattack = card.ability.extra.bombattack + SCUG.weapon_count("rw_wsingularity")
-		if card.ability.extra.spearattack >= 1 then
+		if card.ability.extra.bombattack >= 1 then
 			card.ability.extra.defeat = true
 		end
 	end
