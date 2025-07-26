@@ -54,3 +54,96 @@ SMODS.Booster({
 		}
 	end,
 })
+
+-- TODO: Figure out how to finagle the create_card function so it can't make weapons you can't apply
+SMODS.Booster({
+	key = "weapon_normal_1",
+	loc_txt = {
+		name = "Weapon Pack",
+		text = {
+			"Choose {C:attention}1{} out of {C:attention}2{C:weapon} Weapons",
+			"to apply to your Jokers",
+		},
+		group_name = "Weapon Pack",
+	},
+	kind = "rw_obtainweapon",
+	atlas = "boosterslug",
+	pos = { x = 0, y = 1 },
+	config = { extra = 2, choose = 1 },
+	cost = 4,
+	weight = 0.5,
+	unlocked = true,
+	discovered = true,
+	create_card = function(self, card, i)
+		return { set = "obtainweapon", area = G.pack.cards, skip_materialize = true }
+	end,
+})
+
+SMODS.Booster({
+	key = "weapon_normal_2",
+	loc_txt = {
+		name = "Weapon Pack",
+		text = {
+			"Choose {C:attention}1{} out of {C:attention}2{C:weapon} Weapons",
+			"to apply to your Jokers",
+		},
+		group_name = "Weapon Pack",
+	},
+	kind = "rw_obtainweapon",
+	atlas = "boosterslug",
+	pos = { x = 1, y = 1 },
+	config = { extra = 2, choose = 1 },
+	cost = 4,
+	weight = 0.5,
+	unlocked = true,
+	discovered = true,
+	create_card = function(self, card, i)
+		return { set = "obtainweapon", area = G.pack.cards, skip_materialize = true }
+	end,
+})
+
+SMODS.Booster({
+	key = "weapon_jumbo_1",
+	loc_txt = {
+		name = "Jumbo Weapon Pack",
+		text = {
+			"Choose {C:attention}1{} out of {C:attention}4{C:weapon} Weapons",
+			"to apply to your Jokers",
+		},
+		group_name = "Weapon Pack",
+	},
+	kind = "rw_obtainweapon",
+	atlas = "boosterslug",
+	pos = { x = 2, y = 1 },
+	config = { extra = 4, choose = 1 },
+	cost = 4,
+	weight = 0.4,
+	unlocked = true,
+	discovered = true,
+	create_card = function(self, card, i)
+		return { set = "obtainweapon", area = G.pack.cards, skip_materialize = true }
+	end,
+})
+
+SMODS.Booster({
+	key = "weapon_mega_1",
+	loc_txt = {
+		name = "Mega Weapon Pack",
+		text = {
+			"Choose {C:attention}2{} out of {C:attention}4{C:weapon} Weapons",
+			"to apply to your Jokers",
+		},
+		group_name = "Weapon Pack",
+	},
+	kind = "rw_obtainweapon",
+	atlas = "boosterslug",
+	pos = { x = 3, y = 1 },
+	config = { extra = 4, choose = 2 },
+	cost = 4,
+	weight = 0.12,
+	unlocked = true,
+	discovered = true,
+	create_card = function(self, card, i)
+		return { set = "obtainweapon", area = G.pack.cards, skip_materialize = true }
+	end,
+})

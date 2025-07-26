@@ -42,6 +42,7 @@ SMODS.ConsumableType({
 			text = { "Purchase or use", "this card in an", "unseeded run to", "learn what it does" },
 		},
 	},
+	default = "c_rw_wspear"
 })
 
 -- @ Game initiation; this sets a global variable that keeps track of the grenade multiplier for the current run.
