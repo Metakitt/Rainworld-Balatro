@@ -6,7 +6,7 @@ SMODS.Joker({
 			suit = "Spades",
 		},
 	},
-	rarity = 2,
+	rarity = 1,
 	cost = 6,
 	atlas = "slugcats",
 	pos = { x = 8, y = 4 },
