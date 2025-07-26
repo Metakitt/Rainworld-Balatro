@@ -135,7 +135,7 @@ SMODS.Booster({
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
-		return { set = "obtainweapon", area = G.pack.cards, skip_materialize = true }
+		return { set = "obtainweapon", area = G.pack_cards, skip_materialize = true }
 	end,
 })
 
@@ -158,7 +158,7 @@ SMODS.Booster({
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
-		return { set = "obtainweapon", area = G.pack.cards, skip_materialize = true }
+		return { set = "obtainweapon", area = G.pack_cards, skip_materialize = true }
 	end,
 })
 
@@ -181,7 +181,7 @@ SMODS.Booster({
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
-		return { set = "obtainweapon", area = G.pack.cards, skip_materialize = true }
+		return { set = "obtainweapon", area = G.pack_cards, skip_materialize = true }
 	end,
 })
 
@@ -204,6 +204,6 @@ SMODS.Booster({
 	unlocked = true,
 	discovered = true,
 	create_card = function(self, card, i)
-		return { set = "obtainweapon", area = G.pack.cards, skip_materialize = true }
+		return { set = "obtainweapon", area = G.pack_cards, skip_materialize = true }
 	end,
 })
