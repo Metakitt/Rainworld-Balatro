@@ -979,6 +979,16 @@ return {
 					"{C:attention}Undefeated{}: {C:red}Die{}.",
 				},
 			},
+			
+			j_rw_leviathan = {
+				name = "Leviathan",
+				text = {
+					"{C:attention}Threat: Blinds{} require double the amount of chips.",
+					"The final {C:attention}Blind{} requires four times the amount of chips.",
+					"{C:attention}To Defeat:{} Cannot be defeated. Leaves on Ante 9+.",
+					"{C:attention}Undefeated{}: {C:red}Die{}.",
+				},
+			},
 
 			--endregion
 			--region Slugcats

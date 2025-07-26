@@ -41,6 +41,7 @@ assert(SMODS.load_file("modules/enemies/hunterlonglegs.lua"))()
 assert(SMODS.load_file("modules/enemies/mirosvulture.lua"))()
 assert(SMODS.load_file("modules/enemies/firebug.lua"))()
 assert(SMODS.load_file("modules/enemies/trainlizard.lua"))()
+assert(SMODS.load_file("modules/enemies/leviathan.lua"))()
 
 --[[
 Enemy general format:
@@ -48,6 +49,9 @@ Spawn Antes: Antes the enemy can spawn in.
 Threat: What the enemy does to disadvantage the player in any way. This can be any kind of condition, as long as it provides an obstacle.
 Defeat Condition: What the player must do to defeat (destroy) the enemy. When an enemy is defeated, its 'defeat' ability becomes "True".
 Undefeated: What happens when the enemy is left undefeated at the end of boss blind. This triggers everytime the enemy is dragged through a Boss Blind.
+
+Boss Enemies are enemies that can only spawn either on a) boss blinds or b) in the final blind, any strong enemy with no defeat condition.
+They remain until the end, if you play endless, they remove themselves.
 
 Some general ideas or notes:
 = Undefeated condition loop must ALWAYS include the "defeat" ability as false; as to prevent it from triggering if the enemy is defeated during the end of a boss blind. [Done on current set]
