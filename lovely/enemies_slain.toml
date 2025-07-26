@@ -10,7 +10,7 @@ target = "card.lua"
 pattern = '''if self.area then self.area:remove_card(self) end'''
 position = "before"
 payload = '''
-if G.GAME and self.config.center.rarity == "rw_enemy" and self.area == G.jokers then
+if G.GAME  and self.area == G.jokers and self.config.center.rarity == "rw_enemy" and self.ability.extra.defeat then
     G.GAME.rw_enemies_slain = G.GAME.rw_enemies_slain + 1
 end
 '''
