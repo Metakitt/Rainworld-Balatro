@@ -9,10 +9,70 @@ SMODS.Booster({
 	},
 	kind = "foods",
 	atlas = "boosterslug",
-	pos = { x = 0, y = 0 },
+	pos = { x = 1, y = 0 },
 	config = { extra = 3, choose = 1 },
 	cost = 4,
 	weight = 1.2,
+	unlocked = true,
+	discovered = true,
+	draw_hand = true,
+	create_card = function(self, card)
+		return {
+			set = "foods",
+			area = G.pack_cards,
+			skip_materialize = true,
+		}
+	end,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.config.center.config.choose, card.ability.extra } }
+	end,
+})
+
+SMODS.Booster({
+	key = "jumbofoodpack",
+	loc_txt = {
+		name = "Jumbo Food Pack",
+		text = {
+			"Choose {C:attention}1{} out of {C:attention}5{} Food cards to be used immediately.",
+		},
+		group_name = "Food Pack",
+	},
+	kind = "foods",
+	atlas = "boosterslug",
+	pos = { x = 0, y = 0 },
+	config = { extra = 5, choose = 1 },
+	cost = 6,
+	weight = 0.8,
+	unlocked = true,
+	discovered = true,
+	draw_hand = true,
+	create_card = function(self, card)
+		return {
+			set = "foods",
+			area = G.pack_cards,
+			skip_materialize = true,
+		}
+	end,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.config.center.config.choose, card.ability.extra } }
+	end,
+})
+
+SMODS.Booster({
+	key = "megafoodpack",
+	loc_txt = {
+		name = "Mega Food Pack",
+		text = {
+			"Choose {C:attention}2{} out of {C:attention}5{} Food cards to be used immediately.",
+		},
+		group_name = "Food Pack",
+	},
+	kind = "foods",
+	atlas = "boosterslug",
+	pos = { x = 0, y = 0 },
+	config = { extra = 5, choose = 2 },
+	cost = 6,
+	weight = 0.5,
 	unlocked = true,
 	discovered = true,
 	draw_hand = true,
