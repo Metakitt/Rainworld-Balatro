@@ -87,8 +87,7 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			ease_dollars(-G.GAME.dollars, true)
-			ease_dollars(-20)
+			ease_dollars(-G.GAME.dollars - 20, true)
 		end
 	end,
 })
