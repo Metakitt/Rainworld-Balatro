@@ -30,11 +30,16 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind and not context.blueprint then
-			card.ability.extra.suit = SCUG.get_suit_in_deck().name
+			card.ability.extra.suit = SCUG.get_suit_in_deck()
 		end
 
-		if context.individual and (context.cardarea == G.play or context.cardarea == G.hand) and context.repetition then
+		if
+			(context.cardarea == G.play or context.cardarea == G.hand)
+			and context.repetition
+			and not context.repetition_only
+		then
 			if context.other_card:is_suit(card.ability.extra.suit) then
+				card:juice_up()
 				return {
 					repetitions = card.ability.extra.retriggers,
 					message = localize("k_again_ex"),
