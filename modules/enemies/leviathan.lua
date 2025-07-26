@@ -54,7 +54,15 @@ if
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-		SMODS.destroy_cards(card, true) 
+		G.E_MANAGER:add_event(Event({
+    trigger = "after", 
+    delay = 1.3, 
+    func = function() 
+        SMODS.destroy_cards(card, true) 
+        return true 
+    end,
+	 blocking = false
+}))
 		end
 
 end

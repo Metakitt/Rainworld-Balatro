@@ -989,6 +989,15 @@ return {
 					"{C:attention}Undefeated{}: {C:red}Die{}.",
 				},
 			},
+			
+			j_rw_redcentipede = {
+				name = "Red Centipede",
+				text = {
+					"{C:attention}Threat: Defeat {C:attention}Blinds{} in one hand.",
+					"{C:attention}To Defeat:{} Cannot be defeated. Leaves on Ante 9+.",
+					"{C:attention}Undefeated{}: {C:red}Die{}.",
+				},
+			},
 
 			--endregion
 			--region Slugcats
