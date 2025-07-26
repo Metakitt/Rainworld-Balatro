@@ -998,6 +998,15 @@ return {
 					"{C:attention}Undefeated{}: {C:red}Die{}.",
 				},
 			},
+			
+			j_rw_chieftain = {
+				name = "Chieftain",
+				text = {
+					"{C:attention}Threat: Each played hand removes a random {C:weapon}weapon{} from each joker.",
+					"{C:attention}To Defeat:{} Win a blind while scoring 150% of its chips.",
+					"{C:attention}Undefeated{}: {C:red}Die{}.",
+				},
+			},
 
 			--endregion
 			--region Slugcats
