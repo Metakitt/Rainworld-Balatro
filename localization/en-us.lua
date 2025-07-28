@@ -1504,7 +1504,15 @@ return {
 					"gives {C:money}$#1#{} at end of round",
 					"{C:inactive}(Currently {C:money}$#2#{C:inactive})"
 				}
-			}
+			},
+			j_rw_communication = {
+				name = "Mark of Communication",
+				text = {
+					"Each used {C:attention}Consumable{} has a",
+					"{C:green}#1# in #2#{} chance to spawn another",
+					"random {C:attention}Consumable"
+				}
+			},
 			--endregion
 		},
 	},
