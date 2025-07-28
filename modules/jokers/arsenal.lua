@@ -4,6 +4,7 @@ SMODS.Joker({
 		extra = {
 			wep_mult = 3,
 		},
+		slugcat = true
 	},
 	rarity = 1,
 	cost = 5,

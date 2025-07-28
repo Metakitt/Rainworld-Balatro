@@ -1408,8 +1408,6 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			--endregion
-			--region Not-Slugcats
 			j_rw_arsenal = {
 				name = "Arsenal",
 				text = {
@@ -1418,6 +1416,8 @@ return {
 					"{C:inactive}(Currently {C:mult}+#2# {C:inactive}Mult)",
 				},
 			},
+			--endregion
+			--region Not-Slugcats
 			j_rw_scavenger_neutral = {
 				name = "Scavenger",
 				text = {
