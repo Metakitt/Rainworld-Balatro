@@ -7,9 +7,9 @@ SCUG.num = function(x)
 	return (Talisman and to_number(x)) or x
 end
 
----@param min integer Minimum number that can be picked. Defaults to 1.
----@param max integer Maximum number that can be picked. Defaults to 20.
----@param seed string Pseudorandom seed. Defaults to "Rainworld"
+---@param min integer? Minimum number that can be picked. Defaults to 1.
+---@param max integer? Maximum number that can be picked. Defaults to 20.
+---@param seed string? Pseudorandom seed. Defaults to "Rainworld"
 ---@return integer
 ---Returns a random integer between two numbers, including those numbers.
 SCUG.number_in_range = function(min, max, seed)
