@@ -968,7 +968,7 @@ return {
 					"appear on jokers in the shop.",
 				},
 			},
-			
+
 			j_rw_trainlizard = {
 				name = "Train Lizard",
 				text = {
@@ -979,7 +979,7 @@ return {
 					"{C:attention}Undefeated{}: {C:red}Die{}.",
 				},
 			},
-			
+
 			j_rw_leviathan = {
 				name = "Leviathan",
 				text = {
@@ -989,7 +989,7 @@ return {
 					"{C:attention}Undefeated{}: {C:red}Die{}.",
 				},
 			},
-			
+
 			j_rw_redcentipede = {
 				name = "Red Centipede",
 				text = {
@@ -998,7 +998,7 @@ return {
 					"{C:attention}Undefeated{}: {C:red}Die{}.",
 				},
 			},
-			
+
 			j_rw_chieftain = {
 				name = "Chieftain",
 				text = {
@@ -1502,16 +1502,16 @@ return {
 				text = {
 					"Each {C:rw_enemy}Enemy{} defeated this run",
 					"gives {C:money}$#1#{} at end of round",
-					"{C:inactive}(Currently {C:money}$#2#{C:inactive})"
-				}
+					"{C:inactive}(Currently {C:money}$#2#{C:inactive})",
+				},
 			},
 			j_rw_communication = {
 				name = "Mark of Communication",
 				text = {
 					"Each used {C:attention}Consumable{} has a",
 					"{C:green}#1# in #2#{} chance to spawn another",
-					"random {C:attention}Consumable"
-				}
+					"random {C:attention}Consumable",
+				},
 			},
 			--endregion
 		},
@@ -1526,14 +1526,15 @@ return {
 			k_over_elip = "Over...",
 			k_under_ex = "Under!",
 			k_dormant_elip = "Dormant...",
-			k_awake_ex = "Awake!"
+			k_awake_ex = "Awake!",
+			k_plus_weapon = "+1 Weapon",
 		},
 		v_dictionary = {
 			a_scav_rep = "+#1# Reputation",
 			a_scav_rep_minus = "-#1# Reputation",
 			a_score = "+#1# Score",
 			a_score_minus = "-#1# Score",
-			a_voucher_lost = "Lost #1#..."
+			a_voucher_lost = "Lost #1#...",
 		},
 	},
 }
