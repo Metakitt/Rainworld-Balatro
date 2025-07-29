@@ -37,14 +37,14 @@ SMODS.Joker({
 			if score_ratio >= SCUG.big(card.ability.extra.threshold) then
 				card.ability.extra.counter = card.ability.extra.counter + 1
 				card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = "Over...",
+					message = localize("k_over_elip"),
 					colour = G.C.RED
 				})
 			-- Defeat
 			else
 				card.ability.extra.deathcounter = card.ability.extra.deathcounter - 1
 				card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = "Under!",
+					message = localize("k_under_ex"),
 					colour = G.C.GREEN
 				})
 				if card.ability.extra.deathcounter <= 0 then

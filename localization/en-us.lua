@@ -787,10 +787,10 @@ return {
 			j_rw_strawberrylizard = {
 				name = "Strawberry Lizard",
 				text = {
-					"{C:attention}Threat{}: A random joker is {C:attention}debuffed{}",
+					"{C:attention}Threat{}: A random Joker is {C:attention}debuffed{}",
 					"at the start of {C:attention}Blind{}.",
-					"{C:attention}To Defeat{}: Sell a joker.",
-					"{C:attention}Undefeated{}: The last debuffed joker becomes",
+					"{C:attention}To Defeat{}: Sell a Joker.",
+					"{C:attention}Undefeated{}: The last debuffed Joker becomes",
 					"{C:purple}Eternal{} and remains debuffed permanently.",
 				},
 			},
@@ -920,7 +920,7 @@ return {
 					"in your deck, hand and jokers to become {C:rot}Rot{}.",
 					"{C:attention}To Defeat{}: Score a hand while holding",
 					"a {C:weapon}Singularity Bomb{}. [{C:attention}#2#{}/2]",
-					"{C:attention}Undefeated{}: Chooses a random {C:attention}rank{} and joker",
+					"{C:attention}Undefeated{}: Chooses a random {C:attention}rank{} and Joker",
 					"and turns it to {C:rot}Rot{} at end of {C:attention}Boss Blind{}.",
 				},
 			},
@@ -929,7 +929,7 @@ return {
 				name = "Mother Long Legs",
 				text = {
 					"{C:attention}Threat{}:{C:green}1 in #1#{} chance for a random",
-					"joker to become {C:rot}Rot{} each played hand.",
+					"Joker to become {C:rot}Rot{} each played hand.",
 					"{C:attention}To Defeat{}: Score a card with at least",
 					"{C:mult}+6{} extra mult.",
 					"{C:attention}Undefeated{}: {C:attention}+1{} Ante",
@@ -951,7 +951,7 @@ return {
 				name = "Firebug",
 				text = {
 					"Neutral unless provoked.",
-					"Having a joker with a {C:weapon}Sporepuff{} or a {C:weapon}Spear{}",
+					"Having a Joker with a {C:weapon}Sporepuff{} or a {C:weapon}Spear{}",
 					"has a {C:green}#1# in #2#{} chance to provoke it",
 					"at the start of {C:attention}Blind{}.",
 				},
@@ -963,7 +963,7 @@ return {
 					"{C:attention}Threat:{} #1# in #2# chance to destroy a random",
 					"{C:attention}rank{} in the deck at the end of round.",
 					"{C:attention}To Defeat:{} #1# in #3# chance to defeat it each played hand",
-					"if you have a joker with a {C:weapon}Sporepuff{}.",
+					"if you have a Joker with a {C:weapon}Sporepuff{}.",
 					"{C:attention}Undefeated{}: Weapons are 4x less likely to",
 					"appear on jokers in the shop.",
 				},
@@ -973,7 +973,7 @@ return {
 				name = "Train Lizard",
 				text = {
 					"{C:attention}Threat:{} Debuffs a random {C:attention}rank{} every hand",
-					"or discard. Debuffs a random joker every {C:attention}round{}.",
+					"or discard. Debuffs a random Joker every {C:attention}round{}.",
 					"Joker remains debuffed even if defeated.",
 					"{C:attention}To Defeat:{} Sell 3 Jokers[#1#/3] and score 3 hands[#2#/3].",
 					"{C:attention}Undefeated{}: {C:red}Die{}.",
@@ -1002,8 +1002,8 @@ return {
 			j_rw_chieftain = {
 				name = "Chieftain",
 				text = {
-					"{C:attention}Threat: Each played hand removes a random {C:weapon}weapon{} from each joker.",
-					"{C:attention}To Defeat:{} Win a blind while scoring 150% of its chips.",
+					"{C:attention}Threat: Each played hand removes a random {C:weapon}Weapon{} from each Joker.",
+					"{C:attention}To Defeat:{} Win a blind while scoring {C:attention}#1#% or more{} of its chips.",
 					"{C:attention}Undefeated{}: {C:red}Die{}.",
 				},
 			},
@@ -1522,10 +1522,18 @@ return {
 			k_fooduncommon = "Uncommon",
 			k_foodrare = "Rare",
 			k_enemy = "Enemy",
+			k_yoinked_ex = "Yoinked!",
+			k_over_elip = "Over...",
+			k_under_ex = "Under!",
+			k_dormant_elip = "Dormant...",
+			k_awake_ex = "Awake!"
 		},
 		v_dictionary = {
 			a_scav_rep = "+#1# Reputation",
 			a_scav_rep_minus = "-#1# Reputation",
+			a_score = "+#1# Score",
+			a_score_minus = "-#1# Score",
+			a_voucher_lost = "Lost #1#..."
 		},
 	},
 }

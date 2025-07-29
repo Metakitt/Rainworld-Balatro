@@ -65,14 +65,14 @@ SMODS.Joker({
 				if pseudorandom("rw_stowaway_sleep") < 1 / card.ability.extra.dormant_chance then
 					card.ability.extra.dormant_timer = SCUG.number_in_range(3, 6, "rw_stowaway_eepy")
 					card_eval_status_text(card, "extra", nil, nil, nil, {
-						message = "Dormant...",
+						message = localize("k_dormant_elip"),
 						colour = G.C.FILTER,
 					})
 				end
 			else
 				card.ability.extra.dormant_timer = card.ability.extra.dormant_timer - 1
 				card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = card.ability.extra.dormant_timer == 0 and "Awake!" or localize({
+					message = card.ability.extra.dormant_timer == 0 and localize("k_awake_ex") or localize({
 						type = "variable",
 						key = "a_remaining",
 						vars = { card.ability.extra.dormant_timer },
