@@ -79,9 +79,10 @@ SMODS.Joker({
 				card.ability.extra.trade_odds,
 			}
 		end
-		return_table.vars[#return_table.vars + 1] = (reputation >= 4 and "MAX (4 or more)")
-			or (reputation <= -4 and "MIN (-4 or less)")
-			or reputation
+		table.insert(
+			return_table.vars,
+			(reputation >= 4 and "MAX (4 or more)") or (reputation <= -4 and "MIN (-4 or less)") or reputation
+		)
 
 		return return_table
 	end,
