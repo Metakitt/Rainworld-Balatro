@@ -97,7 +97,7 @@ end
 				and not chosen_card.getting_sliced
 				and not context.blueprint
 			then
-				chosen_card:start_dissolve()
+				SMODS.destroy_cards(chosen_card)
 			end
 end
 	end

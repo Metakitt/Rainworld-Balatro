@@ -124,7 +124,7 @@ end
 if context.main_eval and context.end_of_round and G.GAME.blind.boss and card.ability.extra.defeat == false and not context.blueprint  then
 for _,v in ipairs(G.jokers.cards) do
 if v.debuff then
-v:start_dissolve()
+SMODS.destroy_cards(v, true)
 end
 end
 

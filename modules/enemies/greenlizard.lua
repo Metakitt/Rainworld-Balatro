@@ -56,7 +56,7 @@ SMODS.Joker({
 				and not chosen_card.getting_sliced
 				and not context.blueprint
 			then
-				chosen_card:start_dissolve()
+				SMODS.destroy_cards(chosen_card, true)
 			end
 		end
 		--Defeat
@@ -91,7 +91,7 @@ SMODS.Joker({
 					and not G.jokers.cards[i].ability.eternal
 					and not context.blueprint
 				then
-					G.jokers.cards[i]:start_dissolve()
+					SMODS.destroy_cards(G.jokers.cards[i])
 				else
 					--print('Safe')
 				end

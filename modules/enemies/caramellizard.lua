@@ -83,7 +83,7 @@ SMODS.Joker({
 				trigger = "after",
 				delay = 1.3,
 				func = function()
-					card:start_dissolve()
+					SMODS.destroy_cards(card, true)
 					for i, v in pairs(G.jokers.cards) do
 						if v.config.center.key == "j_rw_abundance" then
 							local abundont = v
@@ -105,7 +105,7 @@ SMODS.Joker({
 			and not context.blueprint
 		then
 			-- Maybe make it so that jokers that benefit from food can no longer spawn or destroyed or smth
-			card:start_dissolve()
+			SMODS.destroy_cards(card, true)
 		end
 	end,
 })

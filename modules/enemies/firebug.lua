@@ -92,7 +92,7 @@ for k,v in pairs(SMODS.Stickers) do
  local rank = SCUG.get_rank_in_deck()
     for _, v in ipairs(G.deck.cards) do
         if v.config.card.value == rank and not context.blueprint then
-            v:start_dissolve()
+            SMODS.destroy_cards(v)
         end
     end
 end
@@ -101,7 +101,7 @@ elseif pseudorandom('boogpowerup') < 1 / card.ability.extra.aggodds and context.
  local rank = SCUG.get_rank_in_deck()
     for _, v in ipairs(G.deck.cards) do
         if v.config.card.value == rank and not context.blueprint then
-            v:start_dissolve()
+            SMODS.destroy_cards(v)
         end
     end
 end

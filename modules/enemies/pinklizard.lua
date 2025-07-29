@@ -47,7 +47,7 @@ SMODS.Joker({
 				and not chosen_card.getting_sliced
 				and not context.blueprint
 			then
-				chosen_card:start_dissolve()
+				SMODS.destroy_cards(chosen_card)
 			end
 		end
 		--Defeat
@@ -78,7 +78,7 @@ SMODS.Joker({
 		then
 			for i = 1, #G.deck.cards do
 				if pseudorandom("bite") < 1 / card.ability.extra.deck_odds then
-					G.deck.cards[i]:start_dissolve()
+					SMODS.destroy_cards(G.deck.cards[i])
 				else
 					--print('Safe')
 				end
