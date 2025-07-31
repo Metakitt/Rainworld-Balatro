@@ -40,6 +40,7 @@ SMODS.Joker({
 			grace = 10,
 			can_munch = true,
 		},
+		slugcat = true,
 	},
 	rarity = 3,
 	cost = 5,
