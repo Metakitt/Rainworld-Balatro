@@ -1515,6 +1515,72 @@ return {
 			},
 			--endregion
 		},
+		Tag = {
+			tag_rw_survivalist = {
+				name = "Survivalist Tag",
+				text = {
+					"Shop has a",
+					"{C:attention}Slugcat Joker"
+				}
+			},
+			tag_rw_top_pup = {
+				name = "Top-Pup Tag",
+				text = {
+					"Gives a free",
+					"{C:dark_edition}Negative {C:attention}Slugpup"
+				}
+			},
+			tag_rw_danger = {
+				name = "Danger Tag",
+				text = {
+					"Encounter an {C:rw_enemy}Enemy",
+					"but gain {C:money}$20",
+					"{s:0.8}50% chance to encounter {s:0.8,C:rw_enemy}two"
+				}
+			},
+			tag_rw_escape = {
+				name = "Escape Tag",
+				text = {
+					"Remove one {C:rw_enemy}Enemy{} from",
+					"your Joker slots"
+				}
+			},
+			tag_rw_rivulet = {
+				name = "Rivulet Tag",
+				text = {
+					"Add 3 {C:attention}Enhanced{}",
+					"cards to your deck"
+				}
+			},
+			tag_rw_power = {
+				name = "Power Tag",
+				text = {
+					"Gives a free",
+					"{C:weapon}Mega Weapon Pack"
+				}
+			},
+			tag_rw_quickequip = {
+				name = "Quick-Equip Tag",
+				text = {
+					"Gives each Joker",
+					"a random {C:weapon}Weapon"
+				}
+			},
+			tag_rw_feast = {
+				name = "Feast Tag",
+				text = {
+					"Gives a free",
+					"{C:food}Mega Food Pack"
+				}
+			},
+			tag_rw_healthy = {
+				name = "Healthy Tag",
+				text = {
+					"Removes {C:rot}Rot{} from",
+					"all cards and Jokers"
+				}
+			},
+		}
 	},
 	misc = {
 		dictionary = {
