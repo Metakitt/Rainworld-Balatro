@@ -24,7 +24,7 @@ SMODS.Tag({
 				-- This code makes it free
 				-- slugcat.ability.couponed = true
 				-- slugcat:set_cost()
-				return true
+                return true
 			end)
 			tag.triggered = true
 			return slugcat
@@ -46,12 +46,35 @@ SMODS.Tag({
 				return true
 			end)
 			tag.triggered = true
+            return true
 		end
 	end,
 })
 
 -- Danger Tag
 -- Spawns 1~2 Enemies but gain 20$.
+SMODS.Tag({
+	key = "danger",
+	atlas = "scugtags",
+	pos = { x = 2, y = 0 },
+	discovered = true,
+	min_ante = 2,
+	apply = function(self, tag, context)
+		if context.type == "immediate" then
+			local lock = tag.ID
+			G.CONTROLLER.locks[lock] = true
+			tag:yep("+", G.C.RARITY.rw_enemy, function()
+				for _ in 1, pseudorandom("tag_rw_danger") < 0.5 and 2 or 1 do
+					SCUG.spawn_enemy({ guarantee = true })
+				end
+				return true
+			end)
+			tag.triggered = true
+			G.CONTROLLER.locks[lock] = nil
+            return true
+		end
+	end,
+})
 
 -- Escape Tag
 -- Removes a random enemy.
@@ -77,7 +100,8 @@ SMODS.Tag({
 				SMODS.destroy_cards(pseudorandom_element(enemies, pseudoseed("tag_rw_escape")), true)
 				return true
 			end)
-            tag.triggered = true
+			tag.triggered = true
+            return true
 		end
 	end,
 })
@@ -90,6 +114,48 @@ SMODS.Tag({
 
 -- Quick-Equip Tag
 -- Gives each of your jokers a random weapon
+SMODS.Tag({
+	key = "quickequip",
+	config = {},
+	atlas = "scugtags",
+	pos = { x = 2, y = 1 },
+	discovered = true,
+	loc_vars = function(self, info_queue, tag)
+		return { vars = {} }
+	end,
+	apply = function(self, tag, context)
+		if context.type == "immediate" then
+			local ALL_WEAPONS = {}
+			for k, _ in SMODS.Stickers do
+				local st, nd = string.find(k, "rw_w")
+				if st == 1 and nd == 4 then
+					table.insert(ALL_WEAPONS, k)
+				end
+			end
+			tag:yep("+", G.C.WEAPON, function()
+				for _, v in ipairs(G.jokers.cards) do
+					local valid_weapons = {}
+					for i, x in ipairs(ALL_WEAPONS) do
+						valid_weapons[i] = x
+					end
+					local valid = false
+					repeat
+						local new_weapon, n = pseudorandom_element(valid_weapons, pseudoseed("tag_rw_quickequip"))
+						if not v.ability[new_weapon] then
+							valid = true
+							SMODS.Stickers[new_weapon]:apply(v, true)
+						else
+							table.remove(new_weapon, tonumber(n))
+						end
+					until valid or #valid_weapons == 0
+				end
+				return true
+			end)
+            tag.triggered = true
+            return true
+		end
+	end,
+})
 
 -- Feast Tag
 -- Mega Food Pack
