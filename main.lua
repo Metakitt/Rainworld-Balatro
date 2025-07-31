@@ -12,6 +12,7 @@ assert(SMODS.load_file("./modules/blinds.lua"))()
 assert(SMODS.load_file("./modules/enemies.lua"))()
 assert(SMODS.load_file("./modules/enhancement.lua"))()
 assert(SMODS.load_file("./modules/stickers.lua"))()
+assert(SMODS.load_file("./modules/tags.lua"))()
 --assert(SMODS.load_file("./modules/debug.lua"))()
 
 --Debug allows for the use of the Rot fruit for testing rot! Wet fruit as well for wet cards!
@@ -21,6 +22,7 @@ local wet_keys = {
 	"j_seltzer",
 	"j_dietcola",
 	"j_rw_rivulet",
+	"j_rw_stupid_wet_rat"
 }
 
 SMODS.Sound({

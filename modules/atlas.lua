@@ -70,3 +70,10 @@ SMODS.Atlas({
 	px = 71,
 	py = 95,
 })
+
+SMODS.Atlas {
+	key = "scugtags",
+	path = "stags.png",
+	px = 34,
+	py = 34
+}
