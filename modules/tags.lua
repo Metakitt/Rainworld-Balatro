@@ -126,7 +126,7 @@ SMODS.Tag({
 	apply = function(self, tag, context)
 		if context.type == "immediate" then
 			local ALL_WEAPONS = {}
-			for k, _ in SMODS.Stickers do
+			for k, _ in pairs(SMODS.Stickers) do
 				local st, nd = string.find(k, "rw_w")
 				if st == 1 and nd == 4 then
 					table.insert(ALL_WEAPONS, k)
@@ -145,7 +145,7 @@ SMODS.Tag({
 							valid = true
 							SMODS.Stickers[new_weapon]:apply(v, true)
 						else
-							table.remove(new_weapon, tonumber(n))
+							table.remove(valid_weapons, tonumber(n))
 						end
 					until valid or #valid_weapons == 0
 				end
