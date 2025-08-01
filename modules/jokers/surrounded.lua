@@ -61,15 +61,25 @@ SMODS.Joker({
 					}))
 				end
 			end
+		end
 
-			if
-				context.card
-				and context.card.config.center.set == "Joker"
-				and context.card.config.center.rarity == "rw_enemy"
-			then
-				local slot_mod = (context.card_added and 1) or (context.destroy_card and -1) or 0
-				G.jokers.config.card_limit = G.jokers.config.card_limit + slot_mod
-			end
+		if
+			context.card_added
+			and not context.blueprint
+			and context.card.config.center.set == "Joker"
+			and context.card.config.center.rarity == "rw_enemy"
+		then
+			G.jokers.config.card_limit = G.jokers.config.card_limit + 1
+		end
+		if
+			context.joker_type_destroyed
+			and not context.blueprint
+			and context.card.config.center.set == "Joker"
+			and context.card.config.center.rarity == "rw_enemy"
+		then
+			print(context.card.config.center.set)
+			print(context.card.config.center.rarity)
+			G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 		end
 	end,
 })
