@@ -131,11 +131,32 @@ SMODS.Tag({
 		} }
 	end,
 	apply = function(self, tag, context)
-		if context.type == "immediate" or context.type == "new_blind_choice" then
-			tag.yep("+", G.C.FILTER, function()
-				-- SMODS.add_card({ set = "Enhanced", area = G.deck, key_append = "tag_rw_rivulet" })
-				-- SMODS.add_card({ set = "Enhanced", area = G.deck, key_append = "tag_rw_rivulet" })
-				-- SMODS.add_card({ set = "Enhanced", area = G.deck, key_append = "tag_rw_rivulet" })
+		if context.type == "immediate" or context.type == "new_blind_choice" or context.type == "round_start_bonus" then
+			tag:yep("+", G.C.SECONDARY_SET.Enhanced, function()
+				local num_cards = tag.config.cards
+				local i = num_cards
+				while i > 0 do
+					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						delay = 0.2,
+						func = function()
+							SMODS.add_card({ set = "Enhanced", area = G.play, key_append = "tag_rw_rivulet" })
+							return true
+						end,
+					}))
+					i = i - 1
+				end
+				while i < num_cards do
+					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						delay = i == 0 and 0.7 or 0.2,
+						func = function()
+							draw_card(G.play, G.deck, 90, "up", nil)
+							return true
+						end,
+					}))
+					i = i + 1
+				end
 				return true
 			end)
 			tag.triggered = true
