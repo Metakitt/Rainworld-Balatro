@@ -117,32 +117,32 @@ SMODS.Tag({
 -- Rivulet Tag
 -- Gain 3 enhanced cards.
 -- Keeps crashing. No clue why.
--- SMODS.Tag({
--- 	key = "rivulet",
--- 	config = {
--- 		cards = 3,
--- 	},
--- 	atlas = "scugtags",
--- 	pos = { x = 0, y = 1 },
--- 	discovered = true,
--- 	loc_vars = function(self, info_queue, tag)
--- 		return { vars = {
--- 			tag.config.cards,
--- 		} }
--- 	end,
--- 	apply = function(self, tag, context)
--- 		if context.type == "immediate" or context.type == "new_blind_choice" then
--- 			tag.yep("+", G.C.SECONDARY_SET.Enhanced, function()
--- 				for i in 1, tag.config.cards do
--- 					SMODS.add_card({ set = "Enhanced", area = G.deck, key_append = "tag_rw_rivulet" })
--- 				end
--- 				return true
--- 			end)
--- 			tag.triggered = true
--- 			return true
--- 		end
--- 	end,
--- })
+SMODS.Tag({
+	key = "rivulet",
+	config = {
+		cards = 3,
+	},
+	atlas = "scugtags",
+	pos = { x = 0, y = 1 },
+	discovered = true,
+	loc_vars = function(self, info_queue, tag)
+		return { vars = {
+			tag.config.cards,
+		} }
+	end,
+	apply = function(self, tag, context)
+		if context.type == "immediate" or context.type == "new_blind_choice" then
+			tag.yep("+", G.C.FILTER, function()
+				-- SMODS.add_card({ set = "Enhanced", area = G.deck, key_append = "tag_rw_rivulet" })
+				-- SMODS.add_card({ set = "Enhanced", area = G.deck, key_append = "tag_rw_rivulet" })
+				-- SMODS.add_card({ set = "Enhanced", area = G.deck, key_append = "tag_rw_rivulet" })
+				return true
+			end)
+			tag.triggered = true
+			return true
+		end
+	end,
+})
 
 -- Power Tag
 -- Mega Weapon pack
