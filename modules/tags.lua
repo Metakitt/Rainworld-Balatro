@@ -24,7 +24,7 @@ SMODS.Tag({
 				-- This code makes it free
 				-- slugcat.ability.couponed = true
 				-- slugcat:set_cost()
-                return true
+				return true
 			end)
 			tag.triggered = true
 			return slugcat
@@ -46,7 +46,7 @@ SMODS.Tag({
 				return true
 			end)
 			tag.triggered = true
-            return true
+			return true
 		end
 	end,
 })
@@ -55,6 +55,9 @@ SMODS.Tag({
 -- Spawns 1~2 Enemies but gain 20$.
 SMODS.Tag({
 	key = "danger",
+	config = {
+		money = 20,
+	},
 	atlas = "scugtags",
 	pos = { x = 2, y = 0 },
 	discovered = true,
@@ -64,14 +67,17 @@ SMODS.Tag({
 			local lock = tag.ID
 			G.CONTROLLER.locks[lock] = true
 			tag:yep("+", G.C.RARITY.rw_enemy, function()
-				for _ in 1, pseudorandom("tag_rw_danger") < 0.5 and 2 or 1 do
+				local num_enemies = pseudorandom("tag_rw_danger") < 0.5 and 2 or 1
+				while num_enemies > 0 do
 					SCUG.spawn_enemy({ guarantee = true })
+					num_enemies = num_enemies - 1
 				end
+				ease_dollars(tag.config.money)
 				return true
 			end)
 			tag.triggered = true
 			G.CONTROLLER.locks[lock] = nil
-            return true
+			return true
 		end
 	end,
 })
@@ -96,12 +102,14 @@ SMODS.Tag({
 					table.insert(enemies, v)
 				end
 			end
-			tag:yep("-", G.C.RARITY.rw_enemy, function()
-				SMODS.destroy_cards(pseudorandom_element(enemies, pseudoseed("tag_rw_escape")), true)
+			if #enemies > 0 then
+				tag:yep("-", G.C.RARITY.rw_enemy, function()
+					SMODS.destroy_cards(pseudorandom_element(enemies, pseudoseed("tag_rw_escape")), true)
+					return true
+				end)
+				tag.triggered = true
 				return true
-			end)
-			tag.triggered = true
-            return true
+			end
 		end
 	end,
 })
@@ -151,8 +159,8 @@ SMODS.Tag({
 				end
 				return true
 			end)
-            tag.triggered = true
-            return true
+			tag.triggered = true
+			return true
 		end
 	end,
 })
