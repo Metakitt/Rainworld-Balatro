@@ -1534,7 +1534,7 @@ return {
 				name = "Danger Tag",
 				text = {
 					"Encounter an {C:rw_enemy}Enemy",
-					"but gain {C:money}$20",
+					"but gain {C:money}$#1#",
 					"{s:0.8}50% chance to encounter {s:0.8,C:rw_enemy}two"
 				}
 			},
@@ -1548,7 +1548,7 @@ return {
 			tag_rw_rivulet = {
 				name = "Rivulet Tag",
 				text = {
-					"Add 3 {C:attention}Enhanced{}",
+					"Add #1# {C:attention}Enhanced{}",
 					"cards to your deck"
 				}
 			},

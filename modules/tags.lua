@@ -61,6 +61,9 @@ SMODS.Tag({
 	atlas = "scugtags",
 	pos = { x = 2, y = 0 },
 	discovered = true,
+	loc_vars = function(self, info_queue, tag)
+		return { vars = { tag.config.money } }
+	end,
 	min_ante = 2,
 	apply = function(self, tag, context)
 		if context.type == "immediate" then
@@ -116,7 +119,6 @@ SMODS.Tag({
 
 -- Rivulet Tag
 -- Gain 3 enhanced cards.
--- Keeps crashing. No clue why.
 SMODS.Tag({
 	key = "rivulet",
 	config = {
@@ -134,18 +136,10 @@ SMODS.Tag({
 		if context.type == "immediate" or context.type == "new_blind_choice" or context.type == "round_start_bonus" then
 			tag:yep("+", G.C.SECONDARY_SET.Enhanced, function()
 				local num_cards = tag.config.cards
-				local i = num_cards
-				while i > 0 do
-					G.E_MANAGER:add_event(Event({
-						trigger = "after",
-						delay = 0.2,
-						func = function()
-							SMODS.add_card({ set = "Enhanced", area = G.play, key_append = "tag_rw_rivulet" })
-							return true
-						end,
-					}))
-					i = i - 1
-				end
+				local i = 0
+				SMODS.add_card({ set = "Enhanced", area = G.play, key_append = "tag_rw_rivulet" })
+				SMODS.add_card({ set = "Enhanced", area = G.play, key_append = "tag_rw_rivulet" })
+				SMODS.add_card({ set = "Enhanced", area = G.play, key_append = "tag_rw_rivulet" })
 				while i < num_cards do
 					G.E_MANAGER:add_event(Event({
 						trigger = "after",
@@ -167,6 +161,47 @@ SMODS.Tag({
 
 -- Power Tag
 -- Mega Weapon pack
+SMODS.Tag({
+	key = "power",
+	config = {
+		pack_type = "p_rw_weapon_mega_1",
+	},
+	atlas = "scugtags",
+	pos = { x = 1, y = 1 },
+	discovered = true,
+	loc_vars = function(self, info_queue, tag)
+		info_queue[#info_queue + 1] = { set = "Other", key = tag.config.pack_type }
+	end,
+	min_ante = 2,
+	apply = function(self, tag, context)
+		if context.type == "new_blind_choice" then
+			-- Weird evil booster pack code.
+			-- Every mod I've seen copies this, so.
+			local lock = tag.ID
+			G.CONTROLLER.locks[lock] = true
+			tag:yep("+", G.C.WEAPON, function()
+				local key = tag.config.pack_type
+				local card = Card(
+					G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2,
+					G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2,
+					G.CARD_W * 1.27,
+					G.CARD_H * 1.27,
+					G.P_CARDS.empty,
+					G.P_CENTERS[key],
+					{ bypass_discovery_center = true, bypass_discovery_ui = true }
+				)
+				card.cost = 0
+				card.from_tag = true
+				G.FUNCS.use_card({ config = { ref_table = card } })
+				card:start_materialize()
+				G.CONTROLLER.locks[lock] = nil
+				return true
+			end)
+			tag.triggered = true
+			return true
+		end
+	end,
+})
 
 -- Quick-Equip Tag
 -- Gives each of your jokers a random weapon
@@ -176,6 +211,7 @@ SMODS.Tag({
 	atlas = "scugtags",
 	pos = { x = 2, y = 1 },
 	discovered = true,
+	min_ante = 2,
 	apply = function(self, tag, context)
 		if context.type == "immediate" then
 			local ALL_WEAPONS = {}
@@ -212,6 +248,84 @@ SMODS.Tag({
 
 -- Feast Tag
 -- Mega Food Pack
+SMODS.Tag({
+	key = "feast",
+	config = {
+		pack_type = "p_rw_megafoodpack",
+	},
+	atlas = "scugtags",
+	pos = { x = 3, y = 1 },
+	discovered = true,
+	loc_vars = function(self, info_queue, tag)
+		info_queue[#info_queue + 1] = { set = "Other", key = tag.config.pack_type }
+	end,
+	apply = function(self, tag, context)
+		if context.type == "new_blind_choice" then
+			-- Weird evil booster pack code.
+			-- Every mod I've seen copies this, so.
+			local lock = tag.ID
+			G.CONTROLLER.locks[lock] = true
+			tag:yep("+", G.C.WEAPON, function()
+				local key = tag.config.pack_type
+				local card = Card(
+					G.play.T.x + G.play.T.w / 2 - G.CARD_W * 1.27 / 2,
+					G.play.T.y + G.play.T.h / 2 - G.CARD_H * 1.27 / 2,
+					G.CARD_W * 1.27,
+					G.CARD_H * 1.27,
+					G.P_CARDS.empty,
+					G.P_CENTERS[key],
+					{ bypass_discovery_center = true, bypass_discovery_ui = true }
+				)
+				card.cost = 0
+				card.from_tag = true
+				G.FUNCS.use_card({ config = { ref_table = card } })
+				card:start_materialize()
+				G.CONTROLLER.locks[lock] = nil
+				return true
+			end)
+			tag.triggered = true
+			return true
+		end
+	end,
+})
 
 -- Healthy Tag
 -- Turns Rot cards back to normal cards.
+SMODS.Tag({
+	key = "healthy",
+	atlas = "scugtags",
+	pos = { x = 0, y = 2 },
+	discovered = true,
+	in_pool = function(self, args)
+		local rot_jokers = 0
+		if G.jokers then
+			for _, v in pairs(G.jokers.cards) do
+				if v.ability.rw_rotted then
+					rot_jokers = rot_jokers + 1
+				end
+			end
+		end
+		return (rot_jokers + SCUG.enhancement_count("m_rw_rotting", true)) > 0
+	end,
+	min_ante = 2,
+	apply = function(self, tag, context)
+		if context.type == "immediate" or context.type == "new_blind_choice" or context.type == "round_start_bonus" then
+			tag:yep("<3", G.C.EDITION, function()
+				for _, v in pairs(G.jokers.cards) do
+					if v.ability.rw_rotted then
+						v.ability.rw_rotted = nil
+						v:juice_up()
+					end
+				end
+				for _, v in pairs(G.playing_cards) do
+					if SMODS.has_enhancement(v, "m_rw_rotting") then
+						v:set_ability(G.P_CENTERS.c_base, nil, true)
+					end
+				end
+				return true
+			end)
+			tag.triggered = true
+			return true
+		end
+	end,
+})
