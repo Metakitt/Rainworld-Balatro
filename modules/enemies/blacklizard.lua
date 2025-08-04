@@ -3,7 +3,7 @@ SMODS.Joker({
 	config = {
 		extra = {
 			defeat = false,
-		},
+		}, enemy = true,
 	},
 	rarity = "rw_enemy",
 	cost = 3,

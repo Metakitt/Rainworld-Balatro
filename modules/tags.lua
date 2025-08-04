@@ -230,7 +230,7 @@ SMODS.Tag({
 					local valid = false
 					repeat
 						local new_weapon, n = pseudorandom_element(valid_weapons, pseudoseed("tag_rw_quickequip"))
-						if not v.ability[new_weapon] then
+						if not v.ability.enemy and not v.ability[new_weapon] then
 							valid = true
 							SMODS.Stickers[new_weapon]:apply(v, true)
 						else

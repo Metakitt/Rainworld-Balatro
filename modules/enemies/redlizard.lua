@@ -4,6 +4,7 @@ SMODS.Joker({
 		extra = {
 			threshold = 1.25,
 		},
+		enemy = true
 	},
 	rarity = "rw_enemy",
 	cost = 0,

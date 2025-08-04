@@ -11,6 +11,7 @@ SMODS.Joker({
 			dormant_timer = 0,
 			joker_chance = 50,
 		},
+		enemy = true,
 	},
 	rarity = "rw_enemy",
 	cost = 0,
