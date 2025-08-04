@@ -5,6 +5,7 @@ SMODS.Joker({
 			wetcount = 0,
 			defeat = false,
 		},
+		enemy = true
 	},
 	rarity = "rw_enemy",
 	cost = 3,

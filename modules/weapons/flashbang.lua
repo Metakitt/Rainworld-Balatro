@@ -57,8 +57,13 @@ SMODS.Consumable({
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { set = "Other", key = "rw_wflashbang" }
 	end,
-	can_use = function(self, card)
-		return #G.jokers.highlighted == 1
+		can_use = function(self, card)
+		if G.jokers.highlighted[1].ability.enemy == true then 
+		return false
+		end
+	if not G.jokers.highlighted[1].ability.enemy then
+		return true
+		end
 	end,
 	use = function(self, card, area, copier)
 		for i, v in ipairs(G.jokers.highlighted) do

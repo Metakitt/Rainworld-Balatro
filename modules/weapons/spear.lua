@@ -122,7 +122,12 @@ SMODS.Consumable({
 		info_queue[#info_queue + 1] = { set = "Other", key = "rw_wspear" }
 	end,
 	can_use = function(self, card)
-		return #G.jokers.highlighted == 1
+		if G.jokers.highlighted[1].ability.enemy == true then 
+		return false
+		end
+	if not G.jokers.highlighted[1].ability.enemy then
+		return true
+		end
 	end,
 	use = function(self, card, area, copier)
 		-- This gives Hunter or Spearmaster a second spear.

@@ -11,6 +11,7 @@ SMODS.Joker({
 			pct_per_joker = 5,
 			defeat = false,
 		},
+		enemy = true,
 	},
 	rarity = "rw_enemy",
 	cost = 0,

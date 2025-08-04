@@ -10,6 +10,7 @@ SMODS.Joker({
 			spears_needed = 5,
 			defeat = false,
 		},
+		enemy = true,
 	},
 	rarity = "rw_enemy",
 	cost = 1,

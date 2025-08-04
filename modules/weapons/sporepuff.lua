@@ -38,7 +38,14 @@ SMODS.Consumable({
 	discovered = true,
 	config = { extra = { upgrade = 15 } },
 	can_use = function(self, card)
-		return #G.jokers.highlighted == 1
+	--for _, v in ipairs(G.jokers.highlighted) do
+	if G.jokers.highlighted[1].ability.enemy == true then 
+		return false
+		end
+	if not G.jokers.highlighted[1].ability.enemy then
+		return true
+		end
+		--end
 	end,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { set = "Other", key = "rw_wsporepuff" }
