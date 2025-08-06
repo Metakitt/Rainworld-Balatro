@@ -540,7 +540,7 @@ return {
 				name = "Explosive Spear",
 				text = { "Gives an Explosive Spear", "to 1 Joker." },
 			},
-			c_rw_spear_fire = {
+			c_rw_firespear = {
 				name = "Fire Spear",
 				text = { "Gives a Fire Spear", "to 1 Joker." },
 			},

@@ -50,7 +50,7 @@ SMODS.Consumable({
 	discovered = true,
 	config = { weapon = "rw_wgrenade" },
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Other", key = card.ability.weapon }
+		info_queue[#info_queue + 1] = { set = "Other", key = card.ability.weapon .. '2' }
 	end,
 	can_use = function(self, card)
 		return #G.jokers.highlighted == 1
