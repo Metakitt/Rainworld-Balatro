@@ -35,79 +35,103 @@ SMODS.Sticker({
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-			local lodging = math.random(1, 100)
-			local gourmandexhausted = math.random(1, 4)
+			local should_lodge = SCUG.number_in_range(1, 100) <= 2 -- 2% chance
+			local gourmand_exhausted = SCUG.number_in_range(1, 4) == 4 -- 25% chance
+			local mult_effect = not should_lodge or card.ability.no_lodge
 
-			if lodging >= 3 or card.config.center_key == "j_rw_artificer" then
+			if mult_effect then
+				local return_table = { x_mult = 4.5 }
+
 				if card.config.center_key == "j_rw_monk" or card.config.center_key == "j_rw_inv" then
-					return {
-						x_mult = 3.75,
-					}
+					return_table.x_mult = 3.75
 				elseif
 					card.config.center_key == "j_rw_hunter"
 					or card.config.center_key == "j_rw_artificer"
 					or card.config.center_key == "j_rw_spearmaster"
 				then
-					return {
-						x_mult = 5.25,
-					}
-				elseif card.config.center_key == "j_rw_gourmand" and gourmandexhausted == 4 then
-					return {
-						x_mult = 0.5,
-					}
-				elseif card.config.center_key == "j_rw_gourmand" and gourmandexhausted < 4 then
-					return {
-						x_mult = 9,
-					}
+					return_table.x_mult = 5.25
+				elseif card.config.center_key == "j_rw_gourmand" then
+					return_table.x_mult = gourmand_exhausted and 0.5 or 9
 				elseif card.config.center_key == "j_rw_saint" then
-					return {
-						x_mult = 10,
-					}
-				else
-					return {
-						x_mult = 4.5,
-					}
+					return_table.x_mult = 10
 				end
-				G.GAME.blind.chips = G.GAME.blind.chips * 1.05
-				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+
+				return return_table
+			else
+				SMODS.Sticker.rw_wspear_ele:apply(card, nil)
+				card_eval_status_text(card, "extra", nil, nil, nil, {
+					message = localize("k_spear_lodged_elip"),
+					colour = G.C.WEAPON,
+				})
 			end
-			if lodging <= 2 and card.config.center_key ~= "j_rw_artificer" then
-				SMODS.Stickers.rw_wspear:apply(card)
-			end
+
+			-- local lodging = math.random(1, 100)
+			-- local gourmandexhausted = math.random(1, 4)
+
+			-- if lodging >= 3 or card.config.center_key == "j_rw_artificer" then
+			-- 	if card.config.center_key == "j_rw_monk" or card.config.center_key == "j_rw_inv" then
+			-- 		return {
+			-- 			x_mult = 3.75,
+			-- 		}
+			-- 	elseif
+			-- 		card.config.center_key == "j_rw_hunter"
+			-- 		or card.config.center_key == "j_rw_artificer"
+			-- 		or card.config.center_key == "j_rw_spearmaster"
+			-- 	then
+			-- 		return {
+			-- 			x_mult = 5.25,
+			-- 		}
+			-- 	elseif card.config.center_key == "j_rw_gourmand" and gourmandexhausted == 4 then
+			-- 		return {
+			-- 			x_mult = 0.5,
+			-- 		}
+			-- 	elseif card.config.center_key == "j_rw_gourmand" and gourmandexhausted < 4 then
+			-- 		return {
+			-- 			x_mult = 9,
+			-- 		}
+			-- 	elseif card.config.center_key == "j_rw_saint" then
+			-- 		return {
+			-- 			x_mult = 10,
+			-- 		}
+			-- 	else
+			-- 		return {
+			-- 			x_mult = 4.5,
+			-- 		}
+			-- 	end
+			-- 	G.GAME.blind.chips = G.GAME.blind.chips * 1.05
+			-- 	G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+			-- end
+			-- if lodging <= 2 and card.config.center_key ~= "j_rw_artificer" then
+			-- 	SMODS.Stickers.rw_wspear:apply(card)
+			-- end
+		end
+		if context.setting_blind then
+			G.GAME.blind.chips = G.GAME.blind.chips * 1.05
+			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 		end
 	end,
 })
 
 SMODS.Consumable({
 	key = "firespear",
-	loc_txt = {
-		name = "Fire Spear",
-		text = { "Gives a Fire Spear", "to 1 Joker." },
-	},
 	set = "obtainweapon",
 	atlas = "weaponfoods",
 	pos = { x = 6, y = 2 },
 	cost = 3,
 	unlocked = true,
 	discovered = true,
-	config = { extra = { upgrade = 15 }, test = true },
+	config = { weapon = "rw_wspear_fire" },
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Other", key = "rw_wspear_fire" }
+		info_queue[#info_queue + 1] = { set = "Other", key = card.ability.weapon }
 	end,
-		can_use = function(self, card)
-		if G.jokers.highlighted[1].ability.enemy == true then 
-		return false
-		end
-	if not G.jokers.highlighted[1].ability.enemy then
-		return true
-		end
+	can_use = function(self, card)
+		return #G.jokers.highlighted == 1
+			and not G.jokers.highlighted[1].ability.enemy
+			and not G.jokers.highlighted[1].ability[card.ability.weapon]
 	end,
 	use = function(self, card, area, copier)
-		for i, v in ipairs(G.jokers.highlighted) do
-			for i = 1, #G.jokers.highlighted do
-				local highlighted = G.jokers.highlighted[i]
-				SMODS.Stickers["rw_wspear_fire"]:apply(highlighted, true)
-			end
+		for _, v in ipairs(G.jokers.highlighted) do
+			SMODS.Stickers[card.ability.weapon]:apply(v, true)
 		end
 	end,
 })

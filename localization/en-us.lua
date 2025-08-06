@@ -515,6 +515,56 @@ return {
 				},
 			},
 		},
+		obtainweapon = {
+			c_rw_singularity = {
+				name = "Singularity Bomb",
+				text = { "Gives a Singularity Bomb", "to 1 Joker." },
+			},
+			c_rw_jokerifle = {
+				name = "Joke Rifle",
+				text = { "Gives a Joke Rifle", "to 1 Joker." },
+			},
+			c_rw_beehive = {
+				name = "Beehive",
+				text = { "Gives a Beehive", "to 1 Joker." },
+			},
+			c_rw_cherrybomb = {
+				name = "Cherrybomb",
+				text = { "Gives a Cherrybomb to 1 Joker." },
+			},
+			c_rw_spear_ele = {
+				name = "Electric Spear",
+				text = { "Gives an Electric Spear", "to 1 Joker." },
+			},
+			c_rw_spear_exp = {
+				name = "Explosive Spear",
+				text = { "Gives an Explosive Spear", "to 1 Joker." },
+			},
+			c_rw_spear_fire = {
+				name = "Fire Spear",
+				text = { "Gives a Fire Spear", "to 1 Joker." },
+			},
+			c_rw_flashbang = {
+				name = "Flashbang",
+				text = { "Gives a Flashbang", "to 1 Joker." },
+			},
+			c_rw_grenade = {
+				name = "Grenade",
+				text = { "Gives a Grenade", "to 1 Joker." },
+			},
+			c_rw_rock = {
+				name = "Rock",
+				text = { "Gives a Rock", "to 1 Joker." },
+			},
+			c_rw_spear = {
+				name = "Spear",
+				text = { "Gives a Spear", "to 1 Joker." },
+			},
+			c_rw_sporepuff = {
+				name = "Sporepuff",
+				text = { "Gives a Sporepuff", "to 1 Joker." },
+			},
+		},
 		Joker = {
 			--region Enemies
 			j_rw_greenlizard = {
@@ -1520,67 +1570,67 @@ return {
 				name = "Survivalist Tag",
 				text = {
 					"Shop has a",
-					"{C:attention}Slugcat Joker"
-				}
+					"{C:attention}Slugcat Joker",
+				},
 			},
 			tag_rw_top_pup = {
 				name = "Top-Pup Tag",
 				text = {
 					"Gives a free",
-					"{C:dark_edition}Negative {C:attention}Slugpup"
-				}
+					"{C:dark_edition}Negative {C:attention}Slugpup",
+				},
 			},
 			tag_rw_danger = {
 				name = "Danger Tag",
 				text = {
 					"Encounter an {C:rw_enemy}Enemy",
 					"but gain {C:money}$#1#",
-					"{s:0.8}50% chance to encounter {s:0.8,C:rw_enemy}two"
-				}
+					"{s:0.8}50% chance to encounter {s:0.8,C:rw_enemy}two",
+				},
 			},
 			tag_rw_escape = {
 				name = "Escape Tag",
 				text = {
 					"Remove one {C:rw_enemy}Enemy{} from",
-					"your Joker slots"
-				}
+					"your Joker slots",
+				},
 			},
 			tag_rw_rivulet = {
 				name = "Rivulet Tag",
 				text = {
 					"Add #1# {C:attention}Enhanced{}",
-					"cards to your deck"
-				}
+					"cards to your deck",
+				},
 			},
 			tag_rw_power = {
 				name = "Power Tag",
 				text = {
 					"Gives a free",
-					"{C:weapon}Mega Weapon Pack"
-				}
+					"{C:weapon}Mega Weapon Pack",
+				},
 			},
 			tag_rw_quickequip = {
 				name = "Quick-Equip Tag",
 				text = {
 					"Gives each Joker",
-					"a random {C:weapon}Weapon"
-				}
+					"a random {C:weapon}Weapon",
+				},
 			},
 			tag_rw_feast = {
 				name = "Feast Tag",
 				text = {
 					"Gives a free",
-					"{C:food}Mega Food Pack"
-				}
+					"{C:food}Mega Food Pack",
+				},
 			},
 			tag_rw_healthy = {
 				name = "Healthy Tag",
 				text = {
 					"Removes {C:rot}Rot{} from",
-					"all cards and Jokers"
-				}
+					"all cards and Jokers",
+				},
 			},
-		}
+		},
 	},
 	misc = {
 		dictionary = {
@@ -1594,6 +1644,7 @@ return {
 			k_dormant_elip = "Dormant...",
 			k_awake_ex = "Awake!",
 			k_plus_weapon = "+1 Weapon",
+			k_spear_lodged_elip = "Spear Lodged...",
 		},
 		v_dictionary = {
 			a_scav_rep = "+#1# Reputation",

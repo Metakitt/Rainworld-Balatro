@@ -29,33 +29,24 @@ SMODS.Sticker({
 
 SMODS.Consumable({
 	key = "cherrybomb",
-	loc_txt = {
-		name = "Cherrybomb",
-		text = { "Gives a Cherrybomb to 1 Joker." },
-	},
 	set = "obtainweapon",
 	atlas = "weaponfoods",
 	pos = { x = 2, y = 2 },
 	cost = 3,
 	unlocked = true,
 	discovered = true,
-	config = { extra = { upgrade = 15 } },
+	config = { weapon = "rw_wcherrybomb" },
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Other", key = "rw_wcherrybomb" }
+		info_queue[#info_queue + 1] = { set = "Other", key = card.ability.weapon }
 	end,
-		can_use = function(self, card)
-		if G.jokers.highlighted[1].ability.enemy == true then 
-		return false
-		end
-	if not G.jokers.highlighted[1].ability.enemy then
-		return true
-		end
+	can_use = function(self, card)
+		return #G.jokers.highlighted == 1
+			and not G.jokers.highlighted[1].ability.enemy
+			and not G.jokers.highlighted[1].ability[card.ability.weapon]
 	end,
 	use = function(self, card, area, copier)
-		for i, v in ipairs(G.jokers.highlighted) do
-			for i = 1, #G.jokers.highlighted do
-				SMODS.Stickers["rw_wcherrybomb"]:apply(v, true)
-			end
+		for _, v in ipairs(G.jokers.highlighted) do
+			SMODS.Stickers[card.ability.weapon]:apply(v, true)
 		end
 	end,
 })
