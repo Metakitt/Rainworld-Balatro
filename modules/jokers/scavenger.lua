@@ -153,7 +153,7 @@ SMODS.Joker({
 					card_eval_status_text(card, "extra", nil, nil, nil, {
 						message = localize({
 							type = "variable",
-							key = "a_scav_rep",
+							key = "a_reputation",
 							vars = { card.ability.extra.trade_rep },
 						}),
 						colour = G.C.MONEY,
@@ -189,7 +189,7 @@ SMODS.Joker({
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize({
 						type = "variable",
-						key = rep > 0 and "a_scav_rep" or "a_scav_rep_minus",
+						key = rep > 0 and "a_reputation" or "a_reputation_minus",
 						vars = { math.abs(rep) },
 					}),
 					colour = G.C.MONEY,
@@ -206,7 +206,7 @@ SMODS.Joker({
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 				message = localize({
 					type = "variable",
-					key = "a_scav_rep",
+					key = "a_reputation",
 					vars = { card.ability.extra.weapon_rep },
 				}),
 				colour = G.C.MONEY,
@@ -220,7 +220,7 @@ SMODS.Joker({
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 				message = localize({
 					type = "variable",
-					key = "a_scav_rep",
+					key = "a_reputation",
 					vars = { card.ability.extra.boss_rep },
 				}),
 				colour = G.C.MONEY,

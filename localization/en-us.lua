@@ -1647,8 +1647,8 @@ return {
 			k_spear_lodged_elip = "Spear Lodged...",
 		},
 		v_dictionary = {
-			a_scav_rep = "+#1# Reputation",
-			a_scav_rep_minus = "-#1# Reputation",
+			a_reputation = "+#1# Reputation",
+			a_reputation_minus = "-#1# Reputation",
 			a_score = "+#1# Score",
 			a_score_minus = "-#1# Score",
 			a_voucher_lost = "Lost #1#...",
