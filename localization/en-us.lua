@@ -1653,5 +1653,22 @@ return {
 			a_score_minus = "-#1# Score",
 			a_voucher_lost = "Lost #1#...",
 		},
+		achievement_names = {
+			ach_rw_rainworld = "Rain World",
+			ach_rw_downpour = "Rain World: Downpour",
+			ach_rw_watcher = "Rain World: The Watcher",
+			ach_rw_passage_survivor = "The Survivor",
+			ach_rw_passage_outlaw = "The Outlaw",
+		},
+		achievement_descriptions = {
+			ach_rw_rainworld = { "Have Survivor, Monk, and", "Hunter at the same time" },
+			ach_rw_downpour = {
+				"Complete a run with any 3 of the following Slugcats:",
+				"Saint, Gourmand, Spearmaster, Rivulet, Artificer",
+			},
+			ach_rw_watcher = "(Unimplemented)",
+			ach_rw_passage_survivor = "Have any Slugcat for 5 Antes",
+			ach_rw_passage_outlaw = { "Slay at least 7 Enemies", "without failing to do so in an Ante" },
+		},
 	},
 }

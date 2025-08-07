@@ -10,8 +10,12 @@ target = "card.lua"
 pattern = '''if self.area then self.area:remove_card(self) end'''
 position = "before"
 payload = '''
-if G.GAME  and self.area == G.jokers and self.config.center.rarity == "rw_enemy" and self.ability.extra.defeat then
+if G.GAME and self.area == G.jokers and self.config.center.rarity == "rw_enemy" and self.ability.extra.defeat then
     G.GAME.rw_enemies_slain = G.GAME.rw_enemies_slain + 1
+    local kills_this_ante = G.GAME.rw_achievement_stats.ante_kills[G.GAME.round_resets.ante] or {}
+    kills_this_ante[#kills_this_ante + 1] = self.config.center_key
+    G.GAME.rw_achievement_stats.ante_kills[G.GAME.round_resets.ante] = kills_this_ante
+    check_for_unlock {type = "rw_enemy_kills"}
 end
 '''
 match_indent = true
