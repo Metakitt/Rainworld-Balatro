@@ -65,9 +65,9 @@ SMODS.Sticker({
 				return return_table
 			else
 				if card.ability.rw_hunter_wspear then
-					SMODS.Sticker.rw_hunter_wspear:apply(card, nil)
+					SMODS.Stickers.rw_hunter_wspear:apply(card, nil)
 				else
-					SMODS.Sticker.rw_wspear:apply(card, nil)
+					SMODS.Stickers.rw_wspear:apply(card, nil)
 				end
 
 				card_eval_status_text(card, "extra", nil, nil, nil, {
