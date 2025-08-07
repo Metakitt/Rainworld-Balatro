@@ -71,8 +71,8 @@ SMODS.Achievement({
 	unlock_condition = function(self, args)
 		if args.type == "rw_enemy_kills" then
 			local idxs = {}
-			for k, _ in G.GAME.rw_achievement_stats.ante_kills do
-				idxs[#idxs + 1] = k
+			for k, _ in pairs(G.GAME.rw_achievement_stats.ante_kills) do
+				idxs[#idxs + 1] = tonumber(k)
 			end
 			table.sort(idxs)
 			local num_kills = 0
@@ -108,7 +108,7 @@ SMODS.Achievement({
 -- = The Martyr
 -- Complete a run without using a food item.
 SMODS.Achievement({
-	key = "downpour",
+	key = "passage_martyr",
 	unlock_condition = function(self, args)
 		if args.type == "win" then
 			return G.GAME.consumeable_usage_total.foods == nil
@@ -125,7 +125,7 @@ SMODS.Achievement({
 -- = The Mother
 -- Complete a run with a Slugpup.
 SMODS.Achievement({
-	key = "downpour",
+	key = "passage_mother",
 	unlock_condition = function(self, args)
 		if args.type == "win" then
 			for _, v in pairs(G.jokers.cards) do

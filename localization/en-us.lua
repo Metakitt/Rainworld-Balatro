@@ -1665,8 +1665,10 @@ return {
 		achievement_descriptions = {
 			ach_rw_rainworld = { "Have Survivor, Monk, and", "Hunter at the same time" },
 			ach_rw_downpour = {
-				"Complete a run with any 3 of the following Slugcats:",
-				"Saint, Gourmand, Spearmaster, Rivulet, Artificer",
+				"Complete a run with any 3",
+				"of the following Slugcats:",
+				"Saint, Gourmand, Spearmaster,",
+				"Rivulet, Artificer",
 			},
 			ach_rw_watcher = "(Unimplemented)",
 			ach_rw_passage_survivor = "Have any Slugcat for 5 Antes",
