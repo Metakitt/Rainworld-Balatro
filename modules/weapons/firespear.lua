@@ -58,7 +58,7 @@ SMODS.Sticker({
 
 				return return_table
 			else
-				SMODS.Sticker.rw_wspear_ele:apply(card, nil)
+				SMODS.Sticker.rw_wspear_fire:apply(card, nil)
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_spear_lodged_elip"),
 					colour = G.C.WEAPON,
