@@ -1659,6 +1659,8 @@ return {
 			ach_rw_watcher = "Rain World: The Watcher",
 			ach_rw_passage_survivor = "The Survivor",
 			ach_rw_passage_outlaw = "The Outlaw",
+			ach_rw_passage_martyr = "The Martyr",
+			ach_rw_passage_mother = "The Mother",
 		},
 		achievement_descriptions = {
 			ach_rw_rainworld = { "Have Survivor, Monk, and", "Hunter at the same time" },
@@ -1669,6 +1671,8 @@ return {
 			ach_rw_watcher = "(Unimplemented)",
 			ach_rw_passage_survivor = "Have any Slugcat for 5 Antes",
 			ach_rw_passage_outlaw = { "Slay at least 7 Enemies", "without failing to do so in an Ante" },
+			ach_rw_passage_martyr = { "Win a run without ever", "using a Food card" },
+			ach_rw_passage_mother = "Win a run with a Slugpup",
 		},
 	},
 }
