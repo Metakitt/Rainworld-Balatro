@@ -24,5 +24,6 @@ SMODS.Consumable({
 			G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 			G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante + card.ability.extra.center_table
 		end
+		SCUG.inc_food_count()
 	end,
 })

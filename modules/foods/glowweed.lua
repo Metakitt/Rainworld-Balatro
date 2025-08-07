@@ -30,5 +30,6 @@ SMODS.Consumable({
 				SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, other_card)
 			end
 		end
+		SCUG.inc_food_count()
 	end,
 })
