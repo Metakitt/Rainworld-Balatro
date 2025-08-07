@@ -52,7 +52,7 @@ SMODS.Joker({
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					card_eval_status_text(card, "extra", nil, nil, nil, {
-						message = "k_yoinked_ex",
+						message = localize("k_yoinked_ex"),
 						colour = G.C.RED
 					})
 					return true
