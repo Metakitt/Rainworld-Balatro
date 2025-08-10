@@ -783,6 +783,7 @@ SMODS.Joker({
 			end
 
 			if context.skip_blind then
+			local cards_created = 3
 				for _ = 1, cards_created do
 					local rank = pseudorandom_element(SMODS.Ranks, "rw_rivulet_rank", {})
 					local suit = pseudorandom_element(SMODS.Suits, "rw_rivulet_rank", {})
