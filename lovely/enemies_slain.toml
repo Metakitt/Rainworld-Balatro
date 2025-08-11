@@ -1,0 +1,17 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# Patch to count up enemies slain
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.area then self.area:remove_card(self) end'''
+position = "before"
+payload = '''
+if G.GAME  and self.area == G.jokers and self.config.center.rarity == "rw_enemy" and self.ability.extra.defeat then
+    G.GAME.rw_enemies_slain = G.GAME.rw_enemies_slain + 1
+end
+'''
+match_indent = true

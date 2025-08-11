@@ -22,6 +22,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	perishable_compat = false,
 	config = {
 		extra = {
 			xmult_mod = 1,
@@ -34,7 +35,9 @@ SMODS.Joker({
 	},
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.xmult_mod } }
+		return {
+			vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_common, card.ability.extra.xmult_gain_uncommon, card.ability.extra.xmult_gain_food },
+		}
 	end,
 
 	calculate = function(self, card, context)

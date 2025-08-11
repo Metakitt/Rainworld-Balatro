@@ -7,10 +7,19 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { chips = 0, bonus_chips = 50, odds = 6 }, slugcat = true },
+	perishable_compat = false,
+	config = { extra = { chips = 0, bonus_chips = 50, odds = 6 }, slugcat = true, no_lodge = true },
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.chips, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		return {
+			vars = {
+				card.ability.extra.chips,
+				(G.GAME.probabilities.normal or 1),
+				card.ability.extra.odds,
+				card.ability.extra.bonus_chips,
+				card.ability.extra.bonus_chips / 2,
+			},
+		}
 	end,
 
 	calculate = function(self, card, context)

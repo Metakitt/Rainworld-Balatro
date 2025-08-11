@@ -8,6 +8,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	perishable_compat = false,
 	config = {
 		extra = {
 			effect = "none",
@@ -780,44 +781,19 @@ SMODS.Joker({
 					mult = card.ability.extra.mult,
 				}
 			end
-			local _suit, _rank = "S", "K"
 
 			if context.skip_blind then
-				_rank = pseudorandom_element(
-					{ "A", "J", "Q", "K", "2", "3", "4", "5", "6", "7", "8", "9", "T" },
-					pseudoseed("rivuletrank")
-				)
-				_suit = pseudorandom_element({ "S", "H", "D", "C" }, pseudoseed("rivuletsuit"))
-				local card = create_playing_card(
-					{
-						front = G.P_CARDS[_suit .. "_" .. _rank],
-						center = pseudorandom_element(G.P_CENTER_POOLS["Enhanced"], pseudoseed("rivuletscard")),
-					},
-					G.deck,
-					nil,
-					nil,
-					{ G.C.SECONDARY_SET.Enhanced }
-				)
-				local card = create_playing_card(
-					{
-						front = G.P_CARDS[_suit .. "_" .. _rank],
-						center = pseudorandom_element(G.P_CENTER_POOLS["Enhanced"], pseudoseed("rivuletscard")),
-					},
-					G.deck,
-					nil,
-					nil,
-					{ G.C.SECONDARY_SET.Enhanced }
-				)
-				local card = create_playing_card(
-					{
-						front = G.P_CARDS[_suit .. "_" .. _rank],
-						center = pseudorandom_element(G.P_CENTER_POOLS["Enhanced"], pseudoseed("rivuletscard")),
-					},
-					G.deck,
-					nil,
-					nil,
-					{ G.C.SECONDARY_SET.Enhanced }
-				)
+			local cards_created = 3
+				for _ = 1, cards_created do
+					local rank = pseudorandom_element(SMODS.Ranks, "rw_rivulet_rank", {})
+					local suit = pseudorandom_element(SMODS.Suits, "rw_rivulet_rank", {})
+					SMODS.add_card({
+						area = G.deck,
+						rank = rank.key,
+						suit = suit.key,
+						set = "Enhanced",
+					})
+				end
 				blind_skipped = true
 			end
 

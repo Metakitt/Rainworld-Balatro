@@ -1,14 +1,6 @@
 SMODS.Joker({
 	key = "alacrity",
 	atlas = "slugcats",
-	loc_txt = {
-		name = "Alacrity",
-		text = {
-			"{X:chips,C:white}2x{} Chips on",
-			"the {C:attention}first hand{}",
-			"of round.",
-		},
-	},
 	pos = { x = 1, y = 3 },
 	rarity = 1,
 	cost = 7,
@@ -25,7 +17,7 @@ SMODS.Joker({
 		if context.joker_main and G.GAME.current_round.hands_played == 0 then
 			return {
 				x_chips = 2,
-				chip_message = "x2 Chips",
+				-- chip_message = "x2 Chips",
 			}
 		end
 	end,

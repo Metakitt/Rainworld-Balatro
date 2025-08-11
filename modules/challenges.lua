@@ -17,3 +17,11 @@ SMODS.Challenge({
 		},
 	},
 })
+
+SMODS.Challenge {
+	loc_txt = "Starvation",
+	key = "starvation",
+	jokers = {
+		{ id = "j_rw_hunger", eternal = true }
+	}
+}

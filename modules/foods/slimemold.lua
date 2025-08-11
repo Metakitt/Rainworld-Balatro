@@ -8,6 +8,9 @@ SMODS.Consumable({
 	unlocked = true,
 	discovered = true,
 	config = { extra = { upgrade = 7 }, name = "slimemold" },
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.upgrade, 2 }}
+	end,
 	set_badges = function(self, card, badges)
 		badges[#badges + 1] = create_badge(localize("k_foodcommon"), G.C.BLUE, G.C.WHITE, 1.2)
 	end,
