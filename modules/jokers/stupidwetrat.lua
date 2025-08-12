@@ -4,6 +4,7 @@ SMODS.Joker({
 		extra = {
 			wet_xchips = 0.1,
 		},
+		slugcat = true
 	},
 	rarity = 1,
 	cost = 4,
