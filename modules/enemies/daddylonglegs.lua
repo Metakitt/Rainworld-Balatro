@@ -38,9 +38,9 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		--Threat
 		if context.setting_blind and not context.blueprint then
-			for i = 1, #G.deck.cards do
+			for i = 1, #G.playing_cards do
 				if pseudorandom("bite") < 1 / card.ability.extra.odds and not context.blueprint then
-					G.deck.cards[i]:set_ability(G.P_CENTERS.m_rw_rotting)
+					G.playing_cards[i]:set_ability(G.P_CENTERS.m_rw_rotting)
 				else
 					--print('Safe')
 				end
@@ -81,7 +81,7 @@ SMODS.Joker({
 			and not context.blueprint
 		then
 			local suit = SCUG.get_suit_in_deck() --pseudorandom_element(SMODS.Suits, pseudoseed("rotten_suit"))
-			for _, v in ipairs(G.deck.cards) do
+			for _, v in ipairs(G.playing_cards) do
 				if v:is_suit(suit, true, true) and not context.blueprint then
 					v:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
