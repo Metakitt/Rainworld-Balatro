@@ -1685,7 +1685,7 @@ return {
 			ach_rw_passage_monk = "(Unimplemented)",
 			ach_rw_passage_hunter = "(Unimplemented)",
 			ach_rw_passage_saint = "(Unimplemented)",
-			ach_rw_passage_outlaw = { "Slay at least 7 Enemies", "without failing to do so in an Ante" },
+			ach_rw_passage_outlaw = { "Slay at least 7 Enemies in one run,", "with at least one per Ante" },
 			ach_rw_passage_chieftain = "(Unimplemented)",
 			ach_rw_passage_wanderer = "(Unimplemented)",
 			ach_rw_passage_dragonslayer = "(Unimplemented)",
