@@ -9,7 +9,11 @@ SMODS.Consumable({
 	discovered = true,
 	config = { extra = { upgrade = 4 }, name = "eggbugegg" },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.upgrade } }
+		return {
+			vars = {
+				card.ability.extra.upgrade,
+			},
+		}
 	end,
 	set_badges = function(self, card, badges)
 		badges[#badges + 1] = create_badge(localize("k_fooduncommon"), G.C.GREEN, G.C.WHITE, 1.2)
@@ -19,15 +23,15 @@ SMODS.Consumable({
 	end,
 	use = function(self, card, area, copier)
 		if card.ability.name == "eggbugegg" then
-			local suit = SCUG.get_suit_in_deck() --pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
-			for _, other_card in ipairs(G.deck.cards) do
+			-- local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
+			local suit = SCUG.get_suit_in_deck()
+			for i in 1, #G.playing_cards do
+				local other_card = G.playing_cards[i]
 				if other_card:is_suit(suit) then
 					other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
 					other_card.ability.perma_bonus = other_card.ability.perma_bonus + card.ability.extra.upgrade
-					card_eval_status_text(other_card, "extra", nil, nil, nil, {
-						message = localize("k_upgrade_ex"),
-						colour = G.C.CHIPS,
-					})
+					other_card:juice_up(0.5, 0.5)
+					SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, other_card)
 				end
 			end
 		end

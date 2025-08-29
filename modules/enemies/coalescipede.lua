@@ -35,12 +35,6 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		--Threat
 		if context.joker_main and not context.blueprint then
-			-- local pede = 0
-			-- for k, v in ipairs(G.jokers.cards) do
-			-- 	if v.ability.spider == true then
-			-- 		pede = pede - 1
-			-- 	end
-			-- end
 			return {
 				chips = -#SMODS.find_card("j_rw_coalescipede"),
 			}
@@ -64,12 +58,7 @@ SMODS.Joker({
 
 		--Defeat
 		if context.main_eval and not context.blueprint then
-			-- for i = 1, #G.jokers.cards do
-			-- 	if G.jokers.cards[i].ability.rw_wflashbang and not context.blueprint then
-			-- 		card.ability.extra.defeat = true
-			-- 	end
-			-- end
-			if SCUG.weapon_count("rw_wflashbang") > 0 then
+			if SCUG.weapon_count("rw_wflashbang") > 0 and not card.ability.extra.defeat then
 				card.ability.extra.defeat = true
 				G.E_MANAGER:add_event(Event({
 					trigger = "after",

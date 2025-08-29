@@ -41,7 +41,13 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		--Threat
-		if context.main_eval and context.end_of_round and not G.GAME.blind.boss and not context.blueprint then
+		if
+			context.main_eval
+			and context.end_of_round
+			and not G.GAME.blind.boss
+			and not context.blueprint
+			and not card.ability.extra.defeat
+		then
 			local destroyablejokers = EMPTY(destroyablejokers)
 			for k, v in pairs(G.jokers.cards) do
 				if v.ability.set == "Joker" and not v.ability.eternal then
@@ -56,7 +62,7 @@ SMODS.Joker({
 				and not chosen_card.getting_sliced
 				and not context.blueprint
 			then
-				SMODS.destroy_cards(chosen_card, true)
+				SMODS.destroy_cards(chosen_card)
 			end
 		end
 		--Defeat

@@ -57,8 +57,6 @@ SMODS.Joker({
 		end
 		if card.ability.extra.planetcount >= 2 then
 			card.ability.extra.defeat = true
-		end
-		if context.after and card.ability.extra.defeat == true and not context.blueprint then
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 1.3,
@@ -69,6 +67,8 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		-- if context.after and card.ability.extra.defeat == true and not context.blueprint then
+		-- end
 		--Undefeated
 
 		if

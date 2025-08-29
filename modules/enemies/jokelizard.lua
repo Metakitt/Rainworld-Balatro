@@ -68,7 +68,7 @@ SMODS.Joker({
 					local rarity = jojers[i].config.center.rarity
 					if type(rarity) == "number" then
 						rarity = math.max(1, rarity - (pseudorandom("rw_jokelizard") < 0.5 and 1 or 0))
-                        rarity = ({"Common", "Uncommon", "Rare", "Legendary"})[rarity]
+						rarity = ({ "Common", "Uncommon", "Rare", "Legendary" })[rarity]
 					end
 					SMODS.destroy_cards(jojers[i])
 					local new_joker = SMODS.add_card({ set = "Joker", rarity = rarity })

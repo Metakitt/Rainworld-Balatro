@@ -36,7 +36,7 @@ SMODS.Joker({
 		--Threat
 		if context.after and not context.blueprint then
 			local destroyablecards = EMPTY(destroyablecards)
-			for k, v in pairs(G.deck.cards) do
+			for k, v in pairs(G.playing_cards) do
 				table.insert(destroyablecards, v)
 			end
 
@@ -76,9 +76,9 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			for i = 1, #G.deck.cards do
+			for i = 1, #G.playing_cards do
 				if pseudorandom("bite") < 1 / card.ability.extra.deck_odds then
-					SMODS.destroy_cards(G.deck.cards[i])
+					SMODS.destroy_cards(G.playing_cards[i])
 				else
 					--print('Safe')
 				end
