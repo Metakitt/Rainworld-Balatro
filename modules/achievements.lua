@@ -62,7 +62,7 @@ SMODS.Achievement({
 
 -- = The Saint
 -- Do not defeat any enemies during 6 rounds.
--- (Excludes: Batflies, Infant Centipedes, COalescipedes, Leeches, Jellyfish)
+-- (Excludes: Batflies, Infant Centipedes, Coalescipedes, Leeches, Jellyfish)
 
 -- = The Outlaw
 -- Kill 7 creatures. If you finish an Ante without killing any creatures that Ante, it resets to 0.
