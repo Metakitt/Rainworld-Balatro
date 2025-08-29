@@ -41,9 +41,9 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		--Threat
 		if context.setting_blind and not context.blueprint then
-			for i = 1, #G.deck.cards do
+			for i = 1, #G.playing_cards do
 				if pseudorandom("bite") < 1 / card.ability.extra.wetodds and not context.blueprint then
-					G.deck.cards[i]:set_ability(G.P_CENTERS.m_rw_wetasscard)
+					G.playing_cards[i]:set_ability(G.P_CENTERS.m_rw_wetasscard)
 				else
 					--print('Safe')
 				end
@@ -76,7 +76,7 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			for _, v in ipairs(G.deck.cards) do
+			for _, v in ipairs(G.playing_cards) do
 				if v.config.center_key == "m_rw_wetasscard" then
 					v:set_ability(G.P_CENTERS.m_rw_rotting)
 				end

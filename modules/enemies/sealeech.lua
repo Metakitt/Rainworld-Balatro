@@ -50,7 +50,7 @@ SMODS.Joker({
 			}
 		end
 
-		if context.after and pseudorandom("moreleech") < 1 / card.ability.extra.leechodds and not context.blueprint then
+		if context.after and pseudorandom("moreleech") < 1 / card.ability.extra.leechodds and not context.blueprint and not card.ability.extra.defeat then
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 1.3,

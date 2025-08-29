@@ -28,7 +28,7 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = {} }
+		info_queue[#info_queue+1] = G.P_CENTERS.m_lucky
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)

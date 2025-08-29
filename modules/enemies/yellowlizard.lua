@@ -29,7 +29,13 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { math.abs(card.ability.extra.takeyourmoney), card.ability.extra.lizodds, card.ability.extra.rerollneeded } }
+		return {
+			vars = {
+				math.abs(card.ability.extra.takeyourmoney),
+				card.ability.extra.lizodds,
+				card.ability.extra.rerollneeded,
+			},
+		}
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
@@ -59,14 +65,11 @@ SMODS.Joker({
 		--Defeat
 		if context.reroll_shop then
 			card.ability.extra.rerollneeded = card.ability.extra.rerollneeded - 1
-		if card.ability.extra.rerollneeded <= 0 then
-			card.ability.extra.defeat = true
-			SMODS.destroy_cards(card, true)
+			if card.ability.extra.rerollneeded <= 0 then
+				card.ability.extra.defeat = true
+				SMODS.destroy_cards(card, true)
+			end
 		end
-
-		end
-
-		
 
 		if context.after and card.ability.extra.defeat == true and not context.blueprint then
 			G.E_MANAGER:add_event(Event({
