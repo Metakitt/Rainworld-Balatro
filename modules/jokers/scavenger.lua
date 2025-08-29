@@ -106,7 +106,7 @@ SMODS.Joker({
 						end
 					end
 				end
-				print(joker_weapons)
+				-- print(joker_weapons)
 				if #joker_weapons > 0 then
 					local stolen, _ = pseudorandom_element(joker_weapons, "rw_scavenger_yoink", {})
 					local mark = G.jokers.cards[stolen[1]]
