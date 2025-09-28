@@ -42,7 +42,7 @@ SMODS.Voucher({
 			local weaponselected = "none"
 			if cr <= 5 then
 				weaponselected = pseudorandom_element(
-					{ "bluefruit", "spear", "rock", "cherrybomb", "grenade", "pearl" },
+					{ "bluefruit", "spear", "rock", "cherrybomb", "grenade"}, --, "pearl" },
 					pseudoseed("common")
 				)
 			elseif cr > 5 and cr <= 9 then

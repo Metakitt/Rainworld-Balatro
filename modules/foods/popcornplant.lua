@@ -28,7 +28,7 @@ SMODS.Consumable({
 					other_card.ability.perma_mult = other_card.ability.perma_mult + card.ability.extra.upgrade
 					card_eval_status_text(other_card, "extra", nil, nil, nil, {
 						message = localize("k_upgrade_ex"),
-						colour = G.C.CHIPS,
+						colour = G.C.PURPLE,
 					})
 				end
 			end

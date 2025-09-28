@@ -25,8 +25,8 @@ SMODS.Consumable({
 		if card.ability.name == "eggbugegg" then
 			-- local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
 			local suit = SCUG.get_suit_in_deck()
-			for i in 1, #G.playing_cards do
-				local other_card = G.playing_cards[i]
+			for _,v in ipairs(G.playing_cards) do
+				local other_card = v --G.playing_cards[i]
 				if other_card:is_suit(suit) then
 					other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
 					other_card.ability.perma_bonus = other_card.ability.perma_bonus + card.ability.extra.upgrade
