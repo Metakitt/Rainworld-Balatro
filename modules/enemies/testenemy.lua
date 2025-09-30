@@ -1,19 +1,21 @@
---[[Threat: -1 Mult and -1 Chip for each Sea Leech. 20% chance to spawn a new leech.
-Defeat: Play a hand with an Electric Spear.
-Not Defeated: Spawns another Sea Leech.]]
+--[[Threat: Iterates over the whole deck, 1 in 4 chance to make each card moldy.
+Defeat condition: Use 4 tarot cards.
+If not defeated: Moldy cards become rot immediately.
+Currently, it turns cards wet and not moldy, as moldy cards are not currently implemented.
+]]
 
 SMODS.Joker({
-	key = "sealeech",
+	key = "testenemy",
 	atlas = "enemies",
 	rarity = "rw_enemy",
 	cost = 4,
-	pos = { x = 7, y = 1 },
+	pos = { x = 1, y = 2 },
 	unlocked = true,
 	discovered = true,
 	in_pool = function(self, args)
 		return false
 	end,
-	config = { extra = { defeat = false, unchult = -1, leechodds = 5, enemy_type = "none", amount = 0, condition = "none", condition_req = 0, edition_condition = "e_base" }, enemy = true, sealeech = true },
+	config = { extra = { defeat = false, enemy_type = "none", amount = 0, condition = "none", condition_req = 0, edition_condition = "e_base"}, enemy = true },
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,
@@ -29,8 +31,9 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {key = "rw_wspear_ele", set = "Other"}
-		return { vars = { card.ability.extra.unchult, card.ability.extra.leechodds } }
+		info_queue[#info_queue+1] = G.P_CENTERS.m_rw_wetasscard
+		info_queue[#info_queue+1] = G.P_CENTERS.m_rw_rotting
+		return { vars = { card.ability.extra.wetodds, card.ability.extra.tarotcount } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
@@ -40,6 +43,11 @@ SMODS.Joker({
 		card.ability.extra.condition = condition_type
 		card.ability.extra.condition_req = condition_req
 		card.ability.extra.edition_condition = bonus_condition
+	    print(card.ability.extra.enemy_type)
+		print(card.ability.extra.amount)
+		print(card.ability.extra.condition)
+		print(card.ability.extra.condition_req)
+		print(card.ability.extra.edition_condition)
 		enemy_type = "None"
 		enemy_amount = 0
 		condition_type = "None"
@@ -47,32 +55,18 @@ SMODS.Joker({
 		bonus_condition = "None"
 	end,
 	calculate = function(self, card, context)
+	local edition_ = card.ability.extra.edition_condition
 		--Threat
-		if context.joker_main and not context.blueprint then
-			local leech = #SMODS.find_card("j_rw_sealeech")
-			-- for k, v in ipairs(G.jokers.cards) do
-			-- 	if v.ability.sealeech == true then
-			-- 		leech = leech - 1
-			-- 	end
-			-- end
-			return {
-				chips = card.ability.extra.unchult * leech,
-				mult = card.ability.extra.unchult * leech,
-			}
-		end
-
-		if context.after and pseudorandom("moreleech") < 1 / card.ability.extra.leechodds and not context.blueprint and not card.ability.extra.defeat then
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 1.3,
-				func = function()
-					SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_sealeech", no_edition = true })
-					return true
-				end,
-				blocking = false,
-			}))
-		end
-
+		--[[if context.setting_blind and not context.blueprint then
+			for i = 1, #G.playing_cards do
+				if pseudorandom("bite") < 1 / card.ability.extra.wetodds and not context.blueprint then
+					G.playing_cards[i]:set_ability(G.P_CENTERS.m_rw_wetasscard)
+				else
+					--print('Safe')
+				end
+			end
+		end]]
+		
 		--Defeat
 		
 		if context.joker_main and card.ability.extra.enemy_type == "Special" and card.ability.extra.condition == "GrenadeMult" and not context.blueprint then
@@ -196,15 +190,11 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 1.3,
-				func = function()
-					SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_sealeech", no_edition = true })
-					return true
-				end,
-				blocking = false,
-			}))
+			for _, v in ipairs(G.playing_cards) do
+				if v.config.center_key == "m_rw_wetasscard" then
+					v:set_ability(G.P_CENTERS.m_rw_rotting)
+				end
+			end
 		end
 	end,
 })
