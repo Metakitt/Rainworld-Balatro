@@ -7,7 +7,7 @@ SMODS.Consumable({
 	cost = 3,
 	unlocked = true,
 	discovered = true,
-	config = { extra = { center_table = -1 }, name = "karmaflower" },
+	config = { extra = { center_table = -1, odds = 2 }, name = "karmaflower" },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.center_table }}
 	end,
@@ -18,7 +18,7 @@ SMODS.Consumable({
 		return true
 	end,
 	use = function(self, card, area, copier)
-		if card.ability.name == "karmaflower" then
+		if card.ability.name == "karmaflower" and pseudorandom("karmaf") < G.GAME.probabilities.normal / card.ability.extra.odds then
 			card.ability.extra.center_table = -1
 			ease_ante(card.ability.extra.center_table)
 			G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante

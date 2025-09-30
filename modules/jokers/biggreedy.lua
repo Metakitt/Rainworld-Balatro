@@ -8,7 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = false,
 	perishable_compat = false,
-	config = { extra = { xmult_mod = 1, xmult_gain_food = 0.25, food_used_total = 0 }, slugcat = true },
+	config = { extra = { xmult_mod = 1, xmult_gain_food = 0.10, food_used_total = 0 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.food_used_total <= 6 then

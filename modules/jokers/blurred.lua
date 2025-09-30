@@ -28,7 +28,7 @@ SMODS.Joker({
 
 		if context.setting_blind then
 			if pseudorandom("mushroom") < G.GAME.probabilities.normal / card.ability.extra.odds then
-				G.GAME.blind.chips = G.GAME.blind.chips / 2
+				G.GAME.blind.chips = G.GAME.blind.chips * 0.75
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 			end
 		end

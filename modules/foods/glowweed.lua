@@ -7,7 +7,7 @@ SMODS.Consumable({
 	cost = 3,
 	unlocked = true,
 	discovered = true,
-	config = { extra = { upgrade = 4, odds = 2 }, name = "glowweed" },
+	config = { extra = { upgrade = 4, odds = 4 }, name = "glowweed" },
 	set_badges = function(self, card, badges)
 		badges[#badges + 1] = create_badge(localize("k_foodrare"), G.C.RED, G.C.WHITE, 1.2)
 	end,

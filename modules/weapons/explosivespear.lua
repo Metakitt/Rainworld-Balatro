@@ -45,7 +45,7 @@ SMODS.Sticker({
 			local destroy_a_card = SCUG.number_in_range(1, 6) == 4 -- 16.6% chance
 
 			if mult_effect then
-				local return_table = { x_mult = 3 }
+				local return_table = { x_mult = 1.75 }
 
 				if destroy_a_card and #G.hand.cards > 0 then
 					local destroy_him = pseudorandom_element(G.hand.cards, pseudoseed("rw_wspear_exp"));
@@ -59,15 +59,15 @@ SMODS.Sticker({
 					or card.config.center_key == "j_rw_inv"
 					or card.config.center_key == "j_rw_saint"
 				then
-					return_table.x_mult = 2.5
+					return_table.x_mult = 1.25
 				elseif
 					card.config.center_key == "j_rw_hunter"
 					or card.config.center_key == "j_rw_artificer"
 					or card.config.center_key == "j_rw_spearmaster"
 				then
-					return_table.x_mult = 3.5
+					return_table.x_mult = 1.50
 				elseif card.config.center_key == "j_rw_gourmand" then
-					return_table.x_mult = gourmand_exhausted and 0.7 or 6
+					return_table.x_mult = gourmand_exhausted and 0.7 or 3
 				end
 
 				return return_table

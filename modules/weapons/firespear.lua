@@ -40,20 +40,20 @@ SMODS.Sticker({
 			local mult_effect = not should_lodge or card.ability.no_lodge
 
 			if mult_effect then
-				local return_table = { x_mult = 4.5 }
+				local return_table = { x_mult = 2.5 }
 
 				if card.config.center_key == "j_rw_monk" or card.config.center_key == "j_rw_inv" then
-					return_table.x_mult = 3.75
+					return_table.x_mult = 2
 				elseif
 					card.config.center_key == "j_rw_hunter"
 					or card.config.center_key == "j_rw_artificer"
 					or card.config.center_key == "j_rw_spearmaster"
 				then
-					return_table.x_mult = 5.25
+					return_table.x_mult = 3
 				elseif card.config.center_key == "j_rw_gourmand" then
-					return_table.x_mult = gourmand_exhausted and 0.5 or 9
+					return_table.x_mult = gourmand_exhausted and 0.5 or 3.5
 				elseif card.config.center_key == "j_rw_saint" then
-					return_table.x_mult = 10
+					return_table.x_mult = 4
 				end
 
 				return return_table

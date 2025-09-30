@@ -7,7 +7,7 @@ SMODS.Consumable({
 	cost = 3,
 	unlocked = true,
 	discovered = true,
-	config = { extra = { upgrade = 4, odds = 5, replication = 3, pack = true }, name = "mushroom" },
+	config = { extra = { upgrade = 4, odds = 4, replication = 4, pack = true }, name = "mushroom" },
 	set_badges = function(self, card, badges)
 		badges[#badges + 1] = create_badge(localize("k_foodcommon"), G.C.BLUE, G.C.WHITE, 1.2)
 	end,
@@ -41,7 +41,7 @@ SMODS.Consumable({
 				pseudorandom("mushroom") < G.GAME.probabilities.normal / card.ability.extra.odds
 				and G.GAME.blind.in_blind
 			then
-				G.GAME.blind.chips = G.GAME.blind.chips / 2
+				G.GAME.blind.chips = G.GAME.blind.chips * 0.75
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				if pseudorandom("mushroom") < G.GAME.probabilities.normal / card.ability.extra.replication then
 					local _card = copy_card(card)

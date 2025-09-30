@@ -23,7 +23,7 @@ SMODS.Sticker({
 		if context.discard then
 			if G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then
 				SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
-				G.GAME.grenademult = G.GAME.grenademult + 3
+				G.GAME.grenademult = G.GAME.grenademult + 2
 
 				return {
 					remove = true,

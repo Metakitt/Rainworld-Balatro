@@ -7,7 +7,7 @@ SMODS.Consumable({
 	cost = 3,
 	unlocked = true,
 	discovered = true,
-	config = { extra = { upgrade = 20 }, name = "dandepeach" },
+	config = { extra = { upgrade = 15 }, name = "dandepeach" },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.upgrade } }
 	end,

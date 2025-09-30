@@ -19,7 +19,7 @@ SMODS.Sticker({
 	needs_enable_flag = false,
 	calculate = function(self, card, context)
 		if context.joker_main then
-			local randomnumber = SCUG.number_in_range(6, 12)
+			local randomnumber = SCUG.number_in_range(2, 8)
 			return {
 				mult = randomnumber,
 			}

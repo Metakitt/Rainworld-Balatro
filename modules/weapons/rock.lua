@@ -19,7 +19,7 @@ SMODS.Sticker({
 	calculate = function(self, card, context)
 		if context.joker_main then
 			return {
-				x_chips = 2,
+				x_chips = 1.25,
 			}
 		end
 	end,
