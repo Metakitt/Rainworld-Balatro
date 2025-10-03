@@ -158,6 +158,7 @@ ENEMY_SPAWN_DENOMINATORS[9] = 5 -- Ante 9+ spawn chance
 -- Full list per ante:
 -- This is a table of tables. First index is what ante, second index is what the picked value is.
 -- Returns the card's key.
+-- TODO: There should maybe be some Ante 0 table. Just in case
 local ENEMY_ANTE_TABLES = {
 
 	--[[Ante 1
@@ -605,6 +606,8 @@ SCUG.spawn_enemy = function(args)
 	args = args or {}
 	local _ante = args.ante or G.GAME.round_resets.ante
 	local ante_num = SCUG.clamp(_ante, 1, 9)
+	-- Enemy Selection
+	-- This checks if an enemy spawns or not.
 	if args.guarantee or pseudorandom("rw_spawn_enemy") < 1 / ENEMY_SPAWN_DENOMINATORS[ante_num] then
 		sendDebugMessage("Spawning an enemy!", "Rainworld")
 		local valid_selection = false
@@ -655,54 +658,43 @@ SCUG.spawn_enemy = function(args)
 	end
 end
 
-function generate_enemy()
+function SCUG.generate_enemy()
+	local ret = {}
+	-- Choose requirement
 	local enemy_type_list = { "Score", "Sell", "Use", "Win", "Reroll", "Special" }
-	local chosen_requirement = "None"
-	enemy_type = pseudorandom_element(enemy_type_list, pseudoseed("type"))
-	amount = SCUG.number_in_range(1, 5, "lots")
-	condition_type = 0
-	bonus_condition = "e_base" --currently set to default
+	ret.enemy_type = pseudorandom_element(enemy_type_list, pseudoseed("type"))
+	ret.amount = SCUG.number_in_range(1, 5, "lots")
 
-	if enemy_type == "Score" then
-		local condition_type_list =
-			{ "HandType", "ChipAmount", "CardExtraChips", "CardWeapon", "CardEditionEnhancement" }
-		condition_type = pseudorandom_element(condition_type_list, pseudoseed("type"))
-	elseif enemy_type == "Sell" then
-		local condition_type_list = { "SellJoker", "SellConsumable" }
-		condition_type = pseudorandom_element(condition_type_list, pseudoseed("type"))
-	elseif enemy_type == "Use" then
-		condition_type = "Use"
-	elseif enemy_type == "Win" then
-		local condition_type_list = { "Blind", "BossBlind", "BlindThreshold", "%BlindChips" }
-		condition_type = pseudorandom_element(condition_type_list, pseudoseed("type"))
-	elseif enemy_type == "Reroll" then
-		condition_type = "Reroll"
-	elseif enemy_type == "Special" then
-		local condition_type_list = { "GrenadeMult" }
-		condition_type = pseudorandom_element(condition_type_list, pseudoseed("type"))
-	end
+	-- Choose subtype
+	local subtypes = {
+		["Score"] = { "HandType", "ChipAmount", "CardExtraChips", "CardWeapon", "CardEditionEnhancement" },
+		["Sell"] = { "SellJoker", "SellConsumable" },
+		["Win"] = { "Blind", "BossBlind", "BlindThreshold", "%BlindChips" },
+		["Special"] = { "GrenadeMult" },
+	}
+	ret.condition = (subtypes[ret.enemy_type] and pseudorandom_element(subtypes[ret.enemy_type], pseudoseed("type")))
+		or ret.enemy_type
 
-	if condition_type == "HandType" then
+	-- Flesh out requirements
+	local chosen_requirement
+	if ret.condition == "HandType" then
 		local hand_list = { "High Card", "Flush" }
-		chosen_requirement = pseudorandom_element(hand_list, pseudoseed("type"))
-		condition_req = chosen_requirement
-	elseif condition_type == "ChipAmount" then
-		chosen_requirement = SCUG.number_in_range(500, 1000, "chip_amount")
-		condition_req = chosen_requirement
-	elseif condition_type == "SellJoker" then
+		ret.requirement = pseudorandom_element(hand_list, pseudoseed("type"))
+	elseif ret.condition == "ChipAmount" then
+		-- TODO: Make this scale with ante?
+		ret.requirement = 500 + 25 * SCUG.number_in_range(1, 20, "chip_amount")
+	elseif ret.condition == "SellJoker" then
 		local enhanced_check = SCUG.number_in_range(1, 20, "ough")
 		local editiontype = { "e_holo", "e_foil", "e_polychrome", "e_negative" }
 		chosen_requirement = "Joker"
-		condition_req = chosen_requirement
+		ret.requirement = chosen_requirement
 		if enhanced_check == 14 then
-			chosen_requirement = "Joker"
-			bonus_condition = pseudorandom_element(editiontype, pseudoseed("type"))
-			condition_req = chosen_requirement
+			ret.edition_condition = pseudorandom_element(editiontype, pseudoseed("type"))
 		end
-	elseif condition_type == "CardExtraChips" then
+	elseif ret.condition == "CardExtraChips" then
 		chosen_requirement = SCUG.number_in_range(1, 20, "chippies")
-		condition_req = chosen_requirement
-	elseif condition_type == "CardWeapon" then
+		ret.requirement = chosen_requirement
+	elseif ret.condition == "CardWeapon" then
 		local weapontypes = {
 			"rw_wbeehive",
 			"rw_wcherrybomb",
@@ -718,8 +710,8 @@ function generate_enemy()
 			"rw_wsporepuff",
 		}
 		chosen_requirement = pseudorandom_element(weapontypes, pseudoseed("violence"))
-		condition_req = chosen_requirement
-	elseif condition_type == "CardEditionEnhancement" then
+		ret.requirement = chosen_requirement
+	elseif ret.condition == "CardEditionEnhancement" then
 		local editiontype = {
 			"e_holo",
 			"e_foil",
@@ -736,25 +728,162 @@ function generate_enemy()
 			"m_rw_wetasscard",
 		}
 		chosen_requirement = pseudorandom_element(editiontype, pseudoseed("edition"))
-		condition_req = chosen_requirement
-	elseif condition_type == "SellConsumable" or condition_type == "Use" then
+		ret.requirement = chosen_requirement
+	elseif ret.condition == "SellConsumable" or ret.condition == "Use" then
 		local consumable_type = { "Tarot", "Planet", "foods", "obtainweapon" }
 		chosen_requirement = pseudorandom_element(consumable_type, pseudoseed("type"))
-		condition_req = chosen_requirement
-	elseif condition_type == "Blind" then
-		condition_req = "DefeatBlind"
-	elseif condition_type == "BossBlind" then
-		condition_req = "DefeatBossBlind"
-	elseif condition_type == "BlindThreshold" or condition_type == "%BlindChips" then
+		ret.requirement = chosen_requirement
+	elseif ret.condition == "Blind" then
+		ret.requirement = "DefeatBlind"
+	elseif ret.condition == "BossBlind" then
+		ret.requirement = "DefeatBossBlind"
+	elseif ret.condition == "BlindThreshold" or ret.condition == "%BlindChips" then
 		local thresholds = { 1.15, 1.20, 1.25, 1.30, 1.40, 1.50 }
 		chosen_requirement = pseudorandom_element(thresholds, pseudoseed("type"))
-		condition_req = chosen_requirement
-	elseif condition_type == "Reroll" then
-		condition_req = "RerollShop"
-	elseif condition_type == "GrenadeMult" then
+		ret.requirement = chosen_requirement
+	elseif ret.condition == "Reroll" then
+		ret.requirement = "RerollShop"
+	elseif ret.condition == "GrenadeMult" then
 		chosen_requirement = SCUG.number_in_range(10, 40, "chippies")
-		condition_req = chosen_requirement
+		ret.requirement = chosen_requirement
 	end
+
+	print(ret)
+	return ret
+end
+
+---Returns how much the enemy's countdown should tick down by.
+---@param context table The context given.
+---@param conditions table The enemy's conditions.
+---@return number
+SCUG.enemy_should_count_down = function(context, conditions)
+	if not conditions then
+		return 0
+	end
+	if
+		context.joker_main
+		and conditions.enemy_type == "Special"
+		and conditions.condition == "GrenadeMult"
+		and not context.blueprint
+	then
+		local num_matches = 0
+		for i = 1, #G.jokers.cards do
+			if
+				G.jokers.cards[i].ability.rw_wgrenade
+				and G.GAME.grenademult >= conditions.requirement
+				and not context.blueprint
+			then
+				num_matches = num_matches + 1
+			end
+		end
+		return num_matches
+	end
+
+	if context.before and conditions.enemy_type == "Score" then
+		if conditions.condition == "HandType" then
+			if
+				next(context.poker_hands[conditions.requirement])
+				and context.scoring_name == conditions.requirement
+				and not context.blueprint
+			then
+				return 1
+			end
+		elseif conditions.condition == "CardExtraChips" then
+			local num_matches = 0
+			for i = 1, #G.play.cards do
+				if G.play.cards[i].ability.perma_bonus >= conditions.requirement and not context.blueprint then
+					num_matches = num_matches + 1
+				end
+			end
+			return num_matches
+		elseif conditions.condition == "CardWeapon" then
+			local num_matches = 0
+			for _, v in pairs(G.jokers.cards) do
+				for k, _ in pairs(v.ability) do
+					st, nd = string.find(k, conditions.requirement)
+					if st and nd then
+						num_matches = num_matches + 1
+					end
+				end
+			end
+			return num_matches
+		elseif conditions.condition == "CardEditionEnhancement" then
+			local num_matches = 0
+			for _, v in pairs(context.scoring_hand) do
+				if v.edition and v.edition.key == conditions.requirement then
+					num_matches = num_matches + 1 -- NOTE: Line was empty, this should be here?
+				elseif v.config.center_key == conditions.requirement then
+					--	if (v.edition.key == conditions.requirement or v.config.center_key == conditions.requirement) then
+					num_matches = num_matches + 1
+				end
+			end
+			return num_matches
+		end
+	end
+
+	if
+		context.using_consumeable
+		and conditions.enemy_type == "Use"
+		and conditions.condition == "Use"
+		and context.consumeable.ability.set == conditions.requirement
+		and not context.blueprint
+	then
+		return 1
+	end
+
+	if context.selling_card and conditions.enemy_type == "Sell" then
+		--print('a')
+		if context.card.ability.set == conditions.requirement then
+			-- print("is sold")
+			if conditions.edition_condition then
+				-- print("fulfillsrequirement")
+				if context.card.edition and context.card.edition.key == conditions.edition_condition then
+					-- print("amountgoesdown")
+					return 1
+				end
+			else
+				return 1
+			end
+		end
+	end
+
+	if context.main_eval and context.end_of_round and conditions.enemy_type == "Win" and not context.blueprint then
+		-- print("do we get here?")
+		if conditions.condition == "%BlindChips" then
+			local score_ratio = G.GAME.chips / G.GAME.blind.chips
+			if score_ratio >= SCUG.big(conditions.requirement) then
+				return 1
+			end
+		elseif conditions.condition == "BlindThreshold" then
+			local score_ratio = G.GAME.chips / G.GAME.blind.chips
+			if score_ratio <= SCUG.big(conditions.requirement) then
+				return 1
+			end
+		elseif conditions.condition == "Blind" and conditions.requirement == "DefeatBlind" then
+			-- print("should tick?")
+			return 1
+		end
+
+		if
+			G.GAME.blind.boss
+			and conditions.condition == "BossBlind"
+			and conditions.requirement == "DefeatBossBlind"
+		then
+			return 1
+		end
+	end
+
+	if conditions.enemy_type == "Score" and conditions.condition == "ChipAmount" then
+		if G.GAME.chips > SCUG.big(conditions.requirement) and not context.blueprint then
+			return 1
+		end
+	end
+
+	if context.reroll_shop and conditions.enemy_type == "Reroll" then
+		return 1
+	end
+
+	return 0
 end
 
 --[[
@@ -765,8 +894,8 @@ local enemy_type_keys = {"Score", "Sell"}
 local enemy_amount = SCUG.number_in_range(1, 5, "enemy_amount")
 enemy_type = pseudorandom_element(enemy_type_keys, pseudoseed("typer")) --What type of defeat condition the enemy has (Can be "Score", "Sell", "Win", "Use" or "Reroll")
 amount = enemy_amount --How many times the condition must be fulfilled
-condition_type = chosen_score_condition -- The name of the specific condition. Each enemy type has its own set of conditions
-condition_req = condition -- Specific requirements
+condition = chosen_score_condition -- The name of the specific condition. Each enemy type has its own set of conditions
+ret.requirement = condition -- Specific requirements
 bonus_condition = edition_condition--This is for when a card has an extra requirement; like an edition; but the main function has multiple different card types (like jokers + consumables); but only one needs the edition condition
 print(enemy_type)
 if enemy_type == "Score" and enemy_type ~= "Sell" then
@@ -774,68 +903,66 @@ print ("This enemy requires scoring")
 local score_condition = {"HandType", "ChipAmount","CardExtraChips","CardWeapon","CardEdition","CardEnhancement"}
 chosen_score_condition = pseudorandom_element(score_condition, pseudoseed("score"))
 --print(chosen_score_condition)
-	if chosen_score_condition == "HandType" then
-	local handtypes = {"High Card", "Flush"}
-	condition = pseudorandom_element(handtypes, pseudoseed("hands"))
-	end
-	
-	if chosen_score_condition == "ChipAmount" and enemy_type ~= "Sell"  then
-	local chipamount = SCUG.number_in_range(500, 1000, "chip_amount")
-	condition = chipamount
-	end
-	
-	if chosen_score_condition == "CardExtraChips" and enemy_type ~= "Sell"  then
-	local extrachips = SCUG.number_in_range(1, 20, "chippies")
-	condition = extrachips
-	end
-	
-	if chosen_score_condition == "CardWeapon" then
-	local weapontypes = {"rw_wbeehive", "rw_wcherrybomb", "rw_wspear_ele", "rw_wspear_exp",  "rw_wspear_fire", "rw_wflashbang", "rw_wgrenade", "rw_wjokerifle", "rw_wrock", "rw_wsingularity", "rw_wspear", "rw_wsporepuff"}
-	local chosen_weapon = pseudorandom_element(weapontypes, pseudoseed("violence"))
-	condition = chosen_weapon --placeholder
-	end
-	if chosen_score_condition == "CardEditionEnhancement" and enemy_type ~= "Sell"  then
-	-- Score a hand with a CardEdition x times.
-	local editiontype = {"e_holo", "e_foil", "e_polychrome", "m_bonus", "m_mult", "m_wild", "m_glass", "m_steel", "m_stone", "m_gold", "m_lucky", "m_rw_rotting", "m_rw_wetasscard"}
-	local chosen_edition = pseudorandom_element(editiontype, pseudoseed("edition"))
-	condition = chosen_edition
-	end
-	end	
-	
-    if enemy_type == "Sell" and enemy_type ~= "Score" then -- might have to make chosen_score_condition be SellJoker or SellConsumable for ease
-	print ("This enemy requires Selling")
-	
-	local score_condition = {"SellConsumable","SellJoker"}
-	chosen_score_condition = pseudorandom_element(score_condition, pseudoseed("sellme")) --chooses if its a consumable or joker sell condition
-	--print(chosen_score_condition)
-	
-	local enhanced_check = SCUG.number_in_range(1,20, "ough")
-	local editiontype = {"e_holo", "e_foil", "e_polychrome", "e_negative"}
-	
-	
-	if chosen_score_condition == "SellJoker" then
-	condition = "Joker"
-	if enhanced_check == 14 then
-	--sell an enhanced joker
-	local edition_condition = pseudorandom_element(editiontype, pseudoseed("sellme"))
-	else
-	edition_condition = "e_base"
-	end
-	elseif chosen_score_condition == "SellConsumable" and enemy_type ~= "Score" then
-	local consumable_type = {"Tarot", "Planet", "Spectral", "foods", "obtainweapon"} 
-	condition = nil
-	condition = pseudorandom_element(consumable_type, pseudoseed("sellme"))
-	end
-	end
-	end	]]
+if chosen_score_condition == "HandType" then
+local handtypes = {"High Card", "Flush"}
+condition = pseudorandom_element(handtypes, pseudoseed("hands"))
+end
+
+if chosen_score_condition == "ChipAmount" and enemy_type ~= "Sell"  then
+local chipamount = SCUG.number_in_range(500, 1000, "chip_amount")
+condition = chipamount
+end
+
+if chosen_score_condition == "CardExtraChips" and enemy_type ~= "Sell"  then
+local extrachips = SCUG.number_in_range(1, 20, "chippies")
+condition = extrachips
+end
+
+if chosen_score_condition == "CardWeapon" then
+local weapontypes = {"rw_wbeehive", "rw_wcherrybomb", "rw_wspear_ele", "rw_wspear_exp",  "rw_wspear_fire", "rw_wflashbang", "rw_wgrenade", "rw_wjokerifle", "rw_wrock", "rw_wsingularity", "rw_wspear", "rw_wsporepuff"}
+local chosen_weapon = pseudorandom_element(weapontypes, pseudoseed("violence"))
+condition = chosen_weapon --placeholder
+end
+if chosen_score_condition == "CardEditionEnhancement" and enemy_type ~= "Sell"  then
+-- Score a hand with a CardEdition x times.
+local editiontype = {"e_holo", "e_foil", "e_polychrome", "m_bonus", "m_mult", "m_wild", "m_glass", "m_steel", "m_stone", "m_gold", "m_lucky", "m_rw_rotting", "m_rw_wetasscard"}
+local chosen_edition = pseudorandom_element(editiontype, pseudoseed("edition"))
+condition = chosen_edition
+end
+end	
+
+if enemy_type == "Sell" and enemy_type ~= "Score" then -- might have to make chosen_score_condition be SellJoker or SellConsumable for ease
+print ("This enemy requires Selling")
+
+local score_condition = {"SellConsumable","SellJoker"}
+chosen_score_condition = pseudorandom_element(score_condition, pseudoseed("sellme")) --chooses if its a consumable or joker sell condition
+--print(chosen_score_condition)
+
+local enhanced_check = SCUG.number_in_range(1,20, "ough")
+local editiontype = {"e_holo", "e_foil", "e_polychrome", "e_negative"}
+
+
+if chosen_score_condition == "SellJoker" then
+condition = "Joker"
+if enhanced_check == 14 then
+--sell an enhanced joker
+local edition_condition = pseudorandom_element(editiontype, pseudoseed("sellme"))
+else
+edition_condition = "e_base"
+end
+elseif chosen_score_condition == "SellConsumable" and enemy_type ~= "Score" then
+local consumable_type = {"Tarot", "Planet", "Spectral", "foods", "obtainweapon"} 
+condition = nil
+condition = pseudorandom_element(consumable_type, pseudoseed("sellme"))
+end
+end
+end
+]]
 
 local new_roundref = new_round
 function new_round()
 	new_roundref()
 	if not G.GAME.challenge_tab then
-		-- Enemy Selection
-		-- This checks if an enemy spawns or not.
-		-- TODO: Set limits to 0 and 9. Ante 9+ picks a random enemy equally. There should be SOME Ante 0- table, I think.
 		SCUG.spawn_enemy()
 	end
 end
