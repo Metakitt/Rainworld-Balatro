@@ -14,6 +14,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	enhancement_gate = "m_rw_wetasscard",
 	loc_vars = function(self, info_queue, card)
 		local wet_count, _ = SCUG.enhancement_count("m_rw_wetasscard")
         return {
