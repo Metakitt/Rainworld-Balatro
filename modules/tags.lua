@@ -145,6 +145,7 @@ SMODS.Tag({
 						trigger = "after",
 						delay = i == 0 and 0.7 or 0.2,
 						func = function()
+							G.play.cards[1]:add_to_deck()
 							draw_card(G.play, G.deck, 90, "up", nil)
 							return true
 						end,
