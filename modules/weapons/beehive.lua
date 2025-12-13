@@ -19,19 +19,29 @@ SMODS.Sticker({
 	calculate = function(self, card, context)
 		if context.setting_blind and G.GAME.blind.boss and context.main_eval then
 			--print ('a')
-			local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
-			local suit_debuff = pseudorandom_element(
-				SMODS.Suits,
-				pseudoseed("ohshititsbees"),
-				{
-					in_pool = function(v)
-						return v.key ~= suit.key
-					end
-				}
-			)
+			-- local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
+			-- local suit_debuff = pseudorandom_element(
+			-- 	SMODS.Suits,
+			-- 	pseudoseed("ohshititsbees"),
+			-- 	{
+			-- 		in_pool = function(v)
+			-- 			return v.key ~= suit.key
+			-- 		end
+			-- 	}
+			-- )
+			local suit, _ = SCUG.get_suit_in_deck()
+			if not suit then return end
+			local suit_debuff, _ = SCUG.get_suit_in_deck({
+				in_pool = function(v)
+					return v ~= suit
+				end
+			})
+			if not suit_debuff then return end
+
+			print(string.format("Buffing %s, debuffing %s", suit, suit_debuff))
 
 			for _, v in pairs(G.playing_cards) do
-				if v:is_suit(suit.name) then
+				if v:is_suit(suit) then
 					if v.ability.perma_bonus <= 0 then
 						v.ability.perma_bonus = 5
 					end
@@ -40,7 +50,7 @@ SMODS.Sticker({
 					end
 					v:juice_up(0.5, 0.5)
 					SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, v)
-				elseif v:is_suit(suit_debuff.name) then
+				elseif v:is_suit(suit_debuff) then
 					SMODS.debuff_card(v, true, "bees")
 				end
 			end

@@ -29,7 +29,8 @@ SCUG.in_table = function(key, table)
 	return false
 end
 
-SCUG.get_suit_in_deck = function()
+SCUG.get_suit_in_deck = function(args)
+	args = args or {}
 	local all_suits = {}
 	for _, card in ipairs(G.playing_cards) do
 		if not SMODS.has_no_suit(card) then
@@ -39,10 +40,10 @@ SCUG.get_suit_in_deck = function()
 			end
 		end
 	end
-	local chosen_suit, _ = pseudorandom_element(all_suits, "get_suit", {})
-	return chosen_suit
+	return pseudorandom_element(all_suits, "get_suit", args)
 end
-SCUG.get_rank_in_deck = function()
+SCUG.get_rank_in_deck = function(args)
+	args = args or {}
 	local all_ranks = {}
 	for _, card in ipairs(G.playing_cards) do
 		if not SMODS.has_no_rank(card) then
@@ -52,8 +53,7 @@ SCUG.get_rank_in_deck = function()
 			end
 		end
 	end
-	local chosen_rank, _ = pseudorandom_element(all_ranks, "get_rank", {})
-	return chosen_rank
+	return pseudorandom_element(all_ranks, "get_rank", args)
 end
 
 SCUG.scav_rep = function(card)
