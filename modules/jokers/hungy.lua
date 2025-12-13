@@ -11,13 +11,11 @@
 -- -- Other: Half the sell value (max of $1)
 -- Playing Cards from Hand:
 -- -- Not Rot cards: 20% of Chips or 2 Chips, whichever's higher
--- -- Rot cards: 20% of abs(Chips) or 4 Chips, whichever's's higher. Prioritized.
+-- -- Rot cards: 20% of abs(Chips) or 4 Chips, whichever's higher. Prioritized.
 -- Any card in the Shop: Nothing!
 -- Cards in opened packs: Nothing!
 -- Boosters: +1 Mult per card in the pack
 -- Vouchers: +0.5X Mult
-
--- With apologies to Doctor Flamingo.
 
 -- You want lore? Okay.
 -- Hunger is a Slugcat made, or probably genetically engineered, by Five Pebbles.
