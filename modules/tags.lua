@@ -128,30 +128,38 @@ SMODS.Tag({
 	pos = { x = 0, y = 1 },
 	discovered = true,
 	loc_vars = function(self, info_queue, tag)
-		return { vars = {
-			tag.config.cards,
-		} }
+		return {
+			vars = {
+				tag.config.cards,
+			}
+		}
 	end,
 	apply = function(self, tag, context)
 		if context.type == "immediate" or context.type == "new_blind_choice" or context.type == "round_start_bonus" then
 			tag:yep("+", G.C.SECONDARY_SET.Enhanced, function()
 				local num_cards = tag.config.cards
 				local i = 0
-				SMODS.add_card({ set = "Enhanced", area = G.play, key_append = "tag_rw_rivulet" })
-				SMODS.add_card({ set = "Enhanced", area = G.play, key_append = "tag_rw_rivulet" })
-				SMODS.add_card({ set = "Enhanced", area = G.play, key_append = "tag_rw_rivulet" })
+				local all_cards = {}
+				for _ = 1, num_cards do
+					all_cards[#all_cards + 1] = SMODS.add_card({
+						set = "Enhanced",
+						area = G.play,
+						key_append =
+						"tag_rw_rivulet"
+					})
+				end
 				while i < num_cards do
 					G.E_MANAGER:add_event(Event({
 						trigger = "after",
 						delay = i == 0 and 0.7 or 0.2,
 						func = function()
-							G.play.cards[1]:add_to_deck()
 							draw_card(G.play, G.deck, 90, "up", nil)
 							return true
 						end,
 					}))
 					i = i + 1
 				end
+				SMODS.calculate_context { playing_card_added = true, cards = all_cards }
 				return true
 			end)
 			tag.triggered = true

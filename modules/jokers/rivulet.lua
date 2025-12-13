@@ -15,17 +15,19 @@ SMODS.Joker({
 
 			card.ability.extra.randomnumber = SCUG.number_in_range(1, 10, "rw_rivulet")
 			local cards_created = card_numbers[card.ability.extra.randomnumber]
+			local all_cards = {}
 
 			for _ = 1, cards_created do
 				local rank = pseudorandom_element(SMODS.Ranks, "rw_rivulet_rank", {})
 				local suit = pseudorandom_element(SMODS.Suits, "rw_rivulet_rank", {})
-				SMODS.add_card({
+				all_cards[#all_cards + 1] = SMODS.add_card({
 					area = G.deck,
 					rank = rank.key,
 					suit = suit.key,
 					set = "Enhanced",
 				})
 			end
+			SMODS.calculate_context { playing_card_added = true, cards = all_cards }
 		end
 	end,
 })
