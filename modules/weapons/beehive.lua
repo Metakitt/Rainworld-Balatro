@@ -21,6 +21,7 @@ SMODS.Sticker({
 			--print ('a')
 			local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
 			local suit_debuff = pseudorandom_element(SMODS.Suits, pseudoseed("ohshititsbees"))
+			
 			for _, v in pairs(G.playing_cards) do
 				if v:is_suit(suit.name) then
 					if v.ability.perma_bonus <= 0 then
@@ -31,8 +32,9 @@ SMODS.Sticker({
 					end
 					v:juice_up(0.5, 0.5)
 					SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, v)
-				elseif v:is_suit(suit_debuff.name) then
+				if v:is_suit(suit_debuff.name) then
 					SMODS.debuff_card(v, true, "bees")
+				end
 				end
 			end
 			-- for i = 1, #G.deck.cards do
