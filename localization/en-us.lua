@@ -1473,6 +1473,14 @@ return {
 					"each {C:attention,T:j_rw_slugpup}Slugpup"
 				}
 			},
+			j_rw_keeper = {
+				name = "Keeper",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult for each card",
+					"debuffed by {C:weapon}Beehives",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+				}
+			},
 			--endregion
 			--region Not-Slugcats
 			j_rw_scavenger_neutral = {
