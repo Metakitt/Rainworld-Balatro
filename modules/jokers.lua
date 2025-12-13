@@ -31,4 +31,4 @@ assert(SMODS.load_file("modules/jokers/ranger.lua"))()
 assert(SMODS.load_file("modules/jokers/enfys.lua"))()
 assert(SMODS.load_file("modules/jokers/lacuna.lua"))()
 assert(SMODS.load_file("modules/jokers/hungy.lua"))()
---assert(SMODS.load_file("modules/jokers/ploo.lua"))() --doesn't really do anything
+assert(SMODS.load_file("modules/jokers/ploo.lua"))()

@@ -1466,6 +1466,13 @@ return {
 					"{C:inactive}(Currently {C:mult}+#2# {C:inactive}Mult)",
 				},
 			},
+			j_rw_plooploo = {
+				name = "?ploo",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult for",
+					"each {C:attention,T:j_rw_slugpup}Slugpup"
+				}
+			},
 			--endregion
 			--region Not-Slugcats
 			j_rw_scavenger_neutral = {

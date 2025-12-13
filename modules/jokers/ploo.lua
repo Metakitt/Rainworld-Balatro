@@ -1,29 +1,31 @@
---This is a secret joker, it currently doesn't do anything (its effect is just a copy of inv's right now.--
+--This is a secret joker, it           does       a  thing (its effect is                      right now.--
 SMODS.Joker({
 	key = "plooploo",
 	atlas = "plooer",
 	pos = { x = 1, y = 0 },
 	rarity = 3,
-	cost = 4,
+	cost = 6,
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { odds = 6, blink = false } },
-
+	config = { extra = { pup_mult = 1.5 }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds }, slugcat = true }
+		return { vars = { card.ability.extra.pup_mult } }
 	end,
-
+	in_pool = function(self, args)
+		return #SMODS.find_card("j_rw_slugpup", true) > 0
+	end,
 	calculate = function(self, card, context)
 		if
-			context.end_of_round
-			and context.main_eval
-			and pseudorandom("survive") < G.GAME.probabilities.normal / card.ability.extra.odds
+			context.other_joker and context.other_joker.config.center_key == "j_rw_slugpup"
 		then
-			SMODS.add_card({ set = "Joker", area = G.jokers, edition = "e_negative", key = "j_rw_slugpup" })
-			--rw_plooploo_dt_anim = 0
+			-- context.other_joker:juice_up(0.5, 0.5) -- Like Baseball Card
+			return { x_mult = card.ability.extra.pup_mult }
 		end
 	end,
+	set_card_type_badge = function(self, card, badges)
+		badges[#badges + 1] = create_badge("?ploo", G.C.WHITE, G.C.BLACK, 1.2)
+	end
 })
 
 --plooploo_Anim_Patch (Derived from 4D Joker / Jimball)
@@ -63,4 +65,5 @@ function Game:update(dt)
 		end
 	end
 end
+
 --
