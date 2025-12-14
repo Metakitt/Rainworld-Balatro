@@ -33,12 +33,15 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
+		local numerator, enem_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_stowaway")
+		local _, dorm_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_stowaway")
+		local _, joke_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_stowaway")
 		local awake = {
 			vars = {
-				1, -- G.GAME and G.GAME.probabilities.normal or 1,
-				card.ability.extra.enemy_chance,
-				card.ability.extra.dormant_chance,
-				card.ability.extra.joker_chance,
+				numerator,
+				enem_chance,
+				dorm_chance,
+				joke_chance
 			},
 		}
 		local asleep = {
@@ -55,7 +58,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		-- Threat
 		if context.setting_blind and not context.blueprint and card.ability.extra.dormant_timer == 0 then
-			if pseudorandom("rw_stowaway_spawn") < 1 / card.ability.extra.enemy_chance then
+			if SMODS.pseudorandom_probability(card, "rw_stowaway", 1, card.ability.extra.enemy_chance, "rw_stowaway_spawn") then
 				sendDebugMessage("Stowaway spawn!", "Rainworld")
 				SCUG.spawn_enemy({ guarantee = true })
 			end
@@ -63,7 +66,7 @@ SMODS.Joker({
 		-- "Defeat"
 		if context.end_of_round and not context.blueprint and context.main_eval then
 			if card.ability.extra.dormant_timer == 0 then
-				if pseudorandom("rw_stowaway_sleep") < 1 / card.ability.extra.dormant_chance then
+				if SMODS.pseudorandom_probability(card, "rw_stowaway", 1, card.ability.extra.dormant_chance, "rw_stowaway_sleep") then
 					card.ability.extra.dormant_timer = SCUG.number_in_range(3, 6, "rw_stowaway_eepy")
 					card_eval_status_text(card, "extra", nil, nil, nil, {
 						message = localize("k_dormant_elip"),
@@ -91,7 +94,7 @@ SMODS.Joker({
 			and not context.blueprint
 			and card.ability.extra.dormant_timer == 0
 		then
-			if pseudorandom("rw_stowaway_kill") < 1 / card.ability.extra.joker_chance then
+			if SMODS.pseudorandom_probability(card, "rw_stowaway", 1, card.ability.extra.joker_chance, "rw_stowaway_kill") then
 				local random_joker = pseudorandom_element(G.jokers.cards, "rw_stowaway_kill", {})
 				if not SMODS.is_eternal(random_joker) then
 					SMODS.destroy_cards(random_joker)

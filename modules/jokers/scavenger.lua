@@ -93,7 +93,7 @@ SMODS.Joker({
 				context.before
 				-- and context.main_eval
 				and not context.blueprint
-				and pseudorandom("rw_scavenger_yoink") < 1 / card.ability.extra.yoink_odds
+				and SMODS.pseudorandom_probability(card, "rw_scavenger", 1, card.ability.extra.yoink_odds, "rw_scavenger_yoink")
 			then
 				local joker_weapons = {}
 				for i, v in ipairs(G.jokers.cards) do
@@ -127,9 +127,8 @@ SMODS.Joker({
 			end
 		elseif reputation >= 2 then -- Friendly code
 			if context.setting_blind then
-				local gift_type = (pseudorandom("rw_scavenger_gift") < 1 / card.ability.extra.trade_odds)
-						and "obtainweapon"
-					or "foods"
+				local gift_type = SMODS.pseudorandom_probability(card, "rw_scavenger", 1, card.ability.extra.trade_odds, "rw_scavenger_gift")
+					and "obtainweapon" or "foods"
 				if #G.consumeables.cards < G.consumeables.config.card_limit then
 					SMODS.add_card({
 						set = gift_type,
@@ -145,7 +144,7 @@ SMODS.Joker({
 						table.insert(foods, i)
 					end
 				end
-				if #foods > 0 and pseudorandom("rw_scavenger_trade") < 1 / card.ability.extra.trade_odds then
+				if #foods > 0 and SMODS.pseudorandom_probability(card, "rw_scavenger", 1, card.ability.extra.trade_odds, "rw_scavenger_trade") then
 					local trade_idx = pseudorandom_element(foods, "rw_scavenger_trade", {})
 					local traded = G.consumeables.cards[trade_idx]
 					traded:start_dissolve()

@@ -7,7 +7,7 @@ SMODS.Back({
 		name = "5P deck",
 		text = {
 			"Start with {C:attention}8",
-			"{C:blue}Rot{} cards.",
+			"{C:rot}Rot{} cards.",
 		},
 	},
 	apply = function()

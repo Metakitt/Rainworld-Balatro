@@ -12,8 +12,7 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
-				(G.GAME.probabilities.normal or 1),
-				card.ability.extra.odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_survivor"),
 				card.ability.extra.h_mod,
 				card.ability.extra.h_size,
 			},
@@ -25,7 +24,7 @@ SMODS.Joker({
 			G.GAME.last_blind.boss
 			and context.end_of_round
 			and context.main_eval
-			and pseudorandom("survive") < G.GAME.probabilities.normal / card.ability.extra.odds
+			and SMODS.pseudorandom_probability(card, "rw_survivor", 1, card.ability.extra.odds, "rw_survivor")
 		then
 			G.hand:change_size(-card.ability.extra.h_size)
 			card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_mod

@@ -70,7 +70,7 @@ SMODS.Tag({
 			local lock = tag.ID
 			G.CONTROLLER.locks[lock] = true
 			tag:yep("+", G.C.RARITY.rw_enemy, function()
-				local num_enemies = pseudorandom("tag_rw_danger") < 0.5 and 2 or 1
+				local num_enemies = SMODS.pseudorandom_probability(tag, "rw_enemy", 1, 2, "rw_dangertag", true) and 2 or 1
 				while num_enemies > 0 do
 					SCUG.spawn_enemy({ guarantee = true })
 					num_enemies = num_enemies - 1

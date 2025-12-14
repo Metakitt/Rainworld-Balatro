@@ -29,16 +29,16 @@ SMODS.Voucher({
 	requires = { "v_rw_weaponsale" },
 	config = { extra = { odds = 3 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_scavstash") }}
 	end,
 	calculate = function(self, card, context)
 		if
 			G.GAME.last_blind.boss
 			and context.end_of_round
 			and context.main_eval
-			and pseudorandom("weapon") < G.GAME.probabilities.normal / card.ability.extra.odds
+			and SMODS.pseudorandom_probability(card, "rw_weapon", 1, card.ability.extra.odds, "rw_scavstash")
 		then
-			local cr = math.random(1, 11)
+			local cr = SCUG.number_in_range(1, 11, "rw_weapon")
 			local weaponselected = "none"
 			if cr <= 5 then
 				weaponselected = pseudorandom_element(

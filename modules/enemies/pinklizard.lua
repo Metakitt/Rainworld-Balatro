@@ -51,7 +51,7 @@ SMODS.Joker({
 			local chosen_card = pseudorandom_element(destroyablecards, pseudoseed("test"))
 			if
 				chosen_card ~= nil
-				and pseudorandom("bite") < 1 / card.ability.extra.card_odds
+				and SMODS.pseudorandom_probability(card, "rw_pinklizard", 1, card.ability.extra.card_odds, "rw_pinklizard_onecard")
 				and not chosen_card.getting_sliced
 				and not context.blueprint
 			then
@@ -90,10 +90,8 @@ SMODS.Joker({
 			and not context.blueprint
 		then
 			for i = 1, #G.playing_cards do
-				if pseudorandom("bite") < 1 / card.ability.extra.deck_odds then
+				if SMODS.pseudorandom_probability(card, "rw_pinklizard", 1, card.ability.extra.deck_odds, "rw_pinklizard_deckcards") then
 					SMODS.destroy_cards(G.playing_cards[i])
-				else
-					--print('Safe')
 				end
 			end
 		end

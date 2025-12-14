@@ -51,7 +51,7 @@ SMODS.Joker({
 				context.setting_blind
 				and not card.ability.extra.defeat
 				and not context.blueprint
-				and pseudorandom("rw_jokelizard") < 1 / math.max(1, #G.jokers.cards - 1)
+				and SMODS.pseudorandom_probability(card, "rw_jokelizard", 1, math.max(1, #G.jokers.cards - 1), "rw_jokelizard_reroll")
 			)
 		then
 			if (#G.jokers.cards - 1) > 0 then
@@ -67,7 +67,9 @@ SMODS.Joker({
 				for i = 1, #jojers do
 					local rarity = jojers[i].config.center.rarity
 					if type(rarity) == "number" then
-						rarity = math.max(1, rarity - (pseudorandom("rw_jokelizard") < 0.5 and 1 or 0))
+						rarity = math.max(1,
+							rarity -
+							(SMODS.pseudorandom_probability(card, "rw_jokelizard", 1, 2, "rw_jokelizard_demote") and 1 or 0))
 						rarity = ({ "Common", "Uncommon", "Rare", "Legendary" })[rarity]
 					end
 					SMODS.destroy_cards(jojers[i])
