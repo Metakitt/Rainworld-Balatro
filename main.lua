@@ -56,9 +56,12 @@ function end_round()
 		if x.config.center == G.P_CENTERS.m_rw_wetasscard and not x.debuff then
 			local enhanced = {}
 			enhanced[#enhanced + 1] = x
-			x.ability.countdown_to_dry = x.ability.countdown_to_dry - 1
+			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_dietcola")) or next(SMODS.find_card("j_seltzer")) then
+			x.ability.countdown_to_dry = x.ability.countdown_to_dry + 1
 			--[[Add check here if a joker is wet to increase rather than decrease]]
-
+			else
+			x.ability.countdown_to_dry = x.ability.countdown_to_dry - 1
+            end
 			--Drying part of function
 			local z = {}
 			for i = 1, #G.deck.cards do
@@ -69,6 +72,11 @@ function end_round()
 					z = G.deck.cards[i]
 					z:set_ability(G.P_CENTERS.c_base)
 					--z.config.center = G.P_CENTERS.c_base
+					elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
+					and G.deck.cards[i].ability.countdown_to_dry >= 10 then
+					z = G.deck.cards[i]
+					z:set_ability(G.P_CENTERS.m_rw_moldy)
+					
 				end
 			end
 		end
@@ -79,7 +87,12 @@ function end_round()
 		if x.config.center == G.P_CENTERS.m_rw_wetasscard and not x.debuff then
 			local enhanced = {}
 			enhanced[#enhanced + 1] = x
+			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_dietcola")) or next(SMODS.find_card("j_seltzer")) then
+			x.ability.countdown_to_dry = x.ability.countdown_to_dry + 1
+			--[[Add check here if a joker is wet to increase rather than decrease]]
+			else
 			x.ability.countdown_to_dry = x.ability.countdown_to_dry - 1
+            end
 
 			--Drying part of function
 			local z = {}
@@ -91,6 +104,10 @@ function end_round()
 					z = G.hand.cards[i]
 					z:set_ability(G.P_CENTERS.c_base)
 					--z.config.center = G.P_CENTERS.c_base
+				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
+					and G.deck.cards[i].ability.countdown_to_dry >= 10 then
+					z = G.deck.cards[i]
+					z:set_ability(G.P_CENTERS.m_rw_moldy)
 				end
 			end
 		end
