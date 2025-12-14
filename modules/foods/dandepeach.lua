@@ -30,5 +30,6 @@ SMODS.Consumable({
 			other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
 			other_card.ability.perma_bonus = other_card.ability.perma_bonus + card.ability.extra.upgrade
 		end
+		SCUG.inc_food_count()
 	end,
 })

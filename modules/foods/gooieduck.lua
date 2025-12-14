@@ -34,5 +34,6 @@ SMODS.Consumable({
 		if card.ability.extra.uses == 0 then
 			card:start_dissolve()
 		end
+		SCUG.inc_food_count()
 	end,
 })

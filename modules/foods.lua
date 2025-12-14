@@ -34,3 +34,11 @@ SMODS.ConsumableType({
 		{ key = "rw_foodrare", rate = 0.02 },
 	},
 })
+
+SCUG.inc_food_count = function ()
+	if G.GAME.consumeable_usage_total.foods ~= nil then
+		G.GAME.consumeable_usage_total.foods = G.GAME.consumeable_usage_total.foods + 1
+	else
+		G.GAME.consumeable_usage_total.foods = 1
+	end
+end

@@ -13,6 +13,7 @@ assert(SMODS.load_file("./modules/enemies.lua"))()
 assert(SMODS.load_file("./modules/enhancement.lua"))()
 assert(SMODS.load_file("./modules/stickers.lua"))()
 assert(SMODS.load_file("./modules/tags.lua"))()
+assert(SMODS.load_file("./modules/achievements.lua"))()
 --assert(SMODS.load_file("./modules/debug.lua"))()
 
 --Debug allows for the use of the Rot fruit for testing rot! Wet fruit as well for wet cards!
@@ -22,7 +23,7 @@ local wet_keys = {
 	"j_seltzer",
 	"j_dietcola",
 	"j_rw_rivulet",
-	"j_rw_stupid_wet_rat"
+	"j_rw_stupid_wet_rat",
 }
 
 SMODS.Sound({
@@ -39,6 +40,10 @@ function Game:init_game_object()
 	ret.mirosbird = 1
 	ret.mirosvulture = 1
 	ret.rw_enemies_slain = 0
+	ret.rw_achievement_stats = {
+		scug_antes = 0,
+		ante_kills = {}
+	}
 	return ret
 end
 
@@ -87,6 +92,16 @@ function end_round()
 					z:set_ability(G.P_CENTERS.c_base)
 					--z.config.center = G.P_CENTERS.c_base
 				end
+			end
+		end
+	end
+
+	if G.GAME.blind:get_type() == "Boss" then
+		for _, v in pairs(G.jokers.cards) do
+			if v.ability.slugcat then
+				G.GAME.rw_achievement_stats.scug_antes = G.GAME.rw_achievement_stats.scug_antes + 1
+				check_for_unlock({ type = "round_win" })
+				break
 			end
 		end
 	end

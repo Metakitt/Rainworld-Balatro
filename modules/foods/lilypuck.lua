@@ -18,8 +18,6 @@ SMODS.Consumable({
 	end,
 	use = function(self, card, area, copier)
 		if card.ability.name == "lilypuck" then
-			for k, v in pairs(G.hand.cards) do
-			end
 			local chosen_hand = pseudorandom_element(G.hand.cards, pseudoseed("test"))
 
 			G.E_MANAGER:add_event(Event({
@@ -43,5 +41,6 @@ SMODS.Consumable({
 				end,
 			}))
 		end
+		SCUG.inc_food_count()
 	end,
 })

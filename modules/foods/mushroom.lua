@@ -55,5 +55,6 @@ SMODS.Consumable({
 
 			card:start_dissolve()
 		end
+		SCUG.inc_food_count()
 	end,
 })

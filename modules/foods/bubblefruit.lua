@@ -67,5 +67,6 @@ SMODS.Consumable({
 				end
 			end
 		end
+		SCUG.inc_food_count()
 	end,
 })

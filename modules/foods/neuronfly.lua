@@ -24,5 +24,6 @@ SMODS.Consumable({
 			G.hand:change_size(card.ability.extra.h_size)
 			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.ORANGE }, card)
 		end
+		SCUG.inc_food_count()
 	end,
 })
