@@ -40,6 +40,18 @@ SMODS.Joker({
 			vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_common, card.ability.extra.xmult_gain_uncommon, card.ability.extra.xmult_gain_food },
 		}
 	end,
+	add_to_deck = function (self,card,from_debuff)
+	local hungerchance = SCUG.number_in_range(1, 666, "ohfuck")
+	if hungerchance == 666 then
+	SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_hunger" })
+	for k, v in ipairs(G.jokers.cards) do
+				if v.ability.hunger then
+					v.ability.extra.x_mult = v.ability.extra.x_mult + 1
+				end
+			end
+			card:start_dissolve()
+	end
+	end,
 
 	calculate = function(self, card, context)
 		if context.joker_main then

@@ -112,8 +112,8 @@ SMODS.Voucher({
 	},
 	atlas = "scugvouchers",
 	pos = { x = 0, y = 0 },
-	calculate = function(self, card, context)
 	requires = { "v_rw_relay" },
+	calculate = function(self, card, context)
 	if context.skip_blind then
 	local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_holographic", "tag_polychrome", "tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon", "tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_d6", "tag_topup", "tag_speed", "tag_orbital", "tag_economy", "tag_rw_survivalist", "tag_rw_top_pup", "tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast", "tag_rw_healthy" }
 	local chosen_tag = pseudorandom_element(tags, "rw_tags")
