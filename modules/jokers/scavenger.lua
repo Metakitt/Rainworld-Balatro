@@ -60,23 +60,21 @@ SMODS.Joker({
 
 		local reputation = SCUG.scav_rep(card)
 		if reputation <= -2 then
+			local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.yoink_odds, "rw_scavenger")
 			return_table.key = return_table.key .. "_enemy"
 			return_table.vars = {
-				1,
-				card.ability.extra.yoink_odds,
+				numerator, denominator,
 				card.ability.extra.yoink_chips,
 			}
 		elseif reputation >= 2 then
 			return_table.key = return_table.key .. "_friendly"
 			return_table.vars = {
-				1,
-				card.ability.extra.trade_odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.trade_odds, "rw_scavenger")
 			}
 		else
 			return_table.key = return_table.key .. "_neutral"
 			return_table.vars = {
-				1,
-				card.ability.extra.trade_odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.trade_odds, "rw_scavenger")
 			}
 		end
 		table.insert(

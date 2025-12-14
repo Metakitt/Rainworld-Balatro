@@ -11,10 +11,11 @@ SMODS.Joker({
 	config = { extra = { chips = 0, bonus_chips = 50, odds = 6 }, slugcat = true, no_lodge = true },
 
 	loc_vars = function(self, info_queue, card)
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_artificer")
 		return {
 			vars = {
 				card.ability.extra.chips,
-				SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_artificer"),
+				numerator, denominator,
 				card.ability.extra.bonus_chips,
 				card.ability.extra.bonus_chips / 2,
 			},

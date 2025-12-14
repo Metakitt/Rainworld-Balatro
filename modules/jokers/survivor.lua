@@ -10,9 +10,10 @@ SMODS.Joker({
 	config = { extra = { h_size = 0, h_mod = 1, odds = 2 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_survivor")
 		return {
 			vars = {
-				SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_survivor"),
+				numerator, denominator,
 				card.ability.extra.h_mod,
 				card.ability.extra.h_size,
 			},
