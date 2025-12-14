@@ -752,162 +752,6 @@ function SCUG.generate_enemy()
 	return ret
 end
 
---[[
-function SCUG.generate_enemy_description(conditions)
-	local type = conditions.enemy_type
-	local subtype = conditions.condition or nil
-	local requirement = conditions.requirement
-	local amount = math.max(conditions.amount, 0)
-
-	if type == "Score" then
-		if subtype == "HandType" then
-			-- Score X more Y hands
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "score_hands",
-				vars = { localize(requirement, "poker_hands"), amount }
-			}
-		elseif subtype == "ChipAmount" then
-			-- Score X chips in one hand Y more times
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "hand_chips",
-				vars = { requirement, amount }
-			}
-		elseif subtype == "CardExtraChips" then
-			-- Score X more cards with Y extra chips
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "extra_chips",
-				vars = { requirement, amount }
-			}
-		elseif subtype == "CardWeapon" then
-			-- Score X more Ys
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "weapons",
-				vars = { localize { type = "name_text", set = "obtainweapon", key = requirement }, amount }
-			}
-		elseif subtype == "CardEditionEnhancement" then
-			-- Score X more Y Cards
-			if requirement[1] == "m" then
-				return localize {
-					type = "raw_descriptions",
-					set = "enemy_conditions",
-					key = "enhancements",
-					vars = { localize { type = "name_text", set = "Enhanced", key = requirement }, amount }
-				}
-			end
-			-- Score X more cards with Y Edition	
-			if requirement[1] == "e" then
-				return localize {
-					type = "raw_descriptions",
-					set = "enemy_conditions",
-					key = "editions",
-					vars = { localize { type = "name_text", set = "Edition", key = requirement }, amount }
-				}
-			end
-		end
-	elseif type == "Sell" then
-		if subtype == "SellJoker" then
-			-- Sell X more Jokers
-			-- Sell X more Jokers with Y Edition
-			if conditions.edition_condition then
-				return localize {
-					type = "raw_descriptions",
-					set = "enemy_conditions",
-					key = "sell_jokers_edition",
-					vars = { localize { type = "name_text", set = "Edition", key = conditions.edition_condition }, amount }
-				}
-			else
-				return localize {
-					type = "raw_descriptions",
-					set = "enemy_conditions",
-					key = "sell_jokers",
-					vars = { amount }
-				}
-			end
-		elseif subtype == "SellConsumable" then
-			-- Sell X more Y cards
-			local card_type = localize(string.lower(requirement), "labels")
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "sell_consumeables",
-				vars = { card_type, amount, colours = { G.C[string.upper(card_type)] } }
-			}
-		end
-	elseif type == "Use" then
-		-- Use X more Y cards
-		local card_type = localize(string.lower(requirement), "labels")
-		return localize {
-			type = "raw_descriptions",
-			set = "enemy_conditions",
-			key = "sell_consumeables",
-			vars = { card_type, amount, colours = { G.C[string.upper(card_type)] } }
-		}
-	elseif type == "Win" then
-		if subtype == "Blind" then
-			-- Defeat X more Blinds
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "beat_blinds",
-				vars = { amount }
-			}
-		elseif subtype == "BossBlind" then
-			-- Defeat X more Boss Blinds
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "beat_boss",
-				vars = { amount }
-			}
-		elseif subtype == "BlindThreshold" then
-			-- Score X% or less of the required chips in Y more Blinds
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "blind_chips_under",
-				vars = { requirement, amount }
-			}
-		elseif subtype == "%BlindChips" then
-			-- Score X% or more of the required chips in Y more Blinds
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "blind_chips_over",
-				vars = { requirement, amount }
-			}
-		end
-	elseif type == "Reroll" then
-		-- Reroll the shop X more times
-		return localize {
-			type = "raw_descriptions",
-			set = "enemy_conditions",
-			key = "reroll_shop",
-			vars = { amount }
-		}
-	elseif type == "Special" then
-		if subtype == "GrenadeMult" then
-			-- Have a Grenade with +X Mult or more
-			return localize {
-				type = "raw_descriptions",
-				set = "enemy_conditions",
-				key = "grenade_mult",
-				vars = { requirement, amount }
-			}
-		end
-	end
-
-	return nil
-end
-]]
-
 function SCUG.get_enemy_defeat_conditions(conditions)
 	local type = conditions.enemy_type
 	local subtype = conditions.condition or nil
@@ -933,12 +777,12 @@ function SCUG.get_enemy_defeat_conditions(conditions)
 			ret.vars = { localize { type = "name_text", set = "Other", key = requirement }, amount }
 		elseif subtype == "CardEditionEnhancement" then
 			-- Score X more Y Cards
-			if requirement[1] == "m" then
+			if requirement:sub(1,1) == "m" then
 				ret.key = key_base .. "enhancements"
 				ret.vars = { localize { type = "name_text", set = "Enhanced", key = requirement }, amount }
 			end
 			-- Score X more cards with Y Edition	
-			if requirement[1] == "e" then
+			if requirement:sub(1,1) == "e" then
 				ret.key = key_base .. "editions"
 				ret.vars = { localize { type = "name_text", set = "Edition", key = requirement }, amount }
 			end
