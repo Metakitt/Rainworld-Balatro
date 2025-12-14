@@ -36,7 +36,8 @@ SMODS.Joker({
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
 		end
 		local num_pedes = (G.GAME and G.jokers and #SMODS.find_card("j_rw_coalescipede")) or 1
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_coalescipede"), -num_pedes, number_format(-(num_pedes ^ 2)) } }
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_coalescipede")
+		return { vars = { numerator, denominator, -num_pedes, number_format(-(num_pedes ^ 2)) } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)

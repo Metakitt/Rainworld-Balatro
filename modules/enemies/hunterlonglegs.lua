@@ -40,7 +40,8 @@ SMODS.Joker({
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
 		end
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds), card.ability.extra.antimult } }
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+		return { vars = { numerator, denominator, card.ability.extra.antimult } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)

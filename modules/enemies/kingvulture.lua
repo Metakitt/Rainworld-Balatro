@@ -32,9 +32,10 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.nope_odds, rw_kingvulture)
 		return {
 			vars = {
-				SMODS.get_probability_vars(card, 1, card.ability.extra.nope_odds, rw_kingvulture),
+				numerator, denominator,
 				card.ability.extra.spears_needed,
 				card.ability.extra.spears_tanked,
 			},

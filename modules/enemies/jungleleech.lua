@@ -41,7 +41,7 @@ SMODS.Joker({
 		end
 		local numerator, food_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.foododds, "rw_jungleleech")
 		local _, mult_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.multodds, "rw_jungleleech")
-		local _, leech_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.leechodds)
+		local _, leech_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.leechodds, "rw_jungleleech")
 		return {
 			vars = {
 				numerator, food_odds, mult_odds, leech_odds, card.ability.extra.mult, card.ability.extra.multmod
