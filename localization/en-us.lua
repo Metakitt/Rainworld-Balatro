@@ -1660,6 +1660,9 @@ return {
 			k_awake_ex = "Awake!",
 			k_plus_weapon = "+1 Weapon",
 			k_spear_lodged_elip = "Spear Lodged...",
+			b_regurgitate = "Regurgitate",
+			mult_cost1 = "-0.2x",
+			mult_cost2 = "Mult",
 		},
 		v_dictionary = {
 			a_reputation = "+#1# Reputation",
