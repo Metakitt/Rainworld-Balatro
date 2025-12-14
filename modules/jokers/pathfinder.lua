@@ -1,15 +1,6 @@
 SMODS.Joker({
 	key = "pathfinder",
 	atlas = "slugcats",
-	loc_txt = {
-		name = "Pathfinder",
-		text = {
-			"If {C:attention}discard{} is",
-			"a {C:attention}Flush{}",
-			"gain a random",
-			"{C:tarot}Tarot{} card.",
-		},
-	},
 	rarity = 1,
 	cost = 4,
 	pos = { x = 9, y = 1 },

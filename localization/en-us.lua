@@ -1039,7 +1039,7 @@ return {
 				text = {
 					"{C:attention}Threat: {C:green}#1# in #2#{} chance for a random",
 					"Joker to become {C:rot}Rot{} each played hand.",
-					"{C:mult}-1{} Mult per hand played","{C:inactive}(Currently {C:mult}#3#{C:inactive} Mult)",
+					"{C:mult}-1{} Mult per hand played", "{C:inactive}(Currently {C:mult}#3#{C:inactive} Mult)",
 					"{C:attention}Undefeated: {C:attention}+1{} Ante",
 				},
 			},
@@ -1528,6 +1528,34 @@ return {
 					"debuffed by {C:weapon}Beehives",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
 				}
+			},
+			j_rw_blurred = {
+				name = "Blur",
+				text = {
+					"Reverses {C:chips}Chips{}",
+					"and {C:mult}Mult{}.",
+					"At the start of {C:attention}Blind{},",
+					"{C:green}1 in 20{} chance to",
+					"half {C:attention}Blind{} chips.",
+				},
+			},
+			j_rw_pathfinder = {
+				name = "Pathfinder",
+				text = {
+					"If {C:attention}discard{} is",
+					"a {C:attention}Flush{}",
+					"gain a random",
+					"{C:tarot}Tarot{} card.",
+				},
+			},
+			j_rw_ranger = {
+				name = "Ranger",
+				text = {
+					"{C:edition}+1{} Joker Slot",
+					"{C:attention}+1{} consumable Slot",
+					"{C:attention}+1{} hand size",
+					"{C:blue}-1{} hand each round",
+				},
 			},
 			--endregion
 			--region Not-Slugcats

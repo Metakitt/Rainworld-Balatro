@@ -1,16 +1,6 @@
 SMODS.Joker({
 	key = "blurred",
 	atlas = "slugcats",
-	loc_txt = {
-		name = "Blur",
-		text = {
-			"Reverses {C:chips}Chips{}",
-			"and {C:mult}Mult{}.",
-			"At the start of {C:attention}Blind{},",
-			"{C:green}1 in 20{} chance to",
-			"half {C:attention}Blind{} chips.",
-		},
-	},
 	rarity = 2,
 	cost = 4,
 	pos = { x = 9, y = 2 },
@@ -18,7 +8,9 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	config = { extra = { odds = 20 }, slugcat = true },
-	-- loc vars needed for displaying odds
+	loc_vars = function(self, info_queue, card)
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_blurred") }}
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main and not context.blueprint then
 			return {

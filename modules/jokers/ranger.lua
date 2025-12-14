@@ -1,15 +1,6 @@
 SMODS.Joker({
 	key = "ranger",
 	atlas = "slugcats",
-	loc_txt = {
-		name = "Ranger",
-		text = {
-			"{C:edition}+1{} Joker Slot",
-			"{C:attention}+1{} consumable Slot",
-			"{C:attention}+1{} hand size",
-			"{C:blue}-1{} hand each round",
-		},
-	},
 	pos = { x = 3, y = 3 },
 	rarity = 3,
 	cost = 7,
