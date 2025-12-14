@@ -16,8 +16,7 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
-				(G.GAME.probabilities.normal or 1),
-				card.ability.extra.odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_hunter"),
 				card.ability.extra.mult,
 				card.ability.extra.mult_gain,
 			},
@@ -38,7 +37,7 @@ SMODS.Joker({
 
 		if
 			context.setting_blind
-			and pseudorandom("hunterhell") < G.GAME.probabilities.normal / card.ability.extra.odds
+			and SMODS.pseudorandom_probability(card, "rw_hunter", 1, card.ability.extra.odds, "rw_hunter")
 			and G.GAME.round_resets.blind_ante < 8
 			and not context.blueprint
 		then

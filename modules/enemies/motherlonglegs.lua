@@ -46,17 +46,12 @@ SMODS.Joker({
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			for i = 1, #G.playing_cards do
-				if pseudorandom("bite") < 1 / card.ability.extra.odds and not context.blueprint then
+				if SMODS.pseudorandom_probability(card, "rw_motherlonglegs", 1, card.ability.extra.odds, "rw_motherlonglegs") and not context.blueprint then
 					G.playing_cards[i]:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
-			-- for i = 1, #G.hand.cards do
-			-- 	if pseudorandom("bite") < 1 / card.ability.extra.odds and not context.blueprint then
-			-- 		G.hand.cards[i]:set_ability(G.P_CENTERS.m_rw_rotting)
-			-- 	end
-			-- end
 			for i = 1, #G.jokers.cards do
-				if pseudorandom("bite") < 1 / card.ability.extra.odds and not context.blueprint then
+				if SMODS.pseudorandom_probability(card, "rw_motherlonglegs", 1, card.ability.extra.odds, "rw_motherlonglegs") and not context.blueprint then
 					G.jokers.cards[i]:set_rotted()
 				end
 			end

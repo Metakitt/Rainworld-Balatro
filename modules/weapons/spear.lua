@@ -39,8 +39,10 @@ SMODS.Sticker({
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-			local should_lodge = SCUG.number_in_range(1, 100) <= 2 -- 2% chance
-			local gourmand_exhausted = SCUG.number_in_range(1, 4) == 4 -- 25% chance
+			-- local should_lodge = SCUG.number_in_range(1, 100) <= 2 -- 2% chance
+			-- local gourmand_exhausted = SCUG.number_in_range(1, 4) == 4 -- 25% chance
+			local should_lodge = SMODS.pseudorandom_probability(card, "rw_spear", 1, 50, "rw_spear_lodge")
+			local gourmand_exhausted = SMODS.pseudorandom_probability(card, "rw_spear", 1, 4, "rw_spear_exhaust")
 			local mult_effect = not should_lodge or card.ability.no_lodge
 
 			if mult_effect then

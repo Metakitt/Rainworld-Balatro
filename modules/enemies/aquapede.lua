@@ -58,7 +58,7 @@ SMODS.Joker({
 
 		if context.setting_blind and not context.blueprint then
 			for i = 1, #G.playing_cards do
-				if pseudorandom("wet") < 1 / card.ability.extra.wetodds and not context.blueprint then
+				if SMODS.pseudorandom_probability(card, "rw_aquapede", 1, card.ability.extra.wetodds, "rw_aquapede") then
 					G.playing_cards[i]:set_ability(G.P_CENTERS.m_rw_wetasscard)
 				end
 			end

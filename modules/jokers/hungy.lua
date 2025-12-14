@@ -75,7 +75,7 @@ SMODS.Joker({
 			#SMODS.find_card("j_rw_hunger") > 0
 			and card.ability.extra.grace <= 0
 			and card.ability.extra.can_munch
-			and (pseudorandom(pseudoseed("crumchy")) < G.GAME.probabilities.normal / card.ability.extra.munch_chance)
+			and SMODS.pseudorandom_probability(card, "rw_hunger", 1, card.ability.extra.munch_chance, "rw_hunger")
 		then
 			-- Get all on-screen cards
 			local rot_edibles = {}

@@ -14,8 +14,7 @@ SMODS.Joker({
 		return {
 			vars = {
 				card.ability.extra.chips,
-				(G.GAME.probabilities.normal or 1),
-				card.ability.extra.odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_artificer"),
 				card.ability.extra.bonus_chips,
 				card.ability.extra.bonus_chips / 2,
 			},
@@ -37,7 +36,10 @@ SMODS.Joker({
 			end
 		end
 
-		if context.hand_drawn and pseudorandom("kill") < G.GAME.probabilities.normal / card.ability.extra.odds then
+		if
+			context.hand_drawn
+			and SMODS.pseudorandom_probability(card, "rw_artificer", 1, card.ability.extra.odds, "rw_artificer")
+		then
 			local destructable_cards = {}
 			for i = 1, #G.hand.cards do
 				if G.hand.cards[i] ~= card then
@@ -45,7 +47,7 @@ SMODS.Joker({
 				end
 			end
 			local card_to_destroy = #destructable_cards > 0
-					and pseudorandom_element(destructable_cards, pseudoseed("explode"))
+				and pseudorandom_element(destructable_cards, pseudoseed("explode"))
 				or nil
 			if card_to_destroy then
 				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.bonus_chips / 2

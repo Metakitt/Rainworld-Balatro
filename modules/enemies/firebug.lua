@@ -38,9 +38,10 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
+		local numerator, _ = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_firebug")
 		return {
 			vars = {
-				(G.GAME and G.GAME.probabilities.normal) or 1,
+				numerator,
 				card.ability.extra.aggodds,
 				card.ability.extra.odds,
 			},
@@ -58,7 +59,7 @@ SMODS.Joker({
 			and (SCUG.weapon_count("rw_wspear") + SCUG.weapon_count("rw_wsporepuff")) > 0
 			and card.ability.extra.aggressive == false
 		then
-			if pseudorandom("fireboog") < 1 / card.ability.extra.aggodds and not context.blueprint then
+			if SMODS.pseudorandom_probability(card, "rw_firebug", 1, card.ability.extra.aggodds, "rw_firebug_aggressive") then
 				card.ability.extra.aggressive = true
 			end
 		end
@@ -102,7 +103,7 @@ SMODS.Joker({
 					end
 				end
 
-				if pseudorandom("boogpowerup") < 1 / card.ability.extra.aggodds then
+				if SMODS.pseudorandom_probability(card, "rw_firebug", 1, card.ability.extra.aggodds, "rw_firebug_destroy") then
 					local rank = SCUG.get_rank_in_deck()
 					for _, v in ipairs(G.playing_cards) do
 						if v.config.card.value == rank and not context.blueprint then
@@ -112,7 +113,8 @@ SMODS.Joker({
 				end
 			-- Aggro
 			elseif
-				pseudorandom("boogpowerup") < 1 / card.ability.extra.aggodds
+				-- pseudorandom("boogpowerup") < 1 / card.ability.extra.aggodds
+				SMODS.pseudorandom_probability(card, "rw_firebug", 1, card.ability.extra.aggodds, "rw_firebug_die")
 				and context.main_eval
 				and context.end_of_round
 				and card.ability.extra.defeat == false

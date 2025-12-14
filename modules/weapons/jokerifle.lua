@@ -1,5 +1,5 @@
 --[[
-The effect change at the start of each blind. most likely will have to init a var to store that effect. 
+The effect change at the start of each blind. most likely will have to init a var to store that effect.
 A) Blue Fruit
 Boosts each card in the first hand by 15 chips.
 B) Rock
@@ -12,7 +12,7 @@ E) Singularity Bomb
 [ Sing. Bomb effect but doesn't destroy itself ]
 Rarest effect
 (The four next effects do the same as their regular counterparts)
-F) Beehive 
+F) Beehive
 G) Cherrybomb
 H) Flashbang
 I) Sporepuff
@@ -70,36 +70,40 @@ SMODS.Sticker({
 	rate = 0.005,
 	needs_enable_flag = false,
 	loc_vars = function(self, info_queue, card)
-		if G.GAME.jokerifle == "bluefruit" then
-			return { key = self.key .. "_bluefruit" }
-		end
-		if G.GAME.jokerifle == "rock" then
-			return { key = self.key .. "_rock" }
-		end
-		if G.GAME.jokerifle == "cherrybomb" then
-			return { key = self.key .. "_cherrybomb" }
-		end
-		if G.GAME.jokerifle == "pearl" then
-			return { key = self.key .. "_pearl" }
-		end
-		if G.GAME.jokerifle == "none" then
-			return { key = self.key .. "" }
-		end
-		if G.GAME.jokerifle == "beehive" then
-			return { key = self.key .. "_beehive" }
-		end
-		if G.GAME.jokerifle == "flashbang" then
-			return { key = self.key .. "_flashbang" }
-		end
-		if G.GAME.jokerifle == "grenade" then
-			return { key = self.key .. "_grenade", vars = { G.GAME.grenademult } }
-		end
-		if G.GAME.jokerifle == "sporepuff" then
-			return { key = self.key .. "_sporepuff" }
-		end
-		if G.GAME.jokerifle == "singularity" then
-			return { key = self.key .. "_singularity" }
-		end
+		-- if G.GAME.jokerifle == "bluefruit" then
+		-- 	return { key = self.key .. "_bluefruit" }
+		-- end
+		-- if G.GAME.jokerifle == "rock" then
+		-- 	return { key = self.key .. "_rock" }
+		-- end
+		-- if G.GAME.jokerifle == "cherrybomb" then
+		-- 	return { key = self.key .. "_cherrybomb" }
+		-- end
+		-- if G.GAME.jokerifle == "pearl" then
+		-- 	return { key = self.key .. "_pearl" }
+		-- end
+		-- if G.GAME.jokerifle == "none" then
+		-- 	return { key = self.key .. "" }
+		-- end
+		-- if G.GAME.jokerifle == "beehive" then
+		-- 	return { key = self.key .. "_beehive" }
+		-- end
+		-- if G.GAME.jokerifle == "flashbang" then
+		-- 	return { key = self.key .. "_flashbang" }
+		-- end
+		-- if G.GAME.jokerifle == "grenade" then
+		-- 	return { key = self.key .. "_grenade", vars = { G.GAME.grenademult } }
+		-- end
+		-- if G.GAME.jokerifle == "sporepuff" then
+		-- 	return { key = self.key .. "_sporepuff" }
+		-- end
+		-- if G.GAME.jokerifle == "singularity" then
+		-- 	return { key = self.key .. "_singularity" }
+		-- end
+		return {
+			vars = { G.GAME.grenademult },
+			key = self.key .. '_' .. G.GAME and G.GAME.jokerifle or "none"
+		}
 	end,
 	calculate = function(self, card, context)
 		--if context.setting_blind then

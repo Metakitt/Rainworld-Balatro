@@ -64,7 +64,7 @@ SMODS.Joker({
 
 		if
 			context.after
-			and pseudorandom("moreleech") < 1 / card.ability.extra.leechodds
+			and SMODS.pseudorandom_probability(card, "rw_jungleleech", 1, card.ability.extra.leechodds, "rw_jungleleech")
 			and card.ability.extra.dying == false
 			and not context.blueprint
 		then
@@ -77,7 +77,7 @@ SMODS.Joker({
 				end,
 				blocking = false,
 			}))
-			if pseudorandom("morepower") < 1 / card.ability.extra.multodds then
+			if SMODS.pseudorandom_probability(card, "rw_jungleleech", 1, card.ability.extra.multodds, "rw_jungleleech") then
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.multmod
 			end
 		end
@@ -112,7 +112,7 @@ SMODS.Joker({
 			and context.end_of_round
 			and G.GAME.blind.boss
 			and card.ability.extra.defeat == false
-			and pseudorandom("moreleech") < 1 / card.ability.extra.foododds
+			and SMODS.pseudorandom_probability(card, "rw_jungleleech", 1, card.ability.extra.foododds, "rw_jungleleech")
 			and not context.blueprint
 		then
 			G.E_MANAGER:add_event(Event({
