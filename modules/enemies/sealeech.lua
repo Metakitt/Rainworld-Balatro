@@ -37,8 +37,10 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { key = "rw_wspear_ele", set = "Other" }
-		return { vars = { card.ability.extra.unchult, card.ability.extra.leechodds } }
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.leechodds), card.ability.extra.unchult } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)

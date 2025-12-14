@@ -34,7 +34,7 @@ SMODS.Joker({
 		if context.before and not context.blueprint then
 			for _, v in pairs(G.jokers.cards) do
 				for k, _ in pairs(v.ability) do
-					if k == "rw_wsingularity" then
+					if k == "rw_wsingularity" and v.ability[k] then
 						card.ability.extra.defeat = true
 						SMODS.Stickers["rw_wsingularity"]:apply(v, nil)
 						SMODS.destroy_cards(card, true)

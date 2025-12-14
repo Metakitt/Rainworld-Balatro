@@ -34,7 +34,9 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = {} }
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
@@ -51,23 +53,6 @@ SMODS.Joker({
 				return { debuff = true }
 			end
 		end
-
-		if context.before and not context.blueprint then
-			if
-				next(context.poker_hands["High Card"])
-				and context.scoring_name == "High Card"
-				and not context.blueprint
-			then
-				card.ability.extra.high_count = card.ability.extra.high_count + 1
-			elseif
-				next(context.poker_hands["Flush House"])
-				and context.scoring_name == "Flush House"
-				and not context.blueprint
-			then
-				card.ability.extra.flush_house_count = card.ability.extra.flush_house_count + 1
-			end
-		end
-
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then

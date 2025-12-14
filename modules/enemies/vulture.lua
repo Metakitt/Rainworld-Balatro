@@ -6,8 +6,6 @@ SMODS.Joker({
 	config = {
 		extra = {
 			nope_odds = 8,
-			spears_tanked = 0,
-			spears_needed = 3,
 			defeat = false,
 		}, enemy = true,
 	},
@@ -31,11 +29,12 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
 		return {
 			vars = {
-				card.ability.extra.nope_odds,
-				card.ability.extra.spears_needed,
-				card.ability.extra.spears_tanked,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.nope_odds, "rw_vulture")
 			},
 		}
 	end,

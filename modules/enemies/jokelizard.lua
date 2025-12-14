@@ -25,7 +25,7 @@ SMODS.Joker({
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "rw_wjokerifle", set = "Other" }
-		return { vars = { G.jokers and math.max(1, #G.jokers.cards - 1) or 5 } }
+		return { vars = { SMODS.get_probability_vars(card, 1, G.jokers and math.max(1, #G.jokers.cards - 1) or 5, "rw_jokelizard") } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)

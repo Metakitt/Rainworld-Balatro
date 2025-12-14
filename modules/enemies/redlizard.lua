@@ -1,9 +1,6 @@
 SMODS.Joker({
 	key = "redlizard",
 	config = {
-		extra = {
-			threshold = 1.25,
-		},
 		enemy = true,
 	},
 	rarity = "rw_enemy",
@@ -26,9 +23,9 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = {
-			card.ability.extra.threshold * 100,
-		} }
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)

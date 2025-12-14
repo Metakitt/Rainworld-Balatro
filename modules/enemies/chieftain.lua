@@ -29,7 +29,7 @@ SMODS.Joker({
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
-		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
+		-- card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
 		--Threat

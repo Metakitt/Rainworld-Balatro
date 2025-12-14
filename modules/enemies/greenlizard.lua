@@ -32,10 +32,16 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
+		local numerator, mid_dest =
+			SMODS.get_probability_vars(card, 1, card.ability.extra.midround_destroy_odds, "rw_greenlizard")
+		local _, boss_dest =
+			SMODS.get_probability_vars(card, 1, card.ability.extra.boss_destroy_odds, "rw_greenlizard")
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
 		return {
 			vars = {
-				card.ability.extra.midround_destroy_odds,
-				card.ability.extra.boss_destroy_odds,
+				numerator, mid_dest, boss_dest
 			},
 		}
 	end,

@@ -37,8 +37,9 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { key = "rw_wspear", set = "Other" }
-		info_queue[#info_queue + 1] = { key = "rw_wflashbang", set = "Other" }
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
 		return { vars = { card.ability.extra.unchips, card.ability.extra.card_unchips } }
 	end,
 	add_to_deck = function(self, card, from_debuff)

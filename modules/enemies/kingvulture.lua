@@ -34,7 +34,7 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
-				card.ability.extra.nope_odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.nope_odds, rw_kingvulture),
 				card.ability.extra.spears_needed,
 				card.ability.extra.spears_tanked,
 			},

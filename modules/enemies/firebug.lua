@@ -19,7 +19,6 @@ SMODS.Joker({
 			defeat = false,
 			aggressive = false,
 			aggodds = 2,
-			odds = 20,
 		},
 		enemy = true,
 	},
@@ -38,12 +37,14 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		local numerator, _ = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_firebug")
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
+		local numerator, aggro = SMODS.get_probability_vars(card, 1, card.ability.extra.aggodds, "rw_firebug")
 		return {
 			vars = {
 				numerator,
-				card.ability.extra.aggodds,
-				card.ability.extra.odds,
+				aggro
 			},
 			key = self.key .. (card.ability.extra.aggressive and "_aggressive" or "_neutral"),
 		}
@@ -113,7 +114,6 @@ SMODS.Joker({
 				end
 			-- Aggro
 			elseif
-				-- pseudorandom("boogpowerup") < 1 / card.ability.extra.aggodds
 				SMODS.pseudorandom_probability(card, "rw_firebug", 1, card.ability.extra.aggodds, "rw_firebug_die")
 				and context.main_eval
 				and context.end_of_round

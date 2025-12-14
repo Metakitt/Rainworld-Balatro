@@ -34,7 +34,7 @@ SMODS.Joker({
 		return false
 	end,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { key = "rw_wspear_exp", set = "Other" }
+		info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions()
 		return {
 			vars = {
 				-- Fixed chance; Does not use G.GAME.probabilities.normal
@@ -43,6 +43,7 @@ SMODS.Joker({
 		}
 	end,
 	add_to_deck = function(self, card, from_debuff)
+		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
@@ -152,7 +153,7 @@ SMODS.Joker({
 		if context.debuff_hand and not context.check then
 			for _, k in ipairs(G.jokers.cards) do
 				if k.config.center_key == "j_rw_inspector" then
-					if SMODS.pseudorandom_probability(k, "rw_inspector", 1, k.ability.extra.odds, "rw_inspector") then
+					if SMODS.pseudorandom_probability(k, "rw_inspector", 1, k.ability.extra.odds, "rw_inspector", true) then
 						-- Lets you know who screwed you over
 						G.E_MANAGER:add_event(Event({
 							func = function()

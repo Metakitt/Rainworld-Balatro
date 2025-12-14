@@ -17,8 +17,6 @@ SMODS.Joker({
 			multmod = -0.1,
 			multodds = 2,
 			leechodds = 10,
-			highcardcount = 0,
-			foodcardsold = 0,
 			foododds = 20,
 		},
 		enemy = true,
@@ -38,15 +36,15 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
+		local numerator, food_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.foododds, "rw_jungleleech")
+		local _, mult_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.multodds, "rw_jungleleech")
+		local _, leech_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.leechodds)
 		return {
 			vars = {
-				card.ability.extra.mult,
-				card.ability.extra.multmod,
-				card.ability.extra.multodds,
-				card.ability.extra.leechodds,
-				card.ability.extra.foodcardsold,
-				card.ability.extra.highcardcount,
-				card.ability.extra.foododds,
+				numerator, food_odds, mult_odds, leech_odds, card.ability.extra.mult, card.ability.extra.multmod
 			},
 		}
 	end,
