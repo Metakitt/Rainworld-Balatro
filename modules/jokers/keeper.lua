@@ -27,7 +27,7 @@ SMODS.Joker {
     perishable_compat = true,
     loc_vars = function(self, info_queue, card)
         return {
-            vars = { card.ability.extra.bee_mult, 1 + (card.ability.extra.bee_mult * bee_debuffed_count(G.playing_cards)) }
+            vars = { card.ability.extra.bee_mult, 1 + (card.ability.extra.bee_mult * bee_debuffed_count(G and G.playing_cards or {})) }
         }
     end,
     set_ability = function(self, card, initial, delay_sprites)
