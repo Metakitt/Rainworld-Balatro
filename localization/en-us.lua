@@ -17,6 +17,14 @@ return {
 					"{C:attention}#2#{} round(s) until dry",
 				},
 			},
+			
+			m_rw_moldy = {
+				name = "Moldy",
+				text = {
+					"{X:chips,C:white}X#1#{} chips, always scores",
+					"{C:attention}#2#{} round(s) until dry",
+				},
+			},
 		},
 		Other = {
 			rw_wsporepuff = {
