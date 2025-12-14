@@ -16,15 +16,14 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
-				G.GAME and G.GAME.probabilities.normal or 1,
-				card.ability.extra.odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_communication")
 			},
 		}
 	end,
 	calculate = function(self, card, context)
 		if
 			context.using_consumeable
-			and pseudorandom("rw_communication") < G.GAME.probabilities.normal / card.ability.extra.odds
+			and SMODS.pseudorandom_probability(card, "rw_communication", 1, card.ability.extra.odds, "rw_communication")
 		then
 			local valid = false
 			local new_consum = { key = "c_wheel_of_fortune" }

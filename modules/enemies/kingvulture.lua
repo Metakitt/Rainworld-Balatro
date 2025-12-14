@@ -49,9 +49,8 @@ SMODS.Joker({
 			context.final_scoring_step
 			and context.cardarea == G.jokers
 			and not card.ability.extra.defeat
-			and pseudorandom("vulched") < 1 / card.ability.extra.nope_odds
+			and SMODS.pseudorandom_probability(card, "rw_kingvulture", 1, card.ability.extra.nope_odds, "rw_kingvulture")
 			and not context.blueprint
-			and not card.ability.extra.defeat
 		then
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 				message = localize("k_nope_ex"),

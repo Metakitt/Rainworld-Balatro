@@ -27,7 +27,7 @@ SMODS.Sticker({
 		end
 
 		if context.end_of_round and context.main_eval then
-			if pseudorandom("rottime") < 0.05 then
+			if SMODS.pseudorandom_probability(card, "rw_rot", 1, 20, "rw_rot_spread", true) then
 				local notrot = {}
 				for i = 1, #G.jokers.cards do
 					if

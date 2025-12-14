@@ -12,7 +12,7 @@ SMODS.Consumable({
 		badges[#badges + 1] = create_badge(localize("k_foodcommon"), G.C.BLUE, G.C.WHITE, 1.2)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds, card.ability.extra.replication } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_lacuna"), card.ability.extra.replication } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		if card.ability.extra.pack == true then
@@ -38,12 +38,12 @@ SMODS.Consumable({
 			and card.ability.extra.pack == false
 		then
 			if
-				pseudorandom("mushroom") < G.GAME.probabilities.normal / card.ability.extra.odds
+				SMODS.pseudorandom_probability(card, "rw_mushroom", 1, card.ability.extra.odds, "rw_mushroom_chips")
 				and G.GAME.blind.in_blind
 			then
 				G.GAME.blind.chips = G.GAME.blind.chips / 2
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-				if pseudorandom("mushroom") < G.GAME.probabilities.normal / card.ability.extra.replication then
+				if SMODS.pseudorandom_probability(card, "rw_mushroom", 1, card.ability.extra.replication, "rw_mushroom_replicate") then
 					local _card = copy_card(card)
 					_card:add_to_deck()
 					G.consumeables:emplace(_card)

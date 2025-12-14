@@ -608,7 +608,7 @@ SCUG.spawn_enemy = function(args)
 	local ante_num = SCUG.clamp(_ante, 1, 9)
 	-- Enemy Selection
 	-- This checks if an enemy spawns or not.
-	if args.guarantee or pseudorandom("rw_spawn_enemy") < 1 / ENEMY_SPAWN_DENOMINATORS[ante_num] then
+	if args.guarantee or SMODS.pseudorandom_probability(nil, "rw_enemy", 1, ENEMY_SPAWN_DENOMINATORS[ante_num], "rw_enemy_spawn") then
 		sendDebugMessage("Spawning an enemy!", "Rainworld")
 		local valid_selection = false
 		local enemy_key = "j_rw_greenlizard" -- Fallback value

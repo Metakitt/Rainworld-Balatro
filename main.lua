@@ -171,8 +171,7 @@ function new_round()
 			end
 
 			-- 1 in 5 chance to make another random card a rot card.
-			local timeforrot = pseudorandom("rw_rot") < 0.2 -- Also 1 in 5
-			if timeforrot then
+			if SMODS.pseudorandom_probability(nil, "rw_rot", 1, 5, "rw_rot_spread", true) then
 				local notrot = {}
 				for i = 1, #G.deck.cards do
 					if

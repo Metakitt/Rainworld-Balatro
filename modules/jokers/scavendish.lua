@@ -19,8 +19,7 @@ SMODS.Joker({
 		return {
 			vars = {
 				card.ability.extra.weapon_rate_mult,
-                (G.GAME and G.GAME.probabilities.normal) or 1,
-				card.ability.extra.odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_scavendish")
 			},
 		}
 	end,
@@ -42,7 +41,7 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and context.cardarea == G.jokers and not context.blueprint_card then
-			if pseudorandom("rw_scavendish") < G.GAME.probabilities.normal / card.ability.extra.odds then
+			if SMODS.pseudorandom_probability(card, "rw_scavendish", 1, card.ability.extra.odds, "rw_scavendish") then
 				SMODS.destroy_cards(card, true)
 				return { message = localize("k_extinct_ex") }
 			else

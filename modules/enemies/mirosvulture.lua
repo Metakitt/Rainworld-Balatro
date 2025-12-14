@@ -31,8 +31,7 @@ SMODS.Joker({
 		return {
 			vars = {
 				card.ability.extra.flashbang,
-				(G.GAME and G.GAME.probabilities.normal) or 1,
-				card.ability.extra.odds,
+				SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_mirosvulture")
 			},
 		}
 	end,
@@ -71,7 +70,7 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			if pseudorandom("rw_miros_vulture") < G.GAME.probabilities.normal / card.ability.extra.odds then
+			if SMODS.pseudorandom_probability(card, "rw_mirosvulture", 1, card.ability.extra.odds, "rw_mirosvulture") then
 				G.E_MANAGER:add_event(Event({
 					trigger = "ease",
 					delay = 2.0,

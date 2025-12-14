@@ -62,7 +62,7 @@ SMODS.Joker({
 			local chosen_card = pseudorandom_element(destroyablejokers, pseudoseed("test"))
 			if
 				chosen_card ~= nil
-				and pseudorandom("bite") < 1 / card.ability.extra.midround_destroy_odds
+				and SMODS.pseudorandom_probability(card, "rw_greenlizard", 1, card.ability.extra.midround_destroy_odds, "rw_greenlizard_card")
 				and not chosen_card.getting_sliced
 				and not context.blueprint
 			then
@@ -102,13 +102,11 @@ SMODS.Joker({
 		then
 			for i = 1, #G.jokers.cards do
 				if
-					pseudorandom("bite") < 1 / card.ability.extra.boss_destroy_odds
+					SMODS.pseudorandom_probability(card, "rw_greenlizard", 1, card.ability.extra.lizodds, "rw_greenlizard_joker")
 					and not G.jokers.cards[i].ability.eternal
 					and not context.blueprint
 				then
 					SMODS.destroy_cards(G.jokers.cards[i])
-				else
-					--print('Safe')
 				end
 			end
 		end

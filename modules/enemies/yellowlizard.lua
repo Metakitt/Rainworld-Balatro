@@ -51,7 +51,7 @@ SMODS.Joker({
 		--Threat
 		if context.main_eval and context.end_of_round and not G.GAME.blind.boss and not context.blueprint then
 			ease_dollars(card.ability.extra.takeyourmoney)
-			if pseudorandom("morelizard") < 1 / card.ability.extra.lizodds then
+			if SMODS.pseudorandom_probability(card, "rw_yellowlizard", 1, card.ability.extra.lizodds, "rw_yellowlizard") then
 				G.E_MANAGER:add_event(Event({
 					trigger = "after",
 					delay = 1.3,

@@ -61,7 +61,7 @@ SMODS.Joker({
 
 		if
 			context.after
-			and pseudorandom("moreleech") < 1 / card.ability.extra.leechodds
+			and SMODS.pseudorandom_probability(card, "rw_sealeech", 1, card.ability.extra.leechodds, "rw_sealeech")
 			and not context.blueprint
 			and not card.ability.extra.defeat
 		then

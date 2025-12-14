@@ -12,7 +12,7 @@ SMODS.Consumable({
 		badges[#badges + 1] = create_badge(localize("k_foodrare"), G.C.RED, G.C.WHITE, 1.2)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_lacuna") } }
 	end,
 	can_use = function(self, card)
 		return #G.hand.highlighted <= 2 and #G.hand.highlighted > 0
@@ -20,7 +20,7 @@ SMODS.Consumable({
 	use = function(self, card, area, copier)
 		if
 			card.ability.name == "glowweed"
-			and pseudorandom("glowweed") < G.GAME.probabilities.normal / card.ability.extra.odds
+			and SMODS.pseudorandom_probability(card, "rw_glowweed", 1, card.ability.extra.odds, "rw_glowweed")
 		then
 			local other_card = G.hand.highlighted[i]
 			for i = 1, #G.hand.highlighted do

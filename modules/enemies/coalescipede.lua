@@ -49,7 +49,7 @@ SMODS.Joker({
 		end
 		if
 			context.after
-			and pseudorandom("morepede") < 1 / card.ability.extra.odds
+			and SMODS.pseudorandom_probability(card, "rw_coalescipede", 1, card.ability.extra.odds, "rw_coalescipede")
 			and not context.blueprint
 			and not card.ability.extra.defeat
 		then

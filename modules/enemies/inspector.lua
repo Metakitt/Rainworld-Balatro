@@ -152,7 +152,7 @@ SMODS.Joker({
 		if context.debuff_hand and not context.check then
 			for _, k in ipairs(G.jokers.cards) do
 				if k.config.center_key == "j_rw_inspector" then
-					if pseudorandom("rw_inspected") < (1 / k.ability.extra.odds) then
+					if SMODS.pseudorandom_probability(k, "rw_inspector", 1, k.ability.extra.odds, "rw_inspector") then
 						-- Lets you know who screwed you over
 						G.E_MANAGER:add_event(Event({
 							func = function()

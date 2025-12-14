@@ -49,7 +49,7 @@ SMODS.Joker({
 		if context.joker_main and not context.blueprint then
 			card.ability.extra.antimult = card.ability.extra.antimult - 1
 			for i = 1, #G.jokers.cards do
-				if pseudorandom("bite") < 1 / card.ability.extra.odds and not context.blueprint then
+				if SMODS.pseudorandom_probability(card, "rw_hunterlonglegs", 1, card.ability.extra.lizodds, "rw_hunterlonglegs") and not context.blueprint then
 					G.jokers.cards[i]:set_rotted()
 				end
 			end

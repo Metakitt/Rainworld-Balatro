@@ -60,7 +60,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	config = { extra = { hand_type = "none", odds = 4, oddswep = 15 }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_lacuna") } }
 	end,
 	calculate = function(self, card, context)
 		local consume = G.consumeables.cards[1]
@@ -68,7 +68,7 @@ SMODS.Joker({
 		if context.setting_blind and consume ~= nil then
 			if
 				consume.ability.set == "Planet"
-				and pseudorandom("randomlevel") < G.GAME.probabilities.normal / card.ability.extra.odds
+				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.odds, "rw_lacuna_planet")
 			then
 				--print ('levelupplanet')
 				card.ability.extra.hand_type = pseudorandom_element(
@@ -113,28 +113,14 @@ SMODS.Joker({
 			end
 
 			if consume.ability.set == "Spectral" then
-				--print ('spectral')
-
-				--for k, v in pairs(G.deck.cards) do
-
-				local chosen_card = pseudorandom_element(G.deck.cards, pseudoseed("test"))
-				local seal_type = pseudorandom(pseudoseed("certsl"))
-				if seal_type > 0.75 then
-					chosen_card:set_seal("Red", true)
-				elseif seal_type > 0.5 then
-					chosen_card:set_seal("Blue", true)
-				elseif seal_type > 0.25 then
-					chosen_card:set_seal("Gold", true)
-				else
-					chosen_card:set_seal("Purple", true)
-				end
-
-				--end
+				local chosen_card = pseudorandom_element(G.deck.cards, pseudoseed("rw_lacuna_seal"))
+				local seal_type = pseudorandom_element({ "Purple", "Gold", "Blue", "Red" }, "rw_lacuna_seal", {})
+				chosen_card:set_seal(seal_type, true)
 			end
 
 			if
 				consume.ability.set == "foods"
-				and pseudorandom("upgrade") < G.GAME.probabilities.normal / card.ability.extra.odds
+				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.odds, "rw_lacuna_food")
 			then
 				local buffup = {}
 				for i = 1, #G.hand.cards do
@@ -147,7 +133,7 @@ SMODS.Joker({
 
 			if
 				consume.ability.set == "obtainweapon"
-				and pseudorandom("upgrade") < G.GAME.probabilities.normal / card.ability.extra.oddswep
+				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.oddswep, "rw_lacuna_weapon")
 			then
 				--print ('disaster')
 

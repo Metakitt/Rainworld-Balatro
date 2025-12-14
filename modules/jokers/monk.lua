@@ -10,13 +10,13 @@ SMODS.Joker({
 	config = { extra = { center_table = -1, odds = 10 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_monk") } }
 	end,
 
 	calculate = function(self, card, context)
 		if
 			context.setting_blind
-			and pseudorandom("monkpacifist") < G.GAME.probabilities.normal / card.ability.extra.odds
+			and SMODS.pseudorandom_probability(card, "rw_monk", 1, card.ability.extra.odds, "rw_monk")
 		then
 			card.ability.extra.center_table = -1
 			ease_ante(card.ability.extra.center_table)
