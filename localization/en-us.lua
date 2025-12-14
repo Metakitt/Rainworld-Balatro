@@ -931,6 +931,8 @@ return {
 				name = "Vulture",
 				text = {
 					"{C:attention}Threat: {C:green}#1# in #2#{} chance that hand scores {C:red}0{}.",
+					"{C:attention}To Defeat:{} Score #3# {C:weapon}Spears{} of any kind. [{C:attention}#4#{}/#3#]",
+					"{s:0.8,C:weapon}(Normal, Explosive, Electric, Fire)",
 					"{C:attention}Undefeated:{} All {C:weapon}Weapons{} are",
 					"removed from {C:attention}all{} Jokers.",
 				},
@@ -938,7 +940,7 @@ return {
 			j_rw_kingvulture = {
 				name = "King Vulture",
 				text = {
-					"{C:attention}Threat: {C:green}#1# in #1#{} chance that hand scores {C:red}0{}.",
+					"{C:attention}Threat: {C:green}#1# in #2#{} chance that hand scores {C:red}0{}.",
 					"{C:attention}To Defeat:{} Score #3# {C:weapon}Spears{} of any kind. [{C:attention}#4#{}/#3#]",
 					"{s:0.8,C:weapon}(Normal, Explosive, Electric, Fire)",
 					"{C:attention}Undefeated: {C:red}Die{}.",

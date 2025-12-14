@@ -2,6 +2,7 @@ SMODS.Joker({
 	key = "redlizard",
 	config = {
 		enemy = true,
+		extra = {}
 	},
 	rarity = "rw_enemy",
 	cost = 0,

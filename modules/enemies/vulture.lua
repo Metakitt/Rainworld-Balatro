@@ -6,6 +6,8 @@ SMODS.Joker({
 	config = {
 		extra = {
 			nope_odds = 8,
+			spears_tanked = 0,
+			spears_needed = 3,
 			defeat = false,
 		}, enemy = true,
 	},
@@ -34,7 +36,7 @@ SMODS.Joker({
 		end
 		return {
 			vars = {
-				SMODS.get_probability_vars(card, 1, card.ability.extra.nope_odds, "rw_vulture")
+				SMODS.get_probability_vars(card, 1, card.ability.extra.nope_odds, "rw_vulture"), spears_needed, spears_tanked
 			},
 		}
 	end,

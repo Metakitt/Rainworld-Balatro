@@ -102,7 +102,7 @@ SMODS.Sticker({
 		-- end
 		return {
 			vars = { G.GAME.grenademult },
-			key = self.key .. '_' .. G.GAME and G.GAME.jokerifle or "none"
+			key = self.key .. '_' .. ((G.GAME and G.GAME.jokerifle) or "none")
 		}
 	end,
 	calculate = function(self, card, context)
