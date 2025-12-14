@@ -22,14 +22,14 @@ SMODS.Voucher({
 	loc_txt = {
 		name = "Scavenger Stash",
 		text = { "{C:green}#1# in #2#{} chance to get a",
-		"weapon at the end of a Boss Blind." },
+			"weapon at the end of a Boss Blind." },
 	},
 	atlas = "scugvouchers",
 	pos = { x = 0, y = 1 },
 	requires = { "v_rw_weaponsale" },
 	config = { extra = { odds = 3 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_scavstash") }}
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_scavstash") } }
 	end,
 	calculate = function(self, card, context)
 		if
@@ -42,7 +42,7 @@ SMODS.Voucher({
 			local weaponselected = "none"
 			if cr <= 5 then
 				weaponselected = pseudorandom_element(
-					{ "bluefruit", "spear", "rock", "cherrybomb", "grenade"}, --, "pearl" },
+					{ "bluefruit", "spear", "rock", "cherrybomb", "grenade" }, --, "pearl" },
 					pseudoseed("common")
 				)
 			elseif cr > 5 and cr <= 9 then
@@ -80,7 +80,7 @@ SMODS.Voucher({
 				-- elseif weaponselected == "sporepuff" then
 				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_sporepuff" }) --
 				-- end
-				SMODS.add_card {set = "obtainweapon", area = G.consumeables, key = "c_rw_" .. weaponselected}
+				SMODS.add_card { set = "obtainweapon", area = G.consumeables, key = "c_rw_" .. weaponselected }
 			end
 		end
 	end,
@@ -95,11 +95,16 @@ SMODS.Voucher({
 	atlas = "scugvouchers",
 	pos = { x = 0, y = 0 },
 	calculate = function(self, card, context)
-	if context.skip_blind then
-	local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_holographic", "tag_polychrome", "tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon", "tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_d6", "tag_topup", "tag_speed", "tag_orbital", "tag_economy", "tag_rw_survivalist", "tag_rw_top_pup", "tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast", "tag_rw_healthy" }
-	local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
-	add_tag(Tag(chosen_tag))
-	end
+		if context.skip_blind then
+			local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_holographic", "tag_polychrome",
+				"tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon",
+				"tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_d6",
+				"tag_topup", "tag_speed", "tag_orbital", "tag_economy", "tag_rw_survivalist", "tag_rw_top_pup",
+				"tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast",
+				"tag_rw_healthy" }
+			local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
+			add_tag(Tag(chosen_tag))
+		end
 	end
 })
 
@@ -114,10 +119,15 @@ SMODS.Voucher({
 	pos = { x = 0, y = 0 },
 	requires = { "v_rw_relay" },
 	calculate = function(self, card, context)
-	if context.skip_blind then
-	local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_holographic", "tag_polychrome", "tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon", "tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_d6", "tag_topup", "tag_speed", "tag_orbital", "tag_economy", "tag_rw_survivalist", "tag_rw_top_pup", "tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast", "tag_rw_healthy" }
-	local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
-	add_tag(Tag(chosen_tag))
-	end
+		if context.skip_blind then
+			local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_holographic", "tag_polychrome",
+				"tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon",
+				"tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_d6",
+				"tag_topup", "tag_speed", "tag_orbital", "tag_economy", "tag_rw_survivalist", "tag_rw_top_pup",
+				"tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast",
+				"tag_rw_healthy" }
+			local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
+			add_tag(Tag(chosen_tag))
+		end
 	end
 })
