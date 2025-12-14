@@ -12,7 +12,7 @@ SMODS.Consumable({
 		badges[#badges + 1] = create_badge(localize("k_foodcommon"), G.C.BLUE, G.C.WHITE, 1.2)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_mushroom"), card.ability.extra.replication } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_mushroom") } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		if card.ability.extra.pack == true then
