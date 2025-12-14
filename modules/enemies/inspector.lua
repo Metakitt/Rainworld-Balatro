@@ -34,7 +34,9 @@ SMODS.Joker({
 		return false
 	end,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions()
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions()
+		end
 		return {
 			vars = {
 				-- Fixed chance; Does not use G.GAME.probabilities.normal

@@ -37,7 +37,7 @@ SMODS.Joker({
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.nope_odds, "rw_vulture")
 		return {
 			vars = {
-				numerator, denominator, spears_needed, spears_tanked
+				numerator, denominator, card.ability.extra.spears_needed, card.ability.extra.spears_tanked
 			},
 		}
 	end,

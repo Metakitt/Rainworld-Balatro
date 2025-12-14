@@ -902,7 +902,7 @@ return {
 				name = "Mother Spider",
 				text = {
 					"{C:attention}Threat:{} Only {C:attention}High Card{} and {C:attention}Flush House{}",
-					"hands count for scoring. Other hands are {C:red}destroyed",
+					"hands count for scoring.","Other hands are {C:red}destroyed",
 					"{C:attention}Undefeated:{} Nothing.",
 				},
 			},

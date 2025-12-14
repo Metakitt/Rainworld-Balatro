@@ -33,9 +33,9 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		local numerator, enem_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_stowaway")
-		local _, dorm_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_stowaway")
-		local _, joke_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_stowaway")
+		local numerator, enem_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.enemy_chance, "rw_stowaway")
+		local _, dorm_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.dormant_chance, "rw_stowaway")
+		local _, joke_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.joker_chance, "rw_stowaway")
 		local awake = {
 			vars = {
 				numerator,

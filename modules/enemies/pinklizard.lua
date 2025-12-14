@@ -36,7 +36,7 @@ SMODS.Joker({
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
 		end
 		local numerator, card_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.card_odds, "rw_pinklizard")
-		local _, deck_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.card_odds, "rw_pinklizard")
+		local _, deck_odds = SMODS.get_probability_vars(card, 1, card.ability.extra.deck_odds, "rw_pinklizard")
 		return {
 			vars = { numerator, card_odds, deck_odds },
 		}
