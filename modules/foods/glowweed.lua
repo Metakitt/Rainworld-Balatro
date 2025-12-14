@@ -12,7 +12,7 @@ SMODS.Consumable({
 		badges[#badges + 1] = create_badge(localize("k_foodrare"), G.C.RED, G.C.WHITE, 1.2)
 	end,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_lacuna") } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_glowweed") } }
 	end,
 	can_use = function(self, card)
 		return #G.hand.highlighted <= 2 and #G.hand.highlighted > 0
