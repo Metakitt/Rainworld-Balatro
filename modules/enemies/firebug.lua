@@ -114,12 +114,12 @@ SMODS.Joker({
 				end
 			-- Aggro
 			elseif
-				SMODS.pseudorandom_probability(card, "rw_firebug", 1, card.ability.extra.aggodds, "rw_firebug_die")
-				and context.main_eval
+				context.main_eval
 				and context.end_of_round
 				and card.ability.extra.defeat == false
 				and not context.blueprint
 				and not G.GAME.blind.boss
+				and SMODS.pseudorandom_probability(card, "rw_firebug", 1, card.ability.extra.aggodds, "rw_firebug_die")
 			then
 				local rank = SCUG.get_rank_in_deck()
 				for _, v in ipairs(G.playing_cards) do
