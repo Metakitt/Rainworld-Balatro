@@ -111,3 +111,31 @@ SCUG.enemy_count = function()
 	end
 	return enemy_count
 end
+
+---@param original_table table
+---@return table
+local copy_table = function(original_table)
+	local copied = {}
+	for k, v in pairs(original_table) do
+		copied[k] = v
+	end
+	return copied
+end
+
+---Grow a Slugpup into a Slugcat.
+---@param alt_keys table Any additional keys, picks one at random.
+function Card:grow_up(alt_keys)
+	local possible_keys = alt_keys or {}
+	local auto_key = string.gsub(self.config.center_key, "pup", "")
+	if G.P_CENTERS[auto_key] then table.insert(alt_keys, auto_key) end
+
+	local ability = copy_table(self.ability)
+	local ability_extra = copy_table(self.ability.extra)
+	self:set_ability(pseudorandom_element(possible_keys, "rw_grow_up", {}))
+	for k, v in ability do
+		if self.ability[k] then self.ability[k] = v end
+	end
+	for k, v in ability_extra do
+		if self.ability.extra[k] then self.ability.extra[k] = v end
+	end
+end
