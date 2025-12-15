@@ -131,3 +131,42 @@ SMODS.Voucher({
 		end
 	end
 })
+
+SMODS.Voucher({
+	key = "rainfall",
+	loc_txt = {
+		name = "Rainfall",
+		text = { "Enemies are half as likely to appear on all blinds." },
+	},
+	atlas = "scugvouchers",
+	pos = { x = 0, y = 0 },
+	calculate = function(self, card, context)
+	
+	if context.fix_probability and context.identifier == "rw_enemy_spawn" then
+	return
+	{
+	denominator = context.denominator * 2
+	}
+	end
+	end
+})
+
+SMODS.Voucher({
+	key = "downpour",
+	loc_txt = {
+		name = "Downpour",
+		text = { "Enemies no longer spawn." },
+	},
+	atlas = "scugvouchers",
+	pos = { x = 0, y = 0 },
+	requires = { "v_rw_rainfall" },
+	calculate = function(self, card, context)
+	
+	if context.fix_probability and context.identifier == "rw_enemy_spawn" then
+	return
+	{
+	numerator = 0
+	}
+	end
+	end
+})

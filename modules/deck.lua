@@ -67,7 +67,7 @@ SMODS.Back({
 	name = "Looks To The Moon Deck",
 	key = "LTTMdeck",
 	atlas = "enhancedcards_scug",
-	pos = { x = 1, y = 0 },
+	pos = { x = 5, y = 0 },
 	loc_txt = {
 		name = "Looks To The Moon deck",
 		text = {
@@ -92,10 +92,15 @@ SMODS.Back({
 					})
 				end
 			end
-	end
-	
-	
-	
+			
+			local cardamount = SCUG.number_in_range(1, 4, "wetitup")
+			
+			for i = 1, math.min(cardamount, #G.playing_cards) do
+			local card, card_index = pseudorandom_element(G.playing_cards, pseudoseed('tester'))
+			card:set_ability(G.P_CENTERS.m_rw_wetasscard)
+			end
+			
+	end	
 	end
 })
 
