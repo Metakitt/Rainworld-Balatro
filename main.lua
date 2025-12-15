@@ -53,7 +53,7 @@ local end_round_ref = end_round
 function end_round()
 	end_round_ref()
 	for k, x in pairs(G.deck.cards) do
-		if x.config.center == G.P_CENTERS.m_rw_wetasscard and not x.debuff then
+		if (x.config.center == G.P_CENTERS.m_rw_wetasscard or x.config.center == G.P_CENTERS.m_rw_moldy) and not x.debuff then
 			local enhanced = {}
 			enhanced[#enhanced + 1] = x
 			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_dietcola")) or next(SMODS.find_card("j_seltzer")) then
@@ -72,10 +72,18 @@ function end_round()
 					z = G.deck.cards[i]
 					z:set_ability(G.P_CENTERS.c_base)
 					--z.config.center = G.P_CENTERS.c_base
+				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+					and G.deck.cards[i].ability.countdown_to_dry < 6 then
+					z = G.deck.cards[i]
+					z:set_ability(G.P_CENTERS.m_rw_wetasscard)
 				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
-					and G.deck.cards[i].ability.countdown_to_dry >= 10 then
+					and G.deck.cards[i].ability.countdown_to_dry >= 9 and G.deck.cards[i].ability.countdown_to_dry < 12 then
 					z = G.deck.cards[i]
 					z:set_ability(G.P_CENTERS.m_rw_moldy)
+				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+					and G.deck.cards[i].ability.countdown_to_dry >= 12 then
+					z = G.deck.cards[i]
+					z:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
 		end
@@ -83,7 +91,7 @@ function end_round()
 
 	--For cards in the hand at the end of the round;
 	for k, x in pairs(G.hand.cards) do
-		if x.config.center == G.P_CENTERS.m_rw_wetasscard and not x.debuff then
+		if (x.config.center == G.P_CENTERS.m_rw_wetasscard or x.config.center == G.P_CENTERS.m_rw_moldy) and not x.debuff then
 			local enhanced = {}
 			enhanced[#enhanced + 1] = x
 			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_dietcola")) or next(SMODS.find_card("j_seltzer")) then
@@ -103,10 +111,18 @@ function end_round()
 					z = G.hand.cards[i]
 					z:set_ability(G.P_CENTERS.c_base)
 					--z.config.center = G.P_CENTERS.c_base
+				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+					and G.deck.cards[i].ability.countdown_to_dry < 6 then
+					z = G.deck.cards[i]
+					z:set_ability(G.P_CENTERS.m_rw_wetasscard)
 				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
-					and G.deck.cards[i].ability.countdown_to_dry >= 10 then
+					and G.deck.cards[i].ability.countdown_to_dry >= 9 and G.deck.cards[i].ability.countdown_to_dry < 12 then
 					z = G.deck.cards[i]
 					z:set_ability(G.P_CENTERS.m_rw_moldy)
+				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+					and G.deck.cards[i].ability.countdown_to_dry >= 12 then
+					z = G.deck.cards[i]
+					z:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
 		end
