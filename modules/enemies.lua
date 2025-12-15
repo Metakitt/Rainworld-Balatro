@@ -850,7 +850,7 @@ SCUG.enemy_should_count_down = function(context, conditions)
 		return 0
 	end
 	if
-		context.joker_main
+		context.before
 		and conditions.enemy_type == "Special"
 		and conditions.condition == "GrenadeMult"
 		and not context.blueprint
