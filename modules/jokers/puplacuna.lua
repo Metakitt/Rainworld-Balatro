@@ -58,9 +58,9 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { hand_type = "none", odds = 8, oddswep = 15 }, slugcat = true },
+	config = { extra = { hand_type = "none", pupodds = 8, oddswep = 15 }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_lacuna") } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_lacuna") } }
 	end,
 	calculate = function(self, card, context)
 		local consume = G.consumeables.cards[1]
@@ -68,7 +68,7 @@ SMODS.Joker({
 		if context.setting_blind and consume ~= nil then
 			if
 				consume.ability.set == "Planet"
-				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.odds, "rw_lacuna_planet")
+				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.pupodds, "rw_lacuna_planet")
 			then
 				--print ('levelupplanet')
 				card.ability.extra.hand_type = pseudorandom_element(
@@ -120,7 +120,7 @@ SMODS.Joker({
 
 			if
 				consume.ability.set == "foods"
-				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.odds, "rw_lacuna_food")
+				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.pupodds, "rw_lacuna_food")
 			then
 				local buffup = {}
 				for i = 1, #G.hand.cards do

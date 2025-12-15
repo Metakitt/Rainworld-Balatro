@@ -7,26 +7,26 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	config = {
-		extra = { center_table = 1, odds = 20, mult = 0, mult_gain = 2, spear = false },
+		extra = { center_table = 1, pupodds = 20, mult = 0, pupmult_gain = 2, spear = false },
 		slugcat = true,
 		second_spear = true,
 	},
 	blueprint_compat = true,
 	perishable_compat = false,
 	loc_vars = function(self, info_queue, card)
-		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_hunter")
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_hunter")
 		return {
 			vars = {
 				numerator, denominator,
 				card.ability.extra.mult,
-				card.ability.extra.mult_gain,
+				card.ability.extra.pupmult_gain,
 			},
 		}
 	end,
 
 	calculate = function(self, card, context)
 		if context.after and not context.blueprint then
-			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.pupmult_gain
 			SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
 		end
 
@@ -38,7 +38,7 @@ SMODS.Joker({
 
 		if
 			context.setting_blind
-			and SMODS.pseudorandom_probability(card, "rw_hunter", 1, card.ability.extra.odds, "rw_hunter")
+			and SMODS.pseudorandom_probability(card, "rw_hunter", 1, card.ability.extra.pupodds, "rw_hunter")
 			and G.GAME.round_resets.blind_ante < 8
 			and not context.blueprint
 		then

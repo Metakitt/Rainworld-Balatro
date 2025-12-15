@@ -8,16 +8,16 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	perishable_compat = false,
-	config = { extra = { chips = 0, bonus_chips = 20, odds = 10 }, slugcat = true, no_lodge = true },
+	config = { extra = { chips = 0, pupbonus_chips = 20, pupodds = 10 }, slugcat = true, no_lodge = true },
 
 	loc_vars = function(self, info_queue, card)
-		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_artificer")
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_artificer")
 		return {
 			vars = {
 				card.ability.extra.chips,
 				numerator, denominator,
-				card.ability.extra.bonus_chips,
-				card.ability.extra.bonus_chips / 2,
+				card.ability.extra.pupbonus_chips,
+				card.ability.extra.pupbonus_chips / 2,
 			},
 		}
 	end,
@@ -32,14 +32,14 @@ SMODS.Joker({
 
 		if context.remove_playing_cards or context.cards_destroyed and not context.blueprint then
 			for i = 1, #context.removed do
-				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.bonus_chips
+				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.pupbonus_chips
 				SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
 			end
 		end
 
 		if
 			context.hand_drawn
-			and SMODS.pseudorandom_probability(card, "rw_artificer", 1, card.ability.extra.odds, "rw_artificer")
+			and SMODS.pseudorandom_probability(card, "rw_artificer", 1, card.ability.extra.pupodds, "rw_artificer")
 		then
 			local destructable_cards = {}
 			for i = 1, #G.hand.cards do
@@ -51,7 +51,7 @@ SMODS.Joker({
 				and pseudorandom_element(destructable_cards, pseudoseed("explode"))
 				or nil
 			if card_to_destroy then
-				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.bonus_chips
+				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.pupbonus_chips
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						(context.blueprint_card or card):juice_up(0.8, 0.8)

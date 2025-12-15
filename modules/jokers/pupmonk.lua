@@ -1,5 +1,5 @@
 SMODS.Joker({
-	key = "monk",
+	key = "pupmonk",
 	atlas = "slugcats",
 	pos = { x = 0, y = 0 },
 	rarity = 2,
@@ -7,16 +7,16 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { center_table = -1, odds = 20 }, slugcat = true },
+	config = { extra = { center_table = -1, pupodds = 20 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_monk") } }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_monk") } }
 	end,
 
 	calculate = function(self, card, context)
 		if
 			context.setting_blind
-			and SMODS.pseudorandom_probability(card, "rw_monk", 1, card.ability.extra.odds, "rw_monk")
+			and SMODS.pseudorandom_probability(card, "rw_monk", 1, card.ability.extra.pupodds, "rw_monk")
 		then
 			card.ability.extra.center_table = -1
 			ease_ante(card.ability.extra.center_table)

@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "puparsenal",
 	config = {
 		extra = {
-			wep_mult = 1,
+			pupwep_mult = 1,
 		},
 		slugcat = true
 	},
@@ -28,8 +28,8 @@ SMODS.Joker({
 		end
 		return {
 			vars = {
-				card.ability.extra.wep_mult,
-				card.ability.extra.wep_mult * wep_count,
+				card.ability.extra.pupwep_mult,
+				card.ability.extra.pupwep_mult * wep_count,
 			},
 		}
 	end,
@@ -45,7 +45,7 @@ SMODS.Joker({
 				end
 			end
 			return {
-				mult = card.ability.extra.wep_mult * wep_count,
+				mult = card.ability.extra.pupwep_mult * wep_count,
 			}
 		end
 	end,

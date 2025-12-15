@@ -1,10 +1,10 @@
 SMODS.Joker({
-	key = "spearmaster",
+	key = "pupspearmaster",
 	atlas = "slugcats",
 	pos = { x = 5, y = 0 },
 	rarity = 3,
 	cost = 8,
-	config = { extra = { xmult = 1.5, should_score = true }, slugcat = true, second_spear = true },
+	config = { extra = { pupxmult = 1.5, should_score = true }, slugcat = true, second_spear = true },
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
@@ -22,7 +22,7 @@ SMODS.Joker({
 		elseif context.joker_main then
 			if card.ability.extra.should_score == true then
 				-- Mult time baybee!!!
-				return { xmult = card.ability.extra.xmult }
+				return { xmult = card.ability.extra.pupxmult }
 			end
 		elseif context.after and context.cardarea == G.jokers then
 			-- Reset trigger flag for next hand

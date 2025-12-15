@@ -1,5 +1,5 @@
 SMODS.Joker({
-	key = "pathfinder",
+	key = "puppathfinder",
 	atlas = "slugcats",
 	rarity = 1,
 	cost = 4,

@@ -7,17 +7,17 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { odds = 3, money = 3, blink = false } },
+	config = { extra = { pupodds = 3, money = 3, blink = false } },
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_inv") }, slugcat = true }
+		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_inv") }, slugcat = true }
 	end,
 
 	calculate = function(self, card, context)
 		if
 			context.end_of_round
 			and context.main_eval
-			and SMODS.pseudorandom_probability(card, "rw_inv", 1, card.ability.extra.odds, "rw_inv")
+			and SMODS.pseudorandom_probability(card, "rw_inv", 1, card.ability.extra.pupodds, "rw_inv")
 		then
 			card.ability.extra_value = card.ability.extra_value + card.ability.extra.money
                     card:set_cost()

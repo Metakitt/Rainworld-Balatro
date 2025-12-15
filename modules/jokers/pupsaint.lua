@@ -8,7 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = false,
 	config = {
-		extra = { attuned = false, mult = 0, chips = 0, discards = 10, saint_discards = 10, recharge = false, xmult = 1, recharging = "Ready" },
+		extra = { attuned = false, mult = 0, chips = 0, pupdiscards = 10, pupsaint_discards = 10, recharge = false, xmult = 1, recharging = "Ready" },
 		name = "Saint",
 		slugcat = true,
 	},
@@ -27,11 +27,11 @@ SMODS.Joker({
 			and card.ability.extra.recharge == false
 			and not context.blueprint
 		then
-			card.ability.extra.saint_discards = card.ability.extra.saint_discards - 1
+			card.ability.extra.pupsaint_discards = card.ability.extra.pupsaint_discards - 1
 		end
 
 
-		if context.discard and card.ability.extra.saint_discards <= 0 and not context.blueprint then
+		if context.discard and card.ability.extra.pupsaint_discards <= 0 and not context.blueprint then
 			card.ability.extra.recharge = true
 			card.ability.extra.mult = card.ability.extra.mult + 2
 			card.ability.extra.chips = card.ability.extra.chips + 2
@@ -41,8 +41,8 @@ SMODS.Joker({
 			and card.ability.extra.recharge == true
 			and not context.blueprint
 		then
-			if card.ability.extra.saint_discards < card.ability.extra.discards then
-				card.ability.extra.saint_discards = card.ability.extra.saint_discards + 1
+			if card.ability.extra.pupsaint_discards < card.ability.extra.pupdiscards then
+				card.ability.extra.pupsaint_discards = card.ability.extra.pupsaint_discards + 1
 			else
 				card.ability.extra.recharge = false
 			end

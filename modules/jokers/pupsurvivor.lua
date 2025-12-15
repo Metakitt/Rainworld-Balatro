@@ -7,10 +7,10 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { h_size = 0, h_mod = 1, odds = 5, growth = 0 }, slugcat = true },
+	config = { extra = { h_size = 0, h_mod = 1, pupodds = 5, growth = 0 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
-		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_survivor")
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_survivor")
 		return {
 			vars = {
 				numerator, denominator,
@@ -36,7 +36,7 @@ SMODS.Joker({
 			G.GAME.last_blind.boss
 			and context.end_of_round
 			and context.main_eval
-			and SMODS.pseudorandom_probability(card, "rw_survivor", 1, card.ability.extra.odds, "rw_survivor")
+			and SMODS.pseudorandom_probability(card, "rw_survivor", 1, card.ability.extra.pupodds, "rw_survivor")
 		then
 			G.hand:change_size(-card.ability.extra.h_size)
 			card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_mod

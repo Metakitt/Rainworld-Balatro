@@ -1,5 +1,5 @@
 SMODS.Joker({
-	key = "rivulet",
+	key = "puprivulet",
 	atlas = "slugcats",
 	pos = { x = 6, y = 0 },
 	rarity = 2,

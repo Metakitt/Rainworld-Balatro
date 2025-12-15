@@ -1,7 +1,7 @@
 -- Magician selects a random effect at the end of round. All the effects are based on different slugcats.
 -- I know I'm doing all this updating but brother, I'm not touching this one.
 SMODS.Joker({
-	key = "magician",
+	key = "pupmagician",
 	atlas = "slugcats",
 	pos = { x = 2, y = 3 },
 	rarity = 3,
