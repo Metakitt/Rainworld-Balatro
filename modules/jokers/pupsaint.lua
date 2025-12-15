@@ -16,26 +16,25 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
-	
-	    if context.joker_main then
-		return {
+		if context.joker_main then
+			return {
 				mult = card.ability.extra.mult,
 				chips = card.ability.extra.chips,
 			}
 		end
-	
+
 		if context.discard
 			and card.ability.extra.recharge == false
 			and not context.blueprint
 		then
-				card.ability.extra.saint_discards = card.ability.extra.saint_discards - 1
-			end
+			card.ability.extra.saint_discards = card.ability.extra.saint_discards - 1
 		end
-		
+
+
 		if context.discard and card.ability.extra.saint_discards <= 0 and not context.blueprint then
-		card.ability.extra.recharge = true
-		card.ability.extra.mult = card.ability.extra.mult + 2
-		card.ability.extra.chips = card.ability.extra.chips + 2
+			card.ability.extra.recharge = true
+			card.ability.extra.mult = card.ability.extra.mult + 2
+			card.ability.extra.chips = card.ability.extra.chips + 2
 		end
 
 		if context.discard
