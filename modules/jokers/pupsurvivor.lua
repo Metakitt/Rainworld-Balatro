@@ -7,9 +7,11 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { h_size = 0, h_mod = 1, pupodds = 5, growth = 0 }, slugcat = true },
+	config = { extra = { h_size = 0, h_mod = 1, pupodds = 5, growth = 3 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
+
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_survivor")
 		return {
 			vars = {
@@ -21,17 +23,14 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
-	
-	if context.setting_blind and card.ability.extra.growth < 3 then
-	card.ability.extra.growth = card.ability.extra.growth + 1
-	end
-	
-	if card.ability.extra.growth >= 3 then
-    local ability = copy_table(card.ability)
-    card:set_ability('j_rw_survivor')
-    card.ability = ability
-	end
-	
+		if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
+			card.ability.extra.growth = card.ability.extra.growth - 1
+			if card.ability.extra.growth <= 0 then
+				card.ability.extra.growth = nil
+				card:grow_up()
+			end
+		end
+		
 		if
 			G.GAME.last_blind.boss
 			and context.end_of_round
