@@ -123,7 +123,7 @@ local copy_table = function(original_table)
 end
 
 ---Grow a Slugpup into a Slugcat.
----@param alt_keys table Any additional keys, picks one at random.
+---@param alt_keys table Any additional keys, picks any of these keys or the auto-generated key at random.
 function Card:grow_up(alt_keys)
 	local possible_keys = alt_keys or {}
 	local auto_key = string.gsub(self.config.center_key, "pup", "")
