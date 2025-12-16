@@ -61,6 +61,14 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
+		if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
+			card.ability.extra.growth = card.ability.extra.growth - 1
+			if card.ability.extra.growth <= 0 then
+				card.ability.extra.growth = nil
+				card:grow_up({"j_rw_hunger"})
+			end
+		end
+	
 		if context.joker_main then
 			return {
 				chips = card.ability.extra.chips,

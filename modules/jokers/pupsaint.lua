@@ -14,9 +14,20 @@ SMODS.Joker({
 	},
 	loc_vars = function(self, info_queue, card)
 	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
+	return {
+			vars = { card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.pupdiscards, card.ability.extra.pupsaint_discards },
+		}
 	end,
 
 	calculate = function(self, card, context)
+	if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
+			card.ability.extra.growth = card.ability.extra.growth - 1
+			if card.ability.extra.growth <= 0 then
+				card.ability.extra.growth = nil
+				card:grow_up()
+			end
+		end
+	
 		if context.joker_main then
 			return {
 				mult = card.ability.extra.mult,

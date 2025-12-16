@@ -11,10 +11,18 @@ SMODS.Joker({
 
 	loc_vars = function(self, info_queue, card)
 	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
-		return { vars = { card.ability.extra.xmult } }
+		return { vars = { card.ability.extra.pupxmult } }
 	end,
 
 	calculate = function(self, card, context)
+	if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
+			card.ability.extra.growth = card.ability.extra.growth - 1
+			if card.ability.extra.growth <= 0 then
+				card.ability.extra.growth = nil
+				card:grow_up()
+			end
+		end
+	
 		if context.individual and context.cardarea == G.play then
 			-- Don't trigger if there is no enhancement
 			if context.other_card.config.center == G.P_CENTERS.c_base then

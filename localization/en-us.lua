@@ -1628,7 +1628,7 @@ return {
 				name = "Egg",
 				text = {
 					"{C:green}#1# in #2#{} chance to gain",
-					"3$ value at the end",
+					"{C:money}3${} value at the end",
 					"of each {C:attention}Blind{}.",
 				},
 			},
@@ -1644,19 +1644,19 @@ return {
 				name = "Rivulet Pup",
 				text = {
 					"Each skipped {C:attention}Blind{}",
-					"adds 1 to 3 {C:attention}Enhanced{}",
+					"adds 1 to 2 {C:attention}Enhanced{}",
 					"cards to the deck.",
 				},
 			},
 			j_rw_pupsaint = {
-				name = "Saint",
+				name = "Saint pup",
 				text = {
-					"After discarding {C:attention}#2#{} cards,",
+					"After discarding {C:attention}#3#{} cards,",
 					"Saint gains {C:chips}+2 {}chips and {C:mult}+2{} mult.",
-					"{C:inactive}(#1# more cards)",
+					"{C:inactive}(#4# more cards)",
 				},
 			},
-	
+			
 			j_rw_pupspearmaster = {
 				name = "Spearmaster pup",
 				text = {
@@ -1672,7 +1672,7 @@ return {
 					"leftmost consumable card",
 					"does the following:",
 					"{C:planet}Planet{}",
-					"{C:green}#1# in 4{} chance to level",
+					"{C:green}#1# in 8{} chance to level",
 					"up a random {C:attention}poker hand{}.",
 					"{C:tarot}Tarot{}",
 					"Gives a random {C:tarot}tarot{} card.",
@@ -1680,7 +1680,7 @@ return {
 					"Gives a random {C:attention}seal{} to a",
 					"random {C:attention}card{} in the {C:attention}deck{}.",
 					"{C:food}Food{}",
-					"{C:green}#1# in 4{} chance to give {C:chips}+20{} chips",
+					"{C:green}#1# in 8{} chance to give {C:chips}+20{} chips",
 					"to all {C:attention}cards{} in the {C:attention}hand{}.",
 					"{C:weapon}Weapon{}",
 					"{C:green} #1# in 15{} chance to give a",

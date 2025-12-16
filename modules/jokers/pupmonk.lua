@@ -15,6 +15,14 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
+	if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
+			card.ability.extra.growth = card.ability.extra.growth - 1
+			if card.ability.extra.growth <= 0 then
+				card.ability.extra.growth = nil
+				card:grow_up()
+			end
+		end
+	
 		if
 			context.setting_blind
 			and SMODS.pseudorandom_probability(card, "rw_monk", 1, card.ability.extra.pupodds, "rw_monk")

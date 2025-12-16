@@ -26,6 +26,15 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
+	
+		if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
+			card.ability.extra.growth = card.ability.extra.growth - 1
+			if card.ability.extra.growth <= 0 then
+				card.ability.extra.growth = nil
+				card:grow_up()
+			end
+		end
+	
 		if context.after and not context.blueprint then
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.pupmult_gain
 			SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
