@@ -3,6 +3,7 @@ SMODS.Joker({
 	config = {
 		extra = {
 			pupwep_mult = 1,
+			growth = 3
 		},
 		slugcat = true
 	},
@@ -15,6 +16,7 @@ SMODS.Joker({
 	eternal_compat = true,
 	perishable_compat = true,
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		local wep_count = 0
 		if G and G.jokers and G.jokers.cards then
 			for _, v in ipairs(G.jokers.cards) do

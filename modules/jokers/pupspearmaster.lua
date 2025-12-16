@@ -4,12 +4,13 @@ SMODS.Joker({
 	pos = { x = 5, y = 5 },
 	rarity = 3,
 	cost = 8,
-	config = { extra = { pupxmult = 1.5, should_score = true }, slugcat = true, second_spear = true },
+	config = { extra = { pupxmult = 1.5, should_score = true, growth = 3}, slugcat = true, second_spear = true },
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
 
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		return { vars = { card.ability.extra.xmult } }
 	end,
 

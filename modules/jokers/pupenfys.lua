@@ -16,8 +16,10 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { food = "none" }, slugcat = true },
-
+	config = { extra = { food = "none", growth = 3}, slugcat = true },
+	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
+	end,
 	calculate = function(self, card, context)
 
 		if context.end_of_round and context.main_eval then

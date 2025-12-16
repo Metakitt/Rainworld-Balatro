@@ -8,9 +8,10 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	perishable_compat = false,
-	config = { extra = { chips = 0, pupbonus_chips = 20, pupodds = 10 }, slugcat = true, no_lodge = true },
+	config = { extra = { chips = 0, pupbonus_chips = 20, pupodds = 10, growth = 3 }, slugcat = true, no_lodge = true },
 
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_artificer")
 		return {
 			vars = {

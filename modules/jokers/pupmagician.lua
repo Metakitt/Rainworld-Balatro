@@ -26,11 +26,13 @@ SMODS.Joker({
 			saintodds = 20,
 			food = "none",
 			hand_type = "none",
+			growth = 3
 		},
 		slugcat = true,
 	},
 
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		if card.ability.extra.effect == "none" then
 			return {
 				vars = {

@@ -30,12 +30,14 @@ SMODS.Joker({
 			pupxmult_gain_uncommon = 0.25,
 			pupxmult_gain_food = 0.05,
 			munch = false,
+			growth = 3
 		},
 		slugcat = true,
 		gourmand = true,
 	},
 
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		return {
 			vars = { card.ability.extra.xmult_mod, card.ability.extra.pupxmult_gain_common, card.ability.extra.pupxmult_gain_uncommon, card.ability.extra.pupxmult_gain_food },
 		}

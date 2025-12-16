@@ -7,8 +7,10 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { randomnumber = 1 }, slugcat = true },
-
+	config = { extra = { randomnumber = 1, growth = 3 }, slugcat = true },
+	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
+	end,
 	calculate = function(self, card, context)
 		if context.skip_blind then
 			local card_numbers = { 1, 1, 1, 1, 1, 1, 2, 2, 2, 2 }

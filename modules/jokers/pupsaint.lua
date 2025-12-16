@@ -8,11 +8,12 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = false,
 	config = {
-		extra = { attuned = false, mult = 0, chips = 0, pupdiscards = 10, pupsaint_discards = 10, recharge = false, xmult = 1, recharging = "Ready" },
+		extra = { attuned = false, mult = 0, chips = 0, pupdiscards = 10, pupsaint_discards = 10, recharge = false, xmult = 1, recharging = "Ready", growth = 3},
 		name = "Saint",
 		slugcat = true,
 	},
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 	end,
 
 	calculate = function(self, card, context)

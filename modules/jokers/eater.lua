@@ -37,6 +37,7 @@ SMODS.Joker({
 			grace_reset = 2,
 			grace = 10,
 			can_munch = true,
+			growth = 3
 		},
 		slugcat = true,
 		hunger = true,
@@ -50,6 +51,7 @@ SMODS.Joker({
 	eternal_compat = true,
 	perishable_compat = false,
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		return {
 			vars = {
 				card.ability.extra.chips,

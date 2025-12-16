@@ -7,9 +7,10 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { pupodds = 3, money = 3, blink = false } },
+	config = { extra = { pupodds = 3, money = 3, blink = false, growth = 3 } },
 
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_inv") }, slugcat = true }
 	end,
 

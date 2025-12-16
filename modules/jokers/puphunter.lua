@@ -7,13 +7,14 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	config = {
-		extra = { center_table = 1, pupodds = 20, mult = 0, pupmult_gain = 2, spear = false },
+		extra = { center_table = 1, pupodds = 20, mult = 0, pupmult_gain = 2, spear = false, growth = 3 },
 		slugcat = true,
 		second_spear = true,
 	},
 	blueprint_compat = true,
 	perishable_compat = false,
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_hunter")
 		return {
 			vars = {

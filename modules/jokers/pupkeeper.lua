@@ -14,7 +14,8 @@ SMODS.Joker {
     key = "pupkeeper",
     config = {
         extra = {
-            bee_mult = 0.05
+            bee_mult = 0.05, 
+			growth = 3
         }
     },
     rarity = 1,
@@ -26,6 +27,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
         return {
             vars = { card.ability.extra.bee_mult, 1 + (card.ability.extra.bee_mult * bee_debuffed_count(G and G.playing_cards or {})) }
         }

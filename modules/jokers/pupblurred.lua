@@ -7,8 +7,9 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { pupodds = 30 }, slugcat = true },
+	config = { extra = { pupodds = 30, growth = 3}, slugcat = true },
 	loc_vars = function(self, info_queue, card)
+	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_blurred") }}
 	end,
 	calculate = function(self, card, context)

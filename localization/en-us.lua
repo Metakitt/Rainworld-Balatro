@@ -1582,6 +1582,381 @@ return {
 					"{C:inactive}(Currently {C:attention}+#4#{C:inactive} hand size)",
 				},
 			},
+			
+			j_rw_pupartificer = {
+				name = "Artificer Pup",
+				text = {
+					"Each playing card {C:attention}destroyed",
+					"gives {C:chips}+#4#{} chips.",
+					"{C:green}#2# in #3#{} chance to {C:attention}destroy",
+					"a card when drawing a hand.",
+					"{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+				},
+			},
+
+			j_rw_eater = {
+				name = "Eater",
+				text = {
+					"{s:1.2}He hungers...",
+					"{s:0.8,C:inactive}({s:0.8,C:blue}+#1#{s:0.8,C:inactive}, {s:0.8,C:red}+#2#{s:0.8,C:inactive}, {s:0.8,C:white,X:red}X#3#{s:0.8,C:inactive})",
+				},
+			},
+			j_rw_pupgourmand = {
+				name = "Gourmand Pup",
+				text = {
+					"{C:blue}Common{} Food Jokers",
+					"give {X:mult,C:white}X#2#{} Mult,",
+					"{C:green}Uncommon{} Food Jokers",
+					"give {X:mult,C:white}X#3#{} Mult,",
+					"{C:food}Food{} cards",
+					"give {X:mult,C:white}X#4#{} Mult.",
+					"and are {C:attention}destroyed{}.",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+				},
+			},
+			j_rw_puphunter = {
+				name = "Hunter Pup",
+				text = {
+					"{C:mult}+#4#{} Mult per hand played.",
+					"When {C:attention}Blind{} is selected,",
+					"{C:green}#1# in #2#{} chance to",
+					"increase {C:attention}Ante{} by 1.",
+					"{C:inactive}(Currently {C:mult}#3# {C:inactive}Mult)",
+				},
+			},
+			j_rw_eggv = {
+				name = "Egg",
+				text = {
+					"{C:green}#1# in #2#{} chance to gain",
+					"3$ value at the end",
+					"of each {C:attention}Blind{}.",
+				},
+			},
+			j_rw_pupmonk = {
+				name = "Monk pup",
+				text = {
+					"When {C:attention}Blind{} is selected,",
+					"{C:green}#1# in #2#{} chance to",
+					"decrease {C:attention}Ante{} by 1.",
+				},
+			},
+			j_rw_puprivulet = {
+				name = "Rivulet Pup",
+				text = {
+					"Each skipped {C:attention}Blind{}",
+					"adds 1 to 3 {C:attention}Enhanced{}",
+					"cards to the deck.",
+				},
+			},
+			j_rw_pupsaint = {
+				name = "Saint",
+				text = {
+					"After discarding {C:attention}#2#{} cards,",
+					"Saint gains {C:chips}+2 {}chips and {C:mult}+2{} mult.",
+					"{C:inactive}(#1# more cards)",
+				},
+			},
+	
+			j_rw_pupspearmaster = {
+				name = "Spearmaster pup",
+				text = {
+					"{C:white,X:mult}X#1#{} Mult if all scoring",
+					"cards are {C:attention}Enhanced",
+				},
+			},
+
+			j_rw_puplacuna = {
+				name = "Lacuna pup",
+				text = {
+					"At the start of {C:attention}Blind{},",
+					"leftmost consumable card",
+					"does the following:",
+					"{C:planet}Planet{}",
+					"{C:green}#1# in 4{} chance to level",
+					"up a random {C:attention}poker hand{}.",
+					"{C:tarot}Tarot{}",
+					"Gives a random {C:tarot}tarot{} card.",
+					"{C:spectral}Spectral{}",
+					"Gives a random {C:attention}seal{} to a",
+					"random {C:attention}card{} in the {C:attention}deck{}.",
+					"{C:food}Food{}",
+					"{C:green}#1# in 4{} chance to give {C:chips}+20{} chips",
+					"to all {C:attention}cards{} in the {C:attention}hand{}.",
+					"{C:weapon}Weapon{}",
+					"{C:green} #1# in 15{} chance to give a",
+					"random {C:weapon}weapon{}",
+					"to a random Joker.",
+				},
+			},
+
+			j_rw_pupmagician = {
+				name = "Magician pup",
+				text = {
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_pupmagician_artificer = {
+				name = "Magician pup",
+				text = {
+					"{C:attention}First hand{} of round",
+					"{C:attention}destroys{} a random",
+					"card in hand then",
+					"gains {C:chips}+50{} Chips.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_pupmagician_bng = {
+				name = "Magician pup",
+				text = {
+					"Each {C:food}Food{} card used",
+					"gives {X:mult,C:white}X0.25{} Mult.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_pupmagician_hunter = {
+				name = "Magician pup",
+				text = {
+					"{C:mult}+6{} Mult per {C:attention}hand{} played.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_pupmagician_monk = {
+				name = "Magician pup",
+				text = {
+					"{C:chips}+12{} Chips per {C:attention}hand{} played.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_pupmagician_inv = {
+				name = "Magician pup",
+				text = {
+					"Creates a {C:edition}Negative{} Slugpup",
+					"at the start of {C:attention}Blind{}.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_scugbo = {
+				name = "Magician pup",
+				text = {
+					"{C:mult}+4{} Mult for",
+					"each Slugcat Joker.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_slugpup = {
+				name = "Magician pup",
+				text = {
+					"{C:mult}+4{} Mult",
+					"{C:chips}+10{} Chips",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_gourmand = {
+				name = "Magician pup",
+				text = {
+					"Food Jokers and {C:food}Food{}",
+					"cards give {X:mult,C:white}X0.25{} Mult",
+					"each and are destroyed.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_rivulet = {
+				name = "Magician pup",
+				text = {
+					"Each skipped {C:attention}Blind{}",
+					"adds 3 {C:attention}Enhanced{}",
+					"cards to the deck",
+					"and randomizes its",
+					"current effect.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_spearmaster = {
+				name = "Magician pup",
+				text = {
+					"{C:white,X:mult}X3{} Mult if all scoring",
+					"cards are {C:attention}Enhanced{}.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_survivor = {
+				name = "Magician pup",
+				text = {
+					"{C:attention}+2{} hand size",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_pathfinder = {
+				name = "Magician pup",
+				text = {
+					"If {C:attention}discard{} is",
+					"a {C:attention}Flush{}",
+					"gain a random",
+					"{C:tarot}Tarot{} card.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_blurred = {
+				name = "Magician pup",
+				text = {
+					"{C:green}#1# in 10{} chance to",
+					"halve {C:attention}Blind{} Chips",
+					"when a {C:attention}hand{}",
+					"is played.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_alacrity = {
+				name = "Magician pup",
+				text = {
+					"{X:chips,C:white}X2{} Chips on",
+					"the first {C:attention}hand{}",
+					"of round.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_magician = {
+				name = "Magician pup",
+				text = {
+					"At the start of {C:attention}Blind{},",
+					"permanently gains",
+					"{C:chips}+2{} Chips, {C:mult}+2{} Mult",
+					"{X:chips,C:white}X0.5{} Chips and {X:mult,C:white}X0.5{} Mult.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_enfys = {
+				name = "Magician pup",
+				text = {
+					"At the start of {C:attention}Blind{},",
+					"creates a random,",
+					"{C:edition}negative{} Food Joker.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_saint = {
+				name = "Magician pup",
+				text = {
+					"Each {C:attention}discard{} has",
+					"a {C:green}#1# in 20{} chance",
+					"to turn a random",
+					"Joker {C:edition}Negative{}.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_lacuna = {
+				name = "Magician pup",
+				text = {
+					"At the start of {C:attention}Blind{},",
+					"leftmost consumable card",
+					"does the following:",
+					"{C:planet}Planet{}",
+					"{C:green}#1# in 4{} chance to level",
+					"up a random {C:attention}poker hand{}.",
+					"{C:tarot}Tarot{}",
+					"Gives a random {C:tarot}tarot{} card.",
+					"{C:spectral}Spectral{}",
+					"Gives a random {C:attention}seal{} to a",
+					"random {C:attention}card{} in the {C:attention}deck{}.",
+					"{C:food}Food{}",
+					"{C:green}#1# in 4{} chance to give {C:chips}+20{} chips",
+					"to all {C:attention}cards{} in the {C:attention}hand{}.",
+					"{C:weapon}Weapon{}",
+					"{C:green} #1# in 15{} chance to give a",
+					"random {C:weapon}weapon{}",
+					"to a random Joker.",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_magicianpup_ranger = {
+				name = "Magician pup",
+				text = {
+					"{C:attention}+3{} hand size",
+					"(Currently: {C:chips}+#3#{} Chips,",
+					"{C:mult}+#5#{} Mult, {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#6#{} Chips.)",
+				},
+			},
+			j_rw_puparsenal = {
+				name = "Arsenal pup",
+				text = {
+					"{C:mult}+#1#{} Mult for every {C:weapon}Weapon",
+					"held by your Jokers",
+					"{C:inactive}(Currently {C:mult}+#2# {C:inactive}Mult)",
+				},
+			},
+	
+			j_rw_pupkeeper = {
+				name = "Keeper pup",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult for each card",
+					"debuffed by {C:weapon}Beehives",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+				}
+			},
+			j_rw_pupblurred = {
+				name = "Blur pup",
+				text = {
+					"At the start of {C:attention}Blind{},",
+					"{C:green}1 in 30{} chance to",
+					"half {C:attention}Blind{} chips.",
+				},
+			},
+			j_rw_puppathfinder = {
+				name = "Pathfinder pup",
+				text = {
+					"If {C:attention}discard{} is",
+					"a {C:attention}Flush{}",
+					"gain a random",
+					"{C:tarot}Tarot{} card.",
+				},
+			},
+			j_rw_pupranger = {
+				name = "Ranger pup",
+				text = {
+					"{C:edition}+1{} Joker Slot",
+				},
+			},
+			
+			
 			--endregion
 			--region Not-Slugcats
 			j_rw_scavenger_neutral = {
