@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "pupspearmaster",
 	atlas = "slugcats",
-	pos = { x = 5, y = 0 },
+	pos = { x = 5, y = 5 },
 	rarity = 3,
 	cost = 8,
 	config = { extra = { pupxmult = 1.5, should_score = true }, slugcat = true, second_spear = true },

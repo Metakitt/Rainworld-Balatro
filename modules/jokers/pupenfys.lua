@@ -9,7 +9,7 @@ SMODS.Joker({
 			"{C:edition}negative{} Food Consumeable.",
 		},
 	},
-	pos = { x = 4, y = 3 },
+	pos = { x = 5, y = 6 },
 	soul_pos = { x = 5, y = 3 },
 	rarity = 4,
 	cost = 7,

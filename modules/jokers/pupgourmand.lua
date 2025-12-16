@@ -16,7 +16,7 @@ local uncommon_keys = {
 SMODS.Joker({
 	key = "pupgourmand",
 	atlas = "slugcats",
-	pos = { x = 4, y = 0 },
+	pos = { x = 4, y = 5 },
 	rarity = 2,
 	cost = 6,
 	unlocked = true,

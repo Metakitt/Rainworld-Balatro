@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "pupsaint",
 	atlas = "slugcats",
-	pos = { x = 7, y = 0 },
+	pos = { x = 7, y = 5 },
 	rarity = 2,
 	cost = 8,
 	unlocked = true,

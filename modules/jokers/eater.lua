@@ -27,7 +27,7 @@
 -- But since it does, it's gonna eat. That's all it wants and needs to do, after all.
 
 SMODS.Joker({
-	key = "hunger",
+	key = "eater",
 	config = {
 		extra = {
 			chips = 0,
@@ -44,7 +44,7 @@ SMODS.Joker({
 	rarity = 3,
 	cost = 5,
 	atlas = "slugcats",
-	pos = { x = 6, y = 3 },
+	pos = { x = 6 , y = 6 },
 	discovered = true,
 	blueprint_compat = true,
 	eternal_compat = true,

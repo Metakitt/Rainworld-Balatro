@@ -9,7 +9,7 @@ SMODS.Joker({
 	rarity = 1,
 	cost = 5,
 	atlas = "slugcats",
-	pos = { x = 0, y = 4 },
+	pos = { x = 0, y = 6 },
 	discovered = true,
 	blueprint_compat = true,
 	eternal_compat = true,
