@@ -123,19 +123,19 @@ local copy_table = function(original_table)
 end
 
 ---Grow a Slugpup into a Slugcat.
----@param alt_keys table Any additional keys, picks any of these keys or the auto-generated key at random.
+---@param alt_keys table? Any additional keys, picks any of these keys or the auto-generated key at random.
 function Card:grow_up(alt_keys)
 	local possible_keys = alt_keys or {}
 	local auto_key = string.gsub(self.config.center_key, "pup", "")
-	if G.P_CENTERS[auto_key] then table.insert(alt_keys, auto_key) end
+	if G.P_CENTERS[auto_key] then table.insert(possible_keys, auto_key) end
 
 	local ability = copy_table(self.ability)
 	local ability_extra = copy_table(self.ability.extra)
-	self:set_ability(pseudorandom_element(possible_keys, "rw_grow_up", {}))
-	for k, v in ability do
-		if self.ability[k] then self.ability[k] = v end
+	self:set_ability(pseudorandom_element(possible_keys, "rw_grow_up", {}), true)
+	for k, v in pairs(ability) do
+		if k ~= "extra" and self.ability[k] then self.ability[k] = v end
 	end
-	for k, v in ability_extra do
+	for k, v in pairs(ability_extra) do
 		if self.ability.extra[k] then self.ability.extra[k] = v end
 	end
 end

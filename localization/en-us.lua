@@ -17,7 +17,7 @@ return {
 					"{C:attention}#2#{} round(s) until dry",
 				},
 			},
-			
+
 			m_rw_moldy = {
 				name = "Moldy",
 				text = {
@@ -509,6 +509,12 @@ return {
 					"Score a Grenade with {C:mult}+#1#{} Mult",
 					"or more {C:attention}#2#{} more times"
 				}
+			},
+			slugpup_grows_up = {
+				name = "Just a Pup",
+				text = {
+					"Grows up in", "{C:attention}#1#{} round(s)"
+				}
 			}
 		},
 		foods = {
@@ -910,7 +916,7 @@ return {
 				name = "Mother Spider",
 				text = {
 					"{C:attention}Threat:{} Only {C:attention}High Card{} and {C:attention}Flush House{}",
-					"hands count for scoring.","Other hands are {C:red}destroyed",
+					"hands count for scoring.", "Other hands are {C:red}destroyed",
 					"{C:attention}Undefeated:{} Nothing.",
 				},
 			},
@@ -1563,6 +1569,17 @@ return {
 					"{C:attention}+1{} consumable Slot",
 					"{C:attention}+1{} hand size",
 					"{C:blue}-1{} hand each round",
+				},
+			},
+			--endregion
+			--region Slugpups
+			j_rw_pupsurvivor = {
+				name = "Survivor Pup",
+				text = {
+					"{C:green}#1# in #2#{} chance to",
+					"increase hand size by #3#",
+					"after defeating {C:attention}Boss Blind.",
+					"{C:inactive}(Currently {C:attention}+#4#{C:inactive} hand size)",
 				},
 			},
 			--endregion

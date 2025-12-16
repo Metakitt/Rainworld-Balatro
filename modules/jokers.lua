@@ -33,4 +33,5 @@ assert(SMODS.load_file("modules/jokers/lacuna.lua"))()
 assert(SMODS.load_file("modules/jokers/hungy.lua"))()
 assert(SMODS.load_file("modules/jokers/ploo.lua"))()
 assert(SMODS.load_file("modules/jokers/keeper.lua"))()
+-- spups
 assert(SMODS.load_file("modules/jokers/pupsurvivor.lua"))()
