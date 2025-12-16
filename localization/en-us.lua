@@ -515,6 +515,12 @@ return {
 				text = {
 					"Grows up in", "{C:attention}#1#{} round(s)"
 				}
+			},
+			eggv_pick_up = {
+				name = "Just an Egg",
+				text = {
+					"Picked up in","{C:attention}#1#{} rounds"
+				}
 			}
 		},
 		foods = {
