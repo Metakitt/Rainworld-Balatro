@@ -1637,7 +1637,7 @@ return {
 				name = "Egg",
 				text = {
 					"{C:green}#1# in #2#{} chance to gain",
-					"{C:money}3${} value at the end",
+					"{C:money}$3{} value at the end",
 					"of each {C:attention}Blind{}.",
 				},
 			},
@@ -1695,7 +1695,6 @@ return {
 					"to a random Joker.",
 				},
 			},
-
 			j_rw_pupmagician = {
 				name = "Magician Pup",
 				text = {
@@ -1933,9 +1932,9 @@ return {
 			j_rw_pupkeeper = {
 				name = "Keeper Pup",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult for each card",
+					"{C:mult}+#1#{} Mult for each card",
 					"debuffed by {C:weapon}Beehives",
-					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
 				}
 			},
 			j_rw_pupblurred = {
