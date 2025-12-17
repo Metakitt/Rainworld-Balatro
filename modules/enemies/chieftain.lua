@@ -25,11 +25,18 @@ SMODS.Joker({
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.threshold * 100 } }
+		if card.ability.extra.enemy_conditions then
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
+		end
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
-		-- card.ability.extra.enemy_conditions = SCUG.generate_enemy()
+		card.ability.extra.enemy_conditions = {
+			enemy_type = "Win",
+			condition = "%BlindChips",
+			requirement = card.ability.extra.threshold,
+			amount = 1
+		}
 	end,
 	calculate = function(self, card, context)
 		--Threat
