@@ -748,7 +748,7 @@ return {
 				name = "Young Centipede",
 				text = {
 					"{C:attention}Threat: {C:inactive}None.{}",
-					"{C:attention}Undefeated:{} Lose {C:money}$#2#{} at",
+					"{C:attention}Undefeated:{} Lose {C:money}$#1#{} at",
 					"the end of {C:attention}Boss Blind{}.",
 				},
 			},
