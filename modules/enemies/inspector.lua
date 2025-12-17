@@ -35,7 +35,7 @@ SMODS.Joker({
 	end,
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
-			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions()
+			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
 		end
 		return {
 			vars = {
