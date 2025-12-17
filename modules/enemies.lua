@@ -662,24 +662,24 @@ function SCUG.generate_enemy()
 	local ret = {}
 	-- Choose requirement
 	local enemy_type_list = { "Score", "Sell", "Use", "Win", "Reroll", "Special" }
-	ret.enemy_type = pseudorandom_element(enemy_type_list, pseudoseed("type"))
-	ret.amount = SCUG.number_in_range(1, 5, "lots")
+	ret.enemy_type = pseudorandom_element(enemy_type_list, pseudoseed("rw_enemy_gen"))
+	ret.amount = SCUG.number_in_range(1, 5, "rw_enemy_gen")
 
 	-- Choose subtype
 	local subtypes = {
-		["Score"] = { "HandType", "ChipAmount", "CardExtraChips", "CardWeapon", "CardEditionEnhancement" },
+		["Score"] = { "HandType", "ChipAmount", "CardExtraChips", "CardWeapon", "CardEditionEnhancement", "CardSuit", "CardAny" },
 		["Sell"] = { "SellJoker", "SellConsumable" },
 		["Win"] = { "Blind", "BossBlind", "BlindThreshold", "%BlindChips" },
 		["Special"] = { "GrenadeMult" },
 	}
-	ret.condition = (subtypes[ret.enemy_type] and pseudorandom_element(subtypes[ret.enemy_type], pseudoseed("type")))
+	ret.condition = (subtypes[ret.enemy_type] and pseudorandom_element(subtypes[ret.enemy_type], pseudoseed("rw_enemy_gen")))
 		or ret.enemy_type
 
 	-- Flesh out requirements
 	local chosen_requirement
 	if ret.condition == "HandType" then
 		local hand_list = { "High Card", "Flush" }
-		ret.requirement = pseudorandom_element(hand_list, pseudoseed("type"))
+		ret.requirement = pseudorandom_element(hand_list, pseudoseed("rw_enemy_gen"))
 	elseif ret.condition == "ChipAmount" then
 		-- TODO: Make this scale with ante?
 		ret.requirement = 500 + 25 * SCUG.number_in_range(1, 20, "chip_amount")
@@ -689,11 +689,17 @@ function SCUG.generate_enemy()
 		chosen_requirement = "Joker"
 		ret.requirement = chosen_requirement
 		if enhanced_check == 14 then
-			ret.edition_condition = pseudorandom_element(editiontype, pseudoseed("type"))
+			ret.edition_condition = pseudorandom_element(editiontype, pseudoseed("rw_enemy_gen"))
 		end
 	elseif ret.condition == "CardExtraChips" then
 		chosen_requirement = SCUG.number_in_range(1, 20, "chippies")
 		ret.requirement = chosen_requirement
+	elseif ret.condition == "CardSuit" then
+		chosen_requirement = SCUG.get_suit_in_deck() or "Spades"
+		ret.requirement = chosen_requirement
+		ret.amount = SCUG.number_in_range(8, 16, "rw_enemy_gen")
+	elseif ret.condition == "CardAny" then
+		ret.amount = SCUG.number_in_range(20, 40, "rw_enemy_gen")
 	elseif ret.condition == "CardWeapon" then
 		local weapontypes = {
 			"rw_wbeehive",
@@ -748,7 +754,7 @@ function SCUG.generate_enemy()
 		ret.requirement = chosen_requirement
 	end
 
-	print(ret)
+	-- print(ret)
 	return ret
 end
 
@@ -777,15 +783,21 @@ function SCUG.get_enemy_defeat_conditions(conditions)
 			ret.vars = { localize { type = "name_text", set = "Other", key = requirement }, amount }
 		elseif subtype == "CardEditionEnhancement" then
 			-- Score X more Y Cards
-			if requirement:sub(1,1) == "m" then
+			if requirement:sub(1, 1) == "m" then
 				ret.key = key_base .. "enhancements"
 				ret.vars = { localize { type = "name_text", set = "Enhanced", key = requirement }, amount }
 			end
 			-- Score X more cards with Y Edition	
-			if requirement:sub(1,1) == "e" then
+			if requirement:sub(1, 1) == "e" then
 				ret.key = key_base .. "editions"
 				ret.vars = { localize { type = "name_text", set = "Edition", key = requirement }, amount }
 			end
+		elseif subtype == "CardSuit" then
+			ret.key = key_base .. "score_suit_cards"
+			ret.vars = { localize(requirement, "suits_singular"), amount, vars = G.C.SUITS[requirement] }
+		elseif subtype == "CardAny" then
+			ret.key = key_base .. "score_any_cards"
+			ret.vars = { amount }
 		end
 	elseif type == "Sell" then
 		if subtype == "SellJoker" then
@@ -970,6 +982,14 @@ SCUG.enemy_should_count_down = function(context, conditions)
 
 	if context.reroll_shop and conditions.enemy_type == "Reroll" then
 		return 1
+	end
+
+	if context.individual and conditions.enemy_type == "Score" then
+		if conditions.condition == "CardAny" then
+			return 1
+		elseif conditions.condition == "CardSuit" and context.other_card:is_suit(conditions.requirement) then
+			return 1
+		end
 	end
 
 	return 0

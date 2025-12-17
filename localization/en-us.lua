@@ -27,6 +27,7 @@ return {
 			},
 		},
 		Other = {
+			--region Weapon Descriptions
 			rw_wsporepuff = {
 				name = "Sporepuff",
 				text = {
@@ -389,6 +390,7 @@ return {
 					"and wins the blind.",
 				},
 			},
+			--endregion
 			rw_rotted = {
 				name = "Rot",
 				text = {
@@ -398,6 +400,7 @@ return {
 					"{C:attention}#1#{} round(s) to destruction",
 				},
 			},
+			--region Enemy Defeat Descriptions
 			enemy_defeat_score_hands = {
 				name = "To Defeat",
 				text = {
@@ -510,6 +513,20 @@ return {
 					"or more {C:attention}#2#{} more times"
 				}
 			},
+			enemy_defeat_score_suit_cards = {
+				name = "To Defeat",
+				text = {
+					"Score {C:attention}#2#{} more cards", "of {V:1}#1#{} suit"
+				}
+			},
+			enemy_defeat_score_any_cards = {
+				name = "To Defeat",
+				text = {
+					"Score {C:attention}#1#", "more cards"
+				}
+			},
+			--endregion
+			--region Slugpup Growth Conditions
 			slugpup_grows_up = {
 				name = "Just a Pup",
 				text = {
@@ -519,15 +536,16 @@ return {
 			eggv_pick_up = {
 				name = "Just an Egg",
 				text = {
-					"Picked up in","{C:attention}#1#{} rounds"
+					"Picked up in", "{C:attention}#1#{} rounds"
 				}
 			},
 			eater_unfortunate = {
 				name = "Unfortunately Develops",
 				text = {
-					"Transforms after eating","{C:rot}Rot {C:attention}#1#{} more times"
+					"Transforms after eating", "{C:rot}Rot {C:attention}#1#{} more times"
 				}
 			}
+			--endregion
 		},
 		foods = {
 			c_rw_bluefruit = {
