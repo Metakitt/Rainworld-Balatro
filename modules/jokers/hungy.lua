@@ -375,7 +375,7 @@ SMODS.Joker({
 						elseif reward == "weapon" then
 							local earned_weapon, _ =
 								pseudorandom_element(G.P_CENTER_POOLS.obtainweapon, pseudoseed("rw_hunger_weapon"))
-							local weapon_key = earned_weapon.key
+							local weapon_key = earned_weapon.config.weapon
 							if card.ability[weapon_key] then
 								G.E_MANAGER:add_event(Event({
 									delay = 1,
