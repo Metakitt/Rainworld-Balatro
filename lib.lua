@@ -127,7 +127,12 @@ end
 function Card:grow_up(alt_keys)
 	local possible_keys = alt_keys or {}
 	local auto_key = string.gsub(self.config.center_key, "pup", "")
-	if G.P_CENTERS[auto_key] then table.insert(possible_keys, auto_key) end
+	if
+		auto_key ~= self.config.center_key
+		and G.P_CENTERS[auto_key]
+	then
+		table.insert(possible_keys, auto_key)
+	end
 
 	local ability = copy_table(self.ability)
 	local ability_extra = copy_table(self.ability.extra)
