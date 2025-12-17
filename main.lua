@@ -56,7 +56,7 @@ function end_round()
 		if (x.config.center == G.P_CENTERS.m_rw_wetasscard or x.config.center == G.P_CENTERS.m_rw_moldy) and not x.debuff then
 			local enhanced = {}
 			enhanced[#enhanced + 1] = x
-			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_dietcola")) or next(SMODS.find_card("j_seltzer")) then
+			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_diet_cola")) or next(SMODS.find_card("j_seltzer")) then
 				x.ability.countdown_to_dry = x.ability.countdown_to_dry + 1
 				--[[Add check here if a joker is wet to increase rather than decrease]]
 			else
@@ -94,7 +94,7 @@ function end_round()
 		if (x.config.center == G.P_CENTERS.m_rw_wetasscard or x.config.center == G.P_CENTERS.m_rw_moldy) and not x.debuff then
 			local enhanced = {}
 			enhanced[#enhanced + 1] = x
-			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_dietcola")) or next(SMODS.find_card("j_seltzer")) then
+			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_diet_cola")) or next(SMODS.find_card("j_seltzer")) then
 				x.ability.countdown_to_dry = x.ability.countdown_to_dry + 1
 				--[[Add check here if a joker is wet to increase rather than decrease]]
 			else
