@@ -93,7 +93,7 @@ SMODS.Voucher({
 		text = { "Skipping a blind grants a random tag." },
 	},
 	atlas = "scugvouchers",
-	pos = { x = 2 y = 0 },
+	pos = { x = 2, y = 0 },
 	calculate = function(self, card, context)
 		if context.skip_blind then
 			local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_polychrome",
