@@ -33,7 +33,6 @@ assert(SMODS.load_file("modules/jokers/hungy.lua"))()
 assert(SMODS.load_file("modules/jokers/ploo.lua"))()
 assert(SMODS.load_file("modules/jokers/keeper.lua"))()
 -- Pup Update
-assert(SMODS.load_file("modules/jokers/eater.lua"))()
 assert(SMODS.load_file("modules/jokers/pupartificer.lua"))()
 assert(SMODS.load_file("modules/jokers/pupgourmand.lua"))()
 assert(SMODS.load_file("modules/jokers/puphunter.lua"))()

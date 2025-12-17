@@ -521,6 +521,12 @@ return {
 				text = {
 					"Picked up in","{C:attention}#1#{} rounds"
 				}
+			},
+			eater_unfortunate = {
+				name = "Unfortunately Develops",
+				text = {
+					"Transforms after eating","{C:rot}Rot {C:attention}#1#{} more times"
+				}
 			}
 		},
 		foods = {
@@ -1121,8 +1127,7 @@ return {
 			j_rw_chieftain = {
 				name = "Chieftain",
 				text = {
-					"{C:attention}Threat: Each played hand removes a random {C:weapon}Weapon{} from each Joker.",
-					"{C:attention}To Defeat:{} Win a blind while scoring {C:attention}#1#% or more{} of its chips.",
+					"{C:attention}Threat:{} Each played hand removes a random {C:weapon}Weapon{} from each Joker.",
 					"{C:attention}Undefeated: {C:red}Die{}.",
 				},
 			},
@@ -1588,7 +1593,6 @@ return {
 					"{C:inactive}(Currently {C:attention}+#4#{C:inactive} hand size)",
 				},
 			},
-			
 			j_rw_pupartificer = {
 				name = "Artificer Pup",
 				text = {
@@ -1599,11 +1603,10 @@ return {
 					"{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
 				},
 			},
-
 			j_rw_eater = {
 				name = "Eater",
 				text = {
-					"{s:1.2}He hungers...",
+					"Eats the {C:rot}Rot{} off of owned cards",
 					"{s:0.8,C:inactive}({s:0.8,C:blue}+#1#{s:0.8,C:inactive}, {s:0.8,C:red}+#2#{s:0.8,C:inactive}, {s:0.8,C:white,X:red}X#3#{s:0.8,C:inactive})",
 				},
 			},
@@ -1662,7 +1665,6 @@ return {
 					"{C:inactive}(#4# more cards)",
 				},
 			},
-			
 			j_rw_pupspearmaster = {
 				name = "Spearmaster Pup",
 				text = {
@@ -1670,7 +1672,6 @@ return {
 					"cards are {C:attention}Enhanced",
 				},
 			},
-
 			j_rw_puplacuna = {
 				name = "Lacuna Pup",
 				text = {
@@ -1929,7 +1930,6 @@ return {
 					"{C:inactive}(Currently {C:mult}+#2# {C:inactive}Mult)",
 				},
 			},
-	
 			j_rw_pupkeeper = {
 				name = "Keeper Pup",
 				text = {
@@ -1961,8 +1961,6 @@ return {
 					"{C:edition}+1{} Joker Slot",
 				},
 			},
-			
-			
 			--endregion
 			--region Not-Slugcats
 			j_rw_scavenger_neutral = {
