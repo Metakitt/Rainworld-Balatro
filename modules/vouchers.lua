@@ -93,7 +93,7 @@ SMODS.Voucher({
 		text = { "Skipping a blind grants a random tag." },
 	},
 	atlas = "scugvouchers",
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 0 },
 	calculate = function(self, card, context)
 		if context.skip_blind then
 			local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_polychrome",
@@ -115,7 +115,7 @@ SMODS.Voucher({
 		text = { "Skipping a blind grants another random tag." },
 	},
 	atlas = "scugvouchers",
-	pos = { x = 0, y = 0 },
+	pos = { x = 2, y = 1 },
 	requires = { "v_rw_relay" },
 	calculate = function(self, card, context)
 		if context.skip_blind then
@@ -137,7 +137,7 @@ SMODS.Voucher({
 		text = { "Enemies are half as likely to appear on all blinds." },
 	},
 	atlas = "scugvouchers",
-	pos = { x = 0, y = 0 },
+	pos = { x = 1, y = 0 },
 	calculate = function(self, card, context)
 	
 	if context.fix_probability and context.identifier == "rw_enemy_spawn" then
@@ -156,7 +156,7 @@ SMODS.Voucher({
 		text = { "Enemies no longer spawn." },
 	},
 	atlas = "scugvouchers",
-	pos = { x = 0, y = 0 },
+	pos = { x = 1, y = 1 },
 	requires = { "v_rw_rainfall" },
 	calculate = function(self, card, context)
 	
