@@ -99,7 +99,8 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			for i = 1, 2 do
+			local pede_spawn = pseudorandom_element({1, 2}, "rw_coalescipede", {})
+			for i = 1, pede_spawn do
 				G.E_MANAGER:add_event(Event({
 					trigger = "after",
 					delay = 1.3 + (i - 1) / 2,
