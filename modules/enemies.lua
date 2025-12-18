@@ -794,7 +794,7 @@ function SCUG.get_enemy_defeat_conditions(conditions)
 			end
 		elseif subtype == "CardSuit" then
 			ret.key = key_base .. "score_suit_cards"
-			ret.vars = { localize(requirement, "suits_singular"), amount, vars = G.C.SUITS[requirement] }
+			ret.vars = { localize(requirement, "suits_singular"), amount, colours = { G.C.SUITS[requirement] } }
 		elseif subtype == "CardAny" then
 			ret.key = key_base .. "score_any_cards"
 			ret.vars = { amount }
@@ -908,17 +908,17 @@ SCUG.enemy_should_count_down = function(context, conditions)
 				end
 			end
 			return num_matches
-		elseif conditions.condition == "CardEditionEnhancement" then
-			local num_matches = 0
-			for _, v in pairs(context.scoring_hand) do
-				if v.edition and v.edition.key == conditions.requirement then
-					num_matches = num_matches + 1 -- NOTE: Line was empty, this should be here?
-				elseif v.config.center_key == conditions.requirement then
-					--	if (v.edition.key == conditions.requirement or v.config.center_key == conditions.requirement) then
-					num_matches = num_matches + 1
-				end
-			end
-			return num_matches
+			-- elseif conditions.condition == "CardEditionEnhancement" then
+			-- 	local num_matches = 0
+			-- 	for _, v in pairs(context.scoring_hand) do
+			-- 		if v.edition and v.edition.key == conditions.requirement then
+			-- 			num_matches = num_matches + 1 -- NOTE: Line was empty, this should be here?
+			-- 		elseif v.config.center_key == conditions.requirement then
+			-- 			--	if (v.edition.key == conditions.requirement or v.config.center_key == conditions.requirement) then
+			-- 			num_matches = num_matches + 1
+			-- 		end
+			-- 	end
+			-- 	return num_matches
 		end
 	end
 
@@ -985,10 +985,23 @@ SCUG.enemy_should_count_down = function(context, conditions)
 	end
 
 	if context.individual and conditions.enemy_type == "Score" then
-		if conditions.condition == "CardAny" then
+		if conditions.condition == "CardSuit" and context.other_card:is_suit(conditions.requirement) then
 			return 1
-		elseif conditions.condition == "CardSuit" and context.other_card:is_suit(conditions.requirement) then
+		elseif conditions.condition == "CardAny" then
 			return 1
+		elseif conditions.condition == "CardEditionEnhancement" then
+			if
+				conditions.requirement:sub(1, 1) == 'm'
+				and context.other_card.config.center_key == conditions.requirement
+			then
+				return 1
+			elseif
+				conditions.requirement:sub(1, 1) == 'e'
+				and context.other_card.edition
+				and context.other_card.edition.key == conditions.requirement
+			then
+				return 1
+			end
 		end
 	end
 
