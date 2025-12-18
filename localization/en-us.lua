@@ -1771,7 +1771,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_scugbo = {
+			j_rw_pupmagician_scugbo = {
 				name = "Magician Pup",
 				text = {
 					"{C:mult}+4{} Mult for",
@@ -1781,7 +1781,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_slugpup = {
+			j_rw_pupmagician_slugpup = {
 				name = "Magician Pup",
 				text = {
 					"{C:mult}+4{} Mult",
@@ -1791,7 +1791,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_gourmand = {
+			j_rw_pupmagician_gourmand = {
 				name = "Magician Pup",
 				text = {
 					"Food Jokers and {C:food}Food{}",
@@ -1802,7 +1802,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_rivulet = {
+			j_rw_pupmagician_rivulet = {
 				name = "Magician Pup",
 				text = {
 					"Each skipped {C:attention}Blind{}",
@@ -1815,7 +1815,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_spearmaster = {
+			j_rw_pupmagician_spearmaster = {
 				name = "Magician Pup",
 				text = {
 					"{C:white,X:mult}X3{} Mult if all scoring",
@@ -1825,7 +1825,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_survivor = {
+			j_rw_pupmagician_survivor = {
 				name = "Magician Pup",
 				text = {
 					"{C:attention}+2{} hand size",
@@ -1834,7 +1834,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_pathfinder = {
+			j_rw_pupmagician_pathfinder = {
 				name = "Magician Pup",
 				text = {
 					"If {C:attention}discard{} is",
@@ -1846,7 +1846,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_blurred = {
+			j_rw_pupmagician_blurred = {
 				name = "Magician Pup",
 				text = {
 					"{C:green}#1# in 10{} chance to",
@@ -1858,7 +1858,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_alacrity = {
+			j_rw_pupmagician_alacrity = {
 				name = "Magician Pup",
 				text = {
 					"{X:chips,C:white}X2{} Chips on",
@@ -1869,7 +1869,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_magician = {
+			j_rw_pupmagician_magician = {
 				name = "Magician Pup",
 				text = {
 					"At the start of {C:attention}Blind{},",
@@ -1881,7 +1881,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_enfys = {
+			j_rw_pupmagician_enfys = {
 				name = "Magician Pup",
 				text = {
 					"At the start of {C:attention}Blind{},",
@@ -1892,7 +1892,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_saint = {
+			j_rw_pupmagician_saint = {
 				name = "Magician Pup",
 				text = {
 					"Each {C:attention}discard{} has",
@@ -1904,7 +1904,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_lacuna = {
+			j_rw_pupmagician_lacuna = {
 				name = "Magician Pup",
 				text = {
 					"At the start of {C:attention}Blind{},",
@@ -1930,7 +1930,7 @@ return {
 					"and {X:chips,C:white}X#6#{} Chips.)",
 				},
 			},
-			j_rw_magicianpup_ranger = {
+			j_rw_pupmagician_ranger = {
 				name = "Magician Pup",
 				text = {
 					"{C:attention}+3{} hand size",
