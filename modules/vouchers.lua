@@ -47,11 +47,11 @@ SMODS.Voucher({
 				)
 			elseif cr > 5 and cr <= 9 then
 				weaponselected = pseudorandom_element(
-					{ "electricspear", "explosivespear", "beehive", "flashbang", "sporepuff" },
+					{ "spear_ele", "spear_exp", "beehive", "flashbang", "sporepuff" },
 					pseudoseed("uncommon")
 				)
 			elseif cr > 9 then
-				weaponselected = pseudorandom_element({ "singularity", "firespear", "jokerifle" }, pseudoseed("rare"))
+				weaponselected = pseudorandom_element({ "singularity", "spear_fire", "jokerifle" }, pseudoseed("rare"))
 			end
 
 			if #G.consumeables.cards ~= G.consumeables.config.card_limit then
