@@ -50,14 +50,19 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		-- Defeat
-		if context.before and not context.blueprint then
-			-- for _, joker in ipairs(G.jokers.cards) do
-			if not card.ability.extra.defeat and SCUG.weapon_count("rw_wspear_exp") > 0 then
-				card.ability.extra.defeat = true
-			end
-			-- end
+		--Defeat
+		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
+		if tick_down > 0 then
+			card.ability.extra.enemy_conditions.amount = card.ability.extra.enemy_conditions.amount - tick_down
 		end
-		if context.after and card.ability.extra.defeat then
+
+		if
+			context.main_eval
+			and card.ability.extra.enemy_conditions.amount <= 0
+			and not card.ability.extra.defeat
+			and not context.blueprint
+		then
+			card.ability.extra.defeat = true
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 1.3,
@@ -65,6 +70,7 @@ SMODS.Joker({
 					SMODS.destroy_cards(card, true)
 					return true
 				end,
+				blocking = false,
 			}))
 		end
 		-- Undefeated
