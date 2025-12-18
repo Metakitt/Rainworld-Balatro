@@ -536,13 +536,13 @@ return {
 			eggv_pick_up = {
 				name = "Just an Egg",
 				text = {
-					"Picked up in", "{C:attention}#1#{} rounds"
+					"Picked up in", "{C:attention}#1#{} round(s)"
 				}
 			},
 			eater_unfortunate = {
 				name = "Unfortunately Develops",
 				text = {
-					"Transforms after eating", "{C:rot}Rot {C:attention}#1#{} more times"
+					"Transforms after eating", "{C:rot}Rot {C:attention}#1#{} more time(s)"
 				}
 			}
 			--endregion
