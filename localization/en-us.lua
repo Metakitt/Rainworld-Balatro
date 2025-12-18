@@ -264,6 +264,19 @@ return {
 					"Does nothing.",
 				},
 			},
+			
+			rw_wjokerifle_none = {
+				name = "Joke Rifle",
+				text = {
+					"At the start",
+					"of {C:attention}Blind{},",
+					"selects a",
+					"random effect.",
+					"{C:inactive}(Loaded with: Nothing){}",
+					"Does nothing.",
+				},
+			},
+			
 			rw_wjokerifle_bluefruit = {
 				name = "Joke Rifle",
 				text = {
