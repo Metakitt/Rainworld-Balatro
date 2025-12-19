@@ -30,12 +30,22 @@ SCUG.value_in_table = function(value, table)
 end
 
 ---Check if an item is in a pool.
----@param item Card|table
+---@param item string|Card|table
 ---@param pool string
 SCUG.is_in_pool = function(item, pool)
-	if item.config and item.config.center and item.config.center.pools then
-		if type(item.config.center.pools) == "table" and #item.config.center.pools > 0 then
-			for k,v in pairs(item.config.center.pools) do
+	if not SMODS.ObjectTypes[pool] then return false end
+
+	if type(item) == "table" then
+		if item.config and item.config.center and item.config.center.pools then
+			if type(item.config.center.pools) == "table" then
+				for k, v in pairs(item.config.center.pools) do
+					if k == pool and v then return true end
+				end
+			end
+		end
+	elseif type(item) == "string" then
+		if G.P_CENTERS[item] then
+			for k, v in pairs(G.P_CENTERS[item].pools) do
 				if k == pool and v then return true end
 			end
 		end

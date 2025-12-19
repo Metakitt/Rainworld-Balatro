@@ -33,6 +33,8 @@ SMODS.Sound({
 	},
 })
 
+-- Patches for Game Functions
+
 local game_igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = game_igo(self)
@@ -46,8 +48,6 @@ function Game:init_game_object()
 	}
 	return ret
 end
-
--- Patches for Game Functions
 
 local end_round_ref = end_round
 function end_round()
@@ -242,4 +242,24 @@ function loc_colour(_c, _default)
 	G.ARGS.LOC_COLOURS.food = G.C.FOOD
 	G.ARGS.LOC_COLOURS.rot = G.C.ROT
 	return loc_colour_RW(_c, _default)
+end
+
+-- Food Joker Pool (if not defined)
+if not SMODS.ObjectTypes["Food"] then
+	SMODS.ObjectType({
+		key = "Food",
+		default = "j_egg",
+		cards = {
+			["j_popcorn"] = true,
+			["j_cavendish"] = true,
+			["j_gros_michel"] = true,
+			["j_ice_cream"] = true,
+			["j_egg"] = true,
+			["j_seltzer"] = true,
+			["j_flower_pot"] = true,
+			["j_ramen"] = true,
+			["j_diet_cola"] = true,
+			["j_turtle_bean"] = true,
+		}
+	})
 end
