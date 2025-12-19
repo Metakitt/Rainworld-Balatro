@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "eggv",
-	atlas = "slugcats",
-	pos = { x = 0, y = 7 },
+	atlas = "sofanthiel",
+	pos = { x = 0, y = 1 },
 	rarity = 3,
 	cost = 4,
 	unlocked = true,
@@ -37,29 +37,3 @@ SMODS.Joker({
 		end
 	end,
 })
-
---Inv_Anim_Patch (Derived from 4D Joker / Jimball)
-local upd = Game.update
-
-rw_eggv_dt_anim = 0
-
-function Game:update(dt)
-	upd(self, dt)
-
-	rw_eggv_dt_anim = rw_eggv_dt_anim + dt
-
-	if G.P_CENTERS and G.P_CENTERS.j_rw_eggv and rw_eggv_dt_anim > 0.05 then
-		rw_eggv_dt_anim = 0
-
-		local obj = G.P_CENTERS.j_rw_eggv
-
-		if obj.pos.x == 8 then
-			obj.pos.x = 0
-			obj.pos.y = 7
-		elseif obj.pos.x < 8 then
-			obj.pos.x = obj.pos.x + 1
-		end
-	end
-end
-
---

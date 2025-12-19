@@ -16,6 +16,16 @@ SMODS.Atlas({
 	py = 95,
 })
 
+-- Inv / Eggv
+SMODS.Atlas {
+	key = "sofanthiel",
+	path = "sofanthiel.png",
+	px = 71,
+	py = 95,
+	atlas_table = "ANIMATION_ATLAS",
+	frames = 9
+}
+
 --Food and Weapon consumeables
 SMODS.Atlas({
 	key = "weaponfoods",
