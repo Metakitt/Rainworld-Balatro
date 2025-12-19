@@ -38,7 +38,7 @@ SMODS.Sticker({
 			})
 			if not suit_debuff then return end
 
-			print(string.format("Buffing %s, debuffing %s", suit, suit_debuff))
+			-- print(string.format("Buffing %s, debuffing %s", suit, suit_debuff))
 
 			for _, v in pairs(G.playing_cards) do
 				if v:is_suit(suit) then
@@ -148,7 +148,7 @@ SMODS.Sticker({
 			-- 	SMODS.debuff_card(chosen_cards, "reset", "bees")
 			-- end
 			for _, v in pairs(G.playing_cards) do
-				SMODS.debuff_card(v, "reset", "bees")
+				SMODS.debuff_card(v, false, "bees")
 			end
 		end
 	end,
