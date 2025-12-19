@@ -1,3 +1,11 @@
+-- Mod Icon
+SMODS.Atlas {
+	key = "modicon",
+	path = "modicon.png",
+	px = 34,
+	py = 34
+}
+
 --Blinds
 SMODS.Atlas({
 	key = "theblinds",
@@ -76,6 +84,7 @@ SMODS.Atlas({
 	frames = 36
 })
 
+-- Vouchers
 SMODS.Atlas({
 	key = "scugvouchers",
 	path = "rwvoucher.png",
@@ -83,6 +92,7 @@ SMODS.Atlas({
 	py = 95,
 })
 
+-- Tags
 SMODS.Atlas {
 	key = "scugtags",
 	path = "stags.png",
