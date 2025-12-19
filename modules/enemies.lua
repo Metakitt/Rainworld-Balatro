@@ -588,12 +588,12 @@ local endless_table = {}
 for _, ante_table in pairs(ENEMY_ANTE_TABLES) do
 	for _, key in pairs(ante_table) do
 		if type(key) == "string" then
-			if not SCUG.in_table(key, endless_table) then
+			if not SCUG.value_in_table(key, endless_table) then
 				endless_table[#endless_table + 1] = key
 			end
 		elseif type(key) == "table" then
 			for _, real_key in pairs(key) do
-				if not SCUG.in_table(real_key, endless_table) then
+				if not SCUG.value_in_table(real_key, endless_table) then
 					endless_table[#endless_table + 1] = real_key
 				end
 			end

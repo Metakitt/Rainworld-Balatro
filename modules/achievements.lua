@@ -31,7 +31,7 @@ SMODS.Achievement({
 				{ "j_rw_saint", "j_rw_gourmand", "j_rw_spearmaster", "j_rw_rivulet", "j_rw_artificer" }
 			local num_owned = 0
 			for _, v in pairs(G.jokers.cards) do
-				if SCUG.in_table(v.config.center_key, applicable_jokers) then
+				if SCUG.value_in_table(v.config.center_key, applicable_jokers) then
 					num_owned = num_owned + 1
 				end
 			end

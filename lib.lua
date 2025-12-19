@@ -20,10 +20,24 @@ SCUG.clamp = function(value, min, max)
 	return math.max(math.min(value, max), min)
 end
 
-SCUG.in_table = function(key, table)
+SCUG.value_in_table = function(value, table)
 	for _, v in pairs(table) do
-		if v == key then
+		if v == value then
 			return true
+		end
+	end
+	return false
+end
+
+---Check if an item is in a pool.
+---@param item Card|table
+---@param pool string
+SCUG.is_in_pool = function(item, pool)
+	if item.config and item.config.center and item.config.center.pools then
+		if type(item.config.center.pools) == "table" and #item.config.center.pools > 0 then
+			for k,v in pairs(item.config.center.pools) do
+				if k == pool and v then return true end
+			end
 		end
 	end
 	return false
@@ -35,7 +49,7 @@ SCUG.get_suit_in_deck = function(args)
 	for _, card in ipairs(G.playing_cards) do
 		if not SMODS.has_no_suit(card) then
 			local card_suit = card.config.card.suit
-			if not SCUG.in_table(card_suit, all_suits) then
+			if not SCUG.value_in_table(card_suit, all_suits) then
 				table.insert(all_suits, card_suit)
 			end
 		end
@@ -48,7 +62,7 @@ SCUG.get_rank_in_deck = function(args)
 	for _, card in ipairs(G.playing_cards) do
 		if not SMODS.has_no_rank(card) then
 			local card_suit = card.config.card.value
-			if not SCUG.in_table(card_suit, all_ranks) then
+			if not SCUG.value_in_table(card_suit, all_ranks) then
 				table.insert(all_ranks, card_suit)
 			end
 		end
