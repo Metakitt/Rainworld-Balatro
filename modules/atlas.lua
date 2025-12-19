@@ -69,9 +69,11 @@ SMODS.Atlas({
 --Special Atlas for ?Ploo
 SMODS.Atlas({
 	key = "plooer",
-	path = "ploo.png",
+	path = "ploo_atlas.png",
 	px = 71,
-	py = 103,
+	py = 95,
+	atlas_table = "ANIMATION_ATLAS",
+	frames = 36
 })
 
 SMODS.Atlas({
