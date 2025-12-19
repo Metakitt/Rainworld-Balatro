@@ -1,4 +1,3 @@
-SCUG = SMODS.current_mod
 -- Possible Talisman compatibility
 SCUG.big = function(x)
 	return (Talisman and to_big(x)) or x

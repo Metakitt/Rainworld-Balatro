@@ -1,3 +1,5 @@
+SCUG = SMODS.current_mod
+
 assert(SMODS.load_file("./lib.lua"))()
 assert(SMODS.load_file("./modules/atlas.lua"))()
 assert(SMODS.load_file("./modules/foods.lua"))()
@@ -35,18 +37,31 @@ SMODS.Sound({
 
 -- Patches for Game Functions
 
-local game_igo = Game.init_game_object
-function Game:init_game_object()
-	local ret = game_igo(self)
-	ret.rottedjoker = 5
-	ret.mirosbird = 1
-	ret.mirosvulture = 1
-	ret.rw_enemies_slain = 0
-	ret.rw_achievement_stats = {
-		scug_antes = 0,
-		ante_kills = {}
-	}
-	return ret
+-- local game_igo = Game.init_game_object
+-- function Game:init_game_object()
+-- 	local ret = game_igo(self)
+-- 	ret.rottedjoker = 5
+-- 	ret.mirosbird = 1
+-- 	ret.mirosvulture = 1
+-- 	ret.rw_enemies_slain = 0
+-- 	ret.rw_achievement_stats = {
+-- 		scug_antes = 0,
+-- 		ante_kills = {}
+-- 	}
+-- 	return ret
+-- end
+
+SCUG.reset_game_globals = function(run_start)
+	if run_start then
+		G.GAME.rottedjoker = 5
+		G.GAME.mirosbird = 1
+		G.GAME.mirosvulture = 1
+		G.GAME.rw_enemies_slain = 0
+		G.GAME.rw_achievement_stats = {
+			scug_antes = 0,
+			ante_kills = {}
+		}
+	end
 end
 
 local end_round_ref = end_round
