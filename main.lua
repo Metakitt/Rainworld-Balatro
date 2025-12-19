@@ -126,17 +126,17 @@ function end_round()
 					z = G.hand.cards[i]
 					z:set_ability(G.P_CENTERS.c_base)
 					--z.config.center = G.P_CENTERS.c_base
-				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
-					and G.deck.cards[i].ability.countdown_to_dry < 6 then
-					z = G.deck.cards[i]
+				elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+					and G.hand.cards[i].ability.countdown_to_dry < 6 then
+					z = G.hand.cards[i]
 					z:set_ability(G.P_CENTERS.m_rw_wetasscard)
-				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
-					and G.deck.cards[i].ability.countdown_to_dry >= 9 and G.deck.cards[i].ability.countdown_to_dry < 12 then
-					z = G.deck.cards[i]
+				elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
+					and G.hand.cards[i].ability.countdown_to_dry >= 9 and G.deck.cards[i].ability.countdown_to_dry < 12 then
+					z = G.hand.cards[i]
 					z:set_ability(G.P_CENTERS.m_rw_moldy)
-				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
-					and G.deck.cards[i].ability.countdown_to_dry >= 12 then
-					z = G.deck.cards[i]
+				elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+					and G.hand.cards[i].ability.countdown_to_dry >= 12 then
+					z = G.hand.cards[i]
 					z:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
