@@ -188,50 +188,51 @@ function new_round()
 
 	-- This checks for rotting cards and triggers their countdown + destroys the card if its reached the end of its lifespan
 
-	for k, x in pairs(G.deck.cards) do
+	for _, x in pairs(G.playing_cards) do
 		if x.config.center == G.P_CENTERS.m_rw_rotting and not x.debuff then
-			local enhanced = {}
-			enhanced[#enhanced + 1] = x
+			-- local enhanced = {}
+			-- enhanced[#enhanced + 1] = x
 			x.ability.countdown_to_destruction = x.ability.countdown_to_destruction - 1
 
 			if x.ability.countdown_to_destruction == 0 then
 				--Destruction part of function
-				local z = {}
-				for i = 1, #G.deck.cards do
-					if
-						G.deck.cards[i].config.center == G.P_CENTERS.m_rw_rotting
-						and G.deck.cards[i].ability.countdown_to_destruction < 1
-					then
-						z = G.deck.cards[i]
-						z:start_dissolve()
+				-- local z = {}
+				-- for i = 1, #G.deck.cards do
+				-- 	if
+				-- 		G.deck.cards[i].config.center == G.P_CENTERS.m_rw_rotting
+				-- 		and G.deck.cards[i].ability.countdown_to_destruction < 1
+				-- 	then
+				-- 		z = G.deck.cards[i]
+				-- 		z:start_dissolve()
 
-						--SMODS.calculate_effect({message = localize('k_upgrade_ex')}, artirot)
-					end
-				end
+				-- 		--SMODS.calculate_effect({message = localize('k_upgrade_ex')}, artirot)
+				-- 	end
+				-- end
 				--Artificer's check
-				if next(SMODS.find_card("j_rw_artificer")) then
-					for i = 1, #SMODS.find_card("j_rw_artificer") do
-						local artirot = SMODS.find_card("j_rw_artificer")[i]
-						artirot.ability.extra.chips = artirot.ability.extra.chips + artirot.ability.extra.bonus_chips
+				-- if next(SMODS.find_card("j_rw_artificer")) then
+				-- 	for i = 1, #SMODS.find_card("j_rw_artificer") do
+				-- 		local artirot = SMODS.find_card("j_rw_artificer")[i]
+				-- 		artirot.ability.extra.chips = artirot.ability.extra.chips + artirot.ability.extra.bonus_chips
+				-- 	end
+				-- end
+				SMODS.destroy_cards(x)
+			else
+				-- 1 in 5 chance to make another random card a rot card.
+				if SMODS.pseudorandom_probability(nil, "rw_rot", 1, 5, "rw_rot_spread", true) then
+					local notrot = {}
+					for i = 1, #G.playing_cards do
+						if
+							G.playing_cards[i] ~= card
+							and G.playing_cards[i].config.center ~= G.P_CENTERS.m_rw_rotting
+							and not G.playing_cards[i].getting_sliced
+						then
+							notrot[#notrot + 1] = G.playing_cards[i]
+						end
 					end
-				end
-			end
-
-			-- 1 in 5 chance to make another random card a rot card.
-			if SMODS.pseudorandom_probability(nil, "rw_rot", 1, 5, "rw_rot_spread", true) then
-				local notrot = {}
-				for i = 1, #G.deck.cards do
-					if
-						G.deck.cards[i] ~= card
-						and G.deck.cards[i].config.center ~= G.P_CENTERS.m_rw_rotting
-						and not G.deck.cards[i].getting_sliced
-					then
-						notrot[#notrot + 1] = G.deck.cards[i]
+					local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+					if #notrot > 0 then
+						rotted:set_ability(G.P_CENTERS.m_rw_rotting)
 					end
-				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
 		end
