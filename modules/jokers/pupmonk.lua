@@ -20,6 +20,7 @@ SMODS.Joker({
 			if card.ability.extra.growth <= 0 then
 				card.ability.extra.growth = nil
 				card:grow_up()
+				return
 			end
 		end
 	
