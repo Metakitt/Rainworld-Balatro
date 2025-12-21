@@ -60,28 +60,6 @@ SMODS.Joker({
 			end
 		end
 
-		if context.before and not context.blueprint then
-			if
-				(next(context.poker_hands["Five of a Kind"]) or next(context.poker_hands["Flush Five"]))
-				and (context.scoring_name == "Five of a Kind" or context.scoring_name == "Flush Five")
-				and not context.blueprint
-			then
-				card.ability.extra.five_count = card.ability.extra.five_count + 1
-			elseif
-				next(context.poker_hands["Four of a Kind"])
-				and context.scoring_name == "Four of a Kind"
-				and not context.blueprint
-			then
-				card.ability.extra.four_count = card.ability.extra.four_count + 1
-			elseif
-				next(context.poker_hands["Three of a Kind"])
-				and context.scoring_name == "Three of a Kind"
-				and not context.blueprint
-			then
-				card.ability.extra.three_count = card.ability.extra.three_count + 1
-			end
-		end
-
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
