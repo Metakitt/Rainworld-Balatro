@@ -98,7 +98,8 @@ SMODS.Voucher({
 		if context.skip_blind then
 			local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_polychrome",
 				"tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon",
-				"tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_economy", "tag_rw_survivalist", "tag_rw_top_pup",
+				"tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_economy",
+				"tag_rw_survivalist", "tag_rw_top_pup",
 				"tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast",
 				"tag_rw_healthy" }
 			local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
@@ -121,7 +122,8 @@ SMODS.Voucher({
 		if context.skip_blind then
 			local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_polychrome",
 				"tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon",
-				"tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_economy", "tag_rw_survivalist", "tag_rw_top_pup",
+				"tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_economy",
+				"tag_rw_survivalist", "tag_rw_top_pup",
 				"tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast",
 				"tag_rw_healthy" }
 			local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
@@ -139,13 +141,12 @@ SMODS.Voucher({
 	atlas = "scugvouchers",
 	pos = { x = 1, y = 0 },
 	calculate = function(self, card, context)
-	
-	if context.fix_probability and context.identifier == "rw_enemy_spawn" then
-	return
-	{
-	denominator = context.denominator * 2
-	}
-	end
+		if context.mod_probability and context.identifier == "rw_enemy_spawn" then
+			return
+			{
+				denominator = context.denominator * 2
+			}
+		end
 	end
 })
 
@@ -159,12 +160,11 @@ SMODS.Voucher({
 	pos = { x = 1, y = 1 },
 	requires = { "v_rw_rainfall" },
 	calculate = function(self, card, context)
-	
-	if context.fix_probability and context.identifier == "rw_enemy_spawn" then
-	return
-	{
-	numerator = 0
-	}
-	end
+		if context.fix_probability and context.identifier == "rw_enemy_spawn" then
+			return
+			{
+				numerator = 0
+			}
+		end
 	end
 })
