@@ -984,7 +984,7 @@ SCUG.enemy_should_count_down = function(context, conditions)
 		return 1
 	end
 
-	if context.individual and conditions.enemy_type == "Score" then
+	if context.individual and context.cardarea == G.play and conditions.enemy_type == "Score" then
 		if conditions.condition == "CardSuit" and context.other_card:is_suit(conditions.requirement) then
 			return 1
 		elseif conditions.condition == "CardAny" then
