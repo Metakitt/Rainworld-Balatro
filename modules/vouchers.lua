@@ -132,39 +132,41 @@ SMODS.Voucher({
 	end
 })
 
-SMODS.Voucher({
-	key = "rainfall",
-	loc_txt = {
-		name = "Rainfall",
-		text = { "Enemies are half as likely to appear on all blinds." },
-	},
-	atlas = "scugvouchers",
-	pos = { x = 1, y = 0 },
-	calculate = function(self, card, context)
-		if context.mod_probability and context.identifier == "rw_enemy_spawn" then
-			return
-			{
-				denominator = context.denominator * 2
-			}
+if SCUG.config.allow_enemy_spawns then
+	SMODS.Voucher({
+		key = "rainfall",
+		loc_txt = {
+			name = "Rainfall",
+			text = { "Enemies are half as likely to appear on all blinds." },
+		},
+		atlas = "scugvouchers",
+		pos = { x = 1, y = 0 },
+		calculate = function(self, card, context)
+			if context.mod_probability and context.identifier == "rw_enemy_spawn" then
+				return
+				{
+					denominator = context.denominator * 2
+				}
+			end
 		end
-	end
-})
+	})
 
-SMODS.Voucher({
-	key = "downpour",
-	loc_txt = {
-		name = "Downpour",
-		text = { "Enemies no longer spawn." },
-	},
-	atlas = "scugvouchers",
-	pos = { x = 1, y = 1 },
-	requires = { "v_rw_rainfall" },
-	calculate = function(self, card, context)
-		if context.fix_probability and context.identifier == "rw_enemy_spawn" then
-			return
-			{
-				numerator = 0
-			}
+	SMODS.Voucher({
+		key = "downpour",
+		loc_txt = {
+			name = "Downpour",
+			text = { "Enemies no longer spawn." },
+		},
+		atlas = "scugvouchers",
+		pos = { x = 1, y = 1 },
+		requires = { "v_rw_rainfall" },
+		calculate = function(self, card, context)
+			if context.fix_probability and context.identifier == "rw_enemy_spawn" then
+				return
+				{
+					numerator = 0
+				}
+			end
 		end
-	end
-})
+	})
+end

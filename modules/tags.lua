@@ -51,71 +51,73 @@ SMODS.Tag({
 	end,
 })
 
--- Danger Tag
--- Spawns 1~2 Enemies but gain 20$.
-SMODS.Tag({
-	key = "danger",
-	config = {
-		money = 20,
-	},
-	atlas = "scugtags",
-	pos = { x = 2, y = 0 },
-	discovered = true,
-	loc_vars = function(self, info_queue, tag)
-		return { vars = { tag.config.money } }
-	end,
-	min_ante = 2,
-	apply = function(self, tag, context)
-		if context.type == "immediate" then
-			local lock = tag.ID
-			G.CONTROLLER.locks[lock] = true
-			tag:yep("+", G.C.RARITY.rw_enemy, function()
-				local num_enemies = SMODS.pseudorandom_probability(tag, "rw_enemy", 1, 2, "rw_dangertag", true) and 2 or 1
-				while num_enemies > 0 do
-					SCUG.spawn_enemy({ guarantee = true })
-					num_enemies = num_enemies - 1
-				end
-				ease_dollars(tag.config.money)
-				return true
-			end)
-			tag.triggered = true
-			G.CONTROLLER.locks[lock] = nil
-			return true
-		end
-	end,
-})
-
--- Escape Tag
--- Removes a random enemy.
-SMODS.Tag({
-	key = "escape",
-	atlas = "scugtags",
-	pos = { x = 3, y = 0 },
-	discovered = true,
-	min_ante = 2,
-	in_pool = function(self, args)
-		return SCUG.enemy_count() > 0
-	end,
-	apply = function(self, tag, context)
-		-- Get enemies
-		if context.type == "immediate" or context.type == "round_start_bonus" then
-			local enemies = {}
-			for _, v in ipairs(G.jokers.cards) do
-				if v.config.center.rarity == "rw_enemy" then
-					table.insert(enemies, v)
-				end
-			end
-			if #enemies > 0 then
-				tag:yep("-", G.C.RARITY.rw_enemy, function()
-					SMODS.destroy_cards(pseudorandom_element(enemies, pseudoseed("tag_rw_escape")), true)
+if SCUG.config.allow_enemy_spawns then
+	-- Danger Tag
+	-- Spawns 1~2 Enemies but gain 20$.
+	SMODS.Tag({
+		key = "danger",
+		config = {
+			money = 20,
+		},
+		atlas = "scugtags",
+		pos = { x = 2, y = 0 },
+		discovered = true,
+		loc_vars = function(self, info_queue, tag)
+			return { vars = { tag.config.money } }
+		end,
+		min_ante = 2,
+		apply = function(self, tag, context)
+			if context.type == "immediate" then
+				local lock = tag.ID
+				G.CONTROLLER.locks[lock] = true
+				tag:yep("+", G.C.RARITY.rw_enemy, function()
+					local num_enemies = SMODS.pseudorandom_probability(tag, "rw_enemy", 1, 2, "rw_dangertag", true) and 2 or 1
+					while num_enemies > 0 do
+						SCUG.spawn_enemy({ guarantee = true })
+						num_enemies = num_enemies - 1
+					end
+					ease_dollars(tag.config.money)
 					return true
 				end)
 				tag.triggered = true
+				G.CONTROLLER.locks[lock] = nil
 				return true
 			end
-		end
-	end,
-})
+		end,
+	})
+
+	-- Escape Tag
+	-- Removes a random enemy.
+	SMODS.Tag({
+		key = "escape",
+		atlas = "scugtags",
+		pos = { x = 3, y = 0 },
+		discovered = true,
+		min_ante = 2,
+		in_pool = function(self, args)
+			return SCUG.enemy_count() > 0
+		end,
+		apply = function(self, tag, context)
+			-- Get enemies
+			if context.type == "immediate" or context.type == "round_start_bonus" then
+				local enemies = {}
+				for _, v in ipairs(G.jokers.cards) do
+					if v.config.center.rarity == "rw_enemy" then
+						table.insert(enemies, v)
+					end
+				end
+				if #enemies > 0 then
+					tag:yep("-", G.C.RARITY.rw_enemy, function()
+						SMODS.destroy_cards(pseudorandom_element(enemies, pseudoseed("tag_rw_escape")), true)
+						return true
+					end)
+					tag.triggered = true
+					return true
+				end
+			end
+		end,
+	})
+end
 
 -- Rivulet Tag
 -- Gain 3 enhanced cards.

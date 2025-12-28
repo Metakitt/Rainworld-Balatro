@@ -11,7 +11,9 @@ assert(SMODS.load_file("./modules/food_rarities.lua"))()
 assert(SMODS.load_file("./modules/weapons.lua"))()
 assert(SMODS.load_file("./modules/vouchers.lua"))()
 assert(SMODS.load_file("./modules/blinds.lua"))()
-assert(SMODS.load_file("./modules/enemies.lua"))()
+if SCUG.config.allow_enemy_spawns then
+	assert(SMODS.load_file("./modules/enemies.lua"))()
+end
 assert(SMODS.load_file("./modules/enhancement.lua"))()
 assert(SMODS.load_file("./modules/stickers.lua"))()
 assert(SMODS.load_file("./modules/tags.lua"))()
