@@ -31,7 +31,7 @@ SMODS.Enhancement({
 
 SMODS.Enhancement({
 	key = "moldy",
-	config = { x_chips = 1.5, countdown_to_dry = 10 },
+	config = { x_chips = 1.2, countdown_to_dry = 10 },
 	atlas = "enhancedcards_scug",
 	pos = { x = 3, y = 0 },
 	loc_vars = function(self, info_queue, card)

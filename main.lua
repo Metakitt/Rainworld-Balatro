@@ -22,14 +22,6 @@ assert(SMODS.load_file("./modules/achievements.lua"))()
 
 --Debug allows for the use of the Rot fruit for testing rot! Wet fruit as well for wet cards!
 
-local wet_keys = {
-	"j_splash",
-	"j_seltzer",
-	"j_dietcola",
-	"j_rw_rivulet",
-	"j_rw_stupid_wet_rat",
-}
-
 SMODS.Sound({
 	key = "crunch",
 	path = {
@@ -64,82 +56,131 @@ SCUG.reset_game_globals = function(run_start)
 			ante_kills = {}
 		}
 	end
+
+	-- local cr = SCUG.number_in_range(1, 11, "rw_wjokerifle")
+	-- if cr <= 5 then
+	-- 	G.GAME.jokerifle =
+	-- 		pseudorandom_element({ "bluefruit", "rock", "cherrybomb", "none", "pearl" }, pseudoseed("common"))
+	-- elseif cr > 5 and cr <= 9 then
+	-- 	G.GAME.jokerifle =
+	-- 		pseudorandom_element({ "beehive", "flashbang", "grenade", "sporepuff" }, pseudoseed("uncommon"))
+	-- elseif cr > 9 then
+	-- 	G.GAME.jokerifle = "singularity"
+	-- end
+	G.GAME.jokerifle = pseudorandom_element(
+		{
+			"bluefruit",
+			"rock",
+			"cherrybomb",
+			"none",
+			"pearl",
+			"beehive",
+			"flashbang",
+			"grenade",
+			"sporepuff",
+			"singularity",
+			"singularity"
+		}, "rw_wjokerifle")
 end
 
 local end_round_ref = end_round
 function end_round()
 	end_round_ref()
-	for k, x in pairs(G.deck.cards) do
-		if (x.config.center == G.P_CENTERS.m_rw_wetasscard or x.config.center == G.P_CENTERS.m_rw_moldy) and not x.debuff then
-			local enhanced = {}
-			enhanced[#enhanced + 1] = x
-			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_diet_cola")) or next(SMODS.find_card("j_seltzer")) then
-				x.ability.countdown_to_dry = x.ability.countdown_to_dry + 1
-				--[[Add check here if a joker is wet to increase rather than decrease]]
-			else
-				x.ability.countdown_to_dry = x.ability.countdown_to_dry - 1
-			end
-			--Drying part of function
-			local z = {}
-			for i = 1, #G.deck.cards do
-				if
-					G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
-					and G.deck.cards[i].ability.countdown_to_dry < 1
-				then
-					z = G.deck.cards[i]
-					z:set_ability(G.P_CENTERS.c_base)
-					--z.config.center = G.P_CENTERS.c_base
-				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
-					and G.deck.cards[i].ability.countdown_to_dry < 6 then
-					z = G.deck.cards[i]
-					z:set_ability(G.P_CENTERS.m_rw_wetasscard)
-				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
-					and G.deck.cards[i].ability.countdown_to_dry >= 9 and G.deck.cards[i].ability.countdown_to_dry < 12 then
-					z = G.deck.cards[i]
-					z:set_ability(G.P_CENTERS.m_rw_moldy)
-				elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
-					and G.deck.cards[i].ability.countdown_to_dry >= 12 then
-					z = G.deck.cards[i]
-					z:set_ability(G.P_CENTERS.m_rw_rotting)
+	-- for k, x in pairs(G.deck.cards) do
+	-- 	if (x.config.center == G.P_CENTERS.m_rw_wetasscard or x.config.center == G.P_CENTERS.m_rw_moldy) and not x.debuff then
+	-- 		local enhanced = {}
+	-- 		enhanced[#enhanced + 1] = x
+	-- 		if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_diet_cola")) or next(SMODS.find_card("j_seltzer")) then
+	-- 			x.ability.countdown_to_dry = x.ability.countdown_to_dry + 1
+	-- 			--[[Add check here if a joker is wet to increase rather than decrease]]
+	-- 		else
+	-- 			x.ability.countdown_to_dry = x.ability.countdown_to_dry - 1
+	-- 		end
+	-- 		--Drying part of function
+	-- 		local z = {}
+	-- 		for i = 1, #G.deck.cards do
+	-- 			if
+	-- 				G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
+	-- 				and G.deck.cards[i].ability.countdown_to_dry < 1
+	-- 			then
+	-- 				z = G.deck.cards[i]
+	-- 				z:set_ability(G.P_CENTERS.c_base)
+	-- 				--z.config.center = G.P_CENTERS.c_base
+	-- 			elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+	-- 				and G.deck.cards[i].ability.countdown_to_dry < 6 then
+	-- 				z = G.deck.cards[i]
+	-- 				z:set_ability(G.P_CENTERS.m_rw_wetasscard)
+	-- 			elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
+	-- 				and G.deck.cards[i].ability.countdown_to_dry >= 9 and G.deck.cards[i].ability.countdown_to_dry < 12 then
+	-- 				z = G.deck.cards[i]
+	-- 				z:set_ability(G.P_CENTERS.m_rw_moldy)
+	-- 			elseif G.deck.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+	-- 				and G.deck.cards[i].ability.countdown_to_dry >= 12 then
+	-- 				z = G.deck.cards[i]
+	-- 				z:set_ability(G.P_CENTERS.m_rw_rotting)
+	-- 			end
+	-- 		end
+	-- 	end
+	-- end
+	-- --For cards in the hand at the end of the round;
+	-- for k, x in pairs(G.hand.cards) do
+	-- 	if (x.config.center == G.P_CENTERS.m_rw_wetasscard or x.config.center == G.P_CENTERS.m_rw_moldy) and not x.debuff then
+	-- 		local enhanced = {}
+	-- 		enhanced[#enhanced + 1] = x
+	-- 		if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_diet_cola")) or next(SMODS.find_card("j_seltzer")) then
+	-- 			x.ability.countdown_to_dry = x.ability.countdown_to_dry + 1
+	-- 			--[[Add check here if a joker is wet to increase rather than decrease]]
+	-- 		else
+	-- 			x.ability.countdown_to_dry = x.ability.countdown_to_dry - 1
+	-- 		end
+	-- 		--Drying part of function
+	-- 		local z = {}
+	-- 		for i = 1, #G.hand.cards do
+	-- 			if
+	-- 				G.hand.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
+	-- 				and G.hand.cards[i].ability.countdown_to_dry < 1
+	-- 			then
+	-- 				z = G.hand.cards[i]
+	-- 				z:set_ability(G.P_CENTERS.c_base)
+	-- 				--z.config.center = G.P_CENTERS.c_base
+	-- 			elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+	-- 				and G.hand.cards[i].ability.countdown_to_dry < 6 then
+	-- 				z = G.hand.cards[i]
+	-- 				z:set_ability(G.P_CENTERS.m_rw_wetasscard)
+	-- 			elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
+	-- 				and G.hand.cards[i].ability.countdown_to_dry >= 9 and G.deck.cards[i].ability.countdown_to_dry < 12 then
+	-- 				z = G.hand.cards[i]
+	-- 				z:set_ability(G.P_CENTERS.m_rw_moldy)
+	-- 			elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_moldy
+	-- 				and G.hand.cards[i].ability.countdown_to_dry >= 12 then
+	-- 				z = G.hand.cards[i]
+	-- 				z:set_ability(G.P_CENTERS.m_rw_rotting)
+	-- 			end
+	-- 		end
+	-- 	end
+	-- end
+
+	local still_wet = SCUG.sufficiently_wet()
+	for _, playing_card in pairs(G.playing_cards) do
+		local card_type = playing_card.config.center
+
+		if playing_card.ability.countdown_to_dry then
+			local dry_mod = still_wet and 1 or -1
+			playing_card.ability.countdown_to_dry = playing_card.ability.countdown_to_dry + dry_mod
+			local dry_time = playing_card.ability.countdown_to_dry
+
+			if card_type == G.P_CENTERS.m_rw_wetasscard then
+				if dry_time < 1 then
+					playing_card:set_ability(G.P_CENTERS.c_base)
+				elseif dry_time >= 9 then
+					playing_card:set_ability(G.P_CENTERS.m_rw_moldy)
 				end
-			end
-		end
-	end
-
-	--For cards in the hand at the end of the round;
-	for k, x in pairs(G.hand.cards) do
-		if (x.config.center == G.P_CENTERS.m_rw_wetasscard or x.config.center == G.P_CENTERS.m_rw_moldy) and not x.debuff then
-			local enhanced = {}
-			enhanced[#enhanced + 1] = x
-			if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" or next(SMODS.find_card("j_rw_rivulet")) or next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_diet_cola")) or next(SMODS.find_card("j_seltzer")) then
-				x.ability.countdown_to_dry = x.ability.countdown_to_dry + 1
-				--[[Add check here if a joker is wet to increase rather than decrease]]
-			else
-				x.ability.countdown_to_dry = x.ability.countdown_to_dry - 1
-			end
-
-			--Drying part of function
-			local z = {}
-			for i = 1, #G.hand.cards do
-				if
-					G.hand.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
-					and G.hand.cards[i].ability.countdown_to_dry < 1
-				then
-					z = G.hand.cards[i]
-					z:set_ability(G.P_CENTERS.c_base)
-					--z.config.center = G.P_CENTERS.c_base
-				elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_moldy
-					and G.hand.cards[i].ability.countdown_to_dry < 6 then
-					z = G.hand.cards[i]
-					z:set_ability(G.P_CENTERS.m_rw_wetasscard)
-				elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_wetasscard
-					and G.hand.cards[i].ability.countdown_to_dry >= 9 and G.deck.cards[i].ability.countdown_to_dry < 12 then
-					z = G.hand.cards[i]
-					z:set_ability(G.P_CENTERS.m_rw_moldy)
-				elseif G.hand.cards[i].config.center == G.P_CENTERS.m_rw_moldy
-					and G.hand.cards[i].ability.countdown_to_dry >= 12 then
-					z = G.hand.cards[i]
-					z:set_ability(G.P_CENTERS.m_rw_rotting)
+			elseif card_type == G.P_CENTERS.m_rw_moldy then
+				-- You don't get your wet card back, you molded it already
+				if dry_time < 1 then
+					playing_card:set_ability(G.P_CENTERS.c_base)
+				elseif dry_time >= 12 then
+					playing_card:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
 		end
@@ -177,16 +218,16 @@ local new_roundref = new_round
 function new_round()
 	new_roundref()
 	-- Joke Rifle's random effect
-	local cr = SCUG.number_in_range(1, 11, "rw_wjokerifle")
-	if cr <= 5 then
-		G.GAME.jokerifle =
-			pseudorandom_element({ "bluefruit", "rock", "cherrybomb", "none", "pearl" }, pseudoseed("common"))
-	elseif cr > 5 and cr <= 9 then
-		G.GAME.jokerifle =
-			pseudorandom_element({ "beehive", "flashbang", "grenade", "sporepuff" }, pseudoseed("uncommon"))
-	elseif cr > 9 then
-		G.GAME.jokerifle = "singularity"
-	end
+	-- local cr = SCUG.number_in_range(1, 11, "rw_wjokerifle")
+	-- if cr <= 5 then
+	-- 	G.GAME.jokerifle =
+	-- 		pseudorandom_element({ "bluefruit", "rock", "cherrybomb", "none", "pearl" }, pseudoseed("common"))
+	-- elseif cr > 5 and cr <= 9 then
+	-- 	G.GAME.jokerifle =
+	-- 		pseudorandom_element({ "beehive", "flashbang", "grenade", "sporepuff" }, pseudoseed("uncommon"))
+	-- elseif cr > 9 then
+	-- 	G.GAME.jokerifle = "singularity"
+	-- end
 
 	-- This checks for rotting cards and triggers their countdown + destroys the card if its reached the end of its lifespan
 

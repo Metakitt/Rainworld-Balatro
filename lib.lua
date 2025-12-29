@@ -135,6 +135,26 @@ SCUG.enemy_count = function()
 	return enemy_count
 end
 
+SCUG.sufficiently_wet = function()
+	-- Decks: Looks to the Moon
+	if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck"
+	then
+		return true
+	end
+	-- Jokers
+	local wet_keys = {
+		"j_splash",
+		"j_seltzer",
+		"j_dietcola",
+		"j_rw_rivulet",
+		"j_rw_stupid_wet_rat",
+	}
+	for _, key in ipairs(wet_keys) do
+		if #SMODS.find_card(key) > 0 then return true end
+	end
+	return false
+end
+
 ---@param original_table table
 ---@return table
 local copy_table = function(original_table)
