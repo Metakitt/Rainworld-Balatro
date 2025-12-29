@@ -134,7 +134,7 @@ SMODS.Sticker({
 			-- 		end
 			-- 	end
 			-- end
-		elseif context.end_of_round then
+		elseif context.end_of_round and context.main_eval and context.beat_boss then
 			-- for i = 1, #G.deck.cards do
 			-- 	local chosen_cards = G.deck.cards[i]
 			-- 	SMODS.debuff_card(chosen_cards, "reset", "bees")
