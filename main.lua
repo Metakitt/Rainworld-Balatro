@@ -197,22 +197,22 @@ function end_round()
 	end
 end
 
-local GF_evaluate_play = G.FUNCS.evaluate_play
-function G.FUNCS.evaluate_play(e)
-	GF_evaluate_play(e)
+-- local GF_evaluate_play = G.FUNCS.evaluate_play
+-- function G.FUNCS.evaluate_play(e)
+-- 	GF_evaluate_play(e)
 
-	if G.GAME.blind.config.blind.key == "bl_rw_rotblind" and not G.GAME.blind.disabled then
-		local rot = {}
-		for i = 1, #G.play.cards do
-			if G.play.cards[i].config.center ~= G.P_CENTERS.m_rw_rotting then
-				rot = G.play.cards[i]
-				--SMODS.calculate_effect({message = 'Rotted!'}, rot)
-				rot:set_ability(G.P_CENTERS.m_rw_rotting)
-				rot:juice_up()
-			end
-		end
-	end
-end
+-- 	if G.GAME.blind.config.blind.key == "bl_rw_rotblind" and not G.GAME.blind.disabled then
+-- 		local rot = {}
+-- 		for i = 1, #G.play.cards do
+-- 			if G.play.cards[i].config.center ~= G.P_CENTERS.m_rw_rotting then
+-- 				rot = G.play.cards[i]
+-- 				--SMODS.calculate_effect({message = 'Rotted!'}, rot)
+-- 				rot:set_ability(G.P_CENTERS.m_rw_rotting)
+-- 				rot:juice_up()
+-- 			end
+-- 		end
+-- 	end
+-- end
 
 local new_roundref = new_round
 function new_round()
