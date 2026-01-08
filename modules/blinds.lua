@@ -11,27 +11,26 @@ SMODS.Blind({
 	boss_colour = HEX("1b5699"),
 	atlas = "theblinds",
 	pos = { x = 0, y = 0 },
-	press_play = function(self)
-		if self.disabled then return end
-		G.E_MANAGER:add_event(Event({
-			trigger = "after",
-			delay = 0.2,
-			func = function()
-				for i = 1, #G.play.cards do
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							G.play.cards[i]:juice_up()
-							return true
-						end
-					}))
-					G.play.cards[i]:set_ability("m_rw_rotting")
-					delay(0.23)
+	calculate = function(self, blind, context)
+		if context.after and not blind.disabled then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					blind:wiggle()
+					for i = 1, #G.play.cards do
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								G.play.cards[i]:juice_up()
+								G.play.cards[i]:set_ability("m_rw_rotting")
+								return true
+							end
+						}))
+					end
+					return true
 				end
-				return true
-			end
-		}))
-		self.triggered = true
-		-- return true
+			}))
+			delay(0.8)
+			blind.triggered = true
+		end
 	end
 })
 
