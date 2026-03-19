@@ -46,7 +46,6 @@ SMODS.Tag({
 				return true
 			end)
 			tag.triggered = true
-			return true
 		end
 	end,
 })
@@ -81,7 +80,6 @@ if SCUG.config.allow_enemy_spawns then
 				end)
 				tag.triggered = true
 				G.CONTROLLER.locks[lock] = nil
-				return true
 			end
 		end,
 	})
@@ -112,7 +110,6 @@ if SCUG.config.allow_enemy_spawns then
 						return true
 					end)
 					tag.triggered = true
-					return true
 				end
 			end
 		end,
@@ -165,7 +162,6 @@ SMODS.Tag({
 				return true
 			end)
 			tag.triggered = true
-			return true
 		end
 	end,
 })
@@ -209,7 +205,6 @@ SMODS.Tag({
 				return true
 			end)
 			tag.triggered = true
-			return true
 		end
 	end,
 })
@@ -252,7 +247,6 @@ SMODS.Tag({
 				return true
 			end)
 			tag.triggered = true
-			return true
 		end
 	end,
 })
@@ -295,7 +289,6 @@ SMODS.Tag({
 				return true
 			end)
 			tag.triggered = true
-			return true
 		end
 	end,
 })
@@ -336,7 +329,6 @@ SMODS.Tag({
 				return true
 			end)
 			tag.triggered = true
-			return true
 		end
 	end,
 })
