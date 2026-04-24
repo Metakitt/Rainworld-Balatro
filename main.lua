@@ -7,7 +7,7 @@ assert(SMODS.load_file("./modules/jokers.lua"))()
 assert(SMODS.load_file("./modules/challenges.lua"))()
 assert(SMODS.load_file("./modules/booster.lua"))()
 assert(SMODS.load_file("./modules/deck.lua"))()
-assert(SMODS.load_file("./modules/food_rarities.lua"))()
+assert(SMODS.load_file("./modules/rarities.lua"))()
 assert(SMODS.load_file("./modules/weapons.lua"))()
 assert(SMODS.load_file("./modules/vouchers.lua"))()
 assert(SMODS.load_file("./modules/blinds.lua"))()
@@ -55,6 +55,7 @@ SCUG.reset_game_globals = function(run_start)
 			scug_antes = 0,
 			ante_kills = {}
 		}
+		G.GAME.jokerifle = "none"
 	end
 
 	-- local cr = SCUG.number_in_range(1, 11, "rw_wjokerifle")
@@ -272,8 +273,8 @@ function new_round()
 							notrot[#notrot + 1] = G.playing_cards[i]
 						end
 					end
-					local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-					if #notrot > 0 then
+					local rotted = (#notrot > 0) and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+					if rotted then
 						rotted:set_ability(G.P_CENTERS.m_rw_rotting)
 					end
 				end
@@ -291,17 +292,20 @@ end
 G.C.FOOD = HEX("0736f3")
 G.C.WEAPON = HEX("875796")
 G.C.ROT = HEX("000070")
-
-local loc_colour_RW = loc_colour
-function loc_colour(_c, _default)
-	if not G.ARGS.LOC_COLOURS then
-		loc_colour_RW()
-	end
-	G.ARGS.LOC_COLOURS.weapon = G.C.WEAPON
-	G.ARGS.LOC_COLOURS.food = G.C.FOOD
-	G.ARGS.LOC_COLOURS.rot = G.C.ROT
-	return loc_colour_RW(_c, _default)
-end
+loc_colour()
+G.ARGS.LOC_COLOURS["weapon"] = G.C.WEAPON
+G.ARGS.LOC_COLOURS["food"] = G.C.FOOD
+G.ARGS.LOC_COLOURS["rot"] = G.C.ROT
+-- local loc_colour_RW = loc_colour
+-- function loc_colour(_c, _default)
+-- 	if not G.ARGS.LOC_COLOURS then
+-- 		loc_colour_RW()
+-- 	end
+-- 	G.ARGS.LOC_COLOURS.weapon = G.C.WEAPON
+-- 	G.ARGS.LOC_COLOURS.food = G.C.FOOD
+-- 	G.ARGS.LOC_COLOURS.rot = G.C.ROT
+-- 	return loc_colour_RW(_c, _default)
+-- end
 
 -- Food Joker Pool (if not defined)
 if not SMODS.ObjectTypes["Food"] then
