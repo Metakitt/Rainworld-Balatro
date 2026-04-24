@@ -16,18 +16,18 @@ SMODS.Blind({
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					blind:wiggle()
-					for i = 1, #G.play.cards do
-						G.E_MANAGER:add_event(Event({
-							func = function()
-								G.play.cards[i]:juice_up()
-								G.play.cards[i]:set_ability("m_rw_rotting")
-								return true
-							end
-						}))
-					end
 					return true
 				end
 			}))
+			for i = 1, #G.play.cards do
+				G.play.cards[i]:set_ability("m_rw_rotting", nil, true)
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						G.play.cards[i]:juice_up()
+						return true
+					end
+				}))
+			end
 			delay(0.8)
 			blind.triggered = true
 		end
