@@ -104,7 +104,7 @@ SMODS.Voucher({
 			-- 	"tag_rw_healthy" }
 			-- local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
 			-- add_tag(Tag(chosen_tag))
-			local random_tag = pseudorandom_element(SMODS.Tags, "rw_random_rag")
+			local random_tag = pseudorandom_element(SMODS.Tags, "rw_random_tag")
 			add_tag(Tag(random_tag.key))
 		end
 	end
@@ -130,7 +130,7 @@ SMODS.Voucher({
 			-- 	"tag_rw_healthy" }
 			-- local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
 			-- add_tag(Tag(chosen_tag))
-			local random_tag = pseudorandom_element(SMODS.Tags, "rw_random_rag")
+			local random_tag = pseudorandom_element(SMODS.Tags, "rw_random_tag")
 			add_tag(Tag(random_tag.key))
 		end
 	end
