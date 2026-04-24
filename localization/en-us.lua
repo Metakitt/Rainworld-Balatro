@@ -72,11 +72,10 @@ return {
 				text = {
 					"If {C:attention}first discard{} of",
 					"round has only {C:attention}1{} card",
-					"{C:attention}destroy{} it. Gains {C:mult}+3{}",
-					"Mult for each {C:attention}card{}",
-					"{C:attention}destroyed{} by Grenade",
-					"this run.",
-					"{C:inactive}(Currently {}{C:mult}+#1#{}{C:inactive}){}",
+					"{C:attention}destroy{} it.",
+					"{C:mult}+3{} Mult for each card",
+					"destroyed this way",
+					"{C:inactive}(Currently {C:mult}#1# {C:inactive}Mult)",
 				},
 			},
 			rw_wgrenade2 = {
@@ -84,10 +83,9 @@ return {
 				text = {
 					"If {C:attention}first discard{} of",
 					"round has only {C:attention}1{} card",
-					"{C:attention}destroy{} it. Gains {C:mult}+3{}",
-					"Mult for each {C:attention}card{}",
-					"{C:attention}destroyed{} by Grenade",
-					"this run.",
+					"{C:attention}destroy{} it.",
+					"{C:mult}+3{} Mult for each card",
+					"destroyed this way",
 				},
 			},
 			rw_wflashbang = {
@@ -264,7 +262,7 @@ return {
 					"Does nothing.",
 				},
 			},
-			
+
 			rw_wjokerifle_none = {
 				name = "Joke Rifle",
 				text = {
@@ -276,7 +274,7 @@ return {
 					"Does nothing.",
 				},
 			},
-			
+
 			rw_wjokerifle_bluefruit = {
 				name = "Joke Rifle",
 				text = {

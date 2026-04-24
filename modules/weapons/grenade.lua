@@ -1,5 +1,8 @@
 SMODS.Sticker({
 	key = "wgrenade",
+	config = {
+		mult = 0
+	},
 	loc_txt = {
 		label = "Grenade",
 	},
@@ -15,7 +18,7 @@ SMODS.Sticker({
 		foods = false,
 	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { G.GAME.grenademult } }
+		return { vars = { SMODS.signed(card.ability.rw_wgrenade.mult) } }
 	end,
 	rate = 0.08,
 	needs_enable_flag = false,
@@ -23,7 +26,7 @@ SMODS.Sticker({
 		if context.discard then
 			if G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then
 				SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
-				G.GAME.grenademult = G.GAME.grenademult + 3
+				card.ability.rw_wgrenade.mult = card.ability.rw_wgrenade.mult + 3
 
 				return {
 					remove = true,
@@ -34,7 +37,7 @@ SMODS.Sticker({
 
 		if context.joker_main then
 			return {
-				mult = G.GAME.grenademult,
+				mult = card.ability.rw_wgrenade.mult,
 			}
 		end
 	end,
