@@ -78,10 +78,9 @@ SMODS.Back({
 			"Cards can become Moldy and Rot."
 		},
 	},
-	calculate = function(self,back,context)
-	
-	if context.end_of_round and context.main_eval then
-	--local suit = SCUG.get_suit_in_deck() --pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
+	calculate = function(self, back, context)
+		if context.end_of_round and context.main_eval then
+			--local suit = SCUG.get_suit_in_deck() --pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
 			for _, other_card in ipairs(G.playing_cards) do
 				if other_card:is_suit("Clubs") then
 					other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
@@ -92,15 +91,13 @@ SMODS.Back({
 					})
 				end
 			end
-			
+
 			local cardamount = SCUG.number_in_range(1, 4, "wetitup")
-			
 			for i = 1, math.min(cardamount, #G.playing_cards) do
-			local card, card_index = pseudorandom_element(G.playing_cards, pseudoseed('tester'))
-			card:set_ability(G.P_CENTERS.m_rw_wetasscard)
+				local card, card_index = pseudorandom_element(G.playing_cards, pseudoseed('tester'))
+				card:set_ability(G.P_CENTERS.m_rw_wetasscard)
 			end
-			
-	end	
+		end
 	end
 })
 
