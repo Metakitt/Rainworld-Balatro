@@ -24,9 +24,7 @@ assert(SMODS.load_file("./modules/achievements.lua"))()
 
 SMODS.Sound({
 	key = "crunch",
-	path = {
-		["default"] = "crunch.mp3",
-	},
+	path = "crunch.mp3",
 })
 
 -- Patches for Game Functions
