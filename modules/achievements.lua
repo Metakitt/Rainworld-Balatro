@@ -111,7 +111,7 @@ SMODS.Achievement({
 	key = "passage_martyr",
 	unlock_condition = function(self, args)
 		if args.type == "win" then
-			return G.GAME.consumeable_usage_total.foods == nil
+			return (G.GAME.consumeable_usage_total or {}).foods == nil
 		end
 	end,
 })
