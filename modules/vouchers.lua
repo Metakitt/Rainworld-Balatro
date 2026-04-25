@@ -55,31 +55,6 @@ SMODS.Voucher({
 			end
 
 			if #G.consumeables.cards ~= G.consumeables.config.card_limit then
-				-- if weaponselected == "beehive" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_beehive" }) --
-				-- elseif weaponselected == "cherrybomb" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_cherrybomb" }) --
-				-- elseif weaponselected == "electricspear" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_ele" }) --
-				-- elseif weaponselected == "explosivespear" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_exp" }) --
-				-- elseif weaponselected == "firespear" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear_fire" }) --
-				-- elseif weaponselected == "flashbang" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_flashbang" }) --
-				-- elseif weaponselected == "grenade" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_grenade" }) --
-				-- elseif weaponselected == "jokerifle" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_jokerifle" }) --
-				-- elseif weaponselected == "rock" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_rock" }) --
-				-- elseif weaponselected == "singularity" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_singularity" }) --
-				-- elseif weaponselected == "spear" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_spear" }) --
-				-- elseif weaponselected == "sporepuff" then
-				-- 	SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = "c_rw_sporepuff" }) --
-				-- end
 				SMODS.add_card { set = "obtainweapon", area = G.consumeables, key = "c_rw_" .. weaponselected }
 			end
 		end
@@ -96,14 +71,6 @@ SMODS.Voucher({
 	pos = { x = 2, y = 0 },
 	calculate = function(self, card, context)
 		if context.skip_blind then
-			-- local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_polychrome",
-			-- 	"tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon",
-			-- 	"tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_economy",
-			-- 	"tag_rw_survivalist", "tag_rw_top_pup",
-			-- 	"tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast",
-			-- 	"tag_rw_healthy" }
-			-- local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
-			-- add_tag(Tag(chosen_tag))
 			local random_tag = pseudorandom_element(SMODS.Tags, "rw_random_tag")
 			add_tag(Tag(random_tag.key))
 		end
@@ -122,14 +89,6 @@ SMODS.Voucher({
 	requires = { "v_rw_relay" },
 	calculate = function(self, card, context)
 		if context.skip_blind then
-			-- local tags = { "tag_uncommon", "tag_rare", "tag_negative", "tag_foil", "tag_polychrome",
-			-- 	"tag_investment", "tag_voucher", "tag_boss", "tag_standard", "tag_charm", "tag_meteor", "tag_buffoon",
-			-- 	"tag_handy", "tag_garbage", "tag_ethereal", "tag_coupon", "tag_double", "tag_juggle", "tag_economy",
-			-- 	"tag_rw_survivalist", "tag_rw_top_pup",
-			-- 	"tag_rw_danger", "tag_rw_escape", "tag_rw_rivulet", "tag_rw_power", "tag_rw_quickequip", "tag_rw_feast",
-			-- 	"tag_rw_healthy" }
-			-- local chosen_tag = pseudorandom_element(tags, "rw_tags", {})
-			-- add_tag(Tag(chosen_tag))
 			local random_tag = pseudorandom_element(SMODS.Tags, "rw_random_tag")
 			add_tag(Tag(random_tag.key))
 		end

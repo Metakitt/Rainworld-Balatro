@@ -10,8 +10,8 @@ SMODS.Stake({
 		G.GAME.modifiers.rw_extra_enemy_rolls = (G.GAME.modifiers.rw_extra_enemy_rolls or 0) + 1
 	end,
 	colour = HEX("000000"),
-	applied_stakes = { 'gold' },
-	above_stake = 'gold',
+	applied_stakes = { 'white' },
+	above_stake = 'white',
 	atlas = "stakes",
 	pos = { x = 4, y = 1 },
 	sticker_atlas = "stakes_sticker",

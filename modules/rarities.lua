@@ -4,7 +4,6 @@ SMODS.Rarity({
 		name = 'Common',
 	},
 	pools = {
-		-- ["foods"] = true,
 		["foods"] = { rate = 0.7 },
 	},
 	badge_colour = HEX("1b5699"),
@@ -17,7 +16,6 @@ SMODS.Rarity({
 		name = 'Uncommon',
 	},
 	pools = {
-		-- ["foods"] = true,
 		["foods"] = { rate = 0.27 },
 	},
 	badge_colour = HEX("1b5699"),
@@ -30,7 +28,6 @@ SMODS.Rarity({
 		name = 'Rare',
 	},
 	pools = {
-		-- ["foods"] = true,
 		["foods"] = { rate = 0.02 },
 	},
 	badge_colour = HEX("1b5699"),

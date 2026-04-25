@@ -21,9 +21,6 @@ SMODS.Tag({
 			slugcat.states.visible = false
 			tag:yep("+", G.C.RARITY.Uncommon, function()
 				slugcat:start_materialize()
-				-- This code makes it free
-				-- slugcat.ability.couponed = true
-				-- slugcat:set_cost()
 				return true
 			end)
 			tag.triggered = true

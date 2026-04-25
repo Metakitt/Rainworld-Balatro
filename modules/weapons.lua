@@ -45,13 +45,5 @@ SMODS.ConsumableType({
 	default = "c_rw_wspear"
 })
 
--- @ Game initiation; this sets a global variable that keeps track of the grenade multiplier for the current run.
--- local igo = Game.init_game_object
--- function Game:init_game_object()
--- 	local ret = igo(self)
--- 	ret.grenademult = 0
--- 	ret.jokerifle = "none"
--- 	return ret
--- end
 
 -- function here that checks if card has one of the weapons as sticker, and if so, it can't have another. Or make all weapons incompatible with each other?
