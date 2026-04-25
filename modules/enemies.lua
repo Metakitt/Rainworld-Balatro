@@ -994,7 +994,7 @@ local new_roundref = new_round
 function new_round()
 	new_roundref()
 	if not G.GAME.challenge_tab then
-		for _ = 1, (1 + G.GAME.modifiers.rw_extra_enemy_rolls) do
+		for _ = 1, (1 + (G.GAME.modifiers.rw_extra_enemy_rolls or 0)) do
 			SCUG.spawn_enemy()
 		end
 	end
