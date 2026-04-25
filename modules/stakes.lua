@@ -7,7 +7,7 @@ SMODS.Stake({
 	prefix_config = { applied_stakes = { mod = false } },
 	--unlocked_stake = "stake_lust",
 	modifiers = function()
-		--tbd
+		G.GAME.modifiers.rw_extra_enemy_rolls = (G.GAME.modifiers.rw_extra_enemy_rolls or 0) + 1
 	end,
 	colour = HEX("000000"),
 	applied_stakes = { 'gold' },
