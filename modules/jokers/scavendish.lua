@@ -15,6 +15,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = false,
 	perishable_compat = true,
+	attributes = { "weapon", "chance" },
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
@@ -24,7 +25,7 @@ SMODS.Joker({
 		}
 	end,
 	add_to_deck = function(self, card, from_debuff)
-		for k,v in pairs(SMODS.Stickers) do
+		for k, v in pairs(SMODS.Stickers) do
 			local st, nd = string.find(k, "rw_w")
 			if st == 1 and nd == 4 then
 				v.rate = v.rate * 3
@@ -32,7 +33,7 @@ SMODS.Joker({
 		end
 	end,
 	remove_from_deck = function(self, card, from_debuff)
-		for k,v in pairs(SMODS.Stickers) do
+		for k, v in pairs(SMODS.Stickers) do
 			local st, nd = string.find(k, "rw_w")
 			if st == 1 and nd == 4 then
 				v.rate = v.rate / 3

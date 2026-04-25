@@ -7,6 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "chance", "hand_size", "boss_blind" },
 	config = { extra = { h_size = 0, h_mod = 1, pupodds = 5, growth = 3 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
@@ -30,7 +31,7 @@ SMODS.Joker({
 				card:grow_up()
 			end
 		end
-		
+
 		if
 			G.GAME.last_blind.boss
 			and context.end_of_round

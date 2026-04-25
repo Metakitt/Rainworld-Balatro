@@ -14,7 +14,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	perishable_compat = false,
 	loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
+		info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.pupodds, "rw_hunter")
 		return {
 			vars = {
@@ -26,7 +26,6 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
-	
 		if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
 			card.ability.extra.growth = card.ability.extra.growth - 1
 			if card.ability.extra.growth <= 0 then
@@ -34,7 +33,7 @@ SMODS.Joker({
 				card:grow_up()
 			end
 		end
-	
+
 		if context.after and not context.blueprint then
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.pupmult_gain
 			SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)

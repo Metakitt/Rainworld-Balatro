@@ -15,6 +15,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	attributes = { "slugcat", "weapon", "mult" },
 	loc_vars = function(self, info_queue, card)
 	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		local wep_count = 0

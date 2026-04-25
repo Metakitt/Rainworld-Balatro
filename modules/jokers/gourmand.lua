@@ -8,6 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	perishable_compat = false,
+	attributes = { "slugcat", "xmult", "scaling", "food", "destroy_card" },
 	config = {
 		extra = {
 			xmult_mod = 1,

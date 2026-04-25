@@ -13,6 +13,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	attributes = { "enemy", "economy", "joker_slot" },
 	loc_vars = function(self, info_queue, card)
 		local surrounded = G.jokers and (SCUG.enemy_count() / #G.jokers.cards > 0.5) or false
 		return {

@@ -25,8 +25,7 @@ return {
 					"{C:attention}#2#{} round(s) until dry",
 				},
 			},
-		},
-		
+		},	
 		Other = {
 			--region Weapon Descriptions
 			rw_wsporepuff = {

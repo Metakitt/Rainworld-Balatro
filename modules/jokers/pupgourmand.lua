@@ -23,6 +23,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	perishable_compat = false,
+	attributes = { "slugcat", "xmult", "scaling", "food", "destroy_card" },
 	config = {
 		extra = {
 			xmult_mod = 1,
@@ -37,25 +38,24 @@ SMODS.Joker({
 	},
 
 	loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
+		info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		return {
 			vars = { card.ability.extra.xmult_mod, card.ability.extra.pupxmult_gain_common, card.ability.extra.pupxmult_gain_uncommon, card.ability.extra.pupxmult_gain_food },
 		}
 	end,
-	add_to_deck = function (self,card,from_debuff)
-	local hungerchance = SCUG.number_in_range(1, 666, "ohfuck")
-	if hungerchance == 666 then
-	SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_eater" })
-	for k, v in ipairs(G.jokers.cards) do
+	add_to_deck = function(self, card, from_debuff)
+		local hungerchance = SCUG.number_in_range(1, 666, "ohfuck")
+		if hungerchance == 666 then
+			SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_eater" })
+			for k, v in ipairs(G.jokers.cards) do
 				if v.ability.hunger then
 					v.ability.extra.x_mult = v.ability.extra.x_mult + 1
 				end
 			end
-	end
+		end
 	end,
 
 	calculate = function(self, card, context)
-	
 		if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
 			card.ability.extra.growth = card.ability.extra.growth - 1
 			if card.ability.extra.growth <= 0 then
@@ -63,7 +63,7 @@ SMODS.Joker({
 				card:grow_up()
 			end
 		end
-	
+
 		if context.joker_main then
 			return {
 				xmult = card.ability.extra.xmult_mod,

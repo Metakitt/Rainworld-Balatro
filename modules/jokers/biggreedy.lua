@@ -8,6 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = false,
 	perishable_compat = false,
+	attributes = { "slugcat", "rw_food", "scaling", "xmult" },
 	config = { extra = { xmult_mod = 1, xmult_gain_food = 0.25, food_used_total = 0 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
@@ -38,7 +39,7 @@ SMODS.Joker({
 			card.ability.extra.food_used_total = card.ability.extra.food_used_total + 1
 			SMODS.calculate_effect({ message = "Upgrade!" }, card)
 		end
-		
+
 		if card.ability.extra.food_used_total == 0 then
 			card.children.center:set_sprite_pos({ x = 0, y = 2 })
 		end

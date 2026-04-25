@@ -14,10 +14,11 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	attributes = { "slugcat", "enhancements", "xchips", "full_deck" },
 	enhancement_gate = "m_rw_wetasscard",
 	loc_vars = function(self, info_queue, card)
 		local wet_count, _ = SCUG.enhancement_count("m_rw_wetasscard")
-        return {
+		return {
 			vars = {
 				card.ability.extra.wet_xchips,
 				1 + (wet_count * card.ability.extra.wet_xchips),
@@ -26,7 +27,7 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-            local wet_count, _ = SCUG.enhancement_count("m_rw_wetasscard")
+			local wet_count, _ = SCUG.enhancement_count("m_rw_wetasscard")
 			return { xchips = 1 + (wet_count * card.ability.extra.wet_xchips) }
 		end
 	end,

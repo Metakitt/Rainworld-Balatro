@@ -8,7 +8,7 @@
 -- Owned Consumables:
 -- -- Weapon Card: Gain the weapon. If owned, +2 Mult.
 -- -- Food Card: +5 Chips.
--- -- Other: Half the sell value (max of $1)
+-- -- Other: Half the sell value (min of $1)
 -- Playing Cards from Hand:
 -- -- Not Rot cards: 20% of Chips or 2 Chips, whichever's higher
 -- -- Rot cards: 20% of abs(Chips) or 4 Chips, whichever's higher. Prioritized.
@@ -49,6 +49,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = false,
+	attributes = { "slugcat", "chips", "mult", "xmult", "destroy_card", "economy", "generation" },
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
@@ -298,7 +299,7 @@ SMODS.Joker({
 								return true
 							end,
 						}))
-					-- Actually useful
+						-- Actually useful
 					elseif snack.type == "enemy" then
 						local MULT = rot_boost and 7 or 3
 						local CHIPS = rot_boost and 12 or 5

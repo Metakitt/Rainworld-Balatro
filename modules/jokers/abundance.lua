@@ -7,7 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-
+	attributes = { "slugcat", "generation", "rw_food", "joker" },
 	calculate = function(self, card, context)
 		if
 			context.setting_blind

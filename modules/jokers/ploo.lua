@@ -8,6 +8,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "xmult", "joker" },
 	config = { extra = { pup_mult = 1.5 }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.pup_mult } }

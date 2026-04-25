@@ -14,6 +14,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	attributes = { "slugcat", "weapon", "mult" },
 	loc_vars = function(self, info_queue, card)
 		local wep_count = 0
 		if G and G.jokers and G.jokers.cards then

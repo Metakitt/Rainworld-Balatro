@@ -52,6 +52,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	attributes = { "generation", "xchips", "chance", "weapon", "rw_food" },
 	loc_vars = function(self, info_queue, card)
 		local return_table = {
 			key = self.key,

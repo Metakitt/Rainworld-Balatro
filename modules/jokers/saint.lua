@@ -7,6 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = false,
+	attributes = { "slugcat", "discard", "destroy_card", "editions"},
 	config = {
 		extra = { attuned = false, discards = 25, saint_discards = 25, recharge = false, xmult = 1, recharging = "Ready" },
 		name = "Saint",

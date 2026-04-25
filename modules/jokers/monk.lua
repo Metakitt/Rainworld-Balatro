@@ -7,6 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "chance", "ante" },
 	config = { extra = { center_table = -1, odds = 10 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)

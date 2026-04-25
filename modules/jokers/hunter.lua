@@ -13,6 +13,7 @@ SMODS.Joker({
 	},
 	blueprint_compat = true,
 	perishable_compat = false,
+	attributes = { "slugcat", "mult", "chance", "ante" },
 	loc_vars = function(self, info_queue, card)
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_hunter")
 		return {

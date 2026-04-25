@@ -7,10 +7,11 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "swap", "chance", "xblindsize" },
 	config = { extra = { odds = 20 }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_blurred")
-		return { vars = { numerator, denominator }}
+		return { vars = { numerator, denominator } }
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main and not context.blueprint then

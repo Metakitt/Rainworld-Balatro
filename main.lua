@@ -145,6 +145,26 @@ G.ARGS.LOC_COLOURS["weapon"] = G.C.WEAPON
 G.ARGS.LOC_COLOURS["food"] = G.C.FOOD
 G.ARGS.LOC_COLOURS["rot"] = G.C.ROT
 
+-- Attributes
+SMODS.Attribute {
+	key = "slugcat"
+}
+SMODS.Attribute {
+	key = "rw_food"
+}
+SMODS.Attribute {
+	key = "weapon"
+}
+SMODS.Attribute {
+	key = "ante"
+}
+SMODS.Attribute {
+	key = "enemy"
+}
+SMODS.Attribute {
+	key = "killer"
+}
+
 -- Food Joker Pool (if not defined)
 if not SMODS.ObjectTypes["Food"] then
 	SMODS.ObjectType({

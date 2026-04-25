@@ -27,6 +27,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "generation", "joker" },
 	config = { extra = { food = "none" }, slugcat = true },
 
 	calculate = function(self, card, context)

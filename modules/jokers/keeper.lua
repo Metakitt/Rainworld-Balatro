@@ -25,6 +25,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
+    attributes = { "slugcat", "xmult", "full_deck" },
     loc_vars = function(self, info_queue, card)
         return {
             vars = { card.ability.extra.bee_mult, 1 + (card.ability.extra.bee_mult * bee_debuffed_count(G and G.playing_cards or {})) }
