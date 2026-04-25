@@ -99,3 +99,17 @@ SMODS.Atlas {
 	px = 34,
 	py = 34
 }
+
+-- Temp Stakes
+SMODS.Atlas {
+	key = "stakes",
+	path = "chips.png",
+	px = 29,
+	py = 29
+}
+SMODS.Atlas {
+	key = "stakes_sticker",
+	path = "stickers.png",
+	px = 71,
+	py = 95
+}

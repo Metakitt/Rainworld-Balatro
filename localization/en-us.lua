@@ -26,6 +26,27 @@ return {
 				},
 			},
 		},
+		
+		--[[Stake = {
+		
+		stake_violence = {
+		name = "Karma 1",
+		text = {'Two enemies roll per round.'},
+		},
+		
+		stake_lust = {
+		name = "Karma 2",
+		text = {'Heart suits have a chance to be debuffed.',
+		'Another suit is debuffed is there are no Heart cards.'},
+		},
+		
+		stake_companionship = {
+		name = "Karma 3",
+		text = {'For each Joker obtained, 1/2 chance to get', 'a common Eternal joker.'},
+		},
+		
+		},]]
+		
 		Other = {
 			--region Weapon Descriptions
 			rw_wsporepuff = {

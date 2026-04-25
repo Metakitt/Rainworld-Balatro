@@ -1086,5 +1086,8 @@ function new_round()
 	new_roundref()
 	if not G.GAME.challenge_tab then
 		SCUG.spawn_enemy()
+		if G.GAME.applied_stakes == 'rw_stake_violence' then
+		SCUG.spawn_enemy()
+		end
 	end
 end
