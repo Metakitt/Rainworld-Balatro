@@ -39,6 +39,7 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.before and not context.blueprint then
 			for _, v in ipairs(G.jokers.cards) do
@@ -91,8 +92,8 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -112,5 +113,6 @@ SMODS.Joker({
 			}))
 			end_round()
 		end
+		
 	end,
 })

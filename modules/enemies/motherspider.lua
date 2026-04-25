@@ -47,12 +47,14 @@ SMODS.Joker({
 		end
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.debuff_hand and not context.blueprint then
 			if not (context.poker_hands["High Card"][1] or context.poker_hands["Flush House"][1]) then
 				return { debuff = true }
 			end
 		end
+		
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -76,6 +78,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		--Nothing happens.
 
@@ -88,7 +91,6 @@ SMODS.Joker({
 					if k.config.center_key == "j_rw_motherspider" then
 						for _, v in pairs(G.play.cards) do
 							v:remove()
-							--SMODS.calculate_context{destroy_card = v, remove = true}
 						end
 					end
 				end
@@ -96,15 +98,5 @@ SMODS.Joker({
 			return ret
 		end
 
-		--[[local oldblinddebuffhand = Blind.debuff_hand
-function Blind:debuff_hand(cards, hand, handname, check)
-    local g = oldblinddebuffhand(self, cards, hand, handname, check)
-    if g then
-        for k, v in pairs(G.play.cards) do
-            v:start_dissolve()
-        end
-    end
-    return g
-end]]
 	end,
 })

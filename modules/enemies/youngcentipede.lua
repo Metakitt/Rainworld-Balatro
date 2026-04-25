@@ -41,6 +41,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		-- Young Centipede has no direct threat.
 
@@ -67,8 +68,8 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -82,8 +83,7 @@ SMODS.Joker({
 				colour = G.C.MONEY,
 				delay = 0.45,
 			}
-		else
-			--print('Safe')
 		end
+		
 	end,
 })

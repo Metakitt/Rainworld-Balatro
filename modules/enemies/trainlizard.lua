@@ -31,6 +31,7 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.setting_blind then
 			local jokers = {}
@@ -52,11 +53,6 @@ SMODS.Joker({
 					SMODS.debuff_card(v, true, "train")
 				end
 			end
-			-- for _, v in ipairs(G.hand.cards) do
-			-- 	if v.config.card.value == rank and not context.blueprint then
-			-- 		SMODS.debuff_card(v, true, "train")
-			-- 	end
-			-- end
 			for _, v in ipairs(G.discard.cards) do
 				if v.config.card.value == rank and not context.blueprint then
 					SMODS.debuff_card(v, true, "train")
@@ -74,9 +70,6 @@ SMODS.Joker({
 		end
 
 		if card.ability.extra.scoredhand >= 3 and card.ability.extra.jokersold >= 3 then
-			-- for _, v in ipairs(G.hand.cards) do
-			-- 	SMODS.debuff_card(v, remove, "train")
-			-- end
 			for _, v in ipairs(G.playing_cards) do
 				SMODS.debuff_card(v, remove, "train")
 			end
@@ -97,6 +90,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		if
 			context.main_eval
@@ -118,5 +112,6 @@ SMODS.Joker({
 			}))
 			end_round()
 		end
+		
 	end,
 })

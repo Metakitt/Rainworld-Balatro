@@ -84,6 +84,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat (Disables xMult jokers, and Jokers with xMult weapons. I decided not to count polychrome in this)
 		if context.main_eval and not context.blueprint then
 			for _, center in ipairs(x_mult_chips_jokers_keys) do
@@ -130,8 +131,8 @@ SMODS.Joker({
 					blocking = false,
 				}))
 			end
+			
 			--Undefeated (Destroys all debuffed jokers)
-
 			if
 				context.main_eval
 				and context.end_of_round
@@ -146,5 +147,6 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 	end,
 })

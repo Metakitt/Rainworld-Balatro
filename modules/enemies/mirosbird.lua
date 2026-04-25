@@ -31,6 +31,7 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			G.GAME.blind.chips = G.GAME.blind.chips * 2
@@ -54,7 +55,6 @@ SMODS.Joker({
 		end
 
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -64,5 +64,6 @@ SMODS.Joker({
 		then
 			G.GAME.mirosbird = 2
 		end
+		
 	end,
 })

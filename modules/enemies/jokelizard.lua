@@ -31,6 +31,7 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
+	
 		-- Defeat
 		if not card.ability.extra.defeat then
 			if SCUG.weapon_count("rw_wjokerifle") > 0 then
@@ -38,6 +39,7 @@ SMODS.Joker({
 				SMODS.destroy_cards(card)
 			end
 		end
+		
 		-- Threat/Undefeated
 		if
 			(
@@ -63,7 +65,6 @@ SMODS.Joker({
 						table.insert(jojers, v)
 					end
 				end
-				-- print(jojers)
 				for i = 1, #jojers do
 					local rarity = jojers[i].config.center.rarity
 					if type(rarity) == "number" then
@@ -84,5 +85,6 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 	end,
 })

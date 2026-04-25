@@ -48,14 +48,11 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.joker_main and not context.blueprint then
 			local leech = #SMODS.find_card("j_rw_sealeech")
-			-- for k, v in ipairs(G.jokers.cards) do
-			-- 	if v.ability.sealeech == true then
-			-- 		leech = leech - 1
-			-- 	end
-			-- end
+		
 			return {
 				chips = card.ability.extra.unchult * leech,
 				mult = card.ability.extra.unchult * leech,
@@ -102,6 +99,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		if
 			context.main_eval
@@ -120,5 +118,6 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 	end,
 })

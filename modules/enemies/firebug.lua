@@ -54,6 +54,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if
 			context.setting_blind
@@ -88,6 +89,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		if card.ability.extra.aggressive == true then
 			if
@@ -112,6 +114,7 @@ SMODS.Joker({
 						end
 					end
 				end
+				
 			-- Aggro
 			elseif
 				context.main_eval
@@ -129,5 +132,6 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 	end,
 })

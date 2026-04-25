@@ -43,11 +43,11 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.joker_main and not context.blueprint then
 			return {
 				x_chips = card.ability.extra.chip_mod,
-				-- chip_message = 'x0.75 Chips'
 			}
 		end
 
@@ -74,6 +74,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		if
 			context.main_eval
@@ -86,5 +87,6 @@ SMODS.Joker({
 				v.ability.perma_bonus = v.ability.perma_bonus + card.ability.extra.crunch
 			end
 		end
+		
 	end,
 })

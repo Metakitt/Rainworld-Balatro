@@ -41,6 +41,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.joker_main and not context.blueprint then
 			return {
@@ -71,8 +72,8 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -90,9 +91,9 @@ SMODS.Joker({
 			end
 			local unlevel = SCUG.big(1) - G.GAME.hands[_handname].level
 			if unlevel < SCUG.big(0) then
-				-- print(G.GAME.hands[_handname].level .. unlevel .. " -> 1")
 				SMODS.smart_level_up_hand(card, _handname, false, SCUG.num(unlevel))
 			end
 		end
+		
 	end,
 })

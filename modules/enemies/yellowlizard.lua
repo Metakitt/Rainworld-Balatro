@@ -52,6 +52,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.main_eval and context.end_of_round and not G.GAME.blind.boss and not context.blueprint then
 			ease_dollars(card.ability.extra.takeyourmoney)
@@ -96,6 +97,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		if
 			context.main_eval

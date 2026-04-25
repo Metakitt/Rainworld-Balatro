@@ -49,7 +49,7 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-		-- Defeat
+	
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -73,6 +73,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		-- Undefeated
 		if
 			context.main_eval
@@ -85,12 +86,12 @@ SMODS.Joker({
 				card.ability.extra.odds = card.ability.extra.odds - 1
 			end
 		end
+		
 		-- Threat pt.1
 		if context.debuffed_hand then
 			for _, v in ipairs(context.full_hand) do
 				table.insert(card.ability.extra.reload, v)
 			end
-			-- print(#card.ability.extra.reload)
 		end
 		if context.after then
 			G.E_MANAGER:add_event(
@@ -106,7 +107,6 @@ SMODS.Joker({
 									end
 								end
 							end
-							-- print(#check_table, #card.ability.extra.reload)
 							return #check_table == #card.ability.extra.reload
 						end
 
@@ -117,7 +117,6 @@ SMODS.Joker({
 									func = function()
 										local num_undiscard = #card.ability.extra.reload
 										for i = 1, num_undiscard do
-											-- print("attempting undiscard")
 											local undiscard = card.ability.extra.reload[i]
 											-- Evil LocalThunk code
 											draw_card(
@@ -165,7 +164,6 @@ SMODS.Joker({
 						-- Lets you know who screwed you over
 						G.E_MANAGER:add_event(Event({
 							func = function()
-								-- k:juice_up()
 								k.ability.extra.smacked = true
 								return true
 							end,
@@ -179,5 +177,6 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 	end,
 })

@@ -45,6 +45,7 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
+	
 		-- Threat
 		if
 			context.final_scoring_step
@@ -62,6 +63,7 @@ SMODS.Joker({
 				x_mult = 0,
 			}
 		end
+		
 		-- Defeat
 		if context.before and not context.blueprint then
 			for _, v in pairs(G.jokers.cards) do
@@ -79,6 +81,7 @@ SMODS.Joker({
 		if context.after and not context.blueprint and card.ability.extra.defeat then
 			SMODS.destroy_cards(card, true)
 		end
+		
 		-- Undefeated
 		if
 			context.main_eval
@@ -98,5 +101,6 @@ SMODS.Joker({
             }))
             end_round()
 		end
+		
 	end,
 })

@@ -47,6 +47,7 @@ SMODS.Joker({
 		end
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.debuff_hand and not context.blueprint then
 			if
@@ -83,6 +84,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		--Nothing happens.
 	end,

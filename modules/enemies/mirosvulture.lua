@@ -39,8 +39,8 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
-
 		if context.after and not context.blueprint then
 			G.GAME.mirosbird = G.GAME.mirosbird + 0.1
 		end
@@ -62,7 +62,6 @@ SMODS.Joker({
 		end
 
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -97,5 +96,6 @@ SMODS.Joker({
 				})
 			end
 		end
+		
 	end,
 })

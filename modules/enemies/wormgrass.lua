@@ -39,6 +39,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.destroy_card and context.cardarea == G.play and not context.blueprint then
 			return { remove = true }

@@ -48,6 +48,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.joker_main and not context.blueprint then
 			card.ability.extra.antimult = card.ability.extra.antimult - 1
@@ -84,6 +85,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		if
 			context.main_eval
@@ -98,5 +100,6 @@ SMODS.Joker({
 			G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
 			G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante + card.ability.extra.center_table
 		end
+		
 	end,
 })

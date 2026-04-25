@@ -31,6 +31,7 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.setting_blind and not G.GAME.blind.boss and not context.blueprint then
 			G.GAME.blind.chips = G.GAME.blind.chips * 2
@@ -64,5 +65,6 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 	end,
 })

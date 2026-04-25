@@ -31,6 +31,7 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			card.ability.extra.hands_sub = G.GAME.round_resets.hands - 1
@@ -41,7 +42,6 @@ SMODS.Joker({
 		--(Boss, cant be defeated)
 
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -60,5 +60,6 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 	end,
 })

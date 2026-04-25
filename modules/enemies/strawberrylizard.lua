@@ -1,6 +1,7 @@
 --[[Threat: A random joker is debuffed at the start of blind.
 Defeat condition: Sell a joker.
 If not defeated: Makes the last debuffed joker Eternal and it remains debuffed.]]
+
 SMODS.Joker({
 	key = "strawberrylizard",
 	atlas = "enemies",
@@ -44,6 +45,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		local eternals = {}
 		if context.setting_blind then
@@ -55,9 +57,7 @@ SMODS.Joker({
 			end
 			if #G.jokers.cards >= 2 then
 				local chosen_joker = jokers[math.random(1, #jokers)]
-				-- print(chosen_joker)
 				card.ability.last_joker = chosen_joker
-				--chosen_joker:set_debuff(true, "strawberry")
 				SMODS.debuff_card(chosen_joker, true, "strawberry")
 			end
 		end
@@ -85,8 +85,8 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -97,5 +97,6 @@ SMODS.Joker({
 			local last_joker = card.ability.last_joker
 			SMODS.Stickers["eternal"]:apply(last_joker, true)
 		end
+		
 	end,
 })

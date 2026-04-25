@@ -64,7 +64,7 @@ SMODS.Joker({
 							type = "variable",
 							key = "a_score_minus",
 							vars = { math.abs(card.ability.extra.unchips) },
-						}), --card.ability.extra.unchips .. " Score",
+						}),
 						colour = G.C.PURPLE,
 					})
 					-- Evil LocalThunk "disable SFX" code
@@ -107,8 +107,8 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -122,5 +122,6 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 	end,
 })

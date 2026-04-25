@@ -66,6 +66,7 @@ SMODS.Joker({
 		end
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		-- Sets spawning of food to 0 when added to deck.
 
@@ -97,6 +98,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 
 		if
@@ -109,5 +111,6 @@ SMODS.Joker({
 			-- Maybe make it so that jokers that benefit from food can no longer spawn or destroyed or smth
 			SMODS.destroy_cards(card, true)
 		end
+		
 	end,
 })

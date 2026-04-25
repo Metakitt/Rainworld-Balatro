@@ -33,6 +33,7 @@ SMODS.Joker({
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
+		
 		-- Threat
 		for _, v in pairs(G.playing_cards) do
 			if v:is_suit("Hearts", true) or v:is_suit("Diamonds", true) then
@@ -48,6 +49,7 @@ SMODS.Joker({
 		end
 	end,
 	calculate = function(self, card, context)
+	
 		-- Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -71,6 +73,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		-- Undefeated
 		if
 			context.main_eval
@@ -85,5 +88,6 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 	end,
 })

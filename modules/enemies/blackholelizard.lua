@@ -30,6 +30,7 @@ SMODS.Joker({
 		card:set_edition("e_negative")
 	end,
 	calculate = function(self, card, context)
+	
 		-- Defeat
 		if context.before and not context.blueprint then
 			for _, v in pairs(G.jokers.cards) do
@@ -42,6 +43,7 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 		-- Undefeated
 		if
 			context.main_eval
@@ -52,5 +54,6 @@ SMODS.Joker({
 		then
 			G.FUNCS.start_run(nil, {})
 		end
+		
 	end,
 })

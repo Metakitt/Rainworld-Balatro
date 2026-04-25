@@ -46,6 +46,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.before and not context.blueprint then
 			for i = 1, #G.play.cards do
@@ -89,8 +90,8 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
-
 		if
 			context.main_eval
 			and context.end_of_round
@@ -101,5 +102,6 @@ SMODS.Joker({
 			local _, wet_cards = SCUG.enhancement_count("m_rw_wetasscard", true)
 			SMODS.destroy_cards(wet_cards)
 		end
+		
 	end,
 })

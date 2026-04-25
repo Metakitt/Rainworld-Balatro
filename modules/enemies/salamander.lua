@@ -49,6 +49,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			for i = 1, #G.playing_cards do
@@ -57,6 +58,7 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -80,6 +82,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		if
 			context.main_eval
@@ -94,5 +97,6 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 	end,
 })

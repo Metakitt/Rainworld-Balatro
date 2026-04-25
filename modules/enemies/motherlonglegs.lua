@@ -45,6 +45,7 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
+	
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			for i = 1, #G.playing_cards do
@@ -58,6 +59,7 @@ SMODS.Joker({
 				end
 			end
 		end
+		
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -81,6 +83,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
+		
 		--Undefeated
 		if
 			context.main_eval
@@ -89,7 +92,7 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			local rank = SCUG.get_rank_in_deck() --pseudorandom_element(SMODS.Ranks, pseudoseed("rotten_rank"))
+			local rank = SCUG.get_rank_in_deck()
 			local destroyablejokers = EMPTY(destroyablejokers)
 			for _, v in ipairs(G.playing_cards) do
 				if v.config.card.value == rank and not context.blueprint then
@@ -107,5 +110,6 @@ SMODS.Joker({
 				SMODS.destroy_cards(chosen_card)
 			end
 		end
+		
 	end,
 })
