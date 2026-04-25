@@ -24,6 +24,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "modify_card", "weapon", "killer" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -39,7 +40,6 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.before and not context.blueprint then
 			for _, v in ipairs(G.jokers.cards) do
@@ -92,7 +92,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -113,6 +113,5 @@ SMODS.Joker({
 			}))
 			end_round()
 		end
-		
 	end,
 })

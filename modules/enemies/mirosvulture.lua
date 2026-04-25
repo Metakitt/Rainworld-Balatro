@@ -27,6 +27,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "killer", "xblindsize", "chance", "weapon" },
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
@@ -39,7 +40,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.after and not context.blueprint then
 			G.GAME.mirosbird = G.GAME.mirosbird + 0.1
@@ -96,6 +96,5 @@ SMODS.Joker({
 				})
 			end
 		end
-		
 	end,
 })

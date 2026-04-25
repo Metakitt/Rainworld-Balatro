@@ -24,6 +24,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "weapon", "xblindsize" },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.flashbang } }
 	end,
@@ -31,7 +32,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			G.GAME.blind.chips = G.GAME.blind.chips * 2
@@ -64,6 +64,5 @@ SMODS.Joker({
 		then
 			G.GAME.mirosbird = 2
 		end
-		
 	end,
 })

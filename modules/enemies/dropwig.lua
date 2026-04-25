@@ -24,6 +24,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "killer" },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.deathcounter, 5 - card.ability.extra.counter, 100 * card.ability.extra.threshold } }
 	end,
@@ -31,7 +32,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.main_eval and context.end_of_round and not context.blueprint then
 			local score_ratio = G.GAME.chips / G.GAME.blind.chips
@@ -41,8 +41,8 @@ SMODS.Joker({
 					message = localize("k_over_elip"),
 					colour = G.C.RED
 				})
-				
-			-- Defeat
+
+				-- Defeat
 			else
 				card.ability.extra.deathcounter = card.ability.extra.deathcounter - 1
 				card_eval_status_text(card, "extra", nil, nil, nil, {
@@ -55,13 +55,12 @@ SMODS.Joker({
 				end
 			end
 		end
-		
+
 		--Undefeated
 		-- It doesn't have an undefeated condition but if its counter goes up to 5, you die.
 		if context.main_eval and context.end_of_round and card.ability.extra.counter >= 5 and not context.blueprint then
 			G.STATE = G.STATES.GAME_OVER
 			G.STATE_COMPLETE = false
 		end
-		
 	end,
 })

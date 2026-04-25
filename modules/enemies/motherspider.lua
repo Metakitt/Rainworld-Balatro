@@ -33,6 +33,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "hand_type", "destroy_card" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -47,14 +48,13 @@ SMODS.Joker({
 		end
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.debuff_hand and not context.blueprint then
 			if not (context.poker_hands["High Card"][1] or context.poker_hands["Flush House"][1]) then
 				return { debuff = true }
 			end
 		end
-		
+
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -78,7 +78,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		--Nothing happens.
 
@@ -97,6 +97,5 @@ SMODS.Joker({
 			end
 			return ret
 		end
-
 	end,
 })

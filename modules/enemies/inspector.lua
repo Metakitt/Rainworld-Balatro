@@ -30,6 +30,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "chance", "hands" },
 	in_pool = function(self, args)
 		return false
 	end,
@@ -49,7 +50,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -73,7 +73,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		-- Undefeated
 		if
 			context.main_eval
@@ -86,7 +86,7 @@ SMODS.Joker({
 				card.ability.extra.odds = card.ability.extra.odds - 1
 			end
 		end
-		
+
 		-- Threat pt.1
 		if context.debuffed_hand then
 			for _, v in ipairs(context.full_hand) do
@@ -177,6 +177,5 @@ SMODS.Joker({
 				end
 			end
 		end
-		
 	end,
 })

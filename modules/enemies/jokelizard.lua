@@ -23,6 +23,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "joker", "chance" },
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "rw_wjokerifle", set = "Other" }
 		return { vars = { SMODS.get_probability_vars(card, 1, G.jokers and math.max(1, #G.jokers.cards - 1) or 5, "rw_jokelizard") } }

@@ -31,6 +31,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "destroy_card", "chance", "joker"},
 	loc_vars = function(self, info_queue, card)
 		local numerator, mid_dest =
 			SMODS.get_probability_vars(card, 1, card.ability.extra.midround_destroy_odds, "rw_greenlizard")

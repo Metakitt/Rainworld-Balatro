@@ -24,6 +24,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "killer", "hands" },
 	loc_vars = function(self, info_queue, card)
 		return { vars = {} }
 	end,
@@ -31,7 +32,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			card.ability.extra.hands_sub = G.GAME.round_resets.hands - 1
@@ -60,6 +60,5 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
 	end,
 })

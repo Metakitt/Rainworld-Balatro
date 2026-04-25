@@ -32,6 +32,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "generation", "destroy_card", "chance" },
 	loc_vars = function(self, info_queue, card)
 		local numerator, enem_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.enemy_chance, "rw_stowaway")
 		local _, dorm_chance = SMODS.get_probability_vars(card, 1, card.ability.extra.dormant_chance, "rw_stowaway")
@@ -56,7 +57,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		-- Threat
 		if context.setting_blind and not context.blueprint and card.ability.extra.dormant_timer == 0 then
 			if SMODS.pseudorandom_probability(card, "rw_stowaway", 1, card.ability.extra.enemy_chance, "rw_stowaway_spawn") then
@@ -64,7 +64,7 @@ SMODS.Joker({
 				SCUG.spawn_enemy({ guarantee = true })
 			end
 		end
-		
+
 		-- "Defeat"
 		if context.end_of_round and not context.blueprint and context.main_eval then
 			if card.ability.extra.dormant_timer == 0 then
@@ -87,7 +87,7 @@ SMODS.Joker({
 				})
 			end
 		end
-		
+
 		-- Undefeated
 		if
 			context.main_eval
@@ -105,6 +105,5 @@ SMODS.Joker({
 				end
 			end
 		end
-		
 	end,
 })

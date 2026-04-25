@@ -27,6 +27,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "reset", "rw_food", "modify_card" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -66,7 +67,6 @@ SMODS.Joker({
 		end
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		-- Sets spawning of food to 0 when added to deck.
 
@@ -98,7 +98,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 
 		if
@@ -111,6 +111,5 @@ SMODS.Joker({
 			-- Maybe make it so that jokers that benefit from food can no longer spawn or destroyed or smth
 			SMODS.destroy_cards(card, true)
 		end
-		
 	end,
 })

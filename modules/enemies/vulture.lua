@@ -9,7 +9,8 @@ SMODS.Joker({
 			spears_tanked = 0,
 			spears_needed = 3,
 			defeat = false,
-		}, enemy = true,
+		},
+		enemy = true,
 	},
 	rarity = "rw_enemy",
 	cost = 1,
@@ -30,6 +31,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "chance", "weapon" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -45,7 +47,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		-- Threat
 		if
 			context.final_scoring_step
@@ -64,7 +65,7 @@ SMODS.Joker({
 				x_mult = 0,
 			}
 		end
-		
+
 		-- Defeat
 		if context.before and not context.blueprint then
 			for _, v in pairs(G.jokers.cards) do
@@ -82,7 +83,7 @@ SMODS.Joker({
 		if context.after and not context.blueprint and card.ability.extra.defeat then
 			SMODS.destroy_cards(card, true)
 		end
-		
+
 		-- Undefeated
 		if
 			context.main_eval
@@ -104,6 +105,5 @@ SMODS.Joker({
 				colour = G.C.RED,
 			})
 		end
-		
 	end,
 })
