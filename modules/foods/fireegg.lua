@@ -19,7 +19,7 @@ SMODS.Consumable({
 	end,
 	use = function(self, card, area, copier)
 		if card.ability.name == "fireegg" then
-			local suit = SCUG.get_suit_in_deck() --pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
+			local suit = SCUG.get_suit_in_deck()
 			for _, other_card in ipairs(G.playing_cards) do
 				if other_card:is_suit(suit) then
 					other_card.ability.perma_mult = other_card.ability.perma_mult or 0

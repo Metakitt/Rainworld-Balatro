@@ -15,19 +15,6 @@ SMODS.Joker({
 	},
 
 	loc_vars = function(self, info_queue, card)
-		-- if card.ability.extra.attuned == true then
-		-- 	return {
-		-- 		-- vars = { card.ability.extra.saint_discards, card.ability.extra.recharging },
-		-- 		key = self.key .. "attuned",
-		-- 	}
-		-- end
-
-		-- if card.ability.extra.attuned == false then
-		-- 	return {
-		-- 		vars = { card.ability.extra.saint_discards, card.ability.extra.recharging },
-		-- 		key = self.key .. "neutral",
-		-- 	}
-		-- end
 		local ret_table = { key = self.key, vars = { card.ability.extra.saint_discards, card.ability.extra.discards } }
 		ret_table["key"] = self.key .. ((card.ability.extra.attuned and "attuned") or (card.ability.extra.recharge and "recharging") or "neutral")
 		if card.ability.extra.recharge then
@@ -67,7 +54,6 @@ SMODS.Joker({
 				card.ability.extra.saint_discards = card.ability.extra.saint_discards + 1
 			else
 				card.ability.extra.recharge = false
-				-- card.ability.extra.recharging = "Ready"
 			end
 
 			return
@@ -94,7 +80,6 @@ SMODS.Joker({
 				SMODS.Stickers["eternal"]:apply(chosen_joker, true)
 				card.ability.extra.recharge = true
 				card.ability.extra.attuned = false
-				-- card.ability.extra.recharging = "Recharging"
 				card.ability.extra.blessed = true
 
 				if card.ability.extra.blessed == true and not context.blueprint then

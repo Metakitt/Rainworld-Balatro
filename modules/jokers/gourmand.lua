@@ -149,8 +149,6 @@ function Card:spitout()
 				colour = G.C.RED,
 			})
 		end
-
-		--SMODS.add_card({ set = "Joker", area = G.jokers, edition = "e_negative"})
 	else
 		card_eval_status_text(self, "extra", nil, nil, nil, {
 			message = "Too Hungry!",

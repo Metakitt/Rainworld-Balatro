@@ -39,8 +39,6 @@ SMODS.Sticker({
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
-			-- local should_lodge = SCUG.number_in_range(1, 100) <= 2 -- 2% chance
-			-- local gourmand_exhausted = SCUG.number_in_range(1, 4) == 4 -- 25% chance
 			local should_lodge = SMODS.pseudorandom_probability(card, "rw_spear", 1, 50, "rw_spear_lodge")
 			local gourmand_exhausted = SMODS.pseudorandom_probability(card, "rw_spear", 1, 4, "rw_spear_exhaust")
 			local mult_effect = not should_lodge or card.ability.no_lodge
@@ -77,42 +75,6 @@ SMODS.Sticker({
 					colour = G.C.WEAPON,
 				})
 			end
-			-- local lodging = math.random(1, 100)
-			-- local gourmandexhausted = math.random(1, 4)
-			-- if lodging >= 3 or card.config.center_key == "j_rw_artificer" then
-			-- 	if
-			-- 		card.config.center_key == "j_rw_monk"
-			-- 		or card.config.center_key == "j_rw_inv"
-			-- 		or card.config.center_key == "j_rw_saint"
-			-- 	then
-			-- 		return {
-			-- 			x_mult = 1.25,
-			-- 		}
-			-- 	elseif
-			-- 		card.config.center_key == "j_rw_hunter"
-			-- 		or card.config.center_key == "j_rw_artificer"
-			-- 		or card.config.center_key == "j_rw_spearmaster"
-			-- 	then
-			-- 		return {
-			-- 			x_mult = 1.75,
-			-- 		}
-			-- 	elseif card.config.center_key == "j_rw_gourmand" and gourmandexhausted == 4 then
-			-- 		return {
-			-- 			x_mult = 0.9,
-			-- 		}
-			-- 	elseif card.config.center_key == "j_rw_gourmand" and gourmandexhausted < 4 then
-			-- 		return {
-			-- 			x_mult = 3,
-			-- 		}
-			-- 	else
-			-- 		return {
-			-- 			x_mult = 1.5,
-			-- 		}
-			-- 	end
-			-- end
-			-- if lodging <= 2 and card.config.center_key ~= "j_rw_artificer" then
-			-- 	SMODS.Stickers.rw_wspear:apply(card)
-			-- end
 		end
 	end,
 })

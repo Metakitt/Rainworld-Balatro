@@ -19,7 +19,6 @@ SMODS.Joker({
 		if
 			context.other_joker and context.other_joker.config.center_key == "j_rw_slugpup"
 		then
-			-- context.other_joker:juice_up(0.5, 0.5) -- Like Baseball Card
 			return { x_mult = card.ability.extra.pup_mult }
 		end
 	end,

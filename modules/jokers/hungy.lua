@@ -160,8 +160,6 @@ SMODS.Joker({
 
 			local snack, key = pseudorandom_element(#rot_edibles > 0 and rot_edibles or edibles, "crumchy", {})
 			if snack and snack.card ~= card then
-				-- sendDebugMessage(snack.card.config.center.key, "Rainworld")
-				-- sendDebugMessage(snack.type, "Rainworld")
 				local rot_boost = snack.rot or false
 				card.ability.extra.can_munch = false
 				if snack.card.ability.eternal then

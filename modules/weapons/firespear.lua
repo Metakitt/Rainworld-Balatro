@@ -65,45 +65,6 @@ SMODS.Sticker({
 				})
 			end
 
-			-- local lodging = math.random(1, 100)
-			-- local gourmandexhausted = math.random(1, 4)
-
-			-- if lodging >= 3 or card.config.center_key == "j_rw_artificer" then
-			-- 	if card.config.center_key == "j_rw_monk" or card.config.center_key == "j_rw_inv" then
-			-- 		return {
-			-- 			x_mult = 3.75,
-			-- 		}
-			-- 	elseif
-			-- 		card.config.center_key == "j_rw_hunter"
-			-- 		or card.config.center_key == "j_rw_artificer"
-			-- 		or card.config.center_key == "j_rw_spearmaster"
-			-- 	then
-			-- 		return {
-			-- 			x_mult = 5.25,
-			-- 		}
-			-- 	elseif card.config.center_key == "j_rw_gourmand" and gourmandexhausted == 4 then
-			-- 		return {
-			-- 			x_mult = 0.5,
-			-- 		}
-			-- 	elseif card.config.center_key == "j_rw_gourmand" and gourmandexhausted < 4 then
-			-- 		return {
-			-- 			x_mult = 9,
-			-- 		}
-			-- 	elseif card.config.center_key == "j_rw_saint" then
-			-- 		return {
-			-- 			x_mult = 10,
-			-- 		}
-			-- 	else
-			-- 		return {
-			-- 			x_mult = 4.5,
-			-- 		}
-			-- 	end
-			-- 	G.GAME.blind.chips = G.GAME.blind.chips * 1.05
-			-- 	G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-			-- end
-			-- if lodging <= 2 and card.config.center_key ~= "j_rw_artificer" then
-			-- 	SMODS.Stickers.rw_wspear:apply(card)
-			-- end
 		end
 		if context.setting_blind then
 			G.GAME.blind.chips = G.GAME.blind.chips * 1.05

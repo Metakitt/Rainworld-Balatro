@@ -17,7 +17,6 @@ SMODS.Joker({
 		if context.joker_main and G.GAME.current_round.hands_played == 0 then
 			return {
 				x_chips = 2,
-				-- chip_message = "x2 Chips",
 			}
 		end
 	end,

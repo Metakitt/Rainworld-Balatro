@@ -47,5 +47,3 @@ SMODS.Joker({
 		end
 	end,
 })
-
---growth_temp_hsize = 0

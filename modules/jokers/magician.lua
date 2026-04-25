@@ -847,13 +847,10 @@ SMODS.Joker({
 					end
 				end
 
-				--for k, v in pairs(G.jokers.cards) do
-
 				local chosen_card = pseudorandom_element(saintable, pseudoseed("test"))
 				if chosen_card ~= nil then
 					chosen_card:set_edition("e_negative", true)
 				end
-				--end
 			end
 		end
 
@@ -975,7 +972,6 @@ SMODS.Joker({
 					consume.ability.set == "Planet"
 					and pseudorandom("randomlevel") < G.GAME.probabilities.normal / card.ability.extra.odds
 				then
-					--print ('levelupplanet')
 					card.ability.extra.hand_type = pseudorandom_element(
 						{
 							"Flush",
@@ -1012,16 +1008,11 @@ SMODS.Joker({
 					and context.main_eval
 					and G.consumeables.config.card_limit > #G.consumeables.cards
 				then
-					--print ('tarot')
 					local n_card = SMODS.create_card({ set = "Tarot", area = G.consumeables })
 					G.consumeables:emplace(n_card)
 				end
 
 				if consume.ability.set == "Spectral" then
-					--print ('spectral')
-
-					--for k, v in pairs(G.deck.cards) do
-					--print(chosen_card)
 					local chosen_card = pseudorandom_element(G.deck.cards, pseudoseed("test"))
 					local seal_type = pseudorandom(pseudoseed("certsl"))
 					if seal_type > 0.75 then
@@ -1034,7 +1025,6 @@ SMODS.Joker({
 						chosen_card:set_seal("Purple", true)
 					end
 
-					--end
 				end
 
 				if
@@ -1054,7 +1044,6 @@ SMODS.Joker({
 					consume.ability.set == "obtainweapon"
 					and pseudorandom("upgrade") < G.GAME.probabilities.normal / card.ability.extra.oddswep
 				then
-					--print ('disaster')
 
 					local jokers = {}
 					for i, v in pairs(G.jokers.cards) do
@@ -1097,7 +1086,6 @@ SMODS.Joker({
 		end
 
 		-- Ranger
-
 		if card.ability.extra.effect == "ranger" then
 			if context.joker_main then
 				return {

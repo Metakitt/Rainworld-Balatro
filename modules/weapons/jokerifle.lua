@@ -70,45 +70,13 @@ SMODS.Sticker({
 	rate = 0.005,
 	needs_enable_flag = false,
 	loc_vars = function(self, info_queue, card)
-		-- if G.GAME.jokerifle == "bluefruit" then
-		-- 	return { key = self.key .. "_bluefruit" }
-		-- end
-		-- if G.GAME.jokerifle == "rock" then
-		-- 	return { key = self.key .. "_rock" }
-		-- end
-		-- if G.GAME.jokerifle == "cherrybomb" then
-		-- 	return { key = self.key .. "_cherrybomb" }
-		-- end
-		-- if G.GAME.jokerifle == "pearl" then
-		-- 	return { key = self.key .. "_pearl" }
-		-- end
-		-- if G.GAME.jokerifle == "none" then
-		-- 	return { key = self.key .. "" }
-		-- end
-		-- if G.GAME.jokerifle == "beehive" then
-		-- 	return { key = self.key .. "_beehive" }
-		-- end
-		-- if G.GAME.jokerifle == "flashbang" then
-		-- 	return { key = self.key .. "_flashbang" }
-		-- end
-		-- if G.GAME.jokerifle == "grenade" then
-		-- 	return { key = self.key .. "_grenade", vars = { G.GAME.grenademult } }
-		-- end
-		-- if G.GAME.jokerifle == "sporepuff" then
-		-- 	return { key = self.key .. "_sporepuff" }
-		-- end
-		-- if G.GAME.jokerifle == "singularity" then
-		-- 	return { key = self.key .. "_singularity" }
-		-- end
 		return {
 			vars = { G.GAME.grenademult },
 			key = self.key .. '_' .. ((G.GAME and G.GAME.jokerifle) or "none")
 		}
 	end,
 	calculate = function(self, card, context)
-		--if context.setting_blind then
 
-		--end
 		if G.GAME.jokerifle == "beehive" then
 			if context.setting_blind then
 				local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
@@ -126,99 +94,8 @@ SMODS.Sticker({
 						SMODS.debuff_card(v, true, "bees")
 					end
 				end
-				-- local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
-				-- for i = 1, #G.deck.cards do
-				-- 	local chosen_cards = G.deck.cards[i]
-
-				-- 	if suit.key == "Clubs" then
-				-- 		if
-				-- 			chosen_cards:is_suit("Hearts")
-				-- 			or chosen_cards:is_suit("Spades")
-				-- 			or chosen_cards:is_suit("Diamonds")
-				-- 		then
-				-- 			SMODS.debuff_card(chosen_cards, true, "bees")
-				-- 		end
-				-- 		if chosen_cards:is_suit("Clubs") and chosen_cards.ability.perma_bonus <= 0 then
-				-- 			chosen_cards.ability.perma_bonus = 5
-				-- 		end
-				-- 		if chosen_cards:is_suit("Clubs") and chosen_cards.ability.perma_bonus > 0 then
-				-- 			chosen_cards.ability.perma_bonus = chosen_cards.ability.perma_bonus or 0
-				-- 			chosen_cards.ability.perma_bonus = chosen_cards.ability.perma_bonus * 2
-				-- 			chosen_cards:juice_up(0.5, 0.5)
-				-- 			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, chosen_cards)
-				-- 		end
-				-- 	end
-
-				-- 	if suit.key == "Hearts" then
-				-- 		if
-				-- 			chosen_cards:is_suit("Clubs")
-				-- 			or chosen_cards:is_suit("Spades")
-				-- 			or chosen_cards:is_suit("Diamonds")
-				-- 		then
-				-- 			SMODS.debuff_card(chosen_cards, true, "bees")
-				-- 		end
-				-- 		if chosen_cards:is_suit("Hearts") and chosen_cards.ability.perma_bonus <= 0 then
-				-- 			chosen_cards.ability.perma_bonus = 5
-				-- 		end
-				-- 		if chosen_cards:is_suit("Hearts") and chosen_cards.ability.perma_bonus > 0 then
-				-- 			chosen_cards.ability.perma_bonus = chosen_cards.ability.perma_bonus or 0
-				-- 			chosen_cards.ability.perma_bonus = chosen_cards.ability.perma_bonus * 2
-				-- 			chosen_cards:juice_up(0.5, 0.5)
-				-- 			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, chosen_cards)
-				-- 		end
-				-- 	end
-
-				-- 	if suit.key == "Diamonds" then
-				-- 		if
-				-- 			chosen_cards:is_suit("Hearts")
-				-- 			or chosen_cards:is_suit("Spades")
-				-- 			or chosen_cards:is_suit("Clubs")
-				-- 		then
-				-- 			SMODS.debuff_card(chosen_cards, true, "bees")
-				-- 		end
-				-- 		if chosen_cards:is_suit("Diamonds") and chosen_cards.ability.perma_bonus <= 0 then
-				-- 			chosen_cards.ability.perma_bonus = 5
-				-- 		end
-				-- 		if chosen_cards:is_suit("Diamonds") and chosen_cards.ability.perma_bonus > 0 then
-				-- 			chosen_cards.ability.perma_bonus = chosen_cards.ability.perma_bonus or 0
-				-- 			chosen_cards.ability.perma_bonus = chosen_cards.ability.perma_bonus * 2
-				-- 			chosen_cards:juice_up(0.5, 0.5)
-				-- 			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, chosen_cards)
-				-- 		end
-				-- 	end
-
-				-- 	if suit.key == "Spades" then
-				-- 		if
-				-- 			chosen_cards:is_suit("Hearts")
-				-- 			or chosen_cards:is_suit("Clubs")
-				-- 			or chosen_cards:is_suit("Diamonds")
-				-- 		then
-				-- 			SMODS.debuff_card(chosen_cards, true, "bees")
-				-- 		end
-				-- 		if chosen_cards:is_suit("Spades") and chosen_cards.ability.perma_bonus <= 0 then
-				-- 			chosen_cards.ability.perma_bonus = 5
-				-- 		end
-				-- 		if chosen_cards:is_suit("Spades") and chosen_cards.ability.perma_bonus > 0 then
-				-- 			chosen_cards.ability.perma_bonus = chosen_cards.ability.perma_bonus or 0
-				-- 			chosen_cards.ability.perma_bonus = chosen_cards.ability.perma_bonus * 2
-				-- 			chosen_cards:juice_up(0.5, 0.5)
-				-- 			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, chosen_cards)
-				-- 		end
-				-- 	end
-				-- end
+				
 			elseif context.end_of_round then
-				-- for i = 1, #G.deck.cards do
-				-- 	local chosen_cards = G.deck.cards[i]
-				-- 	SMODS.debuff_card(chosen_cards, "reset", "bees")
-				-- end
-				-- for i = 1, #G.hand.cards do
-				-- 	local chosen_cards = G.hand.cards[i]
-				-- 	SMODS.debuff_card(chosen_cards, "reset", "bees")
-				-- end
-				-- for i = 1, #G.discard.cards do
-				-- 	local chosen_cards = G.discard.cards[i]
-				-- 	SMODS.debuff_card(chosen_cards, "reset", "bees")
-				-- end
 				for _, v in pairs(G.playing_cards) do
 					SMODS.debuff_card(v, false, "bees")
 				end
@@ -292,7 +169,6 @@ SMODS.Sticker({
 		if context.end_of_round and context.main_eval then
 			if G.GAME.jokerifle == "pearl" then
 				local chrome = math.random(1, 4)
-				--print(chrome)
 				if chrome == 4 then
 					card:set_edition("e_polychrome", true)
 				end

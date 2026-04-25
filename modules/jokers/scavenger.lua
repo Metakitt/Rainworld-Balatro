@@ -89,7 +89,6 @@ SMODS.Joker({
 		if reputation <= -2 then -- Enemy code
 			if
 				context.before
-				-- and context.main_eval
 				and not context.blueprint
 				and SMODS.pseudorandom_probability(card, "rw_scavenger", 1, card.ability.extra.yoink_odds, "rw_scavenger_yoink")
 			then
@@ -104,7 +103,7 @@ SMODS.Joker({
 						end
 					end
 				end
-				-- print(joker_weapons)
+				
 				if #joker_weapons > 0 then
 					local stolen, _ = pseudorandom_element(joker_weapons, "rw_scavenger_yoink", {})
 					local mark = G.jokers.cards[stolen[1]]

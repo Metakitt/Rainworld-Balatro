@@ -70,7 +70,6 @@ SMODS.Joker({
 				consume.ability.set == "Planet"
 				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.odds, "rw_lacuna_planet")
 			then
-				--print ('levelupplanet')
 				card.ability.extra.hand_type = pseudorandom_element(
 					{
 						"Flush",
@@ -107,7 +106,6 @@ SMODS.Joker({
 				and context.main_eval
 				and G.consumeables.config.card_limit > #G.consumeables.cards
 			then
-				--print ('tarot')
 				local n_card = SMODS.create_card({ set = "Tarot", area = G.consumeables })
 				G.consumeables:emplace(n_card)
 			end
@@ -135,8 +133,6 @@ SMODS.Joker({
 				consume.ability.set == "obtainweapon"
 				and SMODS.pseudorandom_probability(card, "rw_lacuna", 1, card.ability.extra.oddswep, "rw_lacuna_weapon")
 			then
-				--print ('disaster')
-
 				local jokers = {}
 				for i, v in pairs(G.jokers.cards) do
 					jokers[#jokers + 1] = v
