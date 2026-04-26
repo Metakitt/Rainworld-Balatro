@@ -35,9 +35,15 @@ SMODS.Joker({
 		end
 
 		if context.using_consumeable and context.consumeable.config.center.set == "foods" and not context.blueprint then
-			card.ability.extra.xmult_mod = card.ability.extra.xmult_mod + card.ability.extra.xmult_gain_food
+			-- card.ability.extra.xmult_mod = card.ability.extra.xmult_mod + card.ability.extra.xmult_gain_food
 			card.ability.extra.food_used_total = card.ability.extra.food_used_total + 1
-			SMODS.calculate_effect({ message = "Upgrade!" }, card)
+			-- SMODS.calculate_effect({ message = "Upgrade!" }, card)
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "xmult_mod",
+				scalar_value = "xmult_gain_food",
+				message_colour = G.C.FOOD
+			})
 		end
 
 		if card.ability.extra.food_used_total == 0 then
