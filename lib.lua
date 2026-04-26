@@ -64,7 +64,7 @@ SCUG.is_in_pool = function(item, pool)
 end
 
 ---Gets a random suit which exists in the deck, with no weighting for frequency.
----@param args table|{} Passed into `pseudorandom_element` directly.
+---@param args table? Passed into `pseudorandom_element` directly.
 SCUG.get_suit_in_deck = function(args)
 	args = args or {}
 	local all_suits = {}
@@ -79,7 +79,7 @@ SCUG.get_suit_in_deck = function(args)
 	return pseudorandom_element(all_suits, "get_suit", args)
 end
 ---Gets a random rank which exists in the deck, with no weighting for frequency.
----@param args table|{} Passed into `pseudorandom_element` directly.
+---@param args table? Passed into `pseudorandom_element` directly.
 SCUG.get_rank_in_deck = function(args)
 	args = args or {}
 	local all_ranks = {}
@@ -167,6 +167,19 @@ SCUG.weapon_count = function(weapon_key, count_debuffed)
 		end
 	end
 	return #cards_with_weapon, cards_with_weapon
+end
+
+---Return a list of keys on the given Joker.
+---@param joker Card|table The Joker to query.
+---@return table
+SCUG.weapons_on_joker = function(joker)
+	weapons = {}
+	for k, v in pairs(joker.ability) do
+		if type(v) == "table" and v.weapon then
+			table.insert(weapons, k)
+		end
+	end
+	return weapons
 end
 
 ---Returns how many cards are debuffed by Beehive.
