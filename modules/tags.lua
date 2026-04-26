@@ -131,7 +131,7 @@ SMODS.Tag({
 		}
 	end,
 	apply = function(self, tag, context)
-		if context.type == "immediate" or context.type == "new_blind_choice" or context.type == "round_start_bonus" then
+		if context.type == "round_start_bonus" then
 			tag:yep("+", G.C.SECONDARY_SET.Enhanced, function()
 				local num_cards = tag.config.cards
 				local i = 0
@@ -219,9 +219,8 @@ SMODS.Tag({
 	apply = function(self, tag, context)
 		if context.type == "immediate" then
 			local ALL_WEAPONS = {}
-			for k, _ in pairs(SMODS.Stickers) do
-				local st, nd = string.find(k, "rw_w")
-				if st == 1 and nd == 4 then
+			for k, v in pairs(SMODS.Stickers) do
+				if v.config and v.config.weapon then
 					table.insert(ALL_WEAPONS, k)
 				end
 			end
