@@ -24,8 +24,9 @@ SMODS.Joker({
 							delay = 0.7,
 							blockable = false,
 							func = function()
-								local n_card = SMODS.create_card({ set = "Tarot", area = G.consumeables })
-								G.consumeables:emplace(n_card)
+								-- local n_card = SMODS.create_card({ set = "Tarot", area = G.consumeables })
+								-- G.consumeables:emplace(n_card)
+								SMODS.add_card { set = "Tarot", area = G.consumeables }
 								return true
 							end,
 						}))
