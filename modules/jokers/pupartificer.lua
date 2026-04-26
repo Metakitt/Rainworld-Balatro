@@ -30,21 +30,31 @@ SMODS.Joker({
 			if card.ability.extra.growth <= 0 then
 				card.ability.extra.growth = nil
 				card:grow_up()
+				return
 			end
 		end
 
 		if context.joker_main then
 			return {
-				chip_mod = card.ability.extra.chips,
-				message = localize({ type = "variable", key = "a_chips", vars = { card.ability.extra.chips } }),
+				chips = card.ability.extra.chips,
+				-- message = localize({ type = "variable", key = "a_chips", vars = { card.ability.extra.chips } }),
 			}
 		end
 
 		if context.remove_playing_cards or context.cards_destroyed and not context.blueprint then
-			for i = 1, #context.removed do
-				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.pupbonus_chips
-				SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
-			end
+			-- for i = 1, #context.removed do
+				-- card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.pupbonus_chips
+				-- SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
+			-- end
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_value = "pupbonus_chips",
+				operation = function(ref_table, ref_value, initial, change)
+					ref_table[ref_value] = initial + (change * #context.removed)
+				end,
+				message_colour = G.C.CHIPS
+			})
 		end
 
 		if
@@ -61,15 +71,23 @@ SMODS.Joker({
 				and pseudorandom_element(destructable_cards, pseudoseed("explode"))
 				or nil
 			if card_to_destroy then
-				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.pupbonus_chips
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						(context.blueprint_card or card):juice_up(0.8, 0.8)
-						SMODS.calculate_effect({ message = "Destroyed!" }, card)
-						card_to_destroy:start_dissolve()
-						return true
-					end,
-				}))
+				-- card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.pupbonus_chips
+				-- G.E_MANAGER:add_event(Event({
+				-- 	func = function()
+				-- 		(context.blueprint_card or card):juice_up(0.8, 0.8)
+				-- 		SMODS.calculate_effect({ message = "Destroyed!" }, card)
+				-- 		card_to_destroy:start_dissolve()
+				-- 		return true
+				-- 	end,
+				-- }))
+				SMODS.destroy_cards(card_to_destroy)
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_value = "pupbonus_chips",
+					message_key = "k_destroyed_ex",
+					message_colour = G.C.CHIPS
+				})
 			end
 		end
 	end,
