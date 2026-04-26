@@ -2,6 +2,7 @@
 SCUG.big = function(x)
 	return (Talisman and to_big(x)) or x
 end
+-- Possible Talisman compatibility
 SCUG.num = function(x)
 	return (Talisman and to_number(x)) or x
 end
@@ -15,10 +16,19 @@ SCUG.number_in_range = function(min, max, seed)
 	return math.floor(((max or 20) - (min or 1) + 1) * pseudorandom(seed or "Rainworld")) + min
 end
 
+---Clamp a value between any two bounds.
+---@param value number
+---@param min number
+---@param max number
+---@return number
 SCUG.clamp = function(value, min, max)
 	return math.max(math.min(value, max), min)
 end
 
+---Checks whether a value is in a table, regardless of the key it's stored under.
+---@param value any
+---@param table table
+---@return boolean
 SCUG.value_in_table = function(value, table)
 	for _, v in pairs(table) do
 		if v == value then
@@ -31,6 +41,7 @@ end
 ---Check if an item is in a pool.
 ---@param item string|Card|table
 ---@param pool string
+---@return boolean
 SCUG.is_in_pool = function(item, pool)
 	if not SMODS.ObjectTypes[pool] then return false end
 
@@ -52,6 +63,8 @@ SCUG.is_in_pool = function(item, pool)
 	return false
 end
 
+---Gets a random suit which exists in the deck, with no weighting for frequency.
+---@param args table|{} Passed into `pseudorandom_element` directly.
 SCUG.get_suit_in_deck = function(args)
 	args = args or {}
 	local all_suits = {}
@@ -65,6 +78,8 @@ SCUG.get_suit_in_deck = function(args)
 	end
 	return pseudorandom_element(all_suits, "get_suit", args)
 end
+---Gets a random rank which exists in the deck, with no weighting for frequency.
+---@param args table|{} Passed into `pseudorandom_element` directly.
 SCUG.get_rank_in_deck = function(args)
 	args = args or {}
 	local all_ranks = {}
@@ -79,6 +94,9 @@ SCUG.get_rank_in_deck = function(args)
 	return pseudorandom_element(all_ranks, "get_rank", args)
 end
 
+---Helper function for calculating Scavenger reputation.
+---@param card Card|table The Scavenger to calculate for.
+---@return number reputation The new reputation.
 SCUG.scav_rep = function(card)
 	local scug_rep = (1 * #SMODS.find_card("j_rw_monk", true))
 		+ (-1 * #SMODS.find_card("j_rw_rivulet", true))
@@ -91,8 +109,11 @@ SCUG.scav_rep = function(card)
 	return SCUG.clamp(reputation, -4, 4)
 end
 
----param enhancement_key string
----param count_debuffed boolean|nil
+---Counts how many of an enhancement there are in the full deck. Returns the count, then the cards with that enhancement.
+---@param enhancement_key string Key for the enhancement.
+---@param count_debuffed boolean|nil Whether or not to include debuffed cards in the count.
+---@return integer count How many cards have that enhancement.
+---@return table cards All cards with that enhancement.
 SCUG.enhancement_count = function(enhancement_key, count_debuffed)
 	count_debuffed = count_debuffed or false
 	local cards = {}
@@ -108,13 +129,19 @@ SCUG.enhancement_count = function(enhancement_key, count_debuffed)
 	return #cards, cards
 end
 
-SCUG.num_owned_weapons = function()
+---Counts the total number of owned weapons across all Jokers.
+---@param count_debuffed boolean? Whether to include weapons on debuffed Jokers. Defaults to `false`.
+---@return integer
+SCUG.num_owned_weapons = function(count_debuffed)
+	count_debuffed = count_debuffed or false
 	local weapons = 0
 	if G.jokers then
 		for _, v in pairs(G.jokers.cards) do
-			for _, vv in pairs(v.ability) do
-				if type(vv) == "table" and vv.weapon then
-					weapons = weapons + 1
+			if count_debuffed or v:can_calculate() then
+				for _, vv in pairs(v.ability) do
+					if type(vv) == "table" and vv.weapon then
+						weapons = weapons + 1
+					end
 				end
 			end
 		end
@@ -122,6 +149,11 @@ SCUG.num_owned_weapons = function()
 	return weapons
 end
 
+---Counts how many of a certain weapon is owned across all Jokers.
+---@param weapon_key string The key of the weapon.
+---@param count_debuffed boolean? Whether to include weapons on debuffed Jokers. Defaults to `false`.
+---@return integer count The number of that weapon owned.
+---@return table jokers All Jokers with that weapon.
 SCUG.weapon_count = function(weapon_key, count_debuffed)
 	count_debuffed = count_debuffed or false
 	local cards_with_weapon = {}
@@ -137,8 +169,9 @@ SCUG.weapon_count = function(weapon_key, count_debuffed)
 	return #cards_with_weapon, cards_with_weapon
 end
 
----@param card_table table
----@return number
+---Returns how many cards are debuffed by Beehive.
+---@param card_table table Which cards to consider.
+---@return number count How many cards are debuffed.
 SCUG.bee_debuffed_count = function(card_table)
 	local count = 0
 	for _, v in ipairs(card_table) do
@@ -149,6 +182,8 @@ SCUG.bee_debuffed_count = function(card_table)
 	return count
 end
 
+---Counts how many enemies are currently active.
+---@return integer count The number of enemies.
 SCUG.enemy_count = function()
 	local enemy_count = 0
 	if G.jokers then
@@ -161,10 +196,11 @@ SCUG.enemy_count = function()
 	return enemy_count
 end
 
+---Helper function to determine whether or not Wet/Moldy cards get wetter.
+---@return boolean
 SCUG.sufficiently_wet = function()
 	-- Decks: Looks to the Moon
-	if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck"
-	then
+	if G.GAME.selected_back.effect.center.key == "b_rw_LTTMdeck" then
 		return true
 	end
 	-- Jokers
