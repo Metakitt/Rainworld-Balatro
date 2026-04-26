@@ -53,6 +53,9 @@ At the start of blind, chooses a random effect.
 ]]
 SMODS.Sticker({
 	key = "wjokerifle",
+	config = {
+		weapon = true,
+	},
 	loc_txt = {
 		label = "Joke Rifle",
 	},
@@ -76,7 +79,6 @@ SMODS.Sticker({
 		}
 	end,
 	calculate = function(self, card, context)
-
 		if G.GAME.jokerifle == "beehive" then
 			if context.setting_blind then
 				local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
@@ -94,7 +96,6 @@ SMODS.Sticker({
 						SMODS.debuff_card(v, true, "bees")
 					end
 				end
-				
 			elseif context.end_of_round then
 				for _, v in pairs(G.playing_cards) do
 					SMODS.debuff_card(v, false, "bees")

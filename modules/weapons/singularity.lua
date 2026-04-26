@@ -1,5 +1,8 @@
 SMODS.Sticker({
 	key = "wsingularity",
+	config = {
+		weapon = true,
+	},
 	loc_txt = {
 		label = "Singularity Bomb",
 	},

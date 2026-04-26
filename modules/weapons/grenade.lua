@@ -1,7 +1,8 @@
 SMODS.Sticker({
 	key = "wgrenade",
 	config = {
-		mult = 0
+		mult = 0,
+		weapon = true
 	},
 	loc_txt = {
 		label = "Grenade",

@@ -1,5 +1,8 @@
 SMODS.Sticker({
 	key = "wspear",
+	config = {
+		weapon = true,
+	},
 	loc_txt = {
 		label = "Spear",
 	},

@@ -1,5 +1,8 @@
 SMODS.Sticker({
 	key = "wspear_ele",
+	config = {
+		weapon = true,
+	},
 	loc_txt = {
 		label = "Electric Spear",
 	},
@@ -74,7 +77,6 @@ SMODS.Sticker({
 					colour = G.C.WEAPON,
 				})
 			end
-
 		end
 	end,
 })

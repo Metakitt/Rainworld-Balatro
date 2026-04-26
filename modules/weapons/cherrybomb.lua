@@ -1,6 +1,9 @@
 --Cherrybomb's effect is temporary; i wanted it to have four fingers effect but that's a bit more complicated.
 SMODS.Sticker({
 	key = "wcherrybomb",
+	config = {
+		weapon = true,
+	},
 	loc_txt = {
 		label = "Cherrybomb",
 	},

@@ -1,5 +1,8 @@
 SMODS.Sticker({
 	key = "wspear_fire",
+	config = {
+		weapon = true,
+	},
 	loc_txt = {
 		label = "Fire Spear",
 	},
@@ -64,7 +67,6 @@ SMODS.Sticker({
 					colour = G.C.WEAPON,
 				})
 			end
-
 		end
 		if context.setting_blind then
 			G.GAME.blind.chips = G.GAME.blind.chips * 1.05

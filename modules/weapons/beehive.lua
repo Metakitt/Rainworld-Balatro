@@ -1,5 +1,8 @@
 SMODS.Sticker({
 	key = "wbeehive",
+	config = {
+		weapon = true,
+	},
 	loc_txt = {
 		label = "Beehive",
 	},
@@ -41,7 +44,6 @@ SMODS.Sticker({
 					SMODS.debuff_card(v, true, "bees")
 				end
 			end
-
 		elseif context.end_of_round and context.main_eval and context.beat_boss then
 			for _, v in pairs(G.playing_cards) do
 				SMODS.debuff_card(v, false, "bees")
