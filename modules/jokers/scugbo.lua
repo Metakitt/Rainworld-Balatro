@@ -8,7 +8,7 @@ SMODS.Joker({
 	loc_txt = {
 		name = "Scugbo",
 		text = {
-			"{C:mult}+4{} Mult for",
+			"{C:mult}+#1#{} Mult for",
 			"each Slugcat.",
 		},
 	},
@@ -20,7 +20,9 @@ SMODS.Joker({
 	blueprint_compat = true,
 	attributes = { "slugcat", "mult", "joker" },
 	config = { extra = { upgrade = 4 }, slugcat = true },
-
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.upgrade } }
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main and not context.blueprint then
 			local scugbocursed = math.random(1, 100)
@@ -29,12 +31,13 @@ SMODS.Joker({
 			end
 			local slugcats = 0
 			for k, v in ipairs(G.jokers.cards) do
-				if v.ability.slugcat == true then
-					slugcats = slugcats + 4
+				-- if v.ability.slugcat == true then
+				if v:has_attribute("slugcat") then
+					slugcats = slugcats + 1
 				end
 			end
 			return {
-				mult = slugcats,
+				mult = slugcats * card.ability.extra.upgrade,
 			}
 		end
 	end,

@@ -8,16 +8,16 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	attributes = { "slugcat", "xchips" },
-	config = { extra = {}, slugcat = true },
+	config = { extra = { xchips = 2 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = {} }
+		return { vars = { card.ability.extra.xchips } }
 	end,
 
 	calculate = function(self, card, context)
 		if context.joker_main and G.GAME.current_round.hands_played == 0 then
 			return {
-				x_chips = 2,
+				x_chips = card.ability.extra.xchips,
 			}
 		end
 	end,

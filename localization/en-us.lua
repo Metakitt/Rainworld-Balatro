@@ -1329,7 +1329,7 @@ return {
 			j_rw_alacrity = {
 				name = "Alacrity",
 				text = {
-					"{X:chips,C:white}X2{} Chips on",
+					"{X:chips,C:white}X#1#{} Chips on",
 					"the {C:attention}first hand{}",
 					"of round.",
 				},
@@ -1690,7 +1690,7 @@ return {
 				name = "Saint Pup",
 				text = {
 					"After discarding {C:attention}#3#{} cards,",
-					"Saint gains {C:chips}+2 {}chips and {C:mult}+2{} mult.",
+					"Saint gains {C:chips}+#5# {}chips and {C:mult}+#5#{} mult.",
 					"{C:inactive}(#4# more cards)",
 				},
 			},
@@ -2171,6 +2171,8 @@ return {
 			b_regurgitate = "Regurgitate",
 			mult_cost1 = "-0.2x",
 			mult_cost2 = "Mult",
+			k_msg_ex = "Message Received!",
+			k_destroyed_ex = "Destroyed!"
 		},
 		v_dictionary = {
 			a_reputation = "+#1# Reputation",

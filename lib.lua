@@ -108,6 +108,20 @@ SCUG.enhancement_count = function(enhancement_key, count_debuffed)
 	return #cards, cards
 end
 
+SCUG.num_owned_weapons = function()
+	local weapons = 0
+	if G.jokers then
+		for _, v in pairs(G.jokers.cards) do
+			for _, vv in pairs(v.ability) do
+				if type(vv) == "table" and vv.weapon then
+					weapons = weapons + 1
+				end
+			end
+		end
+	end
+	return weapons
+end
+
 SCUG.weapon_count = function(weapon_key, count_debuffed)
 	count_debuffed = count_debuffed or false
 	local cards_with_weapon = {}
@@ -121,6 +135,18 @@ SCUG.weapon_count = function(weapon_key, count_debuffed)
 		end
 	end
 	return #cards_with_weapon, cards_with_weapon
+end
+
+---@param card_table table
+---@return number
+SCUG.bee_debuffed_count = function(card_table)
+	local count = 0
+	for _, v in ipairs(card_table) do
+		if v.ability.debuff_sources and v.ability.debuff_sources["bees"] then
+			count = count + 1
+		end
+	end
+	return count
 end
 
 SCUG.enemy_count = function()

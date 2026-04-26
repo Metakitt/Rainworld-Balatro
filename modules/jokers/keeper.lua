@@ -1,15 +1,3 @@
----@param card_table table
----@return number
-local function bee_debuffed_count(card_table)
-    local count = 0
-    for _, v in ipairs(card_table) do
-        if v.ability.debuff_sources and v.ability.debuff_sources["bees"] then
-            count = count + 1
-        end
-    end
-    return count
-end
-
 SMODS.Joker {
     key = "keeper",
     config = {
@@ -28,17 +16,15 @@ SMODS.Joker {
     attributes = { "slugcat", "xmult", "full_deck" },
     loc_vars = function(self, info_queue, card)
         return {
-            vars = { card.ability.extra.bee_mult, 1 + (card.ability.extra.bee_mult * bee_debuffed_count(G and G.playing_cards or {})) }
+            vars = { card.ability.extra.bee_mult, 1 + (card.ability.extra.bee_mult * SCUG.bee_debuffed_count(G and G.playing_cards or {})) }
         }
     end,
     set_ability = function(self, card, initial, delay_sprites)
-        card.ability["rw_wbeehive"] = true
+        SMODS.Stickers["rw_wbeehive"]:apply(card, true)
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            if bee_debuffed_count(G.playing_cards) > 0 then
-                return { xmult = 1 + (card.ability.extra.bee_mult * bee_debuffed_count(G.playing_cards)) }
-            end
+            return { xmult = 1 + (card.ability.extra.bee_mult * SCUG.bee_debuffed_count(G.playing_cards)) }
         end
     end
 }

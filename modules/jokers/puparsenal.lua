@@ -17,46 +17,26 @@ SMODS.Joker({
 	perishable_compat = true,
 	attributes = { "slugcat", "weapon", "mult" },
 	loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
-		local wep_count = 0
-		if G and G.jokers and G.jokers.cards then
-			for _, v in ipairs(G.jokers.cards) do
-				for k, _ in pairs(v.ability) do
-					local _st, _nd = string.find(k, "rw_w")
-					if _st == 1 and _nd == 4 then
-						wep_count = wep_count + 1
-					end
-				end
-			end
-		end
+		info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		return {
 			vars = {
 				card.ability.extra.pupwep_mult,
-				card.ability.extra.pupwep_mult * wep_count,
+				card.ability.extra.pupwep_mult * SCUG.num_owned_weapons(),
 			},
 		}
 	end,
 	calculate = function(self, card, context)
-	if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
+		if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
 			card.ability.extra.growth = card.ability.extra.growth - 1
 			if card.ability.extra.growth <= 0 then
 				card.ability.extra.growth = nil
 				card:grow_up()
 			end
 		end
-	
+
 		if context.joker_main then
-			local wep_count = 0
-			for _, v in ipairs(G.jokers.cards) do
-				for k, _ in pairs(v.ability) do
-					local _st, _nd = string.find(k, "rw_w")
-					if _st == 1 and _nd == 4 then
-						wep_count = wep_count + 1
-					end
-				end
-			end
 			return {
-				mult = card.ability.extra.pupwep_mult * wep_count,
+				mult = card.ability.extra.pupwep_mult * SCUG.num_owned_weapons(),
 			}
 		end
 	end,

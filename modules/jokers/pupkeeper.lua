@@ -1,15 +1,3 @@
----@param card_table table
----@return number
-local function bee_debuffed_count(card_table)
-    local count = 0
-    for _, v in ipairs(card_table) do
-        if v.ability.debuff_sources and v.ability.debuff_sources["bees"] then
-            count = count + 1
-        end
-    end
-    return count
-end
-
 SMODS.Joker {
     key = "pupkeeper",
     config = {
@@ -30,11 +18,11 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
         return {
-            vars = { card.ability.extra.pup_bee_mult, card.ability.extra.pup_bee_mult * bee_debuffed_count(G and G.playing_cards or {}) }
+            vars = { card.ability.extra.pup_bee_mult, card.ability.extra.pup_bee_mult * SCUG.bee_debuffed_count(G and G.playing_cards or {}) }
         }
     end,
     set_ability = function(self, card, initial, delay_sprites)
-        card.ability["rw_wbeehive"] = true
+        SMODS.Stickers["rw_wbeehive"]:apply(card, true)
     end,
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
@@ -46,9 +34,7 @@ SMODS.Joker {
         end
 
         if context.joker_main then
-            if bee_debuffed_count(G.playing_cards) > 0 then
-                return { mult = card.ability.extra.pup_bee_mult * bee_debuffed_count(G.playing_cards) }
-            end
+            return { mult = card.ability.extra.pup_bee_mult * SCUG.bee_debuffed_count(G.playing_cards) }
         end
     end
 }
