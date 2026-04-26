@@ -53,9 +53,8 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-		--Threat
+		--Threat pt.1
 		if context.main_eval and context.end_of_round and not G.GAME.blind.boss and not context.blueprint then
-			ease_dollars(card.ability.extra.takeyourmoney)
 			if SMODS.pseudorandom_probability(card, "rw_yellowlizard", 1, card.ability.extra.lizodds, "rw_yellowlizard") then
 				G.E_MANAGER:add_event(Event({
 					trigger = "after",
@@ -67,11 +66,6 @@ SMODS.Joker({
 					blocking = false,
 				}))
 			end
-			return {
-				message = SMODS.signed_dollars(card.ability.extra.takeyourmoney),
-				colour = G.C.MONEY,
-				delay = 0.45,
-			}
 		end
 
 		--Defeat
@@ -109,4 +103,8 @@ SMODS.Joker({
 			ease_dollars(-G.GAME.dollars - 20, true)
 		end
 	end,
+	-- Threat pt.2
+	calc_dollar_bonus = function (self, card)
+		return card.ability.extra.takeyourmoney
+	end
 })
