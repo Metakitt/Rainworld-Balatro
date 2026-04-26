@@ -112,7 +112,7 @@ SMODS.Joker({
 		then
 			for i = 1, #G.jokers.cards do
 				if
-					SMODS.pseudorandom_probability(card, "rw_greenlizard", 1, card.ability.extra.lizodds, "rw_greenlizard_joker")
+					SMODS.pseudorandom_probability(card, "rw_greenlizard", 1, card.ability.extra.boss_destroy_odds, "rw_greenlizard_joker")
 					and not G.jokers.cards[i].ability.eternal
 					and not context.blueprint
 				then
