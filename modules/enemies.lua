@@ -870,7 +870,7 @@ SCUG.enemy_should_count_down = function(context, conditions)
 		for i = 1, #G.jokers.cards do
 			if
 				G.jokers.cards[i].ability.rw_wgrenade
-				and G.GAME.grenademult >= conditions.requirement
+				and G.jokers.cards[i].ability.rw_wgrenade.mult >= conditions.requirement
 				and not context.blueprint
 			then
 				num_matches = num_matches + 1
