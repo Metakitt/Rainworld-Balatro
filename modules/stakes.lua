@@ -118,6 +118,22 @@ SMODS.Stake({
 	sticker_pos = { x = 3, y = 1 }
 })
 
+local card_set_cost_ref = Card.set_cost
+function Card:set_cost()
+local ret = card_set_cost_ref(self)
+
+if G.STATE == G.STATES.SHOP then
+for _, v in ipairs(G.GAME.applied_stakes) do
+if SMODS.stake_from_index(v) == "stake_rw_gluttony" then
+if self.ability.set == "Booster" or self.ability.set == "foods" or self:has_attribute('foods') then
+self.cost = self.cost * 2
+end
+return ret
+end
+end
+end
+end
+
 SMODS.Stake({
 	key = 'k7',
 	loc_txt = {
