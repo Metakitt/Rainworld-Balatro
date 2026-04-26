@@ -26,16 +26,22 @@ SMODS.Joker({
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		for k, v in pairs(SMODS.Stickers) do
-			local st, nd = string.find(k, "rw_w")
-			if st == 1 and nd == 4 then
+			-- local st, nd = string.find(k, "rw_w")
+			-- if st == 1 and nd == 4 then
+			-- 	v.rate = v.rate * 3
+			-- end
+			if v.config and v.config.weapon then
 				v.rate = v.rate * 3
 			end
 		end
 	end,
 	remove_from_deck = function(self, card, from_debuff)
 		for k, v in pairs(SMODS.Stickers) do
-			local st, nd = string.find(k, "rw_w")
-			if st == 1 and nd == 4 then
+			-- local st, nd = string.find(k, "rw_w")
+			-- if st == 1 and nd == 4 then
+			-- 	v.rate = v.rate / 3
+			-- end
+			if v.config and v.config.weapon then
 				v.rate = v.rate / 3
 			end
 		end
