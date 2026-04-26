@@ -77,12 +77,7 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			ease_dollars(card.ability.extra.takeyourmoney)
-			return {
-				message = localize("$") .. card.ability.extra.takeyourmoney,
-				colour = G.C.MONEY,
-				delay = 0.45,
-			}
+			return { dollars = card.ability.extra.takeyourmoney }
 		end
 	end,
 })

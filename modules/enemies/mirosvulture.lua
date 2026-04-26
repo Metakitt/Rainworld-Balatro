@@ -42,7 +42,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		--Threat
 		if context.after and not context.blueprint then
-			G.GAME.mirosbird = G.GAME.mirosbird + 0.1
+			G.GAME.mirosvulture = G.GAME.mirosvulture + 0.1
 		end
 
 		--Defeat

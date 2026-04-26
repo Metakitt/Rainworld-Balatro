@@ -49,11 +49,9 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		-- Threat
 		if context.setting_blind and not context.blueprint and not card.ability.extra.defeat then
-			local score_mult = 1 + (card.ability.extra.pct_per_joker * #G.jokers.cards) / 100
-			G.GAME.blind.chips = G.GAME.blind.chips * score_mult
-			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-			card:juice_up()
-			G.GAME.blind:wiggle()
+			return {
+				xblindsize = 1 + (card.ability.extra.pct_per_joker * #G.jokers.cards) / 100
+			}
 		end
 
 		-- Defeat

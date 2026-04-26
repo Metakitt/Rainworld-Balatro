@@ -34,8 +34,9 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		--Threat
 		if context.setting_blind and not context.blueprint then
-			G.GAME.blind.chips = G.GAME.blind.chips * 2
-			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+			return {
+				xblindsize = 2
+			}
 		end
 
 		--Defeat
@@ -62,7 +63,7 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			G.GAME.mirosbird = 2
+			G.GAME.mirosbird = (G.GAME.mirosbird or 1) * 2
 		end
 	end,
 })

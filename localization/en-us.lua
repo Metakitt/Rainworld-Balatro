@@ -901,7 +901,7 @@ return {
 			j_rw_centiwing = {
 				name = "Centiwing",
 				text = {
-					"{C:attention}Threat:{} #1# Chips to score after each {C:attention}hand{} played.",
+					"{C:attention}Threat: {C:purple}#1#{} Score before each {C:attention}hand{} played.",
 					"{C:attention}Undefeated:{} All cards with {C:chips}5 or more{} extra chips",
 					"in the deck are {C:red}debuffed permanently{}.",
 				},
