@@ -103,7 +103,7 @@ SMODS.Atlas {
 -- Temp Stakes
 SMODS.Atlas {
 	key = "stakes",
-	path = "chips.png",
+	path = "stakes.png",
 	px = 29,
 	py = 29
 }
