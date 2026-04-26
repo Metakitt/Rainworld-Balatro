@@ -68,7 +68,7 @@ SMODS.Joker({
 				}))
 			end
 			return {
-				message = localize("$") .. card.ability.extra.takeyourmoney,
+				message = SMODS.signed_dollars(card.ability.extra.takeyourmoney),
 				colour = G.C.MONEY,
 				delay = 0.45,
 			}
