@@ -39,7 +39,9 @@ SMODS.Tag({
 	apply = function(self, tag, context)
 		if context.type == "immediate" or context.type == "eval" then
 			tag:yep("+", G.C.DARK_EDITION, function()
-				SMODS.add_card({ set = "Joker", key = "j_rw_slugpup", edition = "e_negative" })
+				local spup = SMODS.add_card({ set = "Joker", key = "j_rw_slugpup", edition = "e_negative" })
+				spup.cost = 0
+				spup.sell_cost = 0
 				return true
 			end)
 			tag.triggered = true
