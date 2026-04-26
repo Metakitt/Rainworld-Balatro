@@ -34,6 +34,9 @@ SMODS.Joker({
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
+		if card.ability.extra.enemy_conditions.condition == "CardSuit" then
+			card.ability.extra.enemy_conditions.requirement = pseudorandom_element({"Hearts", "Diamonds"}, pseudoseed("eellizard"))
+		end
 		-- Threat
 		for _, v in pairs(G.playing_cards) do
 			if v:is_suit("Spades", true) or v:is_suit("Clubs", true) then
