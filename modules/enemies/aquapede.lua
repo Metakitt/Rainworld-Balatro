@@ -34,7 +34,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
-	attributes = { "enemy", "enhancements", "destroy_card", "modify_card" },
+	attributes = { "enemy", "enhancements", "destroy_card", "modify_card", "chance" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
