@@ -76,15 +76,31 @@ SMODS.Joker({
 					})
 				end
 			else
-				card.ability.extra.dormant_timer = card.ability.extra.dormant_timer - 1
-				card_eval_status_text(card, "extra", nil, nil, nil, {
+				-- card.ability.extra.dormant_timer = card.ability.extra.dormant_timer - 1
+				-- card_eval_status_text(card, "extra", nil, nil, nil, {
+				-- 	message = card.ability.extra.dormant_timer == 0 and localize("k_awake_ex") or localize({
+				-- 		type = "variable",
+				-- 		key = "a_remaining",
+				-- 		vars = { card.ability.extra.dormant_timer },
+				-- 	}),
+				-- 	colour = G.C.FILTER,
+				-- })
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "dormant_timer",
+					scalar_table = { one = 1 },
+					scalar_value = "one",
+					operation = '-',
+					no_message = true
+				})
+				SMODS.calculate_effect({
 					message = card.ability.extra.dormant_timer == 0 and localize("k_awake_ex") or localize({
 						type = "variable",
 						key = "a_remaining",
 						vars = { card.ability.extra.dormant_timer },
 					}),
 					colour = G.C.FILTER,
-				})
+				}, card)
 			end
 		end
 
