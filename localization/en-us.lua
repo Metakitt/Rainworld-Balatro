@@ -367,11 +367,9 @@ return {
 					"{C:inactive}(Loaded with: Grenade){}",
 					"If {C:attention}first discard{} of",
 					"round has only {C:attention}1{} card",
-					"{C:attention}destroy{} it. Gains {C:mult}+3{}",
-					"Mult for each {C:attention}card{}",
-					"{C:attention}destroyed{} by Grenade",
-					"this run.",
-					"{C:inactive}(Currently {}{C:mult}+#1#{}{C:inactive}){}",
+					"{C:attention}destroy{} it and give",
+					"{C:mult}+20{} Mult for the",
+					"rest of the round"
 				},
 			},
 			rw_wjokerifle_sporepuff = {
@@ -2171,7 +2169,8 @@ return {
 			mult_cost1 = "-0.2x",
 			mult_cost2 = "Mult",
 			k_msg_ex = "Message Received!",
-			k_destroyed_ex = "Destroyed!"
+			k_destroyed_ex = "Destroyed!",
+			k_primed_ex = "Primed!"
 		},
 		v_dictionary = {
 			a_reputation = "+#1# Reputation",

@@ -74,11 +74,14 @@ SMODS.Sticker({
 	needs_enable_flag = false,
 	loc_vars = function(self, info_queue, card)
 		return {
-			vars = { G.GAME.grenademult },
 			key = self.key .. '_' .. ((G.GAME and G.GAME.jokerifle) or "none")
 		}
 	end,
 	calculate = function(self, card, context)
+		if context.setting_blind then
+			card.ability.extra.grenade_primed = nil
+		end
+
 		if G.GAME.jokerifle == "beehive" then
 			if context.setting_blind then
 				local suit = pseudorandom_element(SMODS.Suits, pseudoseed("mysuit"))
@@ -113,8 +116,8 @@ SMODS.Sticker({
 				if card.config.center_key == "j_rw_artificer" then
 					card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.bonus_chips
 				end
-				SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
-				G.GAME.grenademult = G.GAME.grenademult + 3
+				SMODS.calculate_effect({ message = localize("k_primed_ex") }, card)
+				card.ability.extra.grenade_primed = true
 
 				return {
 					remove = true,
@@ -132,19 +135,18 @@ SMODS.Sticker({
 		if context.joker_main then
 			if G.GAME.jokerifle == "singularity" and G.GAME.current_round.hands_played == 0 then
 				if #context.full_hand == 1 then
-					for k, v in ipairs(G.hand.cards) do
-						other_card = v
-						v:start_dissolve()
-						SMODS.calculate_context({ remove_playing_cards = true, removed = { v } })
-					end
-					SMODS.Stickers.rw_wsingularity:apply(card)
+					-- for k, v in ipairs(G.hand.cards) do
+					-- 	v:start_dissolve()
+					-- 	SMODS.calculate_context({ remove_playing_cards = true, removed = { v } })
+					-- end
+					SMODS.destroy_cards(G.hand.cards)
+					SMODS.Stickers.rw_wsingularity:apply(card, false)
 					G.GAME.chips = G.GAME.blind.chips
 					G.STATE_COMPLETE = true
 				end
 			elseif G.GAME.jokerifle == "bluefruit" and G.GAME.current_round.hands_played == 0 then
-				local upgrade = {}
 				for i = 1, #G.play.cards do
-					upgrade = G.play.cards[i]
+					local upgrade = G.play.cards[i]
 					upgrade:juice_up()
 					upgrade.ability.perma_bonus = upgrade.ability.perma_bonus or 0
 					upgrade.ability.perma_bonus = upgrade.ability.perma_bonus + 15
@@ -154,13 +156,13 @@ SMODS.Sticker({
 					x_chips = 2,
 				}
 			elseif G.GAME.jokerifle == "cherrybomb" then
-				local bomb = math.random(6, 12)
+				local bomb = SCUG.number_in_range(6, 12) --math.random(6, 12)
 				return {
 					mult = bomb,
 				}
-			elseif G.GAME.jokerifle == "grenade" then
+			elseif G.GAME.jokerifle == "grenade" and card.ability.extra.grenade_primed then
 				return {
-					mult = G.GAME.grenademult,
+					mult = 20
 				}
 			elseif G.GAME.jokerifle == "none" then
 				--do nothing (for now)
