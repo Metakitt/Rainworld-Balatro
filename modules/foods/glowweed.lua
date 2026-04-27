@@ -18,11 +18,7 @@ SMODS.Consumable({
 		return #G.hand.highlighted <= 2 and #G.hand.highlighted > 0
 	end,
 	use = function(self, card, area, copier)
-		if
-			card.ability.name == "glowweed"
-			and SMODS.pseudorandom_probability(card, "rw_glowweed", 1, card.ability.extra.odds, "rw_glowweed")
-		then
-			local other_card = G.hand.highlighted[i]
+		if SMODS.pseudorandom_probability(card, "rw_glowweed", 1, card.ability.extra.odds, "rw_glowweed") then
 			for i = 1, #G.hand.highlighted do
 				local other_card = G.hand.highlighted[i]
 				other_card:set_edition("e_foil")

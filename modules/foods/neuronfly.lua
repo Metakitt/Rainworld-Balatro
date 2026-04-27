@@ -18,12 +18,10 @@ SMODS.Consumable({
 		return true
 	end,
 	use = function(self, card, area, copier)
-		if card.ability.name == "neuronfly" then
-			G.hand:change_size(-card.ability.extra.h_size)
-			card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_mod
-			G.hand:change_size(card.ability.extra.h_size)
-			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.ORANGE }, card)
-		end
+		G.hand:change_size(-card.ability.extra.h_size)
+		card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_mod
+		G.hand:change_size(card.ability.extra.h_size)
+		SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.ORANGE }, card)
 		SCUG.inc_food_count()
 	end,
 })

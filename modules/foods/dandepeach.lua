@@ -18,18 +18,16 @@ SMODS.Consumable({
 		return #G.hand.cards > 0
 	end,
 	use = function(self, card, area, copier)
-		if card.ability.name == "dandepeach" then
-			rank = pseudorandom_element(SMODS.Ranks, "rw_dandepeach_rank", {})
-			suit = pseudorandom_element(SMODS.Suits, "rw_dandepeach_suit", {})
-			local other_card = SMODS.add_card({
-				set = "Base",
-				rank = rank.key,
-				suit = suit.key,
-				area = G.hand,
-			})
-			other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
-			other_card.ability.perma_bonus = other_card.ability.perma_bonus + card.ability.extra.upgrade
-		end
+		rank = pseudorandom_element(SMODS.Ranks, "rw_dandepeach_rank", {})
+		suit = pseudorandom_element(SMODS.Suits, "rw_dandepeach_suit", {})
+		local other_card = SMODS.add_card({
+			set = "Base",
+			rank = rank.key,
+			suit = suit.key,
+			area = G.hand,
+		})
+		other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
+		other_card.ability.perma_bonus = other_card.ability.perma_bonus + card.ability.extra.upgrade
 		SCUG.inc_food_count()
 	end,
 })
