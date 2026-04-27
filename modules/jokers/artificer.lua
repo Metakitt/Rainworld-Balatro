@@ -69,7 +69,17 @@ SMODS.Joker({
 				-- 		return true
 				-- 	end,
 				-- }))
-				SMODS.destroy_cards(card_to_destroy)
+				-- SMODS.destroy_cards(card_to_destroy)
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						if SMODS.shatters(card_to_destroy) then
+							card_to_destroy:shatter()
+						else
+							card_to_destroy:start_dissolve()
+						end
+						return true
+					end
+				}))
 				SMODS.scale_card(card, {
 					ref_table = card.ability.extra,
 					ref_value = "chips",
@@ -77,9 +87,12 @@ SMODS.Joker({
 					operation = function(ref_table, ref_value, initial, change)
 						ref_table[ref_value] = initial + (change / 2)
 					end,
-					message_key = "k_destroyed_ex",
-					message_colour = G.C.BLUE
+					no_message = true
 				})
+				SMODS.calculate_effect({
+					message = localize("k_destroyed_ex"),
+					colour = G.C.CHIPS
+				}, card)
 			end
 		end
 	end,

@@ -43,8 +43,8 @@ SMODS.Joker({
 
 		if context.remove_playing_cards or context.cards_destroyed and not context.blueprint then
 			-- for i = 1, #context.removed do
-				-- card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.pupbonus_chips
-				-- SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
+			-- card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.pupbonus_chips
+			-- SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
 			-- end
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
@@ -81,13 +81,6 @@ SMODS.Joker({
 				-- 	end,
 				-- }))
 				SMODS.destroy_cards(card_to_destroy)
-				SMODS.scale_card(card, {
-					ref_table = card.ability.extra,
-					ref_value = "chips",
-					scalar_value = "pupbonus_chips",
-					message_key = "k_destroyed_ex",
-					message_colour = G.C.CHIPS
-				})
 			end
 		end
 	end,
