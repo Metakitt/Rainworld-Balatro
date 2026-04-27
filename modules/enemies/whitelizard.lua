@@ -91,7 +91,12 @@ SMODS.Joker({
 			end
 			local unlevel = SCUG.big(1) - G.GAME.hands[_handname].level
 			if unlevel < SCUG.big(0) then
-				SMODS.smart_level_up_hand(card, _handname, false, SCUG.num(unlevel))
+				-- SMODS.smart_level_up_hand(card, _handname, false, SCUG.num(unlevel))
+				SMODS.upgrade_poker_hands {
+					hands = { _handname },
+					level_up = SCUG.num(unlevel),
+					from = card
+				}
 			end
 		end
 	end,
