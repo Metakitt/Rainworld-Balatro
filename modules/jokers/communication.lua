@@ -51,7 +51,7 @@ SMODS.Joker({
 			SMODS.calculate_effect({ message = localize("k_msg_ex"), colour = G.C.SECONDARY_SET.Planet }, card)
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					SMODS.add_card { set = 'Consumeables' }
+					SMODS.add_card { set = 'Consumeables', soulable = false }
 					return true
 				end
 			}))

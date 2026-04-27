@@ -114,10 +114,14 @@ SMODS.Joker({
 					local mark = G.jokers.cards[stolen[1]]
 					mark.ability[stolen[2]] = nil
 					mark:juice_up()
-					card_eval_status_text(card, "extra", nil, nil, nil, {
-						message = "Yoinked!",
-						colour = G.C.RED,
-					})
+					-- card_eval_status_text(card, "extra", nil, nil, nil, {
+					-- 	message = "Yoinked!",
+					-- 	colour = G.C.RED,
+					-- })
+					SMODS.calculate_effect({
+						message = localize("k_yoinked_ex"),
+						colour = G.C.RED
+					}, card)
 					card.ability.extra.yoinked = true
 				end
 			end
