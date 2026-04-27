@@ -617,8 +617,7 @@ return {
 					"Adds a permanent",
 					"copy of a random",
 					"{C:attention}card{} in your {C:attention}hand{}",
-					"to the {C:attention}deck{}",
-					"and draws it.",
+					"to your hand",
 				},
 			},
 			c_rw_eggbugegg = {
