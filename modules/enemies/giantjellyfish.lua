@@ -1,6 +1,9 @@
 -- Threat: Increases required Score per Blind by the amount of jokers * 5% (So if you have 5 jokers, it'd be a 25% increase).
 -- Defeat: Play 3 hands with a Spear.
 -- Not Defeated: Destroys a random Voucher.
+-- TODO: New unefeated effect.
+-- This is gonna be jank without any special library to handle this.
+-- This just removes the voucher from the redeemed list, which both doesn't undo the effects it gives, but also means you can find and redeem it again.
 
 SMODS.Joker({
 	key = "giantjellyfish",
