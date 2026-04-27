@@ -20,7 +20,9 @@ SMODS.Joker({
 			and context.main_eval
 			and SMODS.pseudorandom_probability(card, "rw_inv", 1, card.ability.extra.odds, "rw_inv")
 		then
-			SMODS.add_card({ set = "Joker", area = G.jokers, edition = "e_negative", key = "j_rw_slugpup" })
+			local spup = SMODS.add_card({ set = "Joker", area = G.jokers, edition = "e_negative", key = "j_rw_slugpup" })
+			spup.cost = 0
+			spup.sell_cost = 0
 		end
 	end,
 })
