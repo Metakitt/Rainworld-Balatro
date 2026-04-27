@@ -50,9 +50,17 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		--Threat
 		if context.debuff_hand and not context.blueprint then
-			if not (context.poker_hands["High Card"][1] or context.poker_hands["Flush House"][1]) then
+			if not (context.scoring_name == "High Card" or context.scoring_name == "Flush House") then
 				return { debuff = true }
 			end
+		end
+		if context.debuffed_hand and not (context.scoring_name == "High Card" or context.scoring_name == "Flush House") then
+			return {
+				func = function()
+					SMODS.calculate_effect({ message = localize("k_destroyed_ex"), colour = G.C.RED }, card)
+					SMODS.destroy_cards(context.full_hand)
+				end
+			}
 		end
 
 		--Defeat
@@ -83,19 +91,19 @@ SMODS.Joker({
 		--Nothing happens.
 
 		--Currently, it works as intended but doing remove rather than dissolve just obliterates the cards from existence. Dissolve leaves ghost cards.
-		local Blind_debuff_hand = Blind.debuff_hand
-		function Blind:debuff_hand(cards, hand, handname, check)
-			local ret = Blind_debuff_hand(self, cards, hand, handname, check)
-			if ret then
-				for _, k in ipairs(G.jokers.cards) do
-					if k.config.center_key == "j_rw_motherspider" then
-						for _, v in pairs(G.play.cards) do
-							v:remove()
-						end
-					end
-				end
-			end
-			return ret
-		end
+		-- local Blind_debuff_hand = Blind.debuff_hand
+		-- function Blind:debuff_hand(cards, hand, handname, check)
+		-- 	local ret = Blind_debuff_hand(self, cards, hand, handname, check)
+		-- 	if ret then
+		-- 		for _, k in ipairs(G.jokers.cards) do
+		-- 			if k.config.center_key == "j_rw_motherspider" then
+		-- 				for _, v in pairs(G.play.cards) do
+		-- 					v:remove()
+		-- 				end
+		-- 			end
+		-- 		end
+		-- 	end
+		-- 	return ret
+		-- end
 	end,
 })
