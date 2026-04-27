@@ -12,19 +12,23 @@ SMODS.Joker({
 	config = { extra = { xmult_mod = 1, xmult_gain_food = 0.25, food_used_total = 0 }, slugcat = true },
 
 	loc_vars = function(self, info_queue, card)
-		if card.ability.extra.food_used_total <= 6 then
-			return {
-				vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_food },
-				key = self.key .. "small",
-			}
-		end
+		-- if card.ability.extra.food_used_total <= 6 then
+		-- 	return {
+		-- 		vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_food },
+		-- 		key = self.key .. "small",
+		-- 	}
+		-- end
 
-		if card.ability.extra.food_used_total >= 7 then
-			return {
-				vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_food },
-				key = self.key .. "big",
-			}
-		end
+		-- if card.ability.extra.food_used_total >= 7 then
+		-- 	return {
+		-- 		vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_food },
+		-- 		key = self.key .. "big",
+		-- 	}
+		-- end
+		return {
+			vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_gain_food },
+			key = self.key .. (card.ability.extra.food_used_total > 6 and "big" or "small")
+		}
 	end,
 
 	calculate = function(self, card, context)
