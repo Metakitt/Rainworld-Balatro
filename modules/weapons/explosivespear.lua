@@ -2,6 +2,7 @@ SMODS.Sticker({
 	key = "wspear_exp",
 	config = {
 		weapon = true,
+		spear = true,
 	},
 	loc_txt = {
 		label = "Explosive Spear",
