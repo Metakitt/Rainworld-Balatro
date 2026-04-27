@@ -13,15 +13,15 @@ SMODS.Consumable({
 	end,
 	update = function(self, card, dt)
 		if
-			card.ability.name == "bubblefruit" and next(SMODS.find_card("j_rw_rivulet"))
+			next(SMODS.find_card("j_rw_rivulet"))
 			or next(SMODS.find_card("j_splash"))
 			or next(SMODS.find_card("j_seltzer"))
 			or next(SMODS.find_card("j_dietcola"))
 		then
 			card.children.center:set_sprite_pos({ x = 2, y = 0 })
 			if
-				card.ability.name == "bubblefruit"
-				and not next(SMODS.find_card("j_rw_rivulet"))
+
+				not next(SMODS.find_card("j_rw_rivulet"))
 				and not next(SMODS.find_card("j_splash"))
 				and not next(SMODS.find_card("j_seltzer"))
 				and not next(SMODS.find_card("j_dietcola"))
@@ -35,36 +35,29 @@ SMODS.Consumable({
 	end,
 	use = function(self, card, area, copier)
 		if
-			card.ability.name == "bubblefruit"
-			and not next(SMODS.find_card("j_rw_rivulet"))
+			not next(SMODS.find_card("j_rw_rivulet"))
 			and not next(SMODS.find_card("j_splash"))
 			and not next(SMODS.find_card("j_seltzer"))
 			and not next(SMODS.find_card("j_dietcola"))
 		then
 			for i, v in ipairs(G.hand.highlighted) do
-				for i = 1, #G.hand.highlighted do
-					other_card = v
-					other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
-					other_card.ability.perma_bonus = other_card.ability.perma_bonus * 2
-					other_card:juice_up(0.5, 0.5)
-					SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, other_card)
-				end
+				v.ability.perma_bonus = v.ability.perma_bonus or 0
+				v.ability.perma_bonus = v.ability.perma_bonus * 2
+				v:juice_up(0.5, 0.5)
+				SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, v)
 			end
 		end
 		if
-			card.ability.name == "bubblefruit" and next(SMODS.find_card("j_rw_rivulet"))
+			next(SMODS.find_card("j_rw_rivulet"))
 			or next(SMODS.find_card("j_splash"))
 			or next(SMODS.find_card("j_seltzer"))
 			or next(SMODS.find_card("j_dietcola")) and not G.STATE == G.STATES.SMODS_BOOSTER_OPENED
 		then
 			for i, v in ipairs(G.hand.highlighted) do
-				for i = 1, #G.hand.highlighted do
-					other_card = v
-					other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
-					other_card.ability.perma_bonus = other_card.ability.perma_bonus * 4
-					other_card:juice_up(0.5, 0.5)
-					SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, other_card)
-				end
+				v.ability.perma_bonus = v.ability.perma_bonus or 0
+				v.ability.perma_bonus = v.ability.perma_bonus * 4
+				v:juice_up(0.5, 0.5)
+				SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, v)
 			end
 		end
 		SCUG.inc_food_count()

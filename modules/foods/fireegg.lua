@@ -18,17 +18,15 @@ SMODS.Consumable({
 		return true
 	end,
 	use = function(self, card, area, copier)
-		if card.ability.name == "fireegg" then
-			local suit = SCUG.get_suit_in_deck()
-			for _, other_card in ipairs(G.playing_cards) do
-				if other_card:is_suit(suit) then
-					other_card.ability.perma_mult = other_card.ability.perma_mult or 0
-					other_card.ability.perma_mult = other_card.ability.perma_mult + card.ability.extra.upgrade
-					card_eval_status_text(other_card, "extra", nil, nil, nil, {
-						message = localize("k_upgrade_ex"),
-						colour = G.C.MULT,
-					})
-				end
+		local suit = SCUG.get_suit_in_deck()
+		for _, other_card in ipairs(G.playing_cards) do
+			if other_card:is_suit(suit) then
+				other_card.ability.perma_mult = other_card.ability.perma_mult or 0
+				other_card.ability.perma_mult = other_card.ability.perma_mult + card.ability.extra.upgrade
+				SMODS.calculate_effect({
+					message = localize("k_upgrade_ex"),
+					colour = G.C.MULT,
+				}, other_card)
 			end
 		end
 		SCUG.inc_food_count()

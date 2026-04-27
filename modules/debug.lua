@@ -36,15 +36,10 @@ SMODS.Consumable({
 		return #G.hand.highlighted == 1
 	end,
 	use = function(self, card, area, copier)
-		if card.ability.name == "rot" then
-			for i, v in ipairs(G.hand.highlighted) do
-				for i = 1, #G.hand.highlighted do
-					other_card = v
-					other_card:set_ability(G.P_CENTERS.m_rw_rotting)
-					other_card:juice_up(0.5, 0.5)
-					SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, other_card)
-				end
-			end
+		for _, v in ipairs(G.hand.highlighted) do
+			v:set_ability(G.P_CENTERS.m_rw_rotting)
+			v:juice_up(0.5, 0.5)
+			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, v)
 		end
 	end,
 })
@@ -69,15 +64,10 @@ SMODS.Consumable({
 		return #G.hand.highlighted == 1
 	end,
 	use = function(self, card, area, copier)
-		if card.ability.name == "wet" then
-			for i, v in ipairs(G.hand.highlighted) do
-				for i = 1, #G.hand.highlighted do
-					other_card = v
-					other_card:set_ability(G.P_CENTERS.m_rw_wetasscard)
-					other_card:juice_up(0.5, 0.5)
-					SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, other_card)
-				end
-			end
+		for _, v in ipairs(G.hand.highlighted) do
+			v:set_ability(G.P_CENTERS.m_rw_wetasscard)
+			v:juice_up(0.5, 0.5)
+			SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, v)
 		end
 	end,
 })
