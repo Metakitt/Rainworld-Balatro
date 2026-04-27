@@ -32,7 +32,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		-- Defeat
 		if not card.ability.extra.defeat then
 			if SCUG.weapon_count("rw_wjokerifle") > 0 then
@@ -40,7 +39,7 @@ SMODS.Joker({
 				SMODS.destroy_cards(card)
 			end
 		end
-		
+
 		-- Threat/Undefeated
 		if
 			(
@@ -86,6 +85,5 @@ SMODS.Joker({
 				end
 			end
 		end
-		
 	end,
 })

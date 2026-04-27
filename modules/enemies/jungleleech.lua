@@ -54,7 +54,6 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.joker_main and not context.blueprint then
 			return {
@@ -105,7 +104,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -122,6 +121,5 @@ SMODS.Joker({
 				end,
 			}))
 		end
-		
 	end,
 })
