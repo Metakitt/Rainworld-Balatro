@@ -44,29 +44,25 @@ SMODS.Joker({
 		if context.before and not context.blueprint then
 			for _, v in ipairs(G.jokers.cards) do
 				if v ~= card then
-					local joker_weapons = {}
-					for k, _ in pairs(v.ability) do
-						local st, nd = string.find(k, "rw_w")
-						if st == 1 and nd == 4 then
-							table.insert(joker_weapons, k)
-						end
-					end
+					local joker_weapons = SCUG.weapons_on_joker(v)
 					if #joker_weapons > 0 then
 						local not_anymore, _ = pseudorandom_element(joker_weapons, pseudoseed("rw_chieftain"))
-						v.ability[not_anymore] = nil
+						-- v.ability[not_anymore] = nil
+						SMODS.Stickers[not_anymore]:apply(v, false)
 						v:juice_up()
 					end
 				end
 			end
-			G.E_MANAGER:add_event(Event({
-				func = function()
-					card_eval_status_text(card, "extra", nil, nil, nil, {
-						message = localize("k_yoinked_ex"),
-						colour = G.C.RED,
-					})
-					return true
-				end,
-			}))
+			SMODS.calculate_effect({ message = localize("k_yoinked_ex"), colour = G.C.RED }, card)
+			-- G.E_MANAGER:add_event(Event({
+			-- 	func = function()
+			-- 		card_eval_status_text(card, "extra", nil, nil, nil, {
+			-- 			message = localize("k_yoinked_ex"),
+			-- 			colour = G.C.RED,
+			-- 		})
+			-- 		return true
+			-- 	end,
+			-- }))
 		end
 
 		--Defeat

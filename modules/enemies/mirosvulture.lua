@@ -82,18 +82,30 @@ SMODS.Joker({
 				}))
 				end_round()
 			else
-				for _, v in pairs(G.jokers.cards) do
-					for k, _ in pairs(v.ability) do
-						st, nd = string.find(k, "rw_w")
-						if st and nd then
-							SMODS.Stickers[k]:apply(v, nil)
+				-- for _, v in pairs(G.jokers.cards) do
+				-- 	for k, _ in pairs(v.ability) do
+				-- 		st, nd = string.find(k, "rw_w")
+				-- 		if st and nd then
+				-- 			SMODS.Stickers[k]:apply(v, nil)
+				-- 		end
+				-- 	end
+				-- end
+				-- card_eval_status_text(card, "extra", nil, nil, nil, {
+				-- 	message = localize("k_yoinked_ex"),
+				-- 	colour = G.C.RED,
+				-- })
+				for _, v in ipairs(G.jokers.cards) do
+					if v ~= card then
+						local joker_weapons = SCUG.weapons_on_joker(v)
+						if #joker_weapons > 0 then
+							for _, vv in ipairs(joker_weapons) do
+								SMODS.Stickers[vv]:apply(v, false)
+								v:juice_up()
+							end
 						end
 					end
 				end
-				card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = localize("k_yoinked_ex"),
-					colour = G.C.RED,
-				})
+				SMODS.calculate_effect({ message = localize("k_yoinked_ex"), colour = G.C.RED }, card)
 			end
 		end
 	end,
