@@ -4,9 +4,6 @@ SMODS.Sticker({
 		weapon = true,
 		x_chips = 2
 	},
-	loc_txt = {
-		label = "Rock",
-	},
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = { self.config.x_chips }

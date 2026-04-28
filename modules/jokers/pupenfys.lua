@@ -1,14 +1,6 @@
 SMODS.Joker({
 	key = "pupenfys",
 	atlas = "slugcats",
-	loc_txt = {
-		name = "Enfys pup",
-		text = {
-			"At the {C:attention}end of round{},",
-			"creates a random,",
-			"{C:edition}negative{} Food Consumeable.",
-		},
-	},
 	pos = { x = 4, y = 6 },
 	rarity = 3,
 	cost = 7,

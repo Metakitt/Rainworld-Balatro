@@ -11,9 +11,6 @@ SMODS.Sticker({
 			exhausting_tired = 0.7
 		}
 	},
-	loc_txt = {
-		label = "Explosive Spear",
-	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 2, y = 2 },

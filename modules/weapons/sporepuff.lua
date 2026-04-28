@@ -3,9 +3,6 @@ SMODS.Sticker({
 	config = {
 		weapon = true,
 	},
-	loc_txt = {
-		label = "Sporepuff",
-	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 3, y = 1 },

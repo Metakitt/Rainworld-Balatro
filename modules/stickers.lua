@@ -1,8 +1,5 @@
 SMODS.Sticker({
 	key = "rotted",
-	loc_txt = {
-		label = "Rot",
-	},
 	badge_colour = HEX("000070"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 4, y = 0 },

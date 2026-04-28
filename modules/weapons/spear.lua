@@ -11,9 +11,6 @@ SMODS.Sticker({
 			exhausting_tired = 0.9
 		}
 	},
-	loc_txt = {
-		label = "Spear",
-	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 3, y = 2 },
@@ -113,9 +110,6 @@ SMODS.Sticker({
 	key = "hunter_wspear",
 	config = {
 		x_mult = 1.75
-	},
-	loc_txt = {
-		label = "2nd Spear",
 	},
 	loc_vars = function(self, info_queue, card)
 		return { vars = { self.config.x_mult } }

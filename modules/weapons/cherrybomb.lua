@@ -6,9 +6,6 @@ SMODS.Sticker({
 		mult_min = 6,
 		mult_max = 12,
 	},
-	loc_txt = {
-		label = "Cherrybomb",
-	},
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = { self.config.mult_min, self.config.mult_max }

@@ -4,9 +4,6 @@ SMODS.Sticker({
 		weapon = true,
 		min_bonus = 5
 	},
-	loc_txt = {
-		label = "Beehive",
-	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 0, y = 3 },

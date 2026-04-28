@@ -1,12 +1,5 @@
 SMODS.Blind({
 	key = "rotblind",
-	loc_txt = {
-		name = "Rot",
-		text = {
-			"All cards of a played",
-			"hand become Rot.",
-		},
-	},
 	boss = { min = 4, max = 10 },
 	boss_colour = HEX("1b5699"),
 	atlas = "theblinds",

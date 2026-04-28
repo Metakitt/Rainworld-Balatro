@@ -5,9 +5,6 @@ SMODS.Sticker({
 		mult_gain = 3,
 		weapon = true
 	},
-	loc_txt = {
-		label = "Grenade",
-	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 0, y = 1 },

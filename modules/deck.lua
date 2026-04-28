@@ -3,13 +3,6 @@ SMODS.Back({
 	key = "pebblesdeck",
 	atlas = "enhancedcards_scug",
 	pos = { x = 1, y = 0 },
-	loc_txt = {
-		name = "5P deck",
-		text = {
-			"Start with {C:attention}#1#",
-			"{C:rot}Rot{} cards.",
-		},
-	},
 	loc_vars = function(self, info_queue, card)
 		return { vars = { self.config.rotten_cards } }
 	end,
@@ -81,16 +74,6 @@ SMODS.Back({
 	key = "LTTMdeck",
 	atlas = "enhancedcards_scug",
 	pos = { x = 5, y = 0 },
-	loc_txt = {
-		name = "Looks To The Moon deck",
-		text = {
-			"Club cards gain 2 extra chips",
-			"at the end of each blind.",
-			"1~4 random cards become Wet",
-			"at the end of each blind.",
-			"Cards can become Moldy and Rot."
-		},
-	},
 	calculate = function(self, back, context)
 		if context.end_of_round and context.main_eval then
 			for _, other_card in ipairs(G.playing_cards) do

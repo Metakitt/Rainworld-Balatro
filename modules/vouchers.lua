@@ -1,9 +1,5 @@
 SMODS.Voucher({
 	key = "weaponsale",
-	loc_txt = {
-		name = "Fair Trade",
-		text = { "Weapon cards can appear in the shop." },
-	},
 	atlas = "scugvouchers",
 	pos = { x = 0, y = 0 },
 
@@ -19,11 +15,6 @@ SMODS.Voucher({
 
 SMODS.Voucher({
 	key = "weaponboss",
-	loc_txt = {
-		name = "Scavenger Stash",
-		text = { "{C:green}#1# in #2#{} chance to get a",
-			"weapon at the end of a Boss Blind." },
-	},
 	atlas = "scugvouchers",
 	pos = { x = 0, y = 1 },
 	requires = { "v_rw_weaponsale" },
@@ -63,10 +54,6 @@ SMODS.Voucher({
 
 SMODS.Voucher({
 	key = "relay",
-	loc_txt = {
-		name = "Relay",
-		text = { "Skipping a blind grants a random tag." },
-	},
 	atlas = "scugvouchers",
 	pos = { x = 2, y = 0 },
 	calculate = function(self, card, context)
@@ -80,10 +67,6 @@ SMODS.Voucher({
 
 SMODS.Voucher({
 	key = "chain",
-	loc_txt = {
-		name = "Chain",
-		text = { "Skipping a blind grants another random tag." },
-	},
 	atlas = "scugvouchers",
 	pos = { x = 2, y = 1 },
 	requires = { "v_rw_relay" },
@@ -98,10 +81,6 @@ SMODS.Voucher({
 if SCUG.config.allow_enemy_spawns then
 	SMODS.Voucher({
 		key = "rainfall",
-		loc_txt = {
-			name = "Rainfall",
-			text = { "Enemies are half as likely to appear on all blinds." },
-		},
 		atlas = "scugvouchers",
 		pos = { x = 1, y = 0 },
 		calculate = function(self, card, context)
@@ -116,10 +95,6 @@ if SCUG.config.allow_enemy_spawns then
 
 	SMODS.Voucher({
 		key = "downpour",
-		loc_txt = {
-			name = "Downpour",
-			text = { "Enemies no longer spawn." },
-		},
 		atlas = "scugvouchers",
 		pos = { x = 1, y = 1 },
 		requires = { "v_rw_rainfall" },

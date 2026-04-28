@@ -5,13 +5,6 @@ if context.other_card is
 SMODS.Joker({
 	key = "scugbo",
 	atlas = "slugcats",
-	loc_txt = {
-		name = "Scugbo",
-		text = {
-			"{C:mult}+#1#{} Mult for",
-			"each Slugcat.",
-		},
-	},
 	rarity = 1,
 	cost = 4,
 	pos = { x = 7, y = 2 },

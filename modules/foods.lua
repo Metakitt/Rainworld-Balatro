@@ -18,15 +18,6 @@ SMODS.ConsumableType({
 	collection_rows = { 6, 7 },
 	primary_colour = HEX("1b5699"),
 	secondary_colour = HEX("1b5699"),
-	loc_txt = {
-		collection = "Food",
-		name = "Food",
-
-		undiscovered = {
-			name = "Not Discovered",
-			text = { "Purchase or use", "this card in an", "unseeded run to", "learn what it does" },
-		},
-	},
 	shop_rate = 3.5,
 	rarities = {
 		{ key = "rw_foodcommon", rate = 0.7 },

@@ -7,9 +7,6 @@ SMODS.Sticker({
 	config = {
 		weapon = true,
 	},
-	loc_txt = {
-		label = "Flashbang",
-	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 4, y = 2 },
