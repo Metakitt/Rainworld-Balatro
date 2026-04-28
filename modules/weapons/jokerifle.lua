@@ -132,10 +132,6 @@ SMODS.Sticker({
 		if context.joker_main then
 			if G.GAME.jokerifle == "singularity" and G.GAME.current_round.hands_played == 0 then
 				if #context.full_hand == 1 then
-					-- for k, v in ipairs(G.hand.cards) do
-					-- 	v:start_dissolve()
-					-- 	SMODS.calculate_context({ remove_playing_cards = true, removed = { v } })
-					-- end
 					SMODS.destroy_cards(G.hand.cards)
 					SMODS.Stickers.rw_wsingularity:apply(card, false)
 					G.GAME.chips = G.GAME.blind.chips
@@ -153,7 +149,7 @@ SMODS.Sticker({
 					x_chips = 2,
 				}
 			elseif G.GAME.jokerifle == "cherrybomb" then
-				local bomb = SCUG.number_in_range(6, 12) --math.random(6, 12)
+				local bomb = SCUG.number_in_range(6, 12)
 				return {
 					mult = bomb,
 				}

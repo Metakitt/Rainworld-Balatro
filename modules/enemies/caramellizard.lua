@@ -77,16 +77,6 @@ SMODS.Joker({
 		-- Sets spawning of food to 0 when added to deck.
 
 		--Defeat
-		-- if context.before and not context.blueprint then
-		-- 	for _, v in pairs(context.scoring_hand) do
-		-- 		if v.config.center_key == "m_lucky" then
-		-- 			G.GAME.foods_rate = 3.5
-		-- 			G.P_CENTERS.p_rw_selectfoodpack.weight = 0.9
-		-- 			G.P_CENTERS.p_rw_regularfoodpack.weight = 1.2
-		-- 			card.ability.extra.defeat = true
-		-- 		end
-		-- 	end
-		-- end
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
 			card.ability.extra.enemy_conditions.amount = card.ability.extra.enemy_conditions.amount - tick_down

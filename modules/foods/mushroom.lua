@@ -25,17 +25,9 @@ SMODS.Consumable({
 			SMODS.pseudorandom_probability(card, "rw_mushroom", 1, card.ability.extra.odds, "rw_mushroom_chips")
 			and G.GAME.blind.in_blind
 		then
-			-- G.GAME.blind.chips = G.GAME.blind.chips / 2
-			-- G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 			SMODS.calculate_effect({ xblindsize = 0.5 }, card)
 		end
 		if SMODS.pseudorandom_probability(card, "rw_mushroom", 1, card.ability.extra.replication, "rw_mushroom_replicate") then
-			-- local _card = copy_card(card)
-			-- _card:add_to_deck()
-			-- G.consumeables:emplace(_card)
-			-- _card:start_materialize(nil, _first_dissolve)
-			-- _first_dissolve = true
-			-- card:start_dissolve()
 			SMODS.add_card {
 				set = "foods",
 				key = "c_rw_mushroom"

@@ -31,7 +31,6 @@ SMODS.Consumable({
 			card.ability.extra.uses = card.ability.extra.uses - 1
 		end
 		if card.ability.extra.uses == 0 then
-			-- card:start_dissolve()
 			SMODS.destroy_cards(card)
 		end
 		SCUG.inc_food_count()

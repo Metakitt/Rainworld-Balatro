@@ -31,10 +31,6 @@ SMODS.Joker({
 		end
 
 		if context.remove_playing_cards or context.cards_destroyed and not context.blueprint then
-			-- for _ = 1, #context.removed do
-			-- 	card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.bonus_chips
-			-- 	SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
-			-- end
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "chips",
@@ -60,16 +56,6 @@ SMODS.Joker({
 				and pseudorandom_element(destructable_cards, pseudoseed("explode"))
 				or nil
 			if card_to_destroy then
-				-- card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.bonus_chips / 2
-				-- G.E_MANAGER:add_event(Event({
-				-- 	func = function()
-				-- 		(context.blueprint_card or card):juice_up(0.8, 0.8)
-				-- 		SMODS.calculate_effect({ message = "Destroyed!" }, card)
-				-- 		SMODS.destroy_cards(card_to_destroy)
-				-- 		return true
-				-- 	end,
-				-- }))
-				-- SMODS.destroy_cards(card_to_destroy)
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						if SMODS.shatters(card_to_destroy) then

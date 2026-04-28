@@ -98,10 +98,6 @@ SMODS.Joker({
 				for i, v in ipairs(G.jokers.cards) do
 					if v ~= card then
 						for k, _ in pairs(v.ability) do
-							-- local st, nd = string.find(k, "rw_w")
-							-- if st == 1 and nd == 4 then
-							-- 	table.insert(joker_weapons, { i, k })
-							-- end
 							if v.ability.config and v.ability.config.weapon then
 								table.insert(joker_weapons, { i, k })
 							end
@@ -114,10 +110,6 @@ SMODS.Joker({
 					local mark = G.jokers.cards[stolen[1]]
 					mark.ability[stolen[2]] = nil
 					mark:juice_up()
-					-- card_eval_status_text(card, "extra", nil, nil, nil, {
-					-- 	message = "Yoinked!",
-					-- 	colour = G.C.RED,
-					-- })
 					SMODS.calculate_effect({
 						message = localize("k_yoinked_ex"),
 						colour = G.C.RED
@@ -156,16 +148,6 @@ SMODS.Joker({
 					local traded = G.consumeables.cards[trade_idx]
 					traded:start_dissolve()
 					SMODS.add_card({ set = "obtainweapon", area = G.consumeables })
-					-- card_eval_status_text(card, "extra", nil, nil, nil, {
-					-- 	message = localize({
-					-- 		type = "variable",
-					-- 		key = "a_reputation",
-					-- 		vars = { card.ability.extra.trade_rep },
-					-- 	}),
-					-- 	colour = G.C.MONEY,
-					-- })
-					-- card.ability.extra.permanent_reputation = card.ability.extra.permanent_reputation
-					-- 	+ card.ability.extra.trade_rep
 					SMODS.scale_card(card, {
 						ref_table = card.ability.extra,
 						ref_value = "permanent_reputation",
@@ -199,14 +181,6 @@ SMODS.Joker({
 			rep = rep * rep_mult
 
 			if rep ~= 0 then
-				-- card_eval_status_text(card, "extra", nil, nil, nil, {
-				-- 	message = localize({
-				-- 		type = "variable",
-				-- 		key = rep > 0 and "a_reputation" or "a_reputation_minus",
-				-- 		vars = { math.abs(rep) },
-				-- 	}),
-				-- 	colour = G.C.MONEY,
-				-- })
 				SMODS.calculate_effect(
 					{
 						message = localize({
@@ -226,16 +200,6 @@ SMODS.Joker({
 			and context.consumeable.config.center.set == "obtainweapon"
 			and G.jokers.highlighted[1] == card
 		then
-			-- card_eval_status_text(card, "extra", nil, nil, nil, {
-			-- 	message = localize({
-			-- 		type = "variable",
-			-- 		key = "a_reputation",
-			-- 		vars = { card.ability.extra.weapon_rep },
-			-- 	}),
-			-- 	colour = G.C.MONEY,
-			-- })
-			-- card.ability.extra.permanent_reputation = card.ability.extra.permanent_reputation
-			-- 	+ card.ability.extra.weapon_rep
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "permanent_reputation",
@@ -247,16 +211,6 @@ SMODS.Joker({
 
 		-- Beat a boss
 		if context.main_eval and context.end_of_round and G.GAME.blind.boss and not context.blueprint then
-			-- card_eval_status_text(card, "extra", nil, nil, nil, {
-			-- 	message = localize({
-			-- 		type = "variable",
-			-- 		key = "a_reputation",
-			-- 		vars = { card.ability.extra.boss_rep },
-			-- 	}),
-			-- 	colour = G.C.MONEY,
-			-- })
-			-- card.ability.extra.permanent_reputation = card.ability.extra.permanent_reputation
-			-- 	+ card.ability.extra.boss_rep
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "permanent_reputation",

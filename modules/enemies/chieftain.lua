@@ -47,22 +47,12 @@ SMODS.Joker({
 					local joker_weapons = SCUG.weapons_on_joker(v)
 					if #joker_weapons > 0 then
 						local not_anymore, _ = pseudorandom_element(joker_weapons, pseudoseed("rw_chieftain"))
-						-- v.ability[not_anymore] = nil
 						SMODS.Stickers[not_anymore]:apply(v, false)
 						v:juice_up()
 					end
 				end
 			end
 			SMODS.calculate_effect({ message = localize("k_yoinked_ex"), colour = G.C.RED }, card)
-			-- G.E_MANAGER:add_event(Event({
-			-- 	func = function()
-			-- 		card_eval_status_text(card, "extra", nil, nil, nil, {
-			-- 			message = localize("k_yoinked_ex"),
-			-- 			colour = G.C.RED,
-			-- 		})
-			-- 		return true
-			-- 	end,
-			-- }))
 		end
 
 		--Defeat

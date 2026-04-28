@@ -25,26 +25,6 @@ SMODS.Sticker({
 	rate = 0.01,
 	needs_enable_flag = false,
 	loc_vars = function(self, info_queue, card)
-		-- print(self.config)
-		-- if
-		-- 	card.config.center_key == "j_rw_monk"
-		-- 	or card.config.center_key == "j_rw_inv"
-		-- 	or card.config.center_key == "j_rw_saint"
-		-- then
-		-- 	return { key = self.key .. "_monk_inv" }
-		-- end
-
-		-- if
-		-- 	card.config.center_key == "j_rw_hunter"
-		-- 	or card.config.center_key == "j_rw_artificer"
-		-- 	or card.config.center_key == "j_rw_spearmaster"
-		-- then
-		-- 	return { key = self.key .. "_hunter_artificer_spearmaster" }
-		-- end
-
-		-- if card.config.center_key == "j_rw_gourmand" then
-		-- 	return { key = self.key .. "_gourmand" }
-		-- end
 		local strength = (card and card.ability and card.ability.spear_strength) or "normal"
 		local ret_vars = { self.config.mult_bonus[strength] }
 		if strength == "exhausting" then
@@ -69,22 +49,6 @@ SMODS.Sticker({
 				end
 				local return_table = { x_mult = self.config.mult_bonus[strength] }
 
-				-- if
-				-- 	card.config.center_key == "j_rw_monk"
-				-- 	or card.config.center_key == "j_rw_inv"
-				-- 	or card.config.center_key == "j_rw_saint"
-				-- then
-				-- 	return_table.x_mult = 1.25
-				-- elseif
-				-- 	card.config.center_key == "j_rw_hunter"
-				-- 	or card.config.center_key == "j_rw_artificer"
-				-- 	or card.config.center_key == "j_rw_spearmaster"
-				-- then
-				-- 	return_table.x_mult = 1.75
-				-- elseif card.config.center_key == "j_rw_gourmand" then
-				-- 	return_table.x_mult = gourmand_exhausted and 0.9 or 3
-				-- end
-
 				if next(SMODS.find_card("j_splash")) or next(SMODS.find_card("j_seltzer")) then
 					return_table.x_chips = return_table.x_mult
 				end
@@ -92,10 +56,6 @@ SMODS.Sticker({
 				return return_table
 			else
 				SMODS.Stickers.rw_wspear_ele:apply(card, nil)
-				-- card_eval_status_text(card, "extra", nil, nil, nil, {
-				-- 	message = localize("k_spear_lodged_elip"),
-				-- 	colour = G.C.WEAPON,
-				-- })
 				SMODS.calculate_effect({
 					message = localize("k_spear_lodged_elip"),
 					colour = G.C.WEAPON

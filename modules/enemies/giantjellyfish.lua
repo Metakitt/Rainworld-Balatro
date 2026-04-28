@@ -86,20 +86,6 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			-- if #G.GAME.used_vouchers > 0 then
-			-- 	-- local unvoucher, key = pseudorandom_element(G.GAME.used_vouchers, "rw_giant_jellyfish", {})
-			-- 	-- G.GAME.used_vouchers[key] = nil
-			-- 	-- card_eval_status_text(card, "extra", nil, nil, nil, {
-			-- 	-- 	message = localize({
-			-- 	-- 		type = "variable",
-			-- 	-- 		key = "a_voucher_lost",
-			-- 	-- 		vars = { localize({ type = "name_text", set = "Voucher", key = key }) },
-			-- 	-- 	}),
-			-- 	-- 	colour = G.C.RED,
-			-- 	-- 	delay = 1.5,
-			-- 	-- })
-
-			-- end
 			local unvoucher = SMODS.get_next_vouchers()
 			if #unvoucher > 0 then
 				G.GAME.banned_keys[unvoucher[1]] = true

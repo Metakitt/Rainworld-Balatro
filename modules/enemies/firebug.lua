@@ -100,10 +100,6 @@ SMODS.Joker({
 				and not context.blueprint
 			then
 				for k, v in pairs(SMODS.Stickers) do
-					-- local st, nd = string.find(k, "rw_w")
-					-- if st == 1 and nd == 4 then
-					-- 	v.rate = v.rate / 4
-					-- end
 					if v.config and v.config.weapon then
 						v.rate = v.rate / 4
 					end

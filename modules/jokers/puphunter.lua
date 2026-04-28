@@ -36,8 +36,6 @@ SMODS.Joker({
 		end
 
 		if context.after and not context.blueprint then
-			-- card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.pupmult_gain
-			-- SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "mult",

@@ -54,10 +54,6 @@ SMODS.Joker({
 			and SMODS.pseudorandom_probability(card, "rw_kingvulture", 1, card.ability.extra.nope_odds, "rw_kingvulture")
 			and not context.blueprint
 		then
-			-- card_eval_status_text(card, "extra", nil, nil, nil, {
-			-- 	message = localize("k_nope_ex"),
-			-- 	colour = G.C.RED,
-			-- })
 			return {
 				x_chips = 0,
 				x_mult = 0,
@@ -70,10 +66,6 @@ SMODS.Joker({
 		if context.before and not context.blueprint then
 			for _, v in pairs(G.jokers.cards) do
 				for _, vv in pairs(v.ability) do
-					-- st, nd = string.find(k, "rw_wspear") -- TODO: add "spear" to spears
-					-- if st and nd then
-					-- 	card.ability.extra.spears_tanked = card.ability.extra.spears_tanked + 1
-					-- end
 					if type(vv) == "table" and vv.weapon and vv.spear then
 						card.ability.extra.spears_tanked = card.ability.extra.spears_tanked + 1
 					end

@@ -46,8 +46,6 @@ SMODS.Joker({
 
 		if context.discard and card.ability.extra.pupsaint_discards <= 0 and not context.blueprint then
 			card.ability.extra.recharge = true
-			-- card.ability.extra.mult = card.ability.extra.mult + 2
-			-- card.ability.extra.chips = card.ability.extra.chips + 2
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "mult",

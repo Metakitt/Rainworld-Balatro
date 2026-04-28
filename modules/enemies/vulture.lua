@@ -56,10 +56,6 @@ SMODS.Joker({
 			and not context.blueprint
 			and not card.ability.extra.defeat
 		then
-			-- card_eval_status_text(card, "extra", nil, nil, nil, {
-			-- 	message = localize("k_nope_ex"),
-			-- 	colour = G.C.RED,
-			-- })
 			return {
 				x_chips = 0,
 				x_mult = 0,
@@ -105,10 +101,6 @@ SMODS.Joker({
 					end
 				end
 			end
-			-- card_eval_status_text(card, "extra", nil, nil, nil, {
-			-- 	message = localize("k_yoinked_ex"),
-			-- 	colour = G.C.RED,
-			-- })
 			SMODS.calculate_effect({ message = localize("k_yoinked_ex"), colour = G.C.RED, }, card)
 		end
 	end,

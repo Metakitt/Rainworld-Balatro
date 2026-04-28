@@ -16,8 +16,6 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if context.setting_blind then
 			if SMODS.pseudorandom_probability(card, "rw_blurred", 1, card.ability.extra.pupodds, "rw_blurred") then
-				-- G.GAME.blind.chips = G.GAME.blind.chips / 2
-				-- G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				return { xblindsize = 0.5 }
 			end
 		end

@@ -18,8 +18,6 @@ SMODS.Sticker({
 	needs_enable_flag = false,
 	calculate = function(self, card, context)
 		if context.setting_blind then
-			-- G.GAME.blind.chips = G.GAME.blind.chips * 0.95
-			-- G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 			return { xblindsize = 0.95 }
 		end
 	end,

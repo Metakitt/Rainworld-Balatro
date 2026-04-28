@@ -1,4 +1,4 @@
---This is a secret joker, it           does       a  thing (its effect is                      right now.--
+--This is a secret joker, it           does       a  thing (its effect is                      right now.
 SMODS.Joker({
 	key = "plooploo",
 	atlas = "plooer",

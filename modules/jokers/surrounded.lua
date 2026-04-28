@@ -78,8 +78,6 @@ SMODS.Joker({
 			and context.card.config.center.set == "Joker"
 			and context.card.config.center.rarity == "rw_enemy"
 		then
-			-- print(context.card.config.center.set)
-			-- print(context.card.config.center.rarity)
 			G.jokers.config.card_limit = G.jokers.config.card_limit - 1
 		end
 	end,

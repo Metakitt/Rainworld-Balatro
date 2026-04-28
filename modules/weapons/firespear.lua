@@ -26,21 +26,6 @@ SMODS.Sticker({
 	rate = 0.002,
 	needs_enable_flag = false,
 	loc_vars = function(self, info_queue, card)
-		-- if card.config.center_key == "j_rw_monk" or card.config.center_key == "j_rw_inv" then
-		-- 	return { key = self.key .. "_monk_inv" }
-		-- end
-
-		-- if card.config.center_key == "j_rw_hunter" or card.config.center_key == "j_rw_artificer" then
-		-- 	return { key = self.key .. "_hunter_artificer_spearmaster" }
-		-- end
-
-		-- if card.config.center_key == "j_rw_gourmand" then
-		-- 	return { key = self.key .. "_gourmand" }
-		-- end
-
-		-- if card.config.center_key == "j_rw_saint" then
-		-- 	return { key = self.key .. "_saint" }
-		-- end
 		local strength = (card and card.ability and card.ability.spear_strength) or "normal"
 		if strength == "weak" and card.config.center_key == "j_rw_saint" then
 			strength = "extra_strong"
@@ -62,23 +47,6 @@ SMODS.Sticker({
 			local mult_effect = not should_lodge or card.ability.no_lodge
 
 			if mult_effect then
-				-- local return_table = { x_mult = 4.5 }
-
-				-- if card.config.center_key == "j_rw_monk" or card.config.center_key == "j_rw_inv" then
-				-- 	return_table.x_mult = 3.75
-				-- elseif
-				-- 	card.config.center_key == "j_rw_hunter"
-				-- 	or card.config.center_key == "j_rw_artificer"
-				-- 	or card.config.center_key == "j_rw_spearmaster"
-				-- then
-				-- 	return_table.x_mult = 5.25
-				-- elseif card.config.center_key == "j_rw_gourmand" then
-				-- 	return_table.x_mult = gourmand_exhausted and 0.5 or 9
-				-- elseif card.config.center_key == "j_rw_saint" then
-				-- 	return_table.x_mult = 10
-				-- end
-
-				-- return return_table
 				local strength = card.ability.spear_strength or "normal"
 				if strength == "exhausting" and gourmand_exhausted then
 					strength = "exhausting_tired"
@@ -88,10 +56,6 @@ SMODS.Sticker({
 				return { x_mult = self.config.mult_bonus[strength] }
 			else
 				SMODS.Stickers.rw_wspear_fire:apply(card, nil)
-				-- card_eval_status_text(card, "extra", nil, nil, nil, {
-				-- 	message = localize("k_spear_lodged_elip"),
-				-- 	colour = G.C.WEAPON,
-				-- })
 				SMODS.calculate_effect({
 					message = localize("k_spear_lodged_elip"),
 					colour = G.C.WEAPON
@@ -99,8 +63,6 @@ SMODS.Sticker({
 			end
 		end
 		if context.setting_blind then
-			-- G.GAME.blind.chips = G.GAME.blind.chips * 1.05
-			-- G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 			return { xblindsize = 1.05 }
 		end
 	end,

@@ -89,21 +89,5 @@ SMODS.Joker({
 
 		--Undefeated
 		--Nothing happens.
-
-		--Currently, it works as intended but doing remove rather than dissolve just obliterates the cards from existence. Dissolve leaves ghost cards.
-		-- local Blind_debuff_hand = Blind.debuff_hand
-		-- function Blind:debuff_hand(cards, hand, handname, check)
-		-- 	local ret = Blind_debuff_hand(self, cards, hand, handname, check)
-		-- 	if ret then
-		-- 		for _, k in ipairs(G.jokers.cards) do
-		-- 			if k.config.center_key == "j_rw_motherspider" then
-		-- 				for _, v in pairs(G.play.cards) do
-		-- 					v:remove()
-		-- 				end
-		-- 			end
-		-- 		end
-		-- 	end
-		-- 	return ret
-		-- end
 	end,
 })

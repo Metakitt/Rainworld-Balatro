@@ -56,32 +56,12 @@ function Card:calculate_rotted()
 	if self.ability.rw_rotted and self.ability.rotted_tally > 0 then
 		if self.ability.rotted_tally == 1 then
 			self.ability.rotted_tally = 0
-			-- card_eval_status_text(
-			-- 	self,
-			-- 	"extra",
-			-- 	nil,
-			-- 	nil,
-			-- 	nil,
-			-- 	{ message = "Rotted Away!", colour = G.C.FILTER, delay = 0.45 }
-			-- )
-			-- self:start_dissolve()
 			SMODS.calculate_effect({
 				message = localize("k_rotted_ex"),
 			}, self)
+			SMODS.destroy_cards(self)
 		else
 			self.ability.rotted_tally = self.ability.rotted_tally - 1
-			-- card_eval_status_text(
-			-- 	self,
-			-- 	"extra",
-			-- 	nil,
-			-- 	nil,
-			-- 	nil,
-			-- 	{
-			-- 		message = localize({ type = "variable", key = "a_remaining", vars = { self.ability.rotted_tally } }),
-			-- 		colour = G.C.FILTER,
-			-- 		delay = 0.45,
-			-- 	}
-			-- )
 			SMODS.calculate_effect({
 				message = localize({ type = "variable", key = "a_remaining", vars = { self.ability.rotted_tally } }),
 			}, self)

@@ -30,15 +30,6 @@ SMODS.Joker({
 
 		if context.card_added and not context.blueprint then
 			if context.card.config.center.set == "Joker" and context.card.config.center.rarity == "rw_enemy" then
-				-- card_eval_status_text(card, "extra", nil, nil, nil, {
-				-- 	message = localize({
-				-- 		type = "variable",
-				-- 		key = "a_xchips",
-				-- 		vars = { card.ability.extra.x_chip_gain },
-				-- 	}),
-				-- 	colour = G.C.CHIPS,
-				-- })
-				-- card.ability.extra.x_chips = card.ability.extra.x_chips + card.ability.extra.x_chip_gain
 				SMODS.scale_card(card, {
 					ref_table = card.ability.extra,
 					ref_value = "x_chips",

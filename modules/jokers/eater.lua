@@ -99,14 +99,8 @@ SMODS.Joker({
 				if snack and snack.card ~= card then
 					card.ability.extra.can_munch = false
 					if snack.type == "rot_sticker" then
-						-- local extra_mult = 3
 						G.E_MANAGER:add_event(Event({
 							func = function()
-								-- card_eval_status_text(snack.card, "extra", nil, nil, nil, {
-								-- 	message = localize("k_eaten_ex"),
-								-- 	colour = G.C.GREEN,
-								-- 	instant = instant,
-								-- })
 								SMODS.calculate_effect({ message = localize("k_eaten_ex"), colour = G.C.GREEN },
 									snack.card)
 								snack.card.ability.rw_rotted = false
@@ -116,11 +110,6 @@ SMODS.Joker({
 						G.E_MANAGER:add_event(Event({
 							delay = 1,
 							func = function()
-								-- card_eval_status_text(card, "extra", nil, nil, nil, {
-								-- 	message = localize({ type = "variable", key = "a_mult", vars = { extra_mult } }),
-								-- 	colour = G.C.RED,
-								-- })
-								-- card.ability.extra.mult = card.ability.extra.mult + extra_mult
 								SMODS.scale_card(card, {
 									ref_table = card.ability.extra,
 									ref_value = "mult",
@@ -136,11 +125,6 @@ SMODS.Joker({
 						local card_chips = 4
 						G.E_MANAGER:add_event(Event({
 							func = function()
-								-- card_eval_status_text(snack.card, "extra", nil, nil, nil, {
-								-- 	message = localize("k_eaten_ex"),
-								-- 	colour = G.C.GREEN,
-								-- 	instant = instant,
-								-- })
 								SMODS.calculate_effect({ message = localize("k_eaten_ex"), colour = G.C.GREEN },
 									snack.card)
 								snack.card:set_ability("c_base")
@@ -150,11 +134,6 @@ SMODS.Joker({
 						G.E_MANAGER:add_event(Event({
 							delay = 1,
 							func = function()
-								-- card_eval_status_text(card, "extra", nil, nil, nil, {
-								-- 	message = localize({ type = "variable", key = "a_chips", vars = { card_chips } }),
-								-- 	colour = G.C.BLUE,
-								-- })
-								-- card.ability.extra.chips = card.ability.extra.chips + card_chips
 								SMODS.scale_card(card, {
 									ref_table = card.ability.extra,
 									ref_value = "chips",
@@ -169,11 +148,6 @@ SMODS.Joker({
 					elseif snack.type == "rot_enemy" then
 						G.E_MANAGER:add_event(Event({
 							func = function()
-								-- card_eval_status_text(snack.card, "extra", nil, nil, nil, {
-								-- 	message = localize("k_eaten_ex"),
-								-- 	colour = G.C.GREEN,
-								-- 	instant = instant,
-								-- })
 								SMODS.calculate_effect({ message = localize("k_eaten_ex"), colour = G.C.GREEN },
 									snack.card)
 								SMODS.destroy_cards(snack.card, true)
@@ -183,15 +157,6 @@ SMODS.Joker({
 						G.E_MANAGER:add_event(Event({
 							delay = 1,
 							func = function()
-								-- card.ability.extra.pup_x_mult = card.ability.extra.pup_x_mult + 0.2
-								-- card_eval_status_text(card, "extra", nil, nil, nil, {
-								-- 	message = localize({
-								-- 		type = "variable",
-								-- 		key = "a_xmult",
-								-- 		vars = { card.ability.extra.pup_x_mult },
-								-- 	}),
-								-- 	colour = G.C.RED,
-								-- })
 								SMODS.scale_card(card, {
 									ref_table = card.ability.extra,
 									ref_value = "pup_x_mult",

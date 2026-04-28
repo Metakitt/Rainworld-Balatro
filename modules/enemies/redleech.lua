@@ -126,7 +126,6 @@ SMODS.Joker({
 				joker_to_destroy.getting_sliced = true
 				G.E_MANAGER:add_event(Event({
 					func = function()
-						-- joker_to_destroy:start_dissolve({ G.C.RED }, nil, 1.6)
 						SMODS.destroy_cards({ joker_to_destroy })
 						return true
 					end,
