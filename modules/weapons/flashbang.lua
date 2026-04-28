@@ -1,5 +1,6 @@
 local common_keys = {
-	"j_rw_mirosbird"
+	"j_rw_mirosbird",
+	"j_rw_mirosvulture"
 }
 SMODS.Sticker({
 	key = "wflashbang",
@@ -25,18 +26,12 @@ SMODS.Sticker({
 	calculate = function(self, card, context)
 		if context.skip_blind then
 			for _, center in ipairs(common_keys) do
-				if (#SMODS.find_card('j_rw_mirosbird', true) or #SMODS.find_card('j_rw_mirosvulture', true)) then
-					for _, v in pairs(SMODS.find_card(center, true)) do
-						v.ability.extra.flashbang = v.ability.extra.flashbang + 1
-						G.from_boss_tag = true
-						G.FUNCS.reroll_boss()
-						SMODS.Stickers.rw_wflashbang:apply(card)
-					end
-				else
-					G.from_boss_tag = true
-					G.FUNCS.reroll_boss()
-					SMODS.Stickers.rw_wflashbang:apply(card)
+				for _, v in pairs(SMODS.find_card(center, true)) do
+					v.ability.extra.flashbang = v.ability.extra.flashbang + 1
 				end
+				G.from_boss_tag = true
+				G.FUNCS.reroll_boss()
+				SMODS.Stickers.rw_wflashbang:apply(card, nil)
 			end
 		end
 	end,
