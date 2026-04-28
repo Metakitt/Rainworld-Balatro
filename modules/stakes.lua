@@ -13,7 +13,7 @@ SMODS.Stake({
 	applied_stakes = { 'white' },
 	above_stake = 'white',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 0, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
 })
@@ -33,7 +33,7 @@ SMODS.Stake({
 	applied_stakes = { 'violence' },
 	above_stake = 'violence',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 1, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
 })
@@ -53,7 +53,7 @@ SMODS.Stake({
 	applied_stakes = { 'lust' },
 	above_stake = 'lust',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 2, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
 })
@@ -73,7 +73,7 @@ SMODS.Stake({
 	applied_stakes = { 'companion' },
 	above_stake = 'companion',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 3, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
 })
@@ -93,7 +93,7 @@ SMODS.Stake({
 	applied_stakes = { 'gluttony' },
 	above_stake = 'gluttony',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 4, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
 })
@@ -113,7 +113,7 @@ SMODS.Stake({
 	applied_stakes = { 'survival' },
 	above_stake = 'survival',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 0, y = 1 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
 })
@@ -149,7 +149,7 @@ SMODS.Stake({
 	applied_stakes = { 'k6' },
 	above_stake = 'k6',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 1, y = 1 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
 })
@@ -169,7 +169,7 @@ SMODS.Stake({
 	applied_stakes = { 'k7' },
 	above_stake = 'k7',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 2, y = 1 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
 })
@@ -183,16 +183,15 @@ SMODS.Stake({
 	--prefix_config = {applied_stakes = { mod = false } },
 	--unlocked_stake = "stake_violence",
 	modifiers = function()
-		--tbd
 	end,
 	colour = HEX("000000"),
 	applied_stakes = { 'k8' },
 	above_stake = 'k8',
 	atlas = "stakes",
-	pos = { x = 4, y = 1 },
+	pos = { x = 3, y = 1 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
-})
+})	
 
 SMODS.Stake({
 	key = 'k10',
