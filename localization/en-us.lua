@@ -500,7 +500,7 @@ return {
 				name = "Select Food Pack",
 				text = {
 					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2#{} Food Cards to",
+					"{C:attention}#2# {C:food}Food Cards{} to",
 					"keep for later"
 				},
 			},
@@ -508,7 +508,7 @@ return {
 				name = "Regular Food Pack",
 				text = {
 					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2#{} Food Cards to",
+					"{C:attention}#2# {C:food}Food Cards{} to",
 					"be used immediately"
 				},
 			},
@@ -516,7 +516,7 @@ return {
 				name = "Jumbo Food Pack",
 				text = {
 					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2#{} Food Cards to",
+					"{C:attention}#2# {C:food}Food Cards{} to",
 					"be used immediately"
 				},
 			},
@@ -524,7 +524,7 @@ return {
 				name = "Mega Food Pack",
 				text = {
 					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2#{} Food Cards to",
+					"{C:attention}#2# {C:food}Food Cards{} to",
 					"be used immediately"
 				},
 			},
@@ -532,7 +532,7 @@ return {
 				name = "Weapon Pack",
 				text = {
 					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2#{} Weapons to",
+					"{C:attention}#2# {C:weapon}Weapons{} to",
 					"apply to your Jokers"
 				},
 			},
@@ -540,7 +540,7 @@ return {
 				name = "Weapon Pack",
 				text = {
 					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2#{} Weapons to",
+					"{C:attention}#2# {C:weapon}Weapons{} to",
 					"apply to your Jokers"
 				},
 			},
@@ -548,7 +548,7 @@ return {
 				name = "Jumbo Weapon Pack",
 				text = {
 					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2#{} Weapons to",
+					"{C:attention}#2# {C:weapon}Weapons{} to",
 					"apply to your Jokers"
 				},
 			},
@@ -556,7 +556,7 @@ return {
 				name = "Mega Weapon Pack",
 				text = {
 					"Choose {C:attention}#1#{} of up to",
-					"{C:attention}#2#{} Weapons to",
+					"{C:attention}#2# {C:weapon}Weapons{} to",
 					"apply to your Jokers"
 				},
 			},
