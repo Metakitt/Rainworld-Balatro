@@ -2165,6 +2165,10 @@ return {
 		labels = {
 			foods = "Food",
 			obtainweapon = "Weapon"
+		},
+		challenge_names = {
+			c_rw_parade = "Slugcat Parade",
+			c_rw_starvation = "Starvation",
 		}
 	},
 }

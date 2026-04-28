@@ -1,5 +1,4 @@
 SMODS.Challenge({
-	loc_txt = "Slugcat Parade",
 	key = "rwparade",
 	jokers = {
 		{ id = "j_rw_artificer", eternal = true },
@@ -19,7 +18,6 @@ SMODS.Challenge({
 })
 
 SMODS.Challenge {
-	loc_txt = "Starvation",
 	key = "starvation",
 	jokers = {
 		{ id = "j_rw_hunger", eternal = true }
