@@ -2110,7 +2110,9 @@ return {
 			mult_cost2 = "Mult",
 			k_msg_ex = "Message Received!",
 			k_destroyed_ex = "Destroyed!",
-			k_primed_ex = "Primed!"
+			k_primed_ex = "Primed!",
+			k_rotted_ex = "Rotted!",
+			k_too_hungry_ex = "Too Hungry!",
 		},
 		v_dictionary = {
 			a_reputation = "+#1# Reputation",

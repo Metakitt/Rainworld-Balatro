@@ -146,16 +146,24 @@ function Card:spitout()
 				SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = 'c_rw_grenade' })
 			end
 		else
-			card_eval_status_text(self, "extra", nil, nil, nil, {
-				message = "No Room!",
-				colour = G.C.RED,
-			})
+			-- card_eval_status_text(self, "extra", nil, nil, nil, {
+			-- 	message = "No Room!",
+			-- 	colour = G.C.RED,
+			-- })
+			SMODS.calculate_effect({
+				message = localize("k_no_room_ex"),
+				colour = G.C.RED
+			}, self)
 		end
 	else
-		card_eval_status_text(self, "extra", nil, nil, nil, {
-			message = "Too Hungry!",
-			colour = G.C.RED,
-		})
+		-- card_eval_status_text(self, "extra", nil, nil, nil, {
+		-- 	message = "Too Hungry!",
+		-- 	colour = G.C.RED,
+		-- })
+		SMODS.calculate_effect({
+			message = localize("k_too_hungry_ex"),
+			colour = G.C.RED
+		}, self)
 	end
 end
 
