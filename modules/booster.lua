@@ -17,9 +17,6 @@ SMODS.Booster({
 			skip_materialize = true,
 		}
 	end,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
-	end,
 })
 
 SMODS.Booster({
@@ -62,9 +59,6 @@ SMODS.Booster({
 			skip_materialize = true,
 		}
 	end,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
-	end,
 })
 
 SMODS.Booster({
@@ -85,9 +79,6 @@ SMODS.Booster({
 			area = G.pack_cards,
 			skip_materialize = true,
 		}
-	end,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
 	end,
 })
 

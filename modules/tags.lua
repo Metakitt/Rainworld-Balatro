@@ -176,7 +176,7 @@ SMODS.Tag({
 	pos = { x = 1, y = 1 },
 	discovered = true,
 	loc_vars = function(self, info_queue, tag)
-		info_queue[#info_queue + 1] = { set = "Other", key = tag.config.pack_type }
+		info_queue[#info_queue + 1] = G.P_CENTERS[tag.config.pack_type]
 	end,
 	min_ante = 2,
 	apply = function(self, tag, context)
@@ -261,7 +261,7 @@ SMODS.Tag({
 	pos = { x = 3, y = 1 },
 	discovered = true,
 	loc_vars = function(self, info_queue, tag)
-		info_queue[#info_queue + 1] = { set = "Other", key = tag.config.pack_type }
+		info_queue[#info_queue + 1] = G.P_CENTERS[tag.config.pack_type]
 	end,
 	apply = function(self, tag, context)
 		if context.type == "new_blind_choice" then
