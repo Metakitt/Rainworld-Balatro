@@ -3,10 +3,17 @@ SMODS.Sticker({
 	key = "wcherrybomb",
 	config = {
 		weapon = true,
+		mult_min = 6,
+		mult_max = 12,
 	},
 	loc_txt = {
 		label = "Cherrybomb",
 	},
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = { self.config.mult_min, self.config.mult_max }
+		}
+	end,
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
 	pos = { x = 1, y = 3 },
@@ -22,7 +29,7 @@ SMODS.Sticker({
 	needs_enable_flag = false,
 	calculate = function(self, card, context)
 		if context.joker_main then
-			local randomnumber = SCUG.number_in_range(6, 12)
+			local randomnumber = SCUG.number_in_range(self.config.mult_min, self.config.mult_max)
 			return {
 				mult = randomnumber,
 			}
@@ -40,7 +47,7 @@ SMODS.Consumable({
 	discovered = true,
 	config = { weapon = "rw_wcherrybomb" },
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Other", key = card.ability.weapon }
+		info_queue[#info_queue + 1] = { set = "Other", key = card.ability.weapon, vars = SMODS.Stickers[card.ability.weapon]:loc_vars({}, {}).vars }
 	end,
 	can_use = function(self, card)
 		return #G.jokers.highlighted == 1
