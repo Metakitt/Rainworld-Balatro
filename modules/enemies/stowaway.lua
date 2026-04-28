@@ -70,10 +70,10 @@ SMODS.Joker({
 			if card.ability.extra.dormant_timer == 0 then
 				if SMODS.pseudorandom_probability(card, "rw_stowaway", 1, card.ability.extra.dormant_chance, "rw_stowaway_sleep") then
 					card.ability.extra.dormant_timer = SCUG.number_in_range(3, 6, "rw_stowaway_eepy")
-					card_eval_status_text(card, "extra", nil, nil, nil, {
+					SMODS.calculate_effect({
 						message = localize("k_dormant_elip"),
 						colour = G.C.FILTER,
-					})
+					}, card)
 				end
 			else
 				SMODS.scale_card(card, {
