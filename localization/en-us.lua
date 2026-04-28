@@ -25,7 +25,7 @@ return {
 					"{C:attention}#2#{} round(s) until dry",
 				},
 			},
-		},	
+		},
 		Other = {
 			--region Weapon Descriptions
 			rw_wsporepuff = {
@@ -53,7 +53,7 @@ return {
 			rw_wcherrybomb = {
 				name = "Cherrybomb",
 				text = {
-					"{C:mult}+6~12{} Mult.",
+					"{C:mult}+#1#~#2#{} Mult.",
 				},
 			},
 			rw_wsingularity = {
@@ -100,71 +100,45 @@ return {
 			rw_wrock = {
 				name = "Rock",
 				text = {
-					"{X:chips,C:white}X2{} Chips",
+					"{X:chips,C:white}X#1#{} Chips",
 				},
 			},
 			rw_wspear = {
 				name = "Spear",
 				text = {
-					"{X:mult,C:white}X1.5{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 				},
 			},
 			rw_hunter_wspear = {
 				name = "2nd Spear",
-				text = { "X1.75 Mult when Held" },
+				text = { "X#1# Mult when Held" },
 			},
-			rw_wspear_monk_inv = {
-				name = "Spear",
-				text = { "{X:mult,C:white}X1.25{} Mult" },
-			},
-			rw_wspear_hunter_artificer_spearmaster = {
-				name = "Spear",
-				text = { "{X:mult,C:white}X1.75{} Mult" },
-			},
-			rw_wspear_gourmand = {
+			rw_wspear_exhausting = {
 				name = "Spear",
 				text = {
-					"{X:mult,C:white}X3{} Mult",
-					"{C:green}1 in 4{} chance to be",
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:green}#2# in #3#{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}X0.9{}Mult instead.",
+					"{X:mult,C:white}X#4#{}Mult instead.",
 				},
 			},
 			rw_wspear_exp = {
 				name = "Explosive Spear",
 				text = {
-					"{X:mult,C:white}X3{} Mult",
-					"{C:green}1 in 6{} chance to",
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:green}#2# in #3#{} chance to",
 					"{C:attention}destroy{} a random card",
 					"in {C:attention}hand{} when scoring.",
 				},
 			},
-			rw_wspear_exp_monk_inv = {
+			rw_wspear_exp_exhausting = {
 				name = "Explosive Spear",
 				text = {
-					"{X:mult,C:white}X2.5{} Mult",
-					"{C:green}1 in 6{} chance to",
-					"{C:attention}destroy{} a random card",
-					"in {C:attention}hand{} when scoring.",
-				},
-			},
-			rw_wspear_exp_hunter_artificer_spearmaster = {
-				name = "Explosive Spear",
-				text = {
-					"{X:mult,C:white}X3.5{} Mult",
-					"{C:green}1 in 6{} chance to",
-					"{C:attention}destroy{} a random card",
-					"in {C:attention}hand{} when scoring.",
-				},
-			},
-			rw_wspear_exp_gourmand = {
-				name = "Explosive Spear",
-				text = {
-					"{X:mult,C:white}X6{} Mult",
-					"{C:green}1 in 4{} chance to be",
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:green}#4# in #5#{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}X0.9{} Mult instead.",
-					"{C:green}1 in 6{} chance to",
+					"{X:mult,C:white}X#6#{} Mult instead.",
+					"{C:green}#2# in #3#{} chance to",
 					"{C:attention}destroy{} a random card",
 					"in {C:attention}hand{} when scoring.",
 				},
@@ -172,81 +146,47 @@ return {
 			rw_wspear_ele = {
 				name = "Electric Spear",
 				text = {
-					"{X:mult,C:white}X1.5{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"If Seltzer or Splash",
 					"is present, gives",
-					"{X:chips,C:white}X1.5{} Chips as well.",
+					"{X:chips,C:white}X#1#{} Chips as well.",
 				},
 			},
-			rw_wspear_ele_monk_inv = {
+			rw_wspear_ele_exhausting = {
 				name = "Electric Spear",
 				text = {
-					"{X:mult,C:white}X1.25{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"If Seltzer or Splash",
 					"is present, gives",
-					"{X:chips,C:white}X1.25{} Chips as well.",
-				},
-			},
-			rw_wspear_ele_hunter_artificer_spearmaster = {
-				name = "Electric Spear",
-				text = {
-					"{X:mult,C:white}X1.75{} Mult",
-					"If Seltzer or Splash",
-					"is present, gives",
-					"{X:chips,C:white}X1.75{} Chips as well.",
-				},
-			},
-			rw_wspear_ele_gourmand = {
-				name = "Electric Spear",
-				text = {
-					"{X:mult,C:white}X3{} Mult",
-					"If Seltzer or Splash",
-					"is present, gives",
-					"{X:chips,C:white}X3{} Chips as well.",
-					"{C:green}1 in 4{} chance to be",
-					"exhausted and give {X:mult,C:white}X0.9 Mult{}",
-					"and {X:chips,C:white}X0.9{} Chips{C:inactive}(With Seltzer/Splash){} instead.",
+					"{X:chips,C:white}X#1#{} Chips as well.",
+					"{C:green}#2# in #3#{} chance to be",
+					"exhausted and give {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#4#{} Chips {C:inactive}(With Seltzer/Splash){} instead.",
 				},
 			},
 			rw_wspear_fire = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}X4.5{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 				},
 			},
-			rw_wspear_fire_monk_inv = {
+			rw_wspear_fire_exhausting = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}X3.25{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
-				},
-			},
-			rw_wspear_fire_hunter_artificer_spearmaster = {
-				name = "Fire Spear",
-				text = {
-					"{X:mult,C:white}X5.25{} Mult",
-					"Increases required",
-					"chips by {C:attention}5%{}.",
-				},
-			},
-			rw_wspear_fire_gourmand = {
-				name = "Fire Spear",
-				text = {
-					"{X:mult,C:white}X9{} Mult",
-					"Increases required",
-					"chips by {C:attention}5%{}.",
-					"{C:green}1 in 4{} chance to be",
+					"{C:green}#2# in #3#{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}X0.5{} Mult instead.",
+					"{X:mult,C:white}X#4#{} Mult instead.",
 				},
 			},
 			rw_wspear_fire_saint = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}X10{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 				},
