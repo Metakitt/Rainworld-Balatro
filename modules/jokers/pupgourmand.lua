@@ -37,6 +37,7 @@ SMODS.Joker({
 		},
 		slugcat = true,
 		gourmand = true,
+		spear_strength = "exhausting"
 	},
 
 	loc_vars = function(self, info_queue, card)

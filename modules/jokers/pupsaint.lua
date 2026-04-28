@@ -7,7 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = false,
-	attributes = { "slugcat", "discard", "mult", "chips" },
+	attributes = { "slugcat", "discard", "mult", "chips", spear_strength = "weak" },
 	config = {
 		extra = { attuned = false, mult = 0, chips = 0, pupgain = 2, pupdiscards = 10, pupsaint_discards = 10, recharge = false, xmult = 1, recharging = "Ready", growth = 3 },
 		name = "Saint",

@@ -8,7 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	attributes = { "slugcat", "economy", "chance", "sell_value" },
-	config = { extra = { pupodds = 3, money = 3, blink = false, growth = 3 } },
+	config = { extra = { pupodds = 3, money = 3, blink = false, growth = 3 }, spear_strength = "weak" },
 
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { set = "Other", key = "eggv_pick_up", vars = { card.ability.extra.growth } }

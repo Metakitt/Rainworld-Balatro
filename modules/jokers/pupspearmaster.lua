@@ -4,7 +4,7 @@ SMODS.Joker({
 	pos = { x = 5, y = 5 },
 	rarity = 3,
 	cost = 8,
-	config = { extra = { pupxmult = 1.5, should_score = true, growth = 3 }, slugcat = true, second_spear = true },
+	config = { extra = { pupxmult = 1.5, should_score = true, growth = 3 }, slugcat = true, second_spear = true, spear_strength = "strong" },
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,

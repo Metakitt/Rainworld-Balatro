@@ -7,7 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	config = {
-		extra = { center_table = 1, pupodds = 20, mult = 0, pupmult_gain = 2, spear = false, growth = 3 },
+		extra = { center_table = 1, pupodds = 20, mult = 0, pupmult_gain = 2, spear = false, growth = 3, spear_strength = "strong" },
 		slugcat = true,
 		second_spear = true,
 	},

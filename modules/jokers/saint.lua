@@ -13,6 +13,7 @@ SMODS.Joker({
 		name = "Saint",
 		blessed = false,
 		slugcat = true,
+		spear_strength = "weak"
 	},
 
 	loc_vars = function(self, info_queue, card)

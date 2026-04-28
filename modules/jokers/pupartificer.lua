@@ -9,7 +9,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	perishable_compat = false,
 	attributes = { "slugcat", "chips", "destroy_card", "chance", "scaling" },
-	config = { extra = { chips = 0, pupbonus_chips = 20, pupodds = 10, growth = 3 }, slugcat = true, no_lodge = true },
+	config = { extra = { chips = 0, pupbonus_chips = 20, pupodds = 10, growth = 3 }, slugcat = true, no_lodge = true, spear_strength = "strong" },
 
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }

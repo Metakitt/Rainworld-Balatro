@@ -8,7 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	attributes = { "slugcat", "chance", "ante" },
-	config = { extra = { center_table = -1, pupodds = 20, growth = 3 }, slugcat = true },
+	config = { extra = { center_table = -1, pupodds = 20, growth = 3 }, slugcat = true, spear_strength = "weak" },
 
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
