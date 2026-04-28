@@ -6,55 +6,68 @@ SMODS.Back({
 	loc_txt = {
 		name = "5P deck",
 		text = {
-			"Start with {C:attention}8",
+			"Start with {C:attention}#1#",
 			"{C:rot}Rot{} cards.",
 		},
 	},
-	apply = function()
+	loc_vars = function(self, info_queue, card)
+		return { vars = { self.config.rotten_cards } }
+	end,
+	config = {
+		rotten_cards = 8
+	},
+	apply = function(self, back)
 		G.E_MANAGER:add_event(Event({
 			func = function()
-				local cardstomodify = {}
+				-- local cardstomodify = {}
 				local notrot = {}
-				for i = 1, #G.deck.cards do
-					if
-						G.deck.cards[i] ~= card
-						and G.deck.cards[i].config.center ~= G.P_CENTERS.m_rw_rotting
-						and not G.deck.cards[i].getting_sliced
-					then
-						notrot[#notrot + 1] = G.deck.cards[i]
-					end
+				-- for i = 1, #G.deck.cards do
+				-- 	if
+				-- 		G.deck.cards[i] ~= card
+				-- 		and G.deck.cards[i].config.center ~= G.P_CENTERS.m_rw_rotting
+				-- 		and not G.deck.cards[i].getting_sliced
+				-- 	then
+				-- 		notrot[#notrot + 1] = G.deck.cards[i]
+				-- 	end
+				-- end
+				-- local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+				-- if #notrot > 0 then
+				-- 	rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				-- end
+				-- local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+				-- if #notrot > 0 then
+				-- 	rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				-- end
+				-- local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+				-- if #notrot > 0 then
+				-- 	rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				-- end
+				-- local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+				-- if #notrot > 0 then
+				-- 	rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				-- end
+				-- local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+				-- if #notrot > 0 then
+				-- 	rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				-- end
+				-- local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+				-- if #notrot > 0 then
+				-- 	rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				-- end
+				-- local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+				-- if #notrot > 0 then
+				-- 	rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				-- end
+				-- local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
+				-- if #notrot > 0 then
+				-- 	rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				-- end
+				for _, v in pairs(G.playing_cards) do
+					notrot[#notrot + 1] = v
 				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
-				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
-				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
-				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
-				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
-				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
-				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
-				end
-				local rotted = #notrot > 0 and pseudorandom_element(notrot, pseudoseed("explode")) or nil
-				if #notrot > 0 then
-					rotted:set_ability(G.P_CENTERS.m_rw_rotting)
+				pseudoshuffle(notrot)
+				for i = 1, (back.effect.config.rotten_cards) do
+					notrot[i]:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 
 				return true
