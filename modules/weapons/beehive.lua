@@ -2,6 +2,7 @@ SMODS.Sticker({
 	key = "wbeehive",
 	config = {
 		weapon = true,
+		min_bonus = 5
 	},
 	loc_txt = {
 		label = "Beehive",
@@ -33,7 +34,7 @@ SMODS.Sticker({
 			for _, v in pairs(G.playing_cards) do
 				if v:is_suit(suit) then
 					if v.ability.perma_bonus <= 0 then
-						v.ability.perma_bonus = 5
+						v.ability.perma_bonus = self.config.min_bonus
 					end
 					if v.ability.perma_bonus > 0 then
 						v.ability.perma_bonus = (v.ability.perma_bonus or 0) * 2
