@@ -24,12 +24,11 @@ SMODS.Consumable({
 	use = function(self, card, area, copier)
 		local suit = SCUG.get_suit_in_deck()
 		for _, v in ipairs(G.playing_cards) do
-			local other_card = v
-			if other_card:is_suit(suit) then
-				other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
-				other_card.ability.perma_bonus = other_card.ability.perma_bonus + card.ability.extra.upgrade
-				other_card:juice_up(0.5, 0.5)
-				SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, other_card)
+			if v:is_suit(suit) then
+				v.ability.perma_bonus = v.ability.perma_bonus or 0
+				v.ability.perma_bonus = v.ability.perma_bonus + card.ability.extra.upgrade
+				v:juice_up(0.5, 0.5)
+				SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, v)
 			end
 		end
 	end,

@@ -22,12 +22,11 @@ SMODS.Consumable({
 	end,
 	use = function(self, card, area, copier)
 		if card.ability.extra.uses > 0 then
-			for k, v in ipairs(G.hand.cards) do
-				other_card = v
-				other_card.ability.perma_bonus = other_card.ability.perma_bonus or 0
-				other_card.ability.perma_bonus = other_card.ability.perma_bonus + card.ability.extra.upgrade
-				other_card:juice_up(0.5, 0.5)
-				SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, other_card)
+			for _, v in ipairs(G.hand.cards) do
+				v.ability.perma_bonus = v.ability.perma_bonus or 0
+				v.ability.perma_bonus = v.ability.perma_bonus + card.ability.extra.upgrade
+				v:juice_up(0.5, 0.5)
+				SMODS.calculate_effect({ message = localize("k_upgrade_ex"), colour = G.C.CHIPS }, v)
 			end
 			card.ability.extra.uses = card.ability.extra.uses - 1
 		end
