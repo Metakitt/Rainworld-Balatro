@@ -1026,7 +1026,7 @@ return {
 				text = {
 					"{C:attention}Threat:{} Blinds are {C:attention}#1#%{} larger per Joker",
 					"{s:0.8,C:inactive}(Currently {s:0.8,C:attention}+#2#%{s:0.8,C:inactive})",
-					"{C:attention}Undefeated:{} Lose a random Voucher you've redeemed",
+					"{C:attention}Undefeated:{} Ban a random unredeemed Voucher",
 				},
 			},
 			j_rw_stowaway = {
@@ -2294,7 +2294,7 @@ return {
 			a_reputation_minus = "-#1# Reputation",
 			a_score = "+#1# Score",
 			a_score_minus = "-#1# Score",
-			a_voucher_lost = "Lost #1#...",
+			a_voucher_banned = "#1# Banned...",
 		},
 		achievement_names = {
 			ach_rw_rainworld = "Rain World",

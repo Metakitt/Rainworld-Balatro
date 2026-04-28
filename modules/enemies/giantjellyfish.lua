@@ -1,9 +1,6 @@
 -- Threat: Increases required Score per Blind by the amount of jokers * 5% (So if you have 5 jokers, it'd be a 25% increase).
 -- Defeat: Play 3 hands with a Spear.
--- Not Defeated: Destroys a random Voucher.
--- TODO: New unefeated effect.
--- This is gonna be jank without any special library to handle this.
--- This just removes the voucher from the redeemed list, which both doesn't undo the effects it gives, but also means you can find and redeem it again.
+-- Not Defeated: Bans a random unredeemed Voucher.
 
 SMODS.Joker({
 	key = "giantjellyfish",
@@ -89,18 +86,32 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			if #G.GAME.used_vouchers > 0 then
-				local unvoucher, key = pseudorandom_element(G.GAME.used_vouchers, "rw_giant_jellyfish", {})
-				G.GAME.used_vouchers[key] = nil
-				card_eval_status_text(card, "extra", nil, nil, nil, {
+			-- if #G.GAME.used_vouchers > 0 then
+			-- 	-- local unvoucher, key = pseudorandom_element(G.GAME.used_vouchers, "rw_giant_jellyfish", {})
+			-- 	-- G.GAME.used_vouchers[key] = nil
+			-- 	-- card_eval_status_text(card, "extra", nil, nil, nil, {
+			-- 	-- 	message = localize({
+			-- 	-- 		type = "variable",
+			-- 	-- 		key = "a_voucher_lost",
+			-- 	-- 		vars = { localize({ type = "name_text", set = "Voucher", key = key }) },
+			-- 	-- 	}),
+			-- 	-- 	colour = G.C.RED,
+			-- 	-- 	delay = 1.5,
+			-- 	-- })
+
+			-- end
+			local unvoucher = SMODS.get_next_vouchers()
+			if #unvoucher > 0 then
+				G.GAME.banned_keys[unvoucher[1]] = true
+				SMODS.calculate_effect({
 					message = localize({
 						type = "variable",
-						key = "a_voucher_lost",
-						vars = { localize({ type = "name_text", set = "Voucher", key = key }) },
+						key = "a_voucher_banned",
+						vars = { localize({ type = "name_text", set = "Voucher", key = unvoucher[1] }) },
 					}),
 					colour = G.C.RED,
 					delay = 1.5,
-				})
+				}, card)
 			end
 		end
 	end,
