@@ -9,7 +9,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	perishable_compat = false,
 	attributes = { "slugcat", "chips", "destroy_card", "chance", "scaling" },
-	config = { extra = { chips = 0, bonus_chips = 50, odds = 6 }, slugcat = true, no_lodge = true },
+	config = { extra = { chips = 0, bonus_chips = 50, odds = 6 }, slugcat = true, no_lodge = true, spear_strength = "strong" },
 
 	loc_vars = function(self, info_queue, card)
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_artificer")
