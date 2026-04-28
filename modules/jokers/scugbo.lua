@@ -22,16 +22,22 @@ SMODS.Joker({
 			if scugbocursed == 100 then
 				card.children.center:set_sprite_pos({ x = 8, y = 2 })
 			end
-			local slugcats = 0
-			for k, v in ipairs(G.jokers.cards) do
-				-- if v.ability.slugcat == true then
-				if v:has_attribute("slugcat") then
-					slugcats = slugcats + 1
-				end
+		end
+		-- 	local slugcats = 0
+		-- 	for k, v in ipairs(G.jokers.cards) do
+		-- 		-- if v.ability.slugcat == true then
+		-- 		if v:has_attribute("slugcat") then
+		-- 			slugcats = slugcats + 1
+		-- 		end
+		-- 	end
+		-- 	return {
+		-- 		mult = slugcats * card.ability.extra.upgrade,
+		-- 	}
+		-- end
+		if context.other_joker then
+			if context.other_joker:has_attribute("slugcat") then
+				return { mult = card.ability.extra.upgrade }
 			end
-			return {
-				mult = slugcats * card.ability.extra.upgrade,
-			}
 		end
 	end,
 })
