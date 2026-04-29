@@ -31,6 +31,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "destroy_card", "chance", "joker" },
 	loc_vars = function(self, info_queue, card)
 		local numerator, mid_dest =
 			SMODS.get_probability_vars(card, 1, card.ability.extra.midround_destroy_odds, "rw_greenlizard")
@@ -50,7 +51,6 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if
 			context.main_eval
@@ -76,7 +76,7 @@ SMODS.Joker({
 				SMODS.destroy_cards(chosen_card)
 			end
 		end
-		
+
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -100,7 +100,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -119,6 +119,5 @@ SMODS.Joker({
 				end
 			end
 		end
-		
 	end,
 })

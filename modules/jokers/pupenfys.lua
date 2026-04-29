@@ -1,20 +1,13 @@
 SMODS.Joker({
 	key = "pupenfys",
 	atlas = "slugcats",
-	loc_txt = {
-		name = "Enfys pup",
-		text = {
-			"At the {C:attention}end of round{},",
-			"creates a random,",
-			"{C:edition}negative{} Food Consumeable.",
-		},
-	},
 	pos = { x = 4, y = 6 },
 	rarity = 3,
 	cost = 7,
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "generation", "rw_food" },
 	config = { extra = { food = "none", growth = 3}, slugcat = true },
 	loc_vars = function(self, info_queue, card)
 	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }

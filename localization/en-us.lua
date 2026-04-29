@@ -26,7 +26,6 @@ return {
 				},
 			},
 		},
-		
 		Other = {
 			--region Weapon Descriptions
 			rw_wsporepuff = {
@@ -54,7 +53,7 @@ return {
 			rw_wcherrybomb = {
 				name = "Cherrybomb",
 				text = {
-					"{C:mult}+6~12{} Mult.",
+					"{C:mult}+#1#~#2#{} Mult.",
 				},
 			},
 			rw_wsingularity = {
@@ -101,71 +100,45 @@ return {
 			rw_wrock = {
 				name = "Rock",
 				text = {
-					"{X:chips,C:white}X2{} Chips",
+					"{X:chips,C:white}X#1#{} Chips",
 				},
 			},
 			rw_wspear = {
 				name = "Spear",
 				text = {
-					"{X:mult,C:white}X1.5{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 				},
 			},
 			rw_hunter_wspear = {
-				name = "2nd Spear",
-				text = { "X1.75 Mult when Held" },
+				name = "Second Spear",
+				text = { "{C:white,X:mult}X#1#{} Mult when Held" },
 			},
-			rw_wspear_monk_inv = {
-				name = "Spear",
-				text = { "{X:mult,C:white}X1.25{} Mult" },
-			},
-			rw_wspear_hunter_artificer_spearmaster = {
-				name = "Spear",
-				text = { "{X:mult,C:white}X1.75{} Mult" },
-			},
-			rw_wspear_gourmand = {
+			rw_wspear_exhausting = {
 				name = "Spear",
 				text = {
-					"{X:mult,C:white}X3{} Mult",
-					"{C:green}1 in 4{} chance to be",
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:green}#2# in #3#{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}X0.9{}Mult instead.",
+					"{X:mult,C:white}X#4#{}Mult instead.",
 				},
 			},
 			rw_wspear_exp = {
 				name = "Explosive Spear",
 				text = {
-					"{X:mult,C:white}X3{} Mult",
-					"{C:green}1 in 6{} chance to",
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:green}#2# in #3#{} chance to",
 					"{C:attention}destroy{} a random card",
 					"in {C:attention}hand{} when scoring.",
 				},
 			},
-			rw_wspear_exp_monk_inv = {
+			rw_wspear_exp_exhausting = {
 				name = "Explosive Spear",
 				text = {
-					"{X:mult,C:white}X2.5{} Mult",
-					"{C:green}1 in 6{} chance to",
-					"{C:attention}destroy{} a random card",
-					"in {C:attention}hand{} when scoring.",
-				},
-			},
-			rw_wspear_exp_hunter_artificer_spearmaster = {
-				name = "Explosive Spear",
-				text = {
-					"{X:mult,C:white}X3.5{} Mult",
-					"{C:green}1 in 6{} chance to",
-					"{C:attention}destroy{} a random card",
-					"in {C:attention}hand{} when scoring.",
-				},
-			},
-			rw_wspear_exp_gourmand = {
-				name = "Explosive Spear",
-				text = {
-					"{X:mult,C:white}X6{} Mult",
-					"{C:green}1 in 4{} chance to be",
+					"{X:mult,C:white}X#1#{} Mult",
+					"{C:green}#4# in #5#{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}X0.9{} Mult instead.",
-					"{C:green}1 in 6{} chance to",
+					"{X:mult,C:white}X#6#{} Mult instead.",
+					"{C:green}#2# in #3#{} chance to",
 					"{C:attention}destroy{} a random card",
 					"in {C:attention}hand{} when scoring.",
 				},
@@ -173,81 +146,47 @@ return {
 			rw_wspear_ele = {
 				name = "Electric Spear",
 				text = {
-					"{X:mult,C:white}X1.5{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"If Seltzer or Splash",
 					"is present, gives",
-					"{X:chips,C:white}X1.5{} Chips as well.",
+					"{X:chips,C:white}X#1#{} Chips as well.",
 				},
 			},
-			rw_wspear_ele_monk_inv = {
+			rw_wspear_ele_exhausting = {
 				name = "Electric Spear",
 				text = {
-					"{X:mult,C:white}X1.25{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"If Seltzer or Splash",
 					"is present, gives",
-					"{X:chips,C:white}X1.25{} Chips as well.",
-				},
-			},
-			rw_wspear_ele_hunter_artificer_spearmaster = {
-				name = "Electric Spear",
-				text = {
-					"{X:mult,C:white}X1.75{} Mult",
-					"If Seltzer or Splash",
-					"is present, gives",
-					"{X:chips,C:white}X1.75{} Chips as well.",
-				},
-			},
-			rw_wspear_ele_gourmand = {
-				name = "Electric Spear",
-				text = {
-					"{X:mult,C:white}X3{} Mult",
-					"If Seltzer or Splash",
-					"is present, gives",
-					"{X:chips,C:white}X3{} Chips as well.",
-					"{C:green}1 in 4{} chance to be",
-					"exhausted and give {X:mult,C:white}X0.9 Mult{}",
-					"and {X:chips,C:white}X0.9{} Chips{C:inactive}(With Seltzer/Splash){} instead.",
+					"{X:chips,C:white}X#1#{} Chips as well.",
+					"{C:green}#2# in #3#{} chance to be",
+					"exhausted and give {X:mult,C:white}X#4#{} Mult",
+					"and {X:chips,C:white}X#4#{} Chips {C:inactive}(With Seltzer/Splash){} instead.",
 				},
 			},
 			rw_wspear_fire = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}X4.5{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 				},
 			},
-			rw_wspear_fire_monk_inv = {
+			rw_wspear_fire_exhausting = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}X3.25{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
-				},
-			},
-			rw_wspear_fire_hunter_artificer_spearmaster = {
-				name = "Fire Spear",
-				text = {
-					"{X:mult,C:white}X5.25{} Mult",
-					"Increases required",
-					"chips by {C:attention}5%{}.",
-				},
-			},
-			rw_wspear_fire_gourmand = {
-				name = "Fire Spear",
-				text = {
-					"{X:mult,C:white}X9{} Mult",
-					"Increases required",
-					"chips by {C:attention}5%{}.",
-					"{C:green}1 in 4{} chance to be",
+					"{C:green}#2# in #3#{} chance to be",
 					"exhausted and give",
-					"{X:mult,C:white}X0.5{} Mult instead.",
+					"{X:mult,C:white}X#4#{} Mult instead.",
 				},
 			},
 			rw_wspear_fire_saint = {
 				name = "Fire Spear",
 				text = {
-					"{X:mult,C:white}X10{} Mult",
+					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
 					"chips by {C:attention}5%{}.",
 				},
@@ -368,11 +307,9 @@ return {
 					"{C:inactive}(Loaded with: Grenade){}",
 					"If {C:attention}first discard{} of",
 					"round has only {C:attention}1{} card",
-					"{C:attention}destroy{} it. Gains {C:mult}+3{}",
-					"Mult for each {C:attention}card{}",
-					"{C:attention}destroyed{} by Grenade",
-					"this run.",
-					"{C:inactive}(Currently {}{C:mult}+#1#{}{C:inactive}){}",
+					"{C:attention}destroy{} it and give",
+					"{C:mult}+20{} Mult for the",
+					"rest of the round"
 				},
 			},
 			rw_wjokerifle_sporepuff = {
@@ -407,7 +344,7 @@ return {
 				name = "Rot",
 				text = {
 					"{C:chips}-25{} Chips",
-					"{C:green}1 in 20 chance to spread",
+					"{C:green}1 in 20{} chance to spread",
 					"to another {C:attention}Joker{} at the end of {C:attention}Blind{}",
 					"{C:attention}#1#{} round(s) to destruction",
 				},
@@ -556,8 +493,82 @@ return {
 				text = {
 					"Transforms after eating", "{C:rot}Rot {C:attention}#1#{} more time(s)"
 				}
-			}
+			},
 			--endregion
+			--region Booster Pack localization
+			p_rw_selectfoodpack = {
+				name = "Select Food Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:food}Food Cards{} to",
+					"keep for later"
+				},
+			},
+			p_rw_regularfoodpack = {
+				name = "Regular Food Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:food}Food Cards{} to",
+					"be used immediately"
+				},
+			},
+			p_rw_jumbofoodpack = {
+				name = "Jumbo Food Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:food}Food Cards{} to",
+					"be used immediately"
+				},
+			},
+			p_rw_megafoodpack = {
+				name = "Mega Food Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:food}Food Cards{} to",
+					"be used immediately"
+				},
+			},
+			p_rw_weapon_normal_1 = {
+				name = "Weapon Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:weapon}Weapons{} to",
+					"apply to your Jokers"
+				},
+			},
+			p_rw_weapon_normal_2 = {
+				name = "Weapon Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:weapon}Weapons{} to",
+					"apply to your Jokers"
+				},
+			},
+			p_rw_weapon_jumbo_1 = {
+				name = "Jumbo Weapon Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:weapon}Weapons{} to",
+					"apply to your Jokers"
+				},
+			},
+			p_rw_weapon_mega_1 = {
+				name = "Mega Weapon Pack",
+				text = {
+					"Choose {C:attention}#1#{} of up to",
+					"{C:attention}#2# {C:weapon}Weapons{} to",
+					"apply to your Jokers"
+				},
+			},
+			--endregion
+			undiscovered_foods = {
+				name = "Not Discovered",
+				text = { "Purchase or use", "this card in an", "unseeded run to", "learn what it does" },
+			},
+			undiscovered_obtainweapon = {
+				name = "Not Discovered",
+				text = { "Purchase or use", "this card in an", "unseeded run to", "learn what it does" },
+			}
 		},
 		foods = {
 			c_rw_bluefruit = {
@@ -618,8 +629,7 @@ return {
 					"Adds a permanent",
 					"copy of a random",
 					"{C:attention}card{} in your {C:attention}hand{}",
-					"to the {C:attention}deck{}",
-					"and draws it.",
+					"to your hand",
 				},
 			},
 			c_rw_eggbugegg = {
@@ -664,7 +674,7 @@ return {
 					"{C:green}#1# in #2#{} chance to halve",
 					"current {C:attention}Blind{} chip",
 					"requirement.",
-					"{C:green}#1# in #3# chance to add",
+					"{C:green}#1# in #3#{} chance to add",
 					"a copy of itself",
 					"after being used.",
 				},
@@ -902,7 +912,7 @@ return {
 			j_rw_centiwing = {
 				name = "Centiwing",
 				text = {
-					"{C:attention}Threat:{} #1# Chips to score after each {C:attention}hand{} played.",
+					"{C:attention}Threat: {C:purple}#1#{} Score before each {C:attention}hand{} played.",
 					"{C:attention}Undefeated:{} All cards with {C:chips}5 or more{} extra chips",
 					"in the deck are {C:red}debuffed permanently{}.",
 				},
@@ -1016,7 +1026,7 @@ return {
 				text = {
 					"{C:attention}Threat:{} Blinds are {C:attention}#1#%{} larger per Joker",
 					"{s:0.8,C:inactive}(Currently {s:0.8,C:attention}+#2#%{s:0.8,C:inactive})",
-					"{C:attention}Undefeated:{} Lose a random Voucher you've redeemed",
+					"{C:attention}Undefeated:{} Ban a random unredeemed Voucher",
 				},
 			},
 			j_rw_stowaway = {
@@ -1330,7 +1340,7 @@ return {
 			j_rw_alacrity = {
 				name = "Alacrity",
 				text = {
-					"{X:chips,C:white}X2{} Chips on",
+					"{X:chips,C:white}X#1#{} Chips on",
 					"the {C:attention}first hand{}",
 					"of round.",
 				},
@@ -1612,6 +1622,21 @@ return {
 					"{C:blue}-1{} hand each round",
 				},
 			},
+			j_rw_enfys = {
+				name = "Enfys",
+				text = {
+					"At the {C:attention}end of round{},",
+					"creates a random,",
+					"{C:dark_edition}negative{} Food Jsoker.",
+				},
+			},
+			j_rw_scugbo = {
+				name = "Scugbo",
+				text = {
+					"{C:mult}+#1#{} Mult for",
+					"each Slugcat.",
+				},
+			},
 			--endregion
 			--region Slugpups
 			j_rw_pupsurvivor = {
@@ -1691,7 +1716,7 @@ return {
 				name = "Saint Pup",
 				text = {
 					"After discarding {C:attention}#3#{} cards,",
-					"Saint gains {C:chips}+2 {}chips and {C:mult}+2{} mult.",
+					"Saint gains {C:chips}+#5# {}chips and {C:mult}+#5#{} mult.",
 					"{C:inactive}(#4# more cards)",
 				},
 			},
@@ -1990,6 +2015,14 @@ return {
 					"{C:edition}+1{} Joker Slot",
 				},
 			},
+			j_rw_pupenfys = {
+				name = "Enfys pup",
+				text = {
+					"At the {C:attention}end of round{},",
+					"creates a random",
+					"{C:dark_edition}negative{} Food Consumeable.",
+				},
+			},
 			--endregion
 			--region Not-Slugcats
 			j_rw_scavenger_neutral = {
@@ -2155,13 +2188,85 @@ return {
 				},
 			},
 		},
+		Blind = {
+			bl_rw_rotblind = {
+				name = "The Rot",
+				text = {
+					"All played cards become",
+					"Rot Cards after scoring"
+				}
+			}
+		},
+		Back = {
+			b_rw_pebblesdeck = {
+				name = "5P deck",
+				text = {
+					"Start with {C:attention}#1#",
+					"{C:rot,T:m_rw_rotting}Rot{} cards.",
+				},
+			},
+			b_rw_LTTMdeck = {
+				name = "Looks To The Moon deck",
+				text = {
+					"{C:clubs}Club{} cards gain {C:chips}2{} extra chips",
+					"at the end of each Blind",
+					"{C;attention}1~4{} random cards become {C:attention,T:m_rw_wetasscard}Wet",
+					"at the end of each Blind",
+					"Cards can become {C:rot,T:m_rw_moldy}Moldy{} and {C:rot,T:m_rw_rotting}Rot"
+				},
+			},
+		},
+		Voucher = {
+			v_rw_weaponsale = {
+				name = "Fair Trade",
+				text = {
+					"{C:weapon}Weapon Cards{} can appear",
+					"in the shop"
+				},
+			},
+			v_rw_weaponboss = {
+				name = "Scavenger Stash",
+				text = {
+					"{C:green}#1# in #2#{} chance to get",
+					"a {C:weapon}Weapon Card{} at the",
+					"end of a {C:attention}Boss Blind"
+				},
+			},
+			v_rw_relay = {
+				name = "Relay",
+				text = {
+					"Skipping a blind grants",
+					"a random {C:attention}Tag"
+				},
+			},
+			v_rw_chain = {
+				name = "Chain",
+				text = {
+					"Skipping a blind grants",
+					"{C:attention}two{} random {C:attention}Tags"
+				},
+			},
+			v_rw_rainfall = {
+				name = "Rainfall",
+				text = {
+					"{C:enemy}Enemies{} are {C:green}half as likely",
+					"to appear on all Blinds"
+				},
+			},
+			v_rw_downpour = {
+				name = "Downpour",
+				text = {
+					"{C:enemy}Enemies{} no longer spawn"
+				},
+			},
+		}
 	},
 	misc = {
 		dictionary = {
 			k_foodcommon = "Common",
 			k_fooduncommon = "Uncommon",
 			k_foodrare = "Rare",
-			k_enemy = "Enemy",
+			k_rw_enemy = "Enemy",
 			k_yoinked_ex = "Yoinked!",
 			k_over_elip = "Over...",
 			k_under_ex = "Under!",
@@ -2172,13 +2277,24 @@ return {
 			b_regurgitate = "Regurgitate",
 			mult_cost1 = "-0.2x",
 			mult_cost2 = "Mult",
+			k_msg_ex = "Message Received!",
+			k_destroyed_ex = "Destroyed!",
+			k_primed_ex = "Primed!",
+			k_rotted_ex = "Rotted!",
+			k_too_hungry_ex = "Too Hungry!",
+			k_weapon_pack = "Weapon Pack",
+			k_food_pack = "Food Pack",
+			k_foods = "Food",
+			b_foods_cards = "Food",
+			k_obtainweapon = "Weapon",
+			b_obtainweapon_cards = "Weapons"
 		},
 		v_dictionary = {
 			a_reputation = "+#1# Reputation",
 			a_reputation_minus = "-#1# Reputation",
 			a_score = "+#1# Score",
 			a_score_minus = "-#1# Score",
-			a_voucher_lost = "Lost #1#...",
+			a_voucher_banned = "#1# Banned...",
 		},
 		achievement_names = {
 			ach_rw_rainworld = "Rain World",
@@ -2225,7 +2341,29 @@ return {
 		},
 		labels = {
 			foods = "Food",
-			obtainweapon = "Weapon"
+			obtainweapon = "Weapon",
+			k_foodcommon = "Common",
+			k_fooduncommon = "Uncommon",
+			k_foodrare = "Rare",
+			k_rw_enemy = "Enemy",
+			rw_rotted = "Rot",
+			rw_wbeehive = "Beehive",
+			rw_wcherrybomb = "Cherrybomb",
+			rw_wspear_ele = "Electric Spear",
+			rw_wspear_exp = "Explosive Spear",
+			rw_wspear_fire = "Fire Spear",
+			rw_wflashbang = "Flashbang",
+			rw_wgrenade = "Grenade",
+			rw_wjokerifle = "Joke Rifle",
+			rw_wrock = "Rock",
+			rw_wsingularity = "Singularity Bomb",
+			rw_wspear = "Spear",
+			rw_hunter_wspear = "Second Spear",
+			rw_wsporepuff = "Sporepuff",
+		},
+		challenge_names = {
+			c_rw_parade = "Slugcat Parade",
+			c_rw_starvation = "Starvation",
 		}
 	},
 }

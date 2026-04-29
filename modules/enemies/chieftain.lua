@@ -24,6 +24,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "modify_card", "weapon", "killer" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -39,34 +40,19 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.before and not context.blueprint then
 			for _, v in ipairs(G.jokers.cards) do
 				if v ~= card then
-					local joker_weapons = {}
-					for k, _ in pairs(v.ability) do
-						local st, nd = string.find(k, "rw_w")
-						if st == 1 and nd == 4 then
-							table.insert(joker_weapons, k)
-						end
-					end
+					local joker_weapons = SCUG.weapons_on_joker(v)
 					if #joker_weapons > 0 then
 						local not_anymore, _ = pseudorandom_element(joker_weapons, pseudoseed("rw_chieftain"))
-						v.ability[not_anymore] = nil
+						SMODS.Stickers[not_anymore]:apply(v, false)
 						v:juice_up()
 					end
 				end
 			end
-			G.E_MANAGER:add_event(Event({
-				func = function()
-					card_eval_status_text(card, "extra", nil, nil, nil, {
-						message = localize("k_yoinked_ex"),
-						colour = G.C.RED,
-					})
-					return true
-				end,
-			}))
+			SMODS.calculate_effect({ message = localize("k_yoinked_ex"), colour = G.C.RED }, card)
 		end
 
 		--Defeat
@@ -92,7 +78,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -113,6 +99,5 @@ SMODS.Joker({
 			}))
 			end_round()
 		end
-		
 	end,
 })

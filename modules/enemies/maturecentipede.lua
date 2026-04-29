@@ -73,6 +73,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "modify_card", "xmult", "weapon", "destroy_card" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -83,7 +84,6 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat (Disables xMult jokers, and Jokers with xMult weapons. I decided not to count polychrome in this)
 		if context.main_eval and not context.blueprint then
 			for _, center in ipairs(x_mult_jokers_keys) do
@@ -129,7 +129,7 @@ SMODS.Joker({
 					blocking = false,
 				}))
 			end
-			
+
 			--Undefeated (Destroys all debuffed jokers)
 			if
 				context.main_eval
@@ -145,6 +145,5 @@ SMODS.Joker({
 				end
 			end
 		end
-		
 	end,
 })

@@ -7,6 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "joker_slot", "hand_size", "hands", "passive" },
 	config = { extra = { jslot = 1, cslot = 1, h_size = 1, h_plays = 1 }, slugcat = true },
 
 	add_to_deck = function(self, card, from_debuff)

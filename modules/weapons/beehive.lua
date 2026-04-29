@@ -1,7 +1,8 @@
 SMODS.Sticker({
 	key = "wbeehive",
-	loc_txt = {
-		label = "Beehive",
+	config = {
+		weapon = true,
+		min_bonus = 5
 	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
@@ -30,7 +31,7 @@ SMODS.Sticker({
 			for _, v in pairs(G.playing_cards) do
 				if v:is_suit(suit) then
 					if v.ability.perma_bonus <= 0 then
-						v.ability.perma_bonus = 5
+						v.ability.perma_bonus = self.config.min_bonus
 					end
 					if v.ability.perma_bonus > 0 then
 						v.ability.perma_bonus = (v.ability.perma_bonus or 0) * 2
@@ -41,7 +42,6 @@ SMODS.Sticker({
 					SMODS.debuff_card(v, true, "bees")
 				end
 			end
-
 		elseif context.end_of_round and context.main_eval and context.beat_boss then
 			for _, v in pairs(G.playing_cards) do
 				SMODS.debuff_card(v, false, "bees")

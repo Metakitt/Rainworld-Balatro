@@ -1,6 +1,6 @@
 -- Threat: Increases required Score per Blind by the amount of jokers * 5% (So if you have 5 jokers, it'd be a 25% increase).
 -- Defeat: Play 3 hands with a Spear.
--- Not Defeated: Destroys a random Voucher.
+-- Not Defeated: Bans a random unredeemed Voucher.
 
 SMODS.Joker({
 	key = "giantjellyfish",
@@ -30,6 +30,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "xblindsize", "joker" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -46,16 +47,13 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		-- Threat
 		if context.setting_blind and not context.blueprint and not card.ability.extra.defeat then
-			local score_mult = 1 + (card.ability.extra.pct_per_joker * #G.jokers.cards) / 100
-			G.GAME.blind.chips = G.GAME.blind.chips * score_mult
-			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-			card:juice_up()
-			G.GAME.blind:wiggle()
+			return {
+				xblindsize = 1 + (card.ability.extra.pct_per_joker * #G.jokers.cards) / 100
+			}
 		end
-		
+
 		-- Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -79,7 +77,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		-- Undefeated
 		if
 			context.main_eval
@@ -88,20 +86,19 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			if #G.GAME.used_vouchers > 0 then
-				local unvoucher, key = pseudorandom_element(G.GAME.used_vouchers, "rw_giant_jellyfish", {})
-				G.GAME.used_vouchers[key] = nil
-				card_eval_status_text(card, "extra", nil, nil, nil, {
+			local unvoucher = SMODS.get_next_vouchers()
+			if #unvoucher > 0 then
+				G.GAME.banned_keys[unvoucher[1]] = true
+				SMODS.calculate_effect({
 					message = localize({
 						type = "variable",
-						key = "a_voucher_lost",
-						vars = { localize({ type = "name_text", set = "Voucher", key = key }) },
+						key = "a_voucher_banned",
+						vars = { localize({ type = "name_text", set = "Voucher", key = unvoucher[1] }) },
 					}),
 					colour = G.C.RED,
 					delay = 1.5,
-				})
+				}, card)
 			end
 		end
-		
 	end,
 })

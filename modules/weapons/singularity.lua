@@ -1,7 +1,7 @@
 SMODS.Sticker({
 	key = "wsingularity",
-	loc_txt = {
-		label = "Singularity Bomb",
+	config = {
+		weapon = true,
 	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
@@ -19,11 +19,8 @@ SMODS.Sticker({
 	calculate = function(self, card, context)
 		if context.joker_main and G.GAME.current_round.hands_played == 0 then
 			if #context.full_hand == 1 then
-				for k, v in ipairs(G.hand.cards) do
-					SMODS.calculate_context({ remove_playing_cards = true, removed = { v } })
-					v:start_dissolve()
-				end
-				SMODS.Stickers.rw_wsingularity:apply(card)
+				SMODS.destroy_cards(G.hand.cards)
+				SMODS.Stickers.rw_wsingularity:apply(card, false)
 				G.GAME.chips = G.GAME.blind.chips
 				G.STATE_COMPLETE = true
 			end

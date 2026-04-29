@@ -32,6 +32,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "xchips", "perma_bonus" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -43,7 +44,6 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.joker_main and not context.blueprint then
 			return {
@@ -74,7 +74,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -87,6 +87,5 @@ SMODS.Joker({
 				v.ability.perma_bonus = v.ability.perma_bonus + card.ability.extra.crunch
 			end
 		end
-		
 	end,
 })

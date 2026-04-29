@@ -27,6 +27,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "reset", "rw_food", "modify_card" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -34,6 +35,12 @@ SMODS.Joker({
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
+		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
+		card.ability.extra.former_weights = {
+			foods = G.GAME.foods_rate,
+			select_pack = G.P_CENTERS.p_rw_selectfoodpack.weight,
+			use_pack = G.P_CENTERS.p_rw_regularfoodpack.weight
+		}
 		G.GAME.foods_rate = 0
 		G.P_CENTERS.p_rw_selectfoodpack.weight = 0
 		G.P_CENTERS.p_rw_regularfoodpack.weight = 0
@@ -66,22 +73,25 @@ SMODS.Joker({
 		end
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		-- Sets spawning of food to 0 when added to deck.
 
 		--Defeat
-		if context.before and not context.blueprint then
-			for _, v in pairs(context.scoring_hand) do
-				if v.config.center_key == "m_lucky" then
-					G.GAME.foods_rate = 3.5
-					G.P_CENTERS.p_rw_selectfoodpack.weight = 0.9
-					G.P_CENTERS.p_rw_regularfoodpack.weight = 1.2
-					card.ability.extra.defeat = true
-				end
-			end
+		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
+		if tick_down > 0 then
+			card.ability.extra.enemy_conditions.amount = card.ability.extra.enemy_conditions.amount - tick_down
 		end
-		if card.ability.extra.defeat == true and not context.blueprint then
+
+		if
+			context.main_eval
+			and card.ability.extra.enemy_conditions.amount <= 0
+			and not card.ability.extra.defeat
+			and not context.blueprint
+		then
+			card.ability.extra.defeat = true
+			G.GAME.foods_rate = card.ability.extra.former_weights.foods
+			G.P_CENTERS.p_rw_selectfoodpack.weight = card.ability.extra.former_weights.select_pack
+			G.P_CENTERS.p_rw_regularfoodpack.weight = card.ability.extra.former_weights.use_pack
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 1.3,
@@ -98,7 +108,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 
 		if
@@ -111,6 +121,5 @@ SMODS.Joker({
 			-- Maybe make it so that jokers that benefit from food can no longer spawn or destroyed or smth
 			SMODS.destroy_cards(card, true)
 		end
-		
 	end,
 })

@@ -31,6 +31,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "killer", "chance", "weapon", },
 	loc_vars = function(self, info_queue, card)
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.nope_odds, rw_kingvulture)
 		return {
@@ -45,7 +46,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		-- Threat
 		if
 			context.final_scoring_step
@@ -54,22 +54,19 @@ SMODS.Joker({
 			and SMODS.pseudorandom_probability(card, "rw_kingvulture", 1, card.ability.extra.nope_odds, "rw_kingvulture")
 			and not context.blueprint
 		then
-			card_eval_status_text(card, "extra", nil, nil, nil, {
-				message = localize("k_nope_ex"),
-				colour = G.C.RED,
-			})
 			return {
 				x_chips = 0,
 				x_mult = 0,
+				message = localize("k_nope_ex"),
+				colour = G.C.RED,
 			}
 		end
-		
+
 		-- Defeat
 		if context.before and not context.blueprint then
 			for _, v in pairs(G.jokers.cards) do
-				for k, _ in pairs(v.ability) do
-					st, nd = string.find(k, "rw_wspear")
-					if st and nd then
+				for _, vv in pairs(v.ability) do
+					if type(vv) == "table" and vv.weapon and vv.spear then
 						card.ability.extra.spears_tanked = card.ability.extra.spears_tanked + 1
 					end
 				end
@@ -81,7 +78,7 @@ SMODS.Joker({
 		if context.after and not context.blueprint and card.ability.extra.defeat then
 			SMODS.destroy_cards(card, true)
 		end
-		
+
 		-- Undefeated
 		if
 			context.main_eval
@@ -91,16 +88,15 @@ SMODS.Joker({
 			and not context.blueprint
 		then
 			-- Die
-            G.E_MANAGER:add_event(Event({
-                trigger = "ease",
-                delay = 2.0,
-                ref_table = G.GAME,
-                ref_value = "chips",
-                ease_to = SCUG.big(0),
+			G.E_MANAGER:add_event(Event({
+				trigger = "ease",
+				delay = 2.0,
+				ref_table = G.GAME,
+				ref_value = "chips",
+				ease_to = SCUG.big(0),
 				func = (function(x) return math.floor(x) end)
-            }))
-            end_round()
+			}))
+			end_round()
 		end
-		
 	end,
 })

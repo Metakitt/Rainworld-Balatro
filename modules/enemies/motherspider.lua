@@ -33,6 +33,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "hand_type", "destroy_card" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -47,14 +48,21 @@ SMODS.Joker({
 		end
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.debuff_hand and not context.blueprint then
-			if not (context.poker_hands["High Card"][1] or context.poker_hands["Flush House"][1]) then
+			if not (context.scoring_name == "High Card" or context.scoring_name == "Flush House") then
 				return { debuff = true }
 			end
 		end
-		
+		if context.debuffed_hand and not (context.scoring_name == "High Card" or context.scoring_name == "Flush House") then
+			return {
+				func = function()
+					SMODS.calculate_effect({ message = localize("k_destroyed_ex"), colour = G.C.RED }, card)
+					SMODS.destroy_cards(context.full_hand)
+				end
+			}
+		end
+
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -78,25 +86,8 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		--Nothing happens.
-
-		--Currently, it works as intended but doing remove rather than dissolve just obliterates the cards from existence. Dissolve leaves ghost cards.
-		local Blind_debuff_hand = Blind.debuff_hand
-		function Blind:debuff_hand(cards, hand, handname, check)
-			local ret = Blind_debuff_hand(self, cards, hand, handname, check)
-			if ret then
-				for _, k in ipairs(G.jokers.cards) do
-					if k.config.center_key == "j_rw_motherspider" then
-						for _, v in pairs(G.play.cards) do
-							v:remove()
-						end
-					end
-				end
-			end
-			return ret
-		end
-
 	end,
 })

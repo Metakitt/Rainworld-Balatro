@@ -34,6 +34,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "score", "modify_card" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -49,39 +50,14 @@ SMODS.Joker({
 
 		--Threat
 		if
-			context.after
+			context.before
 			and context.cardarea == G.jokers
 			and not context.blueprint
 			and not card.ability.extra.defeat
 		then
-			G.E_MANAGER:add_event(Event({
-				trigger = "after",
-				delay = 0.1,
-				func = function()
-					G.GAME.chips = G.GAME.chips + SCUG.big(card.ability.extra.unchips)
-					card_eval_status_text(card, "extra", nil, nil, nil, {
-						message = localize({
-							type = "variable",
-							key = "a_score_minus",
-							vars = { math.abs(card.ability.extra.unchips) },
-						}),
-						colour = G.C.PURPLE,
-					})
-					-- Evil LocalThunk "disable SFX" code
-					G.E_MANAGER:add_event(Event({
-						trigger = "after",
-						delay = 0.06 * G.SETTINGS.GAMESPEED,
-						blockable = false,
-						blocking = false,
-						func = function()
-							play_sound("tarot2", 0.76, 0.4)
-							return true
-						end,
-					}))
-					play_sound("tarot2", 1, 0.4)
-					return true
-				end,
-			}))
+			return {
+				score = card.ability.extra.unchips
+			}
 		end
 
 		--Defeat
@@ -107,7 +83,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -122,6 +98,5 @@ SMODS.Joker({
 				end
 			end
 		end
-		
 	end,
 })

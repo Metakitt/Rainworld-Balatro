@@ -33,6 +33,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -43,7 +44,6 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.hand_drawn and not context.blueprint then
 			local any_forced = nil
@@ -83,7 +83,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -131,9 +131,11 @@ SMODS.Joker({
 			update_hand_text({ sound = "button", volume = 0.7, pitch = 0.9, delay = 0 }, { level = " = 1" })
 			delay(1.3)
 			for k, v in pairs(G.GAME.hands) do
-				v.level = SCUG.big(1)
-				v.chips = v.s_chips
-				v.mult = v.s_mult
+				SMODS.upgrade_poker_hands {
+					hands = { k },
+					level_up = SCUG.num(SCUG.big(1) - v.level),
+					instant = true
+				}
 			end
 			-- also ripped from base game
 			update_hand_text(
@@ -141,6 +143,5 @@ SMODS.Joker({
 				{ mult = 0, chips = 0, handname = "", level = "" }
 			)
 		end
-		
 	end,
 })

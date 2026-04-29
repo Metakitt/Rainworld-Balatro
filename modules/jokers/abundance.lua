@@ -7,7 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-
+	attributes = { "slugcat", "generation", "rw_food", "joker" },
 	calculate = function(self, card, context)
 		if
 			context.setting_blind
@@ -15,8 +15,7 @@ SMODS.Joker({
 			and G.jokers.config.card_limit <= #G.jokers.cards
 			and G.consumeables.config.card_limit > #G.consumeables.cards
 		then
-			local n_card = SMODS.create_card({ set = "foods", area = G.consumeables })
-			G.consumeables:emplace(n_card)
+			SMODS.add_card { set = "foods", area = G.consumeables }
 		elseif context.setting_blind and context.main_eval and G.jokers.config.card_limit > #G.jokers.cards then
 			SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_slugpup" })
 		end

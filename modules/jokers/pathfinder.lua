@@ -7,6 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "hand_type", "generation", "tarot", "discard" },
 	config = { extra = { type = "Flush" }, slugcat = true },
 
 	calculate = function(self, card, context)
@@ -23,8 +24,7 @@ SMODS.Joker({
 							delay = 0.7,
 							blockable = false,
 							func = function()
-								local n_card = SMODS.create_card({ set = "Tarot", area = G.consumeables })
-								G.consumeables:emplace(n_card)
+								SMODS.add_card { set = "Tarot", area = G.consumeables }
 								return true
 							end,
 						}))

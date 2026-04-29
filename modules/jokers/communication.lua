@@ -13,6 +13,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	attributes = { "chance", "generation", },
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
@@ -25,27 +26,12 @@ SMODS.Joker({
 			context.using_consumeable
 			and SMODS.pseudorandom_probability(card, "rw_communication", 1, card.ability.extra.odds, "rw_communication")
 		then
-			local valid = false
-			local new_consum = { key = "c_wheel_of_fortune" }
-			repeat
-				new_consum =
-					G.P_CENTERS[pseudorandom_element(G.P_CENTER_POOLS.Consumeables, pseudoseed("rw_communication")).key]
-				valid = new_consum.discovered and not new_consum.hidden and true or false
-			until valid
+			SMODS.calculate_effect({ message = localize("k_msg_ex"), colour = G.C.SECONDARY_SET.Planet }, card)
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					card_eval_status_text(card, "extra", nil, nil, nil, {
-						message = "Message Received!",
-						colour = G.C.SECONDARY_SET.Planet,
-					})
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							SMODS.add_card({ key = new_consum.key, area = G.consumeables })
-							return true
-						end,
-					}))
+					SMODS.add_card { set = 'Consumeables', soulable = false }
 					return true
-				end,
+				end
 			}))
 		end
 	end,

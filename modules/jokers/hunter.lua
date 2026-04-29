@@ -7,12 +7,13 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	config = {
-		extra = { center_table = 1, odds = 10, mult = 0, mult_gain = 8, spear = false },
+		extra = { center_table = 1, odds = 10, mult = 0, mult_gain = 8, spear = false, spear_strength = "strong" },
 		slugcat = true,
 		second_spear = true,
 	},
 	blueprint_compat = true,
 	perishable_compat = false,
+	attributes = { "slugcat", "mult", "chance", "ante" },
 	loc_vars = function(self, info_queue, card)
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_hunter")
 		return {
@@ -26,8 +27,12 @@ SMODS.Joker({
 
 	calculate = function(self, card, context)
 		if context.after and not context.blueprint then
-			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-			SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "mult",
+				scalar_value = "mult_gain",
+				message_colour = G.C.MULT
+			})
 		end
 
 		if context.joker_main then

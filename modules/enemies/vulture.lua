@@ -9,7 +9,8 @@ SMODS.Joker({
 			spears_tanked = 0,
 			spears_needed = 3,
 			defeat = false,
-		}, enemy = true,
+		},
+		enemy = true,
 	},
 	rarity = "rw_enemy",
 	cost = 1,
@@ -30,6 +31,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "chance", "weapon" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -45,7 +47,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		-- Threat
 		if
 			context.final_scoring_step
@@ -55,16 +56,14 @@ SMODS.Joker({
 			and not context.blueprint
 			and not card.ability.extra.defeat
 		then
-			card_eval_status_text(card, "extra", nil, nil, nil, {
-				message = localize("k_nope_ex"),
-				colour = G.C.RED,
-			})
 			return {
 				x_chips = 0,
 				x_mult = 0,
+				message = localize("k_nope_ex"),
+				colour = G.C.RED
 			}
 		end
-		
+
 		-- Defeat
 		if context.before and not context.blueprint then
 			for _, v in pairs(G.jokers.cards) do
@@ -82,7 +81,7 @@ SMODS.Joker({
 		if context.after and not context.blueprint and card.ability.extra.defeat then
 			SMODS.destroy_cards(card, true)
 		end
-		
+
 		-- Undefeated
 		if
 			context.main_eval
@@ -91,19 +90,18 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			for _, v in pairs(G.jokers.cards) do
-				for k, _ in pairs(v.ability) do
-					st, nd = string.find(k, "rw_w")
-					if st and nd then
-						SMODS.Stickers[k]:apply(v, nil)
+			for _, v in ipairs(G.jokers.cards) do
+				if v ~= card then
+					local joker_weapons = SCUG.weapons_on_joker(v)
+					if #joker_weapons > 0 then
+						for _, vv in ipairs(joker_weapons) do
+							SMODS.Stickers[vv]:apply(v, false)
+							v:juice_up()
+						end
 					end
 				end
 			end
-			card_eval_status_text(card, "extra", nil, nil, nil, {
-				message = localize("k_yoinked_ex"),
-				colour = G.C.RED,
-			})
+			SMODS.calculate_effect({ message = localize("k_yoinked_ex"), colour = G.C.RED, }, card)
 		end
-		
 	end,
 })

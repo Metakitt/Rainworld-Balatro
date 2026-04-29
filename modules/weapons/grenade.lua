@@ -1,10 +1,9 @@
 SMODS.Sticker({
 	key = "wgrenade",
 	config = {
-		mult = 0
-	},
-	loc_txt = {
-		label = "Grenade",
+		mult = 0,
+		mult_gain = 3,
+		weapon = true
 	},
 	badge_colour = HEX("875796"),
 	atlas = "enhancedcards_scug",
@@ -25,8 +24,14 @@ SMODS.Sticker({
 	calculate = function(self, card, context)
 		if context.discard then
 			if G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then
-				SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
-				card.ability.rw_wgrenade.mult = card.ability.rw_wgrenade.mult + 3
+				-- SMODS.calculate_effect({ message = localize("k_upgrade_ex") }, card)
+				-- card.ability.rw_wgrenade.mult = card.ability.rw_wgrenade.mult + 3
+				SMODS.scale_card(card, {
+					ref_table = card.ability.rw_wgrenade,
+					ref_value = "mult",
+					scalar_value = "gain",
+					message_colour = G.C.MULT
+				})
 
 				return {
 					remove = true,

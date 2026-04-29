@@ -8,6 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	perishable_compat = false,
+	attributes = { "slugcat", "xmult", "scaling", "rw_food", "joker", "destroy_card" },
 	config = {
 		extra = {
 			xmult_mod = 1,
@@ -17,6 +18,7 @@ SMODS.Joker({
 		},
 		slugcat = true,
 		gourmand = true,
+		spear_strength = "exhausting"
 	},
 
 	loc_vars = function(self, info_queue, card)
@@ -28,7 +30,6 @@ SMODS.Joker({
 		if SMODS.pseudorandom_probability(card, "ohfuck", 1, 666, "rw_gourmand_hunger", true) then
 			local hunger = SMODS.add_card({ set = "Joker", area = G.jokers, key = "j_rw_hunger" })
 			hunger.ability.extra.x_mult = hunger.ability.extra.x_mult + 1
-			-- card:start_dissolve()
 			SMODS.destroy_cards(card, true)
 		end
 	end,
@@ -41,7 +42,7 @@ SMODS.Joker({
 		end
 
 		if context.card_added and not context.blueprint then
-			if SCUG.is_in_pool(context.card, "Food") then
+			if context.card:has_attribute("food") then
 				card.ability.extra.munch = true
 				card.ability.extra.xmult_mod = card.ability.extra.xmult_mod +
 					card.ability.extra.xmult_per_rarity[context.card.config.center.rarity or 1]
@@ -144,16 +145,16 @@ function Card:spitout()
 				SMODS.add_card({ set = "obtainweapon", area = G.consumeables, key = 'c_rw_grenade' })
 			end
 		else
-			card_eval_status_text(self, "extra", nil, nil, nil, {
-				message = "No Room!",
-				colour = G.C.RED,
-			})
+			SMODS.calculate_effect({
+				message = localize("k_no_room_ex"),
+				colour = G.C.RED
+			}, self)
 		end
 	else
-		card_eval_status_text(self, "extra", nil, nil, nil, {
-			message = "Too Hungry!",
-			colour = G.C.RED,
-		})
+		SMODS.calculate_effect({
+			message = localize("k_too_hungry_ex"),
+			colour = G.C.RED
+		}, self)
 	end
 end
 

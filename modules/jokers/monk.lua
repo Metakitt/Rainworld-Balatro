@@ -7,7 +7,8 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { center_table = -1, odds = 10 }, slugcat = true },
+	attributes = { "slugcat", "chance", "ante" },
+	config = { extra = { center_table = -1, odds = 10 }, slugcat = true, spear_strength = "weak" },
 
 	loc_vars = function(self, info_queue, card)
 		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_monk") } }

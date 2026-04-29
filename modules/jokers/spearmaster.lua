@@ -4,11 +4,11 @@ SMODS.Joker({
 	pos = { x = 5, y = 0 },
 	rarity = 3,
 	cost = 8,
-	config = { extra = { xmult = 3, should_score = true }, slugcat = true, second_spear = true },
+	config = { extra = { xmult = 3, should_score = true }, slugcat = true, second_spear = true, spear_strength = "strong" },
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-
+	attributes = { "slugcat", "xmult", "enhancements"},
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.xmult } }
 	end,

@@ -24,6 +24,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "killer", "modify_card" },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.jokersold, card.ability.extra.scoredhand } }
 	end,
@@ -31,7 +32,6 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.setting_blind then
 			local jokers = {}
@@ -90,7 +90,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -112,6 +112,5 @@ SMODS.Joker({
 			}))
 			end_round()
 		end
-		
 	end,
 })

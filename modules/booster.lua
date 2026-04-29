@@ -1,13 +1,6 @@
 SMODS.Booster({
 	key = "regularfoodpack",
-	loc_txt = {
-		name = "Regular Food Pack",
-		text = {
-			"Choose {C:attention}1{} out of {C:attention}3{} Food cards",
-			"to be used immediately.",
-		},
-		group_name = "Food Pack",
-	},
+	group_key = "k_food_pack",
 	kind = "foods",
 	atlas = "boosterslug",
 	pos = { x = 1, y = 0 },
@@ -24,21 +17,11 @@ SMODS.Booster({
 			skip_materialize = true,
 		}
 	end,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
-	end,
 })
 
 SMODS.Booster({
 	key = "selectfoodpack",
-	loc_txt = {
-		name = "Select Food Pack",
-		text = {
-			"Choose {C:attention}1{} out of {C:attention}3{} Food cards",
-			"to keep for later",
-		},
-		group_name = "Food Pack",
-	},
+	group_key = "k_food_pack",
 	kind = "rw_foods",
 	atlas = "boosterslug",
 	pos = { x = 0, y = 0 },
@@ -59,14 +42,7 @@ SMODS.Booster({
 
 SMODS.Booster({
 	key = "jumbofoodpack",
-	loc_txt = {
-		name = "Jumbo Food Pack",
-		text = {
-			"Choose {C:attention}1{} out of {C:attention}5{} {C:food}Food{} cards",
-			"to be used immediately.",
-		},
-		group_name = "Food Pack",
-	},
+	group_key = "k_food_pack",
 	kind = "foods",
 	atlas = "boosterslug",
 	pos = { x = 2, y = 0 },
@@ -83,21 +59,11 @@ SMODS.Booster({
 			skip_materialize = true,
 		}
 	end,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
-	end,
 })
 
 SMODS.Booster({
 	key = "megafoodpack",
-	loc_txt = {
-		name = "Mega Food Pack",
-		text = {
-			"Choose {C:attention}2{} out of {C:attention}5{} {C:food}Food{} cards",
-			"to be used immediately.",
-		},
-		group_name = "Food Pack",
-	},
+	group_key = "k_food_pack",
 	kind = "foods",
 	atlas = "boosterslug",
 	pos = { x = 3, y = 0 },
@@ -114,22 +80,12 @@ SMODS.Booster({
 			skip_materialize = true,
 		}
 	end,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.config.center.config.choose, card.ability.extra } }
-	end,
 })
 
 -- TODO: Figure out how to finagle the create_card function so it can't make weapons you can't apply
 SMODS.Booster({
 	key = "weapon_normal_1",
-	loc_txt = {
-		name = "Weapon Pack",
-		text = {
-			"Choose {C:attention}1{} out of {C:attention}2{C:weapon} Weapons",
-			"to apply to your Jokers",
-		},
-		group_name = "Weapon Pack",
-	},
+	group_key = "k_weapon_pack",
 	kind = "rw_obtainweapon",
 	atlas = "boosterslug",
 	pos = { x = 0, y = 1 },
@@ -145,14 +101,7 @@ SMODS.Booster({
 
 SMODS.Booster({
 	key = "weapon_normal_2",
-	loc_txt = {
-		name = "Weapon Pack",
-		text = {
-			"Choose {C:attention}1{} out of {C:attention}2{C:weapon} Weapons",
-			"to apply to your Jokers",
-		},
-		group_name = "Weapon Pack",
-	},
+	group_key = "k_weapon_pack",
 	kind = "rw_obtainweapon",
 	atlas = "boosterslug",
 	pos = { x = 1, y = 1 },
@@ -168,14 +117,7 @@ SMODS.Booster({
 
 SMODS.Booster({
 	key = "weapon_jumbo_1",
-	loc_txt = {
-		name = "Jumbo Weapon Pack",
-		text = {
-			"Choose {C:attention}1{} out of {C:attention}4{C:weapon} Weapons",
-			"to apply to your Jokers",
-		},
-		group_name = "Weapon Pack",
-	},
+	group_key = "k_weapon_pack",
 	kind = "rw_obtainweapon",
 	atlas = "boosterslug",
 	pos = { x = 2, y = 1 },
@@ -191,14 +133,7 @@ SMODS.Booster({
 
 SMODS.Booster({
 	key = "weapon_mega_1",
-	loc_txt = {
-		name = "Mega Weapon Pack",
-		text = {
-			"Choose {C:attention}2{} out of {C:attention}4{C:weapon} Weapons",
-			"to apply to your Jokers",
-		},
-		group_name = "Weapon Pack",
-	},
+	group_key = "k_weapon_pack",
 	kind = "rw_obtainweapon",
 	atlas = "boosterslug",
 	pos = { x = 3, y = 1 },

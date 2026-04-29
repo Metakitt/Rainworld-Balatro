@@ -39,7 +39,9 @@ SMODS.Tag({
 	apply = function(self, tag, context)
 		if context.type == "immediate" or context.type == "eval" then
 			tag:yep("+", G.C.DARK_EDITION, function()
-				SMODS.add_card({ set = "Joker", key = "j_rw_slugpup", edition = "e_negative" })
+				local spup = SMODS.add_card({ set = "Joker", key = "j_rw_slugpup", edition = "e_negative" })
+				spup.cost = 0
+				spup.sell_cost = 0
 				return true
 			end)
 			tag.triggered = true
@@ -131,7 +133,7 @@ SMODS.Tag({
 		}
 	end,
 	apply = function(self, tag, context)
-		if context.type == "immediate" or context.type == "new_blind_choice" or context.type == "round_start_bonus" then
+		if context.type == "round_start_bonus" then
 			tag:yep("+", G.C.SECONDARY_SET.Enhanced, function()
 				local num_cards = tag.config.cards
 				local i = 0
@@ -174,7 +176,7 @@ SMODS.Tag({
 	pos = { x = 1, y = 1 },
 	discovered = true,
 	loc_vars = function(self, info_queue, tag)
-		info_queue[#info_queue + 1] = { set = "Other", key = tag.config.pack_type }
+		info_queue[#info_queue + 1] = G.P_CENTERS[tag.config.pack_type]
 	end,
 	min_ante = 2,
 	apply = function(self, tag, context)
@@ -219,9 +221,8 @@ SMODS.Tag({
 	apply = function(self, tag, context)
 		if context.type == "immediate" then
 			local ALL_WEAPONS = {}
-			for k, _ in pairs(SMODS.Stickers) do
-				local st, nd = string.find(k, "rw_w")
-				if st == 1 and nd == 4 then
+			for k, v in pairs(SMODS.Stickers) do
+				if v.config and v.config.weapon then
 					table.insert(ALL_WEAPONS, k)
 				end
 			end
@@ -260,7 +261,7 @@ SMODS.Tag({
 	pos = { x = 3, y = 1 },
 	discovered = true,
 	loc_vars = function(self, info_queue, tag)
-		info_queue[#info_queue + 1] = { set = "Other", key = tag.config.pack_type }
+		info_queue[#info_queue + 1] = G.P_CENTERS[tag.config.pack_type]
 	end,
 	apply = function(self, tag, context)
 		if context.type == "new_blind_choice" then

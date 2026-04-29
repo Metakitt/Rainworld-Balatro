@@ -24,6 +24,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "killer", "xblindsize" },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.flashbang } }
 	end,
@@ -31,16 +32,11 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
-		if context.setting_blind and not G.GAME.blind.boss and not context.blueprint then
-			G.GAME.blind.chips = G.GAME.blind.chips * 2
-			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-		end
-
-		if context.setting_blind and G.GAME.blind.boss and not context.blueprint then
-			G.GAME.blind.chips = G.GAME.blind.chips * 4
-			G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+		if context.setting_blind and not context.blueprint then
+			return {
+				xblindsize = G.GAME.blind.boss and 4 or 2
+			}
 		end
 
 		--Defeat
@@ -65,6 +61,5 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
 	end,
 })

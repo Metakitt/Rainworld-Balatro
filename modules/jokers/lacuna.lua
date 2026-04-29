@@ -58,6 +58,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "chance", "generation", "tarot", "seals", "weapon", "perma_bonus" },
 	config = { extra = { hand_type = "none", odds = 4, oddswep = 15 }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_lacuna") } }

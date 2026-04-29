@@ -31,6 +31,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "chips", "chance", "generation" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -44,11 +45,10 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.joker_main and not context.blueprint then
 			return {
-				chips = -#SMODS.find_card("j_rw_coalescipede"),
+				chips = - #SMODS.find_card("j_rw_coalescipede"),
 			}
 		end
 		if
@@ -100,7 +100,7 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			local pede_spawn = pseudorandom_element({1, 2}, "rw_coalescipede", {})
+			local pede_spawn = pseudorandom_element({ 1, 2 }, "rw_coalescipede", {})
 			for i = 1, pede_spawn do
 				G.E_MANAGER:add_event(Event({
 					trigger = "after",
@@ -113,6 +113,5 @@ SMODS.Joker({
 				}))
 			end
 		end
-		
 	end,
 })

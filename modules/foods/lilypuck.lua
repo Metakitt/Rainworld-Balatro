@@ -17,30 +17,25 @@ SMODS.Consumable({
 		end
 	end,
 	use = function(self, card, area, copier)
-		if card.ability.name == "lilypuck" then
-			local chosen_hand = pseudorandom_element(G.hand.cards, pseudoseed("test"))
-
-			G.E_MANAGER:add_event(Event({
-				trigger = "before",
-				delay = 0.4,
-				func = function()
-					local other_card =
-						copy_card(chosen_hand, nil, nil, nil, chosen_hand.edition and chosen_hand.edition.negative)
-					other_card:start_materialize()
-					other_card:add_to_deck()
-					G.deck.config.card_limit = G.deck.config.card_limit + 1
-					G.hand:emplace(other_card)
-					playing_card_joker_effects({ other_card })
-					table.insert(G.playing_cards, other_card)
-					draw_card(G.play, G.deck, 90, "up", nil)
-					if other_card.edition and other_card.edition.negative then
-						other_card:set_edition(nil, true)
-					end
-
-					return true
-				end,
-			}))
-		end
+		local chosen_card = pseudorandom_element(G.hand.cards, pseudoseed("test"))
+		G.E_MANAGER:add_event(Event({
+			trigger = "before",
+			delay = 0.4,
+			func = function()
+				local other_card =
+					copy_card(chosen_card, nil, nil, nil, chosen_card.edition and chosen_card.edition.negative)
+				other_card:start_materialize()
+				other_card:add_to_deck()
+				G.deck.config.card_limit = G.deck.config.card_limit + 1
+				G.hand:emplace(other_card)
+				playing_card_joker_effects({ other_card })
+				table.insert(G.playing_cards, other_card)
+				if other_card.edition and other_card.edition.negative then
+					other_card:set_edition(nil, true)
+				end
+				return true
+			end,
+		}))
 		SCUG.inc_food_count()
 	end,
 })

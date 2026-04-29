@@ -7,10 +7,11 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "swap", "chance", "xblindsize" },
 	config = { extra = { odds = 20 }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_blurred")
-		return { vars = { numerator, denominator }}
+		return { vars = { numerator, denominator } }
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main and not context.blueprint then
@@ -21,8 +22,7 @@ SMODS.Joker({
 
 		if context.setting_blind then
 			if SMODS.pseudorandom_probability(card, "rw_blurred", 1, card.ability.extra.odds, "rw_blurred") then
-				G.GAME.blind.chips = G.GAME.blind.chips / 2
-				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+				return { xblindsize = 0.5 }
 			end
 		end
 	end,

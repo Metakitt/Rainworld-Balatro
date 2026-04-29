@@ -145,6 +145,36 @@ G.ARGS.LOC_COLOURS["weapon"] = G.C.WEAPON
 G.ARGS.LOC_COLOURS["food"] = G.C.FOOD
 G.ARGS.LOC_COLOURS["rot"] = G.C.ROT
 
+-- Attributes
+-- Denotes a Slugcat
+SMODS.Attribute {
+	key = "slugcat"
+}
+-- Interacts with Foods (from this mod, not related to default `food` attribute)
+SMODS.Attribute {
+	key = "rw_food"
+}
+-- Interacts with Weapons
+SMODS.Attribute {
+	key = "weapon"
+}
+-- Affects the Ante (I'm surprised this doesn't already exist?)
+SMODS.Attribute {
+	key = "ante"
+}
+-- Denotes an enemy OR interacts with enemies
+SMODS.Attribute {
+	key = "enemy"
+}
+-- Relates to Rot in some way
+SMODS.Attribute {
+	key = "rot"
+}
+-- Can kill you outright
+SMODS.Attribute {
+	key = "killer"
+}
+
 -- Food Joker Pool (if not defined)
 if not SMODS.ObjectTypes["Food"] then
 	SMODS.ObjectType({

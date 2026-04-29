@@ -33,15 +33,6 @@ SMODS.ConsumableType({
 	primary_colour = HEX("875796"),
 	secondary_colour = HEX("875796"),
 	shop_rate = 0,
-	loc_txt = {
-		collection = "Weapons",
-		name = "Weapon",
-
-		undiscovered = {
-			name = "Not Discovered",
-			text = { "Purchase or use", "this card in an", "unseeded run to", "learn what it does" },
-		},
-	},
 	default = "c_rw_wspear"
 })
 

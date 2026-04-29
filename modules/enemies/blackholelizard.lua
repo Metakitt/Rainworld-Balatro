@@ -25,12 +25,12 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", },
 	add_to_deck = function(self, card, from_debuff)
 		SMODS.Stickers["eternal"]:apply(card, true)
 		card:set_edition("e_negative")
 	end,
 	calculate = function(self, card, context)
-	
 		-- Defeat
 		if context.before and not context.blueprint then
 			for _, v in pairs(G.jokers.cards) do
@@ -43,7 +43,7 @@ SMODS.Joker({
 				end
 			end
 		end
-		
+
 		-- Undefeated
 		if
 			context.main_eval
@@ -54,6 +54,5 @@ SMODS.Joker({
 		then
 			G.FUNCS.start_run(nil, {})
 		end
-		
 	end,
 })

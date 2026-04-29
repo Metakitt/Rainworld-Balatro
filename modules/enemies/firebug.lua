@@ -36,6 +36,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "chance", "rank", "weapon", "destroy_card" },
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.enemy_conditions then
 			info_queue[#info_queue + 1] = SCUG.get_enemy_defeat_conditions(card.ability.extra.enemy_conditions)
@@ -54,7 +55,6 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if
 			context.setting_blind
@@ -89,7 +89,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if card.ability.extra.aggressive == true then
 			if
@@ -100,8 +100,7 @@ SMODS.Joker({
 				and not context.blueprint
 			then
 				for k, v in pairs(SMODS.Stickers) do
-					local st, nd = string.find(k, "rw_w")
-					if st == 1 and nd == 4 then
+					if v.config and v.config.weapon then
 						v.rate = v.rate / 4
 					end
 				end
@@ -114,8 +113,8 @@ SMODS.Joker({
 						end
 					end
 				end
-				
-			-- Aggro
+
+				-- Aggro
 			elseif
 				context.main_eval
 				and context.end_of_round
@@ -132,6 +131,5 @@ SMODS.Joker({
 				end
 			end
 		end
-		
 	end,
 })

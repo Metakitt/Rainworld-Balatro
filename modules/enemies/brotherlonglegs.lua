@@ -34,6 +34,7 @@ SMODS.Joker({
 	rw_wsingularity_compat = false,
 	rw_wspear_compat = false,
 	rw_wsporepuff_compat = false,
+	attributes = { "enemy", "rot", "chance", "rank", "modify_card" },
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_rw_rotting
 		if card.ability.extra.enemy_conditions then
@@ -46,7 +47,6 @@ SMODS.Joker({
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 	end,
 	calculate = function(self, card, context)
-	
 		--Threat
 		if context.setting_blind and not context.blueprint then
 			for i = 1, #G.playing_cards do
@@ -55,7 +55,7 @@ SMODS.Joker({
 				end
 			end
 		end
-		
+
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -79,7 +79,7 @@ SMODS.Joker({
 				blocking = false,
 			}))
 		end
-		
+
 		--Undefeated
 		if
 			context.main_eval
@@ -88,13 +88,12 @@ SMODS.Joker({
 			and card.ability.extra.defeat == false
 			and not context.blueprint
 		then
-			local rank = SCUG.get_rank_in_deck() 
+			local rank = SCUG.get_rank_in_deck()
 			for _, v in ipairs(G.playing_cards) do
 				if v.config.card.value == rank and not context.blueprint then
 					v:set_ability(G.P_CENTERS.m_rw_rotting)
 				end
 			end
 		end
-		
 	end,
 })
