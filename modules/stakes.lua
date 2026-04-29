@@ -16,7 +16,7 @@ SMODS.Stake({
 	pos = { x = 0, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
-})
+}) --implemented
 
 SMODS.Stake({
 	key = 'lust',
@@ -56,7 +56,7 @@ SMODS.Stake({
 	pos = { x = 2, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
-})
+}) -- implemented
 
 SMODS.Stake({
 	key = 'gluttony',
@@ -76,7 +76,23 @@ SMODS.Stake({
 	pos = { x = 3, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
-})
+}) -- implemented
+
+local card_set_cost_ref = Card.set_cost
+function Card:set_cost()
+local ret = card_set_cost_ref(self)
+
+if G.STATE == G.STATES.SHOP then
+for _, v in ipairs(G.GAME.applied_stakes) do
+if SMODS.stake_from_index(v) == "stake_rw_gluttony" then
+if self.ability.set == "Booster" or self.ability.set == "foods" or self:has_attribute('foods') then
+self.cost = self.cost * 2
+end
+return ret
+end
+end
+end
+end
 
 SMODS.Stake({
 	key = 'survival',
@@ -107,7 +123,7 @@ SMODS.Stake({
 	--prefix_config = {applied_stakes = { mod = false } },
 	--unlocked_stake = "stake_violence",
 	modifiers = function()
-		--tbd
+		G.GAME.modifiers.rw_extra_enemy_rolls = (G.GAME.modifiers.rw_extra_enemy_rolls or 0) + 2
 	end,
 	colour = HEX("000000"),
 	applied_stakes = { 'survival' },
@@ -118,21 +134,6 @@ SMODS.Stake({
 	sticker_pos = { x = 3, y = 1 }
 })
 
-local card_set_cost_ref = Card.set_cost
-function Card:set_cost()
-local ret = card_set_cost_ref(self)
-
-if G.STATE == G.STATES.SHOP then
-for _, v in ipairs(G.GAME.applied_stakes) do
-if SMODS.stake_from_index(v) == "stake_rw_gluttony" then
-if self.ability.set == "Booster" or self.ability.set == "foods" or self:has_attribute('foods') then
-self.cost = self.cost * 2
-end
-return ret
-end
-end
-end
-end
 
 SMODS.Stake({
 	key = 'k7',
@@ -191,7 +192,24 @@ SMODS.Stake({
 	pos = { x = 3, y = 1 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
-})	
+})	--implemented
+
+
+local apply_to_run_ref = Card.apply_to_run
+function Card.apply_to_run()
+local ret = apply_to_run_ref(self)
+
+if G.STATE == G.STATES.SHOP then
+for _, v in ipairs(G.GAME.applied_stakes) do
+if SMODS.stake_from_index(v) == "stake_rw_k9" then
+if center_table.ability.config.weapon == true then
+center_table.rate = center_table.rate / 2
+end
+return ret
+end
+end
+end
+end
 
 SMODS.Stake({
 	key = 'k10',
