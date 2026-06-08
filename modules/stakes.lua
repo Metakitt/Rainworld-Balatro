@@ -132,28 +132,29 @@ SMODS.Stake({
 	pos = { x = 0, y = 1 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
-})
-
+}) -- implemented
 
 SMODS.Stake({
 	key = 'k7',
 	loc_txt = {
 		name = "Karma 7",
-		text = { 'Shop can no longer be rerolled.' },
+		text = { 'Rerolls are three time more expensive.' },
 	},
 	--prefix_config = {applied_stakes = { mod = false } },
 	--unlocked_stake = "stake_violence",
-	modifiers = function()
-		--tbd
-	end,
 	colour = HEX("000000"),
-	applied_stakes = { 'k6' },
-	above_stake = 'k6',
+	applied_stakes = { 'survival' },
+	above_stake = 'survival',
 	atlas = "stakes",
-	pos = { x = 1, y = 1 },
+	pos = { x = 0, y = 1 },
 	sticker_atlas = "stakes_sticker",
-	sticker_pos = { x = 3, y = 1 }
-})
+	sticker_pos = { x = 3, y = 1 },
+	calculate = function(self, context)
+    if context.starting_shop then
+	G.GAME.current_round.reroll_cost = G.GAME.current_round.reroll_cost * 3
+	end
+	end
+}) -- implemented
 
 SMODS.Stake({
 	key = 'k8',
@@ -205,9 +206,22 @@ if SMODS.stake_from_index(v) == "stake_rw_k9" then
 if center_table.ability.config.weapon == true then
 center_table.rate = center_table.rate / 2
 end
+end
+if SMODS.stake_from_index(v) == "stake_rw_k7" then
+--if G.STATE == G.STATES.SHOP then
+G.GAME.base_reroll_cost = G.GAME.base_reroll_cost * 5
+---G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost * 5
+--G.GAME.current_round.reroll_cost = G.GAME.current_round.reroll_cost * 5
+end
+
 return ret
 end
 end
+end
+
+if G.STATE == G.STATES.SHOP then
+if SMODS.stake_from_index(v) == "stake_rw_k7" then
+print('hi')
 end
 end
 
