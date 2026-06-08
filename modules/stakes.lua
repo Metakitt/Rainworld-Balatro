@@ -103,7 +103,7 @@ SMODS.Stake({
 	--prefix_config = {applied_stakes = { mod = false } },
 	--unlocked_stake = "stake_violence",
 	modifiers = function()
-		--tbd
+		G.GAME.modifiers.scaling = 3
 	end,
 	colour = HEX("000000"),
 	applied_stakes = { 'gluttony' },
@@ -112,7 +112,7 @@ SMODS.Stake({
 	pos = { x = 4, y = 0 },
 	sticker_atlas = "stakes_sticker",
 	sticker_pos = { x = 3, y = 1 }
-})
+}) -- implemented
 
 SMODS.Stake({
 	key = 'k6',
@@ -165,7 +165,10 @@ SMODS.Stake({
 	--prefix_config = {applied_stakes = { mod = false } },
 	--unlocked_stake = "stake_violence",
 	modifiers = function()
-		--tbd
+	--for i = #G.P_CENTER_POOLS["Booster"], 1, -1 do
+	--local entry = G.P_CENTER_POOLS["Booster"][i]
+	--table.remove(G.P_CENTER_POOLS["Booster"], i)
+	--end
 	end,
 	colour = HEX("000000"),
 	applied_stakes = { 'k7' },
@@ -173,8 +176,15 @@ SMODS.Stake({
 	atlas = "stakes",
 	pos = { x = 2, y = 1 },
 	sticker_atlas = "stakes_sticker",
-	sticker_pos = { x = 3, y = 1 }
-})
+	sticker_pos = { x = 3, y = 1 },
+	calculate = function(self, context)
+    if context.starting_shop or G.STATE == G.STATES.SHOP then
+	for _, v in ipairs(G.shop_booster.cards) do
+	v:remove()
+	end
+	end
+	end
+}) -- Kind of works?
 
 SMODS.Stake({
 	key = 'k9',
@@ -214,10 +224,12 @@ G.GAME.base_reroll_cost = G.GAME.base_reroll_cost * 5
 --G.GAME.current_round.reroll_cost = G.GAME.current_round.reroll_cost * 5
 end
 
+end
+
 return ret
 end
 end
-end
+
 
 if G.STATE == G.STATES.SHOP then
 if SMODS.stake_from_index(v) == "stake_rw_k7" then
