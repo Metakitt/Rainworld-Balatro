@@ -45,6 +45,36 @@ SMODS.Consumable({
 })
 
 SMODS.Consumable({
+	key = "ascendfruit",
+	loc_txt = {
+		name = "Ascension Fruit",
+		text = {
+			"Makes selected",
+			"joker Ascend.",
+		},
+	},
+	set = "testeritems",
+	atlas = "weaponfoods",
+	pos = { x = 0, y = 0 },
+	cost = 3,
+	unlocked = true,
+	discovered = true,
+	config = { extra = { upgrade = 15 }, name = "ascend" },
+	can_use = function(self, card)
+		return #G.jokers.highlighted == 1
+	end,
+		can_use = function(self, card)
+		return #G.jokers.highlighted == 1
+			and not G.jokers.highlighted[1].ability.enemy
+	end,
+	use = function(self, card, area, copier)
+		for _, v in ipairs(G.jokers.highlighted) do
+			SMODS.Stickers["rw_ascended"]:apply(v, true)
+		end
+	end,
+})
+
+SMODS.Consumable({
 	key = "wetty",
 	loc_txt = {
 		name = "Wet Fruit",

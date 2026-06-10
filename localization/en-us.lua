@@ -349,6 +349,12 @@ return {
 					"{C:attention}#1#{} round(s) to destruction",
 				},
 			},
+			rw_ascended = {
+				name = "Ascended",
+				text = {
+					"Reached Enlightment?",
+				},
+			},
 			--region Enemy Defeat Descriptions
 			enemy_defeat_score_hands = {
 				name = "To Defeat",
@@ -1293,6 +1299,13 @@ return {
 			},
 			j_rw_slugpup = {
 				name = "Slugpup",
+				text = {
+					"{C:mult}+#1#{} Mult",
+					"{C:chips}+#2#{} Chips",
+				},
+			},
+			j_rw_slugcat = {
+				name = "Slugcat",
 				text = {
 					"{C:mult}+#1#{} Mult",
 					"{C:chips}+#2#{} Chips",

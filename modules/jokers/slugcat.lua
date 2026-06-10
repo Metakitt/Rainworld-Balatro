@@ -1,6 +1,6 @@
 SMODS.Joker({
-	key = "slugpup",
-	atlas = "slugpups",
+	key = "slugcat",
+	atlas = "slugcats_grow",
 	rarity = 1,
 	cost = 4,
 	pos = { x = 0, y = 0 },
@@ -8,7 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	attributes = { "slugcat", "mult", "chips" },
-	config = { extra = { mult = 4, chips = 10, spupx = 0, spupy = 0, generated = false, growth = 3 }, slugcat = true },
+	config = { extra = { mult = 8, chips = 20, spupx = 0, spupy = 0, generated = false}, slugcat = true },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
 	end,
@@ -35,12 +35,5 @@ SMODS.Joker({
 			}
 		end
 		
-			if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
-			card.ability.extra.growth = card.ability.extra.growth - 1
-			if card.ability.extra.growth <= 0 then
-				card.ability.extra.growth = nil
-				card:grow_up({"j_rw_slugcat"})
-			end
-		end
 	end,
 })

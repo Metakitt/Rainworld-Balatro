@@ -206,36 +206,37 @@ SMODS.Stake({
 })	--implemented
 
 
+-- Broken ATM
+--[[
 local apply_to_run_ref = Card.apply_to_run
 function Card.apply_to_run()
-local ret = apply_to_run_ref(self)
+	apply_to_run_ref()
 
 if G.STATE == G.STATES.SHOP then
 for _, v in ipairs(G.GAME.applied_stakes) do
 if SMODS.stake_from_index(v) == "stake_rw_k9" then
-if center_table.ability.config.weapon == true then
+if center_table.ability.config.weapon ~= nil then
 center_table.rate = center_table.rate / 2
 end
 end
 if SMODS.stake_from_index(v) == "stake_rw_k7" then
 --if G.STATE == G.STATES.SHOP then
 G.GAME.base_reroll_cost = G.GAME.base_reroll_cost * 5
----G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost * 5
+G.GAME.round_resets.reroll_cost = G.GAME.round_resets.reroll_cost * 5
 --G.GAME.current_round.reroll_cost = G.GAME.current_round.reroll_cost * 5
 end
 
 end
 
-return ret
-end
-end
+---return ret
 
-
-if G.STATE == G.STATES.SHOP then
-if SMODS.stake_from_index(v) == "stake_rw_k7" then
-print('hi')
+--if G.STATE == G.STATES.SHOP then
+--if SMODS.stake_from_index(v) == "stake_rw_k7" then
+--print('hi')
+--end
 end
 end
+]]
 
 SMODS.Stake({
 	key = 'k10',

@@ -68,3 +68,25 @@ function Card:calculate_rotted()
 		end
 	end
 end
+
+SMODS.Sticker({
+	key = "ascended",
+	badge_colour = HEX("000070"),
+	atlas = "enhancedcards_scug",
+	pos = { x = 6, y = 0 },
+	default_compat = true,
+	compat_exceptions = {},
+	sets = {
+		Joker = true,
+		Tarot = false,
+		Spectral = false,
+		foods = false,
+	},
+	rate = 0,
+	needs_enable_flag = false,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { } }
+	end,
+	calculate = function(self, card, context)
+	end,
+})

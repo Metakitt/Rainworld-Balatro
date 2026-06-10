@@ -9,13 +9,12 @@ SMODS.Joker({
 	blueprint_compat = false,
 	attributes = { "slugcat", "discard", "destroy_card", "editions"},
 	config = {
-		extra = { attuned = false, discards = 25, saint_discards = 25, recharge = false, xmult = 1, recharging = "Ready" },
+		extra = { attuned = false, discards = 25, saint_discards = 25, recharge = false, xmult = 1, recharging = "Ready", rounds_to_ascend = 5, odds = 3 },
 		name = "Saint",
 		blessed = false,
 		slugcat = true,
 		spear_strength = "weak"
 	},
-
 	loc_vars = function(self, info_queue, card)
 		local ret_table = { key = self.key, vars = { card.ability.extra.saint_discards, card.ability.extra.discards } }
 		ret_table["key"] = self.key .. ((card.ability.extra.attuned and "attuned") or (card.ability.extra.recharge and "recharging") or "neutral")
@@ -24,13 +23,65 @@ SMODS.Joker({
 		end
 		return ret_table
 	end,
-
+	set_sprites = function(self, card, front)
+	if card.ability and card.ability.rw_ascended == true then
+	G.E_MANAGER:add_event(Event({
+	blockable = false,
+	func = function()
+	card.children.center:set_sprite_pos({ x = 7, y = 1 })
+	return true
+	end
+	}))
+	
+	
+	else
+	G.E_MANAGER:add_event(Event({
+	blockable = false,
+	func = function()
+	card.children.center:set_sprite_pos({ x = 7, y = 0 })
+	return true
+	end
+	}))
+	end
+	end,
 	calculate = function(self, card, context)
+	
+	-- Temporary / Default 'ascension' requirement
+	
+	if context.setting_blind and card.ability.rw_ascended ~= true then
+	card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend -1
+	end
+	
+	if card.ability.extra.rounds_to_ascend <= 0 and card.ability.rw_ascended ~= true then
+	card.children.center:set_sprite_pos({ x = 7, y = 1 })
+	SMODS.Stickers["rw_ascended"]:apply(card, true)
+	end
+	
+	-- Ascended ability
+	
+	if context.setting_blind and card.ability.rw_ascended == true and SMODS.pseudorandom_probability(card, "rw_saint", 1, card.ability.extra.odds, "rw_saint") then
+	local jokers = {}
+			for i, v in pairs(G.jokers.cards) do
+				if not v:get_edition() and v ~= card then
+					jokers[#jokers + 1] = v
+				end
+			end
+
+			local chosen_joker = jokers[math.random(1, #jokers)]
+
+			if chosen_joker then
+				chosen_joker:set_edition("e_negative", true)
+				SMODS.Stickers["eternal"]:apply(chosen_joker, true)
+				end
+	end
+	--
+	
 		if
 			context.discard
 			and card.ability.name == "Saint"
 			and card.ability.extra.attuned == false
 			and card.ability.extra.recharge == false
+			and not card.ability.rw_ascended == true
 			and not context.blueprint
 		then
 			card.children.center:set_sprite_pos({ x = 7, y = 0 })
@@ -49,6 +100,7 @@ SMODS.Joker({
 			and card.ability.name == "Saint"
 			and card.ability.extra.attuned == false
 			and card.ability.extra.recharge == true
+			and not card.ability.rw_ascended == true
 			and not context.blueprint
 		then
 			card.children.center:set_sprite_pos({ x = 7, y = 0 })
@@ -66,6 +118,7 @@ SMODS.Joker({
 			and G.GAME.blind.boss
 			and card.ability.extra.attuned == true
 			and card.ability.extra.recharge == false
+			and not card.ability.rw_ascended == true
 			and not context.blueprint
 		then
 			local jokers = {}
@@ -113,7 +166,7 @@ SMODS.Joker({
 			end
 		end
 
-		if card.ability.extra.recharge == true and not context.blueprint then
+		if card.ability.extra.recharge == true and not card.ability.rw_ascended == true and not context.blueprint then
 			card.children.center:set_sprite_pos({ x = 7, y = 0 })
 		end
 	end,

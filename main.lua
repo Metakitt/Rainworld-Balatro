@@ -19,7 +19,7 @@ assert(SMODS.load_file("./modules/stickers.lua"))()
 assert(SMODS.load_file("./modules/tags.lua"))()
 assert(SMODS.load_file("./modules/achievements.lua"))()
 assert(SMODS.load_file("./modules/stakes.lua"))()
---assert(SMODS.load_file("./modules/debug.lua"))()
+assert(SMODS.load_file("./modules/debug.lua"))()
 
 --Debug allows for the use of the Rot fruit for testing rot! Wet fruit as well for wet cards!
 

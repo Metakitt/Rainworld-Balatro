@@ -15,6 +15,7 @@ SMODS.Joker({
 			xmult_per_rarity = { 0.25, 0.5, 0.75, 1 },
 			xmult_gain_food = 0.1,
 			munch = false,
+			rounds_to_ascend = 5
 		},
 		slugcat = true,
 		gourmand = true,
@@ -33,8 +34,47 @@ SMODS.Joker({
 			SMODS.destroy_cards(card, true)
 		end
 	end,
-
+	set_sprites = function(self, card, front)
+	if card.ability and card.ability.rw_ascended == true then
+	G.E_MANAGER:add_event(Event({
+	blockable = false,
+	func = function()
+	card.children.center:set_sprite_pos({ x = 4, y = 1 })
+	return true
+	end
+	}))
+	
+	
+	else
+	G.E_MANAGER:add_event(Event({
+	blockable = false,
+	func = function()
+	card.children.center:set_sprite_pos({ x = 4, y = 0 })
+	return true
+	end
+	}))
+	end
+	end,
 	calculate = function(self, card, context)
+	
+	-- Temporary / Default 'ascension' requirement
+	
+	if context.setting_blind and card.ability.rw_ascended ~= true then
+	card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend -1
+	end
+	
+	if card.ability.extra.rounds_to_ascend <= 0 and card.ability.rw_ascended ~= true then
+	card.children.center:set_sprite_pos({ x = 4, y = 1 })
+	card.ability.extra.xmult_mod = card.ability.extra.xmult_mod * 2,
+--	card.ability.extra.xmult_per_rarity = card.ability.extra.xmult_per_rarity * 2,
+--	card.ability.extra.xmult_gain_food = card.ability.extra.xmult_gain_food * 2,
+	SMODS.Stickers["rw_ascended"]:apply(card, true)
+	end
+	
+	
+	--
+	
+	
 		if context.joker_main then
 			return {
 				xmult = card.ability.extra.xmult_mod,

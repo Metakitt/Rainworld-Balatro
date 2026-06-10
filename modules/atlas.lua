@@ -58,6 +58,14 @@ SMODS.Atlas({
 	py = 95,
 })
 
+--An atlas for Slugcat only
+SMODS.Atlas({
+	key = "slugcats_grow",
+	path = "slugcats.png",
+	px = 71,
+	py = 95,
+})
+
 -- Enemies
 SMODS.Atlas {
 	key = "enemies",
