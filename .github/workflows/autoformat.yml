@@ -1,0 +1,31 @@
+# Kind of based on the Cryptid one
+name: Stylua Autoformat
+
+on:
+  push:
+    branches: "*"
+  workflow_dispatch:
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out code
+      - uses: actions/checkout@v4
+
+      # Run Stylua
+      - name: Stylua
+        uses: JohnnyMorganz/stylua-action@v5.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
+          args: .
+
+      # Recommit code
+      - name: Commit changes
+        run: |
+          git config --global user.name "iterator"
+          git config --global user.email "iterator@users.noreply.github.com"
+          git add .
+          git diff --cached --quiet || git commit -m "[iterator] auto-format"
+          git push
