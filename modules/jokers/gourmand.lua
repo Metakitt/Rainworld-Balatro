@@ -65,9 +65,9 @@ SMODS.Joker({
 	
 	if card.ability.extra.rounds_to_ascend <= 0 and card.ability.rw_ascended ~= true then
 	card.children.center:set_sprite_pos({ x = 4, y = 1 })
-	card.ability.extra.xmult_mod = card.ability.extra.xmult_mod * 2,
---	card.ability.extra.xmult_per_rarity = card.ability.extra.xmult_per_rarity * 2,
---	card.ability.extra.xmult_gain_food = card.ability.extra.xmult_gain_food * 2,
+	card.ability.extra.xmult_mod = card.ability.extra.xmult_mod * 2
+--	card.ability.extra.xmult_per_rarity = card.ability.extra.xmult_per_rarity * 2
+--	card.ability.extra.xmult_gain_food = card.ability.extra.xmult_gain_food * 2
 	SMODS.Stickers["rw_ascended"]:apply(card, true)
 	end
 	
