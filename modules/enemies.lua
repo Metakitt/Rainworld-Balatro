@@ -750,7 +750,7 @@ function SCUG.generate_enemy()
 	elseif ret.condition == "Reroll" then
 		ret.requirement = "RerollShop"
 	elseif ret.condition == "GrenadeMult" then
-		chosen_requirement = SCUG.number_in_range(10, 40, "chippies")
+		chosen_requirement = SCUG.number_in_range(10, 20, "chippies")
 		ret.requirement = chosen_requirement
 	end
 

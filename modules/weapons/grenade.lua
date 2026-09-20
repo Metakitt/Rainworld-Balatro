@@ -29,7 +29,7 @@ SMODS.Sticker({
 				SMODS.scale_card(card, {
 					ref_table = card.ability.rw_wgrenade,
 					ref_value = "mult",
-					scalar_value = "gain",
+					scalar_value = "mult_gain",
 					message_colour = G.C.MULT
 				})
 
