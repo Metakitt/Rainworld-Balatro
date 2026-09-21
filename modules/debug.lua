@@ -62,9 +62,6 @@ SMODS.Consumable({
 	config = { extra = { upgrade = 15 }, name = "ascend" },
 	can_use = function(self, card)
 		return #G.jokers.highlighted == 1
-	end,
-		can_use = function(self, card)
-		return #G.jokers.highlighted == 1
 			and not G.jokers.highlighted[1].ability.enemy
 	end,
 	use = function(self, card, area, copier)
