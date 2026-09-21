@@ -76,7 +76,7 @@ SMODS.Sticker({
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind then
-			card.ability.extra.grenade_primed = nil
+			card.ability.grenade_primed = nil
 		end
 
 		if G.GAME.jokerifle == "beehive" then
@@ -114,7 +114,7 @@ SMODS.Sticker({
 					card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.bonus_chips
 				end
 				SMODS.calculate_effect({ message = localize("k_primed_ex") }, card)
-				card.ability.extra.grenade_primed = true
+				card.ability.grenade_primed = true
 
 				return {
 					remove = true,
@@ -153,7 +153,7 @@ SMODS.Sticker({
 				return {
 					mult = bomb,
 				}
-			elseif G.GAME.jokerifle == "grenade" and card.ability.extra.grenade_primed then
+			elseif G.GAME.jokerifle == "grenade" and card.ability.grenade_primed then
 				return {
 					mult = 20
 				}
