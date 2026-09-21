@@ -32,7 +32,7 @@ return {
 				name = "Sporepuff",
 				text = {
 					"Decreases required",
-					"chips by {C:attention}5%{}.",
+					"chips by {C:blind}5%{}.",
 				},
 			},
 			rw_wbeehive = {
@@ -169,7 +169,7 @@ return {
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
-					"chips by {C:attention}5%{}.",
+					"chips by {C:blind}5%{}.",
 				},
 			},
 			rw_wspear_fire_exhausting = {
@@ -177,7 +177,7 @@ return {
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
-					"chips by {C:attention}5%{}.",
+					"chips by {C:blind}5%{}.",
 					"{C:green}#2# in #3#{} chance to be",
 					"exhausted and give",
 					"{X:mult,C:white}X#4#{} Mult instead.",
@@ -188,7 +188,7 @@ return {
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
 					"Increases required",
-					"chips by {C:attention}5%{}.",
+					"chips by {C:blind}5%{}.",
 				},
 			},
 			rw_wjokerifle = {
@@ -373,8 +373,9 @@ return {
 			enemy_defeat_extra_chips = {
 				name = "To Defeat",
 				text = {
-					"Score {C:attention}#2#{} more cards with",
-					"{C:chips}#1# or more{} extra chips"
+					"Score cards with",
+					"{C:chips}#1# or more{} extra chips",
+					"{C:attention}#2#{} more times"
 				}
 			},
 			enemy_defeat_weapons = {
@@ -443,14 +444,14 @@ return {
 			enemy_defeat_blind_chips_under = {
 				name = "To Defeat",
 				text = {
-					"Defeat a Blind scoring {C:attention}#1#% or less{} of",
+					"Defeat a Blind scoring {C:blind}#1#% or less{} of",
 					"the required score {C:attention}#2#{} more times"
 				}
 			},
 			enemy_defeat_blind_chips_over = {
 				name = "To Defeat",
 				text = {
-					"Defeat a Blind scoring {C:attention}#1#% or more{} of",
+					"Defeat a Blind scoring {C:blind}#1#% or more{} of",
 					"the required score {C:attention}#2#{} more times"
 				}
 			},
@@ -464,20 +465,22 @@ return {
 			enemy_defeat_grenade_mult = {
 				name = "To Defeat",
 				text = {
-					"Score a Grenade with {C:mult}+#1#{} Mult",
-					"or more {C:attention}#2#{} more times"
+					"Score {C:attention}#2#{} more {C:weapon}Grenades",
+					"with {C:mult}+#1#{} Mult or more"
 				}
 			},
 			enemy_defeat_score_suit_cards = {
 				name = "To Defeat",
 				text = {
-					"Score {C:attention}#2#{} more cards", "of {V:1}#1#{} suit"
+					"Score {C:attention}#2#{} more cards",
+					"of {V:1}#1#{} suit"
 				}
 			},
 			enemy_defeat_score_any_cards = {
 				name = "To Defeat",
 				text = {
-					"Score {C:attention}#1#", "more cards"
+					"Score {C:attention}#1# more",
+					"playing cards"
 				}
 			},
 			--endregion
@@ -1640,7 +1643,7 @@ return {
 				text = {
 					"At the {C:attention}end of round{},",
 					"creates a random,",
-					"{C:dark_edition}negative{} Food Jsoker.",
+					"{C:dark_edition}negative{} Food Joker.",
 				},
 			},
 			j_rw_scugbo = {
