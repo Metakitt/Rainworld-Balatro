@@ -48,18 +48,6 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		card.ability.extra.unchips = get_blind_amount(G.GAME.round_resets.ante) / -5
 
-		--Threat
-		if
-			context.before
-			and context.cardarea == G.jokers
-			and not context.blueprint
-			and not card.ability.extra.defeat
-		then
-			return {
-				score = card.ability.extra.unchips
-			}
-		end
-
 		--Defeat
 		local tick_down = SCUG.enemy_should_count_down(context, card.ability.extra.enemy_conditions)
 		if tick_down > 0 then
@@ -82,6 +70,18 @@ SMODS.Joker({
 				end,
 				blocking = false,
 			}))
+		end
+
+		--Threat
+		if
+			context.before
+			and context.cardarea == G.jokers
+			and not context.blueprint
+			and not card.ability.extra.defeat
+		then
+			return {
+				score = card.ability.extra.unchips
+			}
 		end
 
 		--Undefeated
