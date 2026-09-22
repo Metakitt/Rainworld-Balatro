@@ -2,6 +2,7 @@ SMODS.Joker({
 	key = "redlizard",
 	config = {
 		enemy = true,
+		extra_slots_used = -1,
 		extra = {
 			defeat = false
 		}

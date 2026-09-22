@@ -5,6 +5,7 @@ SMODS.Joker({
 			defeat = false,
 		},
 		enemy = true,
+		extra_slots_used = -1,
 	},
 	rarity = "rw_enemy",
 	cost = 3,
@@ -35,7 +36,8 @@ SMODS.Joker({
 		SMODS.Stickers["eternal"]:apply(card, true)
 		card.ability.extra.enemy_conditions = SCUG.generate_enemy()
 		if card.ability.extra.enemy_conditions.condition == "CardSuit" then
-			card.ability.extra.enemy_conditions.requirement = pseudorandom_element({"Hearts", "Diamonds"}, pseudoseed("eellizard"))
+			card.ability.extra.enemy_conditions.requirement = pseudorandom_element({ "Hearts", "Diamonds" },
+			pseudoseed("eellizard"))
 		end
 		-- Threat
 		for _, v in pairs(G.playing_cards) do

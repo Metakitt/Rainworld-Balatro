@@ -9,7 +9,11 @@ SMODS.Joker({
 	in_pool = function(card, args)
 		return false
 	end,
-	config = { extra = { defeat = false, hands_sub = 0 }, enemy = true },
+	config = {
+		extra = { defeat = false, hands_sub = 0 },
+		enemy = true,
+		extra_slots_used = -1,
+	},
 	blueprint_compat = false,
 	perishable_compat = false,
 	rw_wbeehive_compat = false,

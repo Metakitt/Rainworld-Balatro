@@ -18,6 +18,7 @@ SMODS.Joker({
 			defeat = false,
 		},
 		enemy = true,
+		extra_slots_used = -1,
 		last_joker = {},
 		eternals = {},
 	},

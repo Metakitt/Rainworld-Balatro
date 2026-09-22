@@ -15,6 +15,7 @@ SMODS.Joker({
 			odds = 10,
 		},
 		enemy = true,
+		extra_slots_used = -1,
 		spider = true,
 	},
 	blueprint_compat = false,

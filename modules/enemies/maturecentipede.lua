@@ -1,3 +1,4 @@
+-- TODO: Use xmult attribute
 local x_mult_jokers_keys = {
 	"j_joker_stencil",
 	"j_steel_joker",
@@ -58,6 +59,7 @@ SMODS.Joker({
 			defeat = false,
 		},
 		enemy = true,
+		extra_slots_used = -1,
 	},
 	blueprint_compat = false,
 	perishable_compat = false,

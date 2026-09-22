@@ -10,6 +10,7 @@ SMODS.Joker({
 			reload = {},
 		},
 		enemy = true,
+		extra_slots_used = -1,
 	},
 	rarity = "rw_enemy",
 	cost = 0,

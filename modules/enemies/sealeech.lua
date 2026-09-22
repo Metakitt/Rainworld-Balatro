@@ -20,6 +20,7 @@ SMODS.Joker({
 			leechodds = 5,
 		},
 		enemy = true,
+		extra_slots_used = -1,
 		sealeech = true,
 	},
 	blueprint_compat = false,

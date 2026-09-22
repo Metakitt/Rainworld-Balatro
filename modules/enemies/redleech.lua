@@ -23,6 +23,7 @@ SMODS.Joker({
 			odds = 3,
 		},
 		enemy = true,
+		extra_slots_used = -1,
 	},
 	blueprint_compat = false,
 	perishable_compat = false,
