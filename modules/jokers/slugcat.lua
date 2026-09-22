@@ -8,7 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	attributes = { "slugcat", "mult", "chips" },
-	config = { extra = { mult = 8, chips = 20, spupx = 0, spupy = 0, generated = false}, slugcat = true },
+	config = { extra = { mult = 8, chips = 20, spupx = 0, spupy = 0, generated = false }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.mult, card.ability.extra.chips } }
 	end,
@@ -19,13 +19,13 @@ SMODS.Joker({
 		card.children.center:set_sprite_pos({ x = card.ability.extra.spupx, y = card.ability.extra.spupy })
 	end,
 	set_sprites = function(self, card, front)
-	G.E_MANAGER:add_event(Event({
-	blockable = false,
-	func = function()
-	card.children.center:set_sprite_pos({ x = card.ability.extra.spupx, y = card.ability.extra.spupy })
-	return true
-	end
-	}))
+		G.E_MANAGER:add_event(Event({
+			blockable = false,
+			func = function()
+				card.children.center:set_sprite_pos({ x = card.ability.extra.spupx, y = card.ability.extra.spupy })
+				return true
+			end
+		}))
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
@@ -34,6 +34,5 @@ SMODS.Joker({
 				chips = card.ability.extra.chips,
 			}
 		end
-		
 	end,
 })

@@ -23,55 +23,52 @@ SMODS.Joker({
 		}
 	end,
 	set_sprites = function(self, card, front)
-	if card.ability and card.ability.rw_ascended == true then
-	G.E_MANAGER:add_event(Event({
-	blockable = false,
-	func = function()
-	card.children.center:set_sprite_pos({ x = 1, y = 1 })
-	return true
-	end
-	}))
-	
-	
-	else
-	G.E_MANAGER:add_event(Event({
-	blockable = false,
-	func = function()
-	card.children.center:set_sprite_pos({ x = 1, y = 0 })
-	return true
-	end
-	}))
-	end
+		if card.ability and card.ability.rw_ascended == true then
+			G.E_MANAGER:add_event(Event({
+				blockable = false,
+				func = function()
+					card.children.center:set_sprite_pos({ x = 1, y = 1 })
+					return true
+				end
+			}))
+		else
+			G.E_MANAGER:add_event(Event({
+				blockable = false,
+				func = function()
+					card.children.center:set_sprite_pos({ x = 1, y = 0 })
+					return true
+				end
+			}))
+		end
 	end,
 	calculate = function(self, card, context)
-	
-	-- Temporary / Default 'ascension' requirement
-	
-	if context.setting_blind and card.ability.rw_ascended ~= true then
-	card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend -1
-	end
-	
-	if card.ability.extra.rounds_to_ascend <= 0 and card.ability.rw_ascended ~= true then
-	card.children.center:set_sprite_pos({ x = 1, y = 1 })
-	card.ability.extra.chips = card.ability.extra.chips * 2
-	SMODS.Stickers["rw_ascended"]:apply(card, true)
-	end
+		-- Temporary / Default 'ascension' requirement
 
-	
-	--
-	
-	
-		if context.joker_main then
-		if card.ability.rw_ascended ~= nil then
-		card.ability.extra.chips = card.ability.extra.chips + 20
-		return {
-				chips = card.ability.extra.chips,
-			}
-		else
-			return {
-				chips = card.ability.extra.chips,
-			}
+		if context.setting_blind and card.ability.rw_ascended ~= true then
+			card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend - 1
 		end
+
+		if card.ability.extra.rounds_to_ascend <= 0 and card.ability.rw_ascended ~= true then
+			card.children.center:set_sprite_pos({ x = 1, y = 1 })
+			card.ability.extra.chips = card.ability.extra.chips * 2
+			SMODS.Stickers["rw_ascended"]:apply(card, true)
+		end
+
+
+		--
+
+
+		if context.joker_main then
+			if card.ability.rw_ascended ~= nil then
+				card.ability.extra.chips = card.ability.extra.chips + 20
+				return {
+					chips = card.ability.extra.chips,
+				}
+			else
+				return {
+					chips = card.ability.extra.chips,
+				}
+			end
 		end
 
 		if context.remove_playing_cards or context.cards_destroyed and not context.blueprint and not card.ability.rw_ascended == true then

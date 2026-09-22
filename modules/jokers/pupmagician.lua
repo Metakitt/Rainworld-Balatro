@@ -33,7 +33,7 @@ SMODS.Joker({
 	},
 
 	loc_vars = function(self, info_queue, card)
-	info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
+		info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
 		if card.ability.extra.effect == "none" then
 			return {
 				vars = {
@@ -341,7 +341,6 @@ SMODS.Joker({
 		)
 	end,
 	calculate = function(self, card, context)
-	
 		if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
 			card.ability.extra.growth = card.ability.extra.growth - 1
 			if card.ability.extra.growth <= 0 then
@@ -422,7 +421,7 @@ SMODS.Joker({
 					end
 				end
 				local card_to_destroy = #destructable_cards > 0
-						and pseudorandom_element(destructable_cards, pseudoseed("explode"))
+					and pseudorandom_element(destructable_cards, pseudoseed("explode"))
 					or nil
 				if card_to_destroy then
 					card.ability.extra.chips = card.ability.extra.chips + 50
@@ -792,7 +791,7 @@ SMODS.Joker({
 			end
 
 			if context.skip_blind then
-			local cards_created = 3
+				local cards_created = 3
 				for _ = 1, cards_created do
 					local rank = pseudorandom_element(SMODS.Ranks, "rw_rivulet_rank", {})
 					local suit = pseudorandom_element(SMODS.Suits, "rw_rivulet_rank", {})
@@ -1052,7 +1051,6 @@ SMODS.Joker({
 					consume.ability.set == "obtainweapon"
 					and pseudorandom("upgrade") < G.GAME.probabilities.normal / card.ability.extra.oddswep
 				then
-
 					local jokers = {}
 					for i, v in pairs(G.jokers.cards) do
 						jokers[#jokers + 1] = v

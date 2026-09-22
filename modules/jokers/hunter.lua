@@ -25,50 +25,47 @@ SMODS.Joker({
 		}
 	end,
 	set_sprites = function(self, card, front)
-	if card.ability and card.ability.rw_ascended == true then
-	G.E_MANAGER:add_event(Event({
-	blockable = false,
-	func = function()
-	card.children.center:set_sprite_pos({ x = 2, y = 1 })
-	return true
-	end
-	}))
-	
-	
-	else
-	G.E_MANAGER:add_event(Event({
-	blockable = false,
-	func = function()
-	card.children.center:set_sprite_pos({ x = 2, y = 0 })
-	return true
-	end
-	}))
-	end
+		if card.ability and card.ability.rw_ascended == true then
+			G.E_MANAGER:add_event(Event({
+				blockable = false,
+				func = function()
+					card.children.center:set_sprite_pos({ x = 2, y = 1 })
+					return true
+				end
+			}))
+		else
+			G.E_MANAGER:add_event(Event({
+				blockable = false,
+				func = function()
+					card.children.center:set_sprite_pos({ x = 2, y = 0 })
+					return true
+				end
+			}))
+		end
 	end,
 	calculate = function(self, card, context)
-	
-	-- Temporary / Default 'ascension' requirement
-	
-	if context.setting_blind and card.ability.rw_ascended ~= true then
-	card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend -1
-	end
-	
-	if card.ability.extra.rounds_to_ascend <= 0 and card.ability.rw_ascended ~= true then
-	card.children.center:set_sprite_pos({ x = 2, y = 1 })
-	SMODS.Stickers["rw_ascended"]:apply(card, true)
-	end
-	
-	
-	--
+		-- Temporary / Default 'ascension' requirement
+
+		if context.setting_blind and card.ability.rw_ascended ~= true then
+			card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend - 1
+		end
+
+		if card.ability.extra.rounds_to_ascend <= 0 and card.ability.rw_ascended ~= true then
+			card.children.center:set_sprite_pos({ x = 2, y = 1 })
+			SMODS.Stickers["rw_ascended"]:apply(card, true)
+		end
+
+
+		--
 		if context.setting_blind and card.ability.rw_ascended == true then
 			return { xblindsize = 1.25 }
 		end
-		
+
 		if context.end_of_round and context.main_eval and card.ability.rw_ascended == true then
-		local scored_chips = SMODS.calculate_round_score()
-		card.ability.extra.mult =  card.ability.extra.mult + (scored_chips * 0.00001)
+			local scored_chips = SMODS.calculate_round_score()
+			card.ability.extra.mult = card.ability.extra.mult + (scored_chips * 0.00001)
 		end
-	
+
 		if context.after and not card.ability.rw_ascended == true and not context.blueprint then
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,

@@ -19,13 +19,13 @@ SMODS.Joker({
 		card.children.center:set_sprite_pos({ x = card.ability.extra.spupx, y = card.ability.extra.spupy })
 	end,
 	set_sprites = function(self, card, front)
-	G.E_MANAGER:add_event(Event({
-	blockable = false,
-	func = function()
-	card.children.center:set_sprite_pos({ x = card.ability.extra.spupx, y = card.ability.extra.spupy })
-	return true
-	end
-	}))
+		G.E_MANAGER:add_event(Event({
+			blockable = false,
+			func = function()
+				card.children.center:set_sprite_pos({ x = card.ability.extra.spupx, y = card.ability.extra.spupy })
+				return true
+			end
+		}))
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
@@ -34,12 +34,12 @@ SMODS.Joker({
 				chips = card.ability.extra.chips,
 			}
 		end
-		
-			if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
+
+		if context.setting_blind and not context.blueprint and card.ability.extra.growth > 0 then
 			card.ability.extra.growth = card.ability.extra.growth - 1
 			if card.ability.extra.growth <= 0 then
 				card.ability.extra.growth = nil
-				card:grow_up({"j_rw_slugcat"})
+				card:grow_up({ "j_rw_slugcat" })
 			end
 		end
 	end,
