@@ -13,18 +13,7 @@ The Weapon file is starting to be big and hard to navigate; so I've separated it
 -Weapon files atm will contain two things; the weapon and the consumeable version of said weapon.
 ]]
 
-assert(SMODS.load_file("modules/weapons/rock.lua"))()
-assert(SMODS.load_file("modules/weapons/cherrybomb.lua"))()
-assert(SMODS.load_file("modules/weapons/spear.lua"))()
-assert(SMODS.load_file("modules/weapons/singularity.lua"))()
-assert(SMODS.load_file("modules/weapons/grenade.lua"))()
-assert(SMODS.load_file("modules/weapons/explosivespear.lua"))()
-assert(SMODS.load_file("modules/weapons/electricspear.lua"))()
-assert(SMODS.load_file("modules/weapons/firespear.lua"))()
-assert(SMODS.load_file("modules/weapons/sporepuff.lua"))()
-assert(SMODS.load_file("modules/weapons/beehive.lua"))()
-assert(SMODS.load_file("modules/weapons/flashbang.lua"))()
-assert(SMODS.load_file("modules/weapons/jokerifle.lua"))()
+SCUG.load_folder("modules/weapons")
 
 -- Weapon Consumeable type
 SMODS.ConsumableType({

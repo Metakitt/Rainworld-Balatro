@@ -1,16 +1,4 @@
-assert(SMODS.load_file("modules/foods/bluefruit.lua"))()
-assert(SMODS.load_file("modules/foods/bubblefruit.lua"))()
-assert(SMODS.load_file("modules/foods/gooieduck.lua"))()
-assert(SMODS.load_file("modules/foods/dandepeach.lua"))()
-assert(SMODS.load_file("modules/foods/slimemold.lua"))()
-assert(SMODS.load_file("modules/foods/lilypuck.lua"))()
-assert(SMODS.load_file("modules/foods/eggbugegg.lua"))()
-assert(SMODS.load_file("modules/foods/fireegg.lua"))()
-assert(SMODS.load_file("modules/foods/popcornplant.lua"))()
-assert(SMODS.load_file("modules/foods/glowweed.lua"))()
-assert(SMODS.load_file("modules/foods/mushroom.lua"))()
-assert(SMODS.load_file("modules/foods/karmaf.lua"))()
-assert(SMODS.load_file("modules/foods/neuronfly.lua"))()
+SCUG.load_folder("modules/foods")
 
 SMODS.ConsumableType({
 	key = "foods",

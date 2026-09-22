@@ -1,3 +1,5 @@
+assert(SCUG.config.allow_enemy_spawns, "Enemy spawning is disabled")
+
 SMODS.Joker({
 	key = "threat",
 	config = {

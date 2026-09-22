@@ -1,25 +1,45 @@
 SCUG = SMODS.current_mod
 
-assert(SMODS.load_file("./lib.lua"))()
-assert(SMODS.load_file("./modules/atlas.lua"))()
-assert(SMODS.load_file("./modules/foods.lua"))()
-assert(SMODS.load_file("./modules/jokers.lua"))()
-assert(SMODS.load_file("./modules/challenges.lua"))()
-assert(SMODS.load_file("./modules/booster.lua"))()
-assert(SMODS.load_file("./modules/deck.lua"))()
-assert(SMODS.load_file("./modules/rarities.lua"))()
-assert(SMODS.load_file("./modules/weapons.lua"))()
-assert(SMODS.load_file("./modules/vouchers.lua"))()
-assert(SMODS.load_file("./modules/blinds.lua"))()
-if SCUG.config.allow_enemy_spawns then
-	assert(SMODS.load_file("./modules/enemies.lua"))()
+SCUG.load_folder = function(folder)
+	-- local folder_items = NFS.getDirectoryItems(folder)
+	local full_path = SCUG.path .. folder
+	local folder_items = SMODS.NFS.getDirectoryItems(full_path)
+	-- print(folder_items)
+	for _, v in ipairs(folder_items) do
+		if string.match(v, ".lua") and not string.match(v, "test_") and not string.match(v, "debug") then
+			local func, error = SMODS.load_file(folder .. '/' .. v)
+			if error then
+				sendErrorMessage("Failed to load " .. v .. ": " .. error, "Slugcat")
+			else
+				func()
+			end
+		end
+	end
 end
-assert(SMODS.load_file("./modules/enhancement.lua"))()
-assert(SMODS.load_file("./modules/stickers.lua"))()
-assert(SMODS.load_file("./modules/tags.lua"))()
-assert(SMODS.load_file("./modules/achievements.lua"))()
-assert(SMODS.load_file("./modules/stakes.lua"))()
-assert(SMODS.load_file("./modules/debug.lua"))()
+
+assert(SMODS.load_file("./lib.lua"))()
+-- TODO: We lose the ability to load in a specified order.
+-- Debating whether the better option is to keep this list in a table and load via loop, or rename the files to ensure an order
+-- assert(SMODS.load_file("./modules/atlas.lua"))()
+-- assert(SMODS.load_file("./modules/foods.lua"))()
+-- assert(SMODS.load_file("./modules/jokers.lua"))()
+-- assert(SMODS.load_file("./modules/challenges.lua"))()
+-- assert(SMODS.load_file("./modules/booster.lua"))()
+-- assert(SMODS.load_file("./modules/deck.lua"))()
+-- assert(SMODS.load_file("./modules/rarities.lua"))()
+-- assert(SMODS.load_file("./modules/weapons.lua"))()
+-- assert(SMODS.load_file("./modules/vouchers.lua"))()
+-- assert(SMODS.load_file("./modules/blinds.lua"))()
+-- if SCUG.config.allow_enemy_spawns then
+-- 	assert(SMODS.load_file("./modules/enemies.lua"))()
+-- end
+-- assert(SMODS.load_file("./modules/enhancement.lua"))()
+-- assert(SMODS.load_file("./modules/stickers.lua"))()
+-- assert(SMODS.load_file("./modules/tags.lua"))()
+-- assert(SMODS.load_file("./modules/achievements.lua"))()
+-- assert(SMODS.load_file("./modules/stakes.lua"))()
+-- assert(SMODS.load_file("./modules/debug.lua"))()
+SCUG.load_folder("modules")
 
 --Debug allows for the use of the Rot fruit for testing rot! Wet fruit as well for wet cards!
 
