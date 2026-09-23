@@ -20,7 +20,7 @@ SMODS.Joker({
 
 	calculate = function(self, card, context)
 		local create_spup = function()
-			local spup = SMODS.add_card({ set = "Joker", area = G.jokers, edition = "e_negative", key = "j_rw_slugpup" })
+			local spup = SMODS.add_card({ set = "Joker", area = G.jokers, edition = "e_negative", attributes = { "slugpup" } })
 			spup.cost = 0
 			spup.sell_cost = 0
 		end
