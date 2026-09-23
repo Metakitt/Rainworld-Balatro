@@ -7,7 +7,17 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	config = {
-		extra = { center_table = 1, odds = 10, mult = 0, mult_gain = 8, spear = false, spear_strength = "strong", rounds_to_ascend = 5 },
+		extra = {
+			center_table = 1,
+			odds = 10,
+			mult = 0,
+			mult_gain = 8,
+			spear = false,
+			spear_strength = "strong",
+			rounds_to_ascend = 5,
+			asc_blindsize = 1.25,
+			asc_mult_gain = 0.00001
+		},
 		slugcat = true,
 		second_spear = true,
 	},
@@ -15,14 +25,24 @@ SMODS.Joker({
 	perishable_compat = false,
 	attributes = { "slugcat", "mult", "chance", "ante" },
 	loc_vars = function(self, info_queue, card)
-		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_hunter")
-		return {
-			vars = {
-				numerator, denominator,
-				card.ability.extra.mult,
-				card.ability.extra.mult_gain,
-			},
-		}
+		if card.ability.rw_ascended then
+			return {
+				vars = {
+					card.ability.extra.asc_blindsize, card.ability.extra.asc_mult_gain * 100,
+					SMODS.signed(card.ability.extra.mult)
+				},
+				key = card.config.center_key .. "_ascended"
+			}
+		else
+			local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_hunter")
+			return {
+				vars = {
+					numerator, denominator,
+					SMODS.signed(card.ability.extra.mult),
+					card.ability.extra.mult_gain,
+				},
+			}
+		end
 	end,
 	set_sprites = function(self, card, front)
 		if card.ability and card.ability.rw_ascended == true then
@@ -45,7 +65,6 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		-- Temporary / Default 'ascension' requirement
-
 		if context.setting_blind and card.ability.rw_ascended ~= true then
 			card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend - 1
 		end
@@ -55,15 +74,20 @@ SMODS.Joker({
 			SMODS.Stickers["rw_ascended"]:apply(card, true)
 		end
 
-
-		--
 		if context.setting_blind and card.ability.rw_ascended == true then
 			return { xblindsize = 1.25 }
 		end
 
 		if context.end_of_round and context.main_eval and card.ability.rw_ascended == true then
-			local scored_chips = SMODS.calculate_round_score()
-			card.ability.extra.mult = card.ability.extra.mult + (scored_chips * 0.00001)
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "mult",
+				scalar_value = "asc_mult_gain",
+				operation = function(ref_table, ref_value, initial, change)
+					ref_table[ref_value] = initial + (change * G.GAME.chips)
+				end,
+				message_colour = G.C.RED
+			})
 		end
 
 		if context.after and not card.ability.rw_ascended == true and not context.blueprint then

@@ -18,7 +18,7 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		local ret_table = { key = self.key, vars = { card.ability.extra.saint_discards, card.ability.extra.discards } }
 		ret_table["key"] = self.key ..
-		((card.ability.extra.attuned and "attuned") or (card.ability.extra.recharge and "recharging") or "neutral")
+			((card.ability.extra.attuned and "attuned") or (card.ability.extra.recharge and "recharging") or "neutral")
 		if card.ability.extra.recharge then
 			ret_table.vars[1] = card.ability.extra.discards - ret_table.vars[1]
 		end
