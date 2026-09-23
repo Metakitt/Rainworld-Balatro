@@ -9,18 +9,33 @@ SMODS.Joker({
 	blueprint_compat = true,
 	perishable_compat = false,
 	attributes = { "slugcat", "chips", "destroy_card", "chance", "scaling" },
-	config = { extra = { chips = 0, bonus_chips = 50, odds = 6, rounds_to_ascend = 5 }, slugcat = true, no_lodge = true, spear_strength = "strong" },
+	config = {
+		extra = { chips = 0, bonus_chips = 50, odds = 6, rounds_to_ascend = 5, asc_chips = 20 },
+		slugcat = true,
+		no_lodge = true,
+		spear_strength = "strong"
+	},
 
 	loc_vars = function(self, info_queue, card)
-		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_artificer")
-		return {
-			vars = {
-				card.ability.extra.chips,
-				numerator, denominator,
-				card.ability.extra.bonus_chips,
-				card.ability.extra.bonus_chips / 2,
-			},
-		}
+		if (card.ability and card.ability.rw_ascended) then
+			return {
+				vars = {
+					SMODS.signed(card.ability.extra.chips),
+					SMODS.signed(card.ability.extra.asc_chips),
+				},
+				key = card.config.center_key .. "_ascended"
+			}
+		else
+			local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_artificer")
+			return {
+				vars = {
+					SMODS.signed(card.ability.extra.chips),
+					numerator, denominator,
+					SMODS.signed(card.ability.extra.bonus_chips),
+					SMODS.signed(card.ability.extra.bonus_chips / 2),
+				},
+			}
+		end
 	end,
 	set_sprites = function(self, card, front)
 		if card.ability and card.ability.rw_ascended == true then
@@ -43,7 +58,6 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		-- Temporary / Default 'ascension' requirement
-
 		if context.setting_blind and card.ability.rw_ascended ~= true then
 			card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend - 1
 		end
@@ -54,24 +68,21 @@ SMODS.Joker({
 			SMODS.Stickers["rw_ascended"]:apply(card, true)
 		end
 
-
-		--
-
-
 		if context.joker_main then
-			if card.ability.rw_ascended ~= nil then
-				card.ability.extra.chips = card.ability.extra.chips + 20
-				return {
-					chips = card.ability.extra.chips,
-				}
-			else
-				return {
-					chips = card.ability.extra.chips,
-				}
+			if card.ability.rw_ascended then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_value = "asc_chips",
+					message_colour = G.C.BLUE
+				})
 			end
+			return {
+				chips = card.ability.extra.chips,
+			}
 		end
 
-		if context.remove_playing_cards or context.cards_destroyed and not context.blueprint and not card.ability.rw_ascended == true then
+		if (context.remove_playing_cards or context.cards_destroyed) and not context.blueprint and not card.ability.rw_ascended then
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "chips",
@@ -86,7 +97,7 @@ SMODS.Joker({
 		if
 			context.hand_drawn
 			and SMODS.pseudorandom_probability(card, "rw_artificer", 1, card.ability.extra.odds, "rw_artificer")
-			and not card.ability.rw_ascended == true
+			and not card.ability.rw_ascended
 		then
 			local destructable_cards = {}
 			for i = 1, #G.hand.cards do

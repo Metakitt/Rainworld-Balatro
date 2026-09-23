@@ -25,6 +25,7 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult_per_rarity[1], card.ability.extra.xmult_per_rarity[2], card.ability.extra.xmult_gain_food },
+			-- key = card.config.center_key .. (card.ability.rw_ascended and "_ascended" or "") -- fat fuck doesn't have any cool ascended powers
 		}
 	end,
 	add_to_deck = function(self, card, from_debuff)
@@ -55,7 +56,6 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		-- Temporary / Default 'ascension' requirement
-
 		if context.setting_blind and card.ability.rw_ascended ~= true then
 			card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend - 1
 		end
@@ -67,10 +67,6 @@ SMODS.Joker({
 			--	card.ability.extra.xmult_gain_food = card.ability.extra.xmult_gain_food * 2
 			SMODS.Stickers["rw_ascended"]:apply(card, true)
 		end
-
-
-		--
-
 
 		if context.joker_main then
 			return {

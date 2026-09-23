@@ -3,7 +3,7 @@ return {
 	descriptions = {
 		Enhanced = {
 			m_rw_rotting = {
-				name = "Rot",
+				name = "Rot Card",
 				text = {
 					"{C:chips}#2#{} chips",
 					"This card is rotting away",
@@ -11,7 +11,7 @@ return {
 				},
 			},
 			m_rw_wetasscard = {
-				name = "Wet",
+				name = "Wet Card",
 				text = {
 					"{X:chips,C:white}X#1#{} chips, always scores",
 					"{C:attention}#2#{} round(s) until dry",
@@ -19,7 +19,7 @@ return {
 			},
 
 			m_rw_moldy = {
-				name = "Moldy",
+				name = "Moldy Card",
 				text = {
 					"{X:chips,C:white}X#1#{} chips, always scores",
 					"{C:attention}#2#{} round(s) until dry",
@@ -1196,13 +1196,21 @@ return {
 				name = "Artificer",
 				text = {
 					"Each playing card {C:attention}destroyed",
-					"gives {C:chips}+#4#{} chips.",
+					"gives {C:chips}#4#{} chips.",
 					"{C:green}#2# in #3#{} chance to {C:attention}destroy",
 					"a card when drawing a hand.",
 					"Cards {C:attention}destroyed{} with this",
-					"ability only give {C:chips}+#5#{} chips.",
+					"ability only give {C:chips}#5#{} chips.",
 					"{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
 				},
+			},
+			j_rw_artificer_ascended = {
+				name = "Artificer",
+				text = {
+					"Gains {C:chips}#2#{} chips after",
+					"each hand played",
+					"{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"
+				}
 			},
 			j_rw_greedyscugbig = {
 				name = "Big and Greedy",
@@ -1250,6 +1258,14 @@ return {
 					"{C:inactive}(Currently {C:mult}#3# {C:inactive}Mult)",
 				},
 			},
+			j_rw_hunter_ascended = {
+				name = "Hunter",
+				text = {
+					"{X:blind,C:white}X#1#{} Blind size, gains {C:attention}#2#%{} of",
+					"{C:attention}final round score{} as Mult",
+					"{C:inactive}(Currently {C:mult}#3# {C:inactive}Mult)"
+				}
+			},
 			j_rw_inv = {
 				name = "Inv",
 				text = {
@@ -1257,6 +1273,19 @@ return {
 					"a {C:dark_edition}Negative{} Slugpup at the",
 					"end of each {C:attention}Blind{}.",
 				},
+			},
+			j_rw_inv_ascended = {
+				name = "Inv",
+				text = {
+					{
+						"Creates a {C:dark_edition}Negative {C:attention}Slugpup",
+						"at the end of each {C:attention}Blind{}"
+					},
+					{
+						"{C:green}#1# in #2#{} chance to create",
+						"a second {C:dark_edition}Negative {C:attention}Slugpup"
+					}
+				}
 			},
 			j_rw_monk = {
 				name = "Monk",
@@ -1266,11 +1295,23 @@ return {
 					"decrease {C:attention}Ante{} by 1.",
 				},
 			},
+			j_rw_monk_ascended = {
+				name = "Monk",
+				text = { "{X:blind,C:white}X#1#{} Blind size" }
+			},
 			j_rw_rivulet = {
 				name = "Rivulet",
 				text = {
 					"Each skipped {C:attention}Blind{}",
 					"adds 1 to 3 {C:attention}Enhanced{}",
+					"cards to the deck.",
+				},
+			},
+			j_rw_rivulet_ascended = {
+				name = "Rivulet",
+				text = {
+					"Each skipped {C:attention}Blind{}",
+					"adds 1 to 5 {C:attention}Enhanced{}",
 					"cards to the deck.",
 				},
 			},
@@ -1283,7 +1324,7 @@ return {
 				},
 			},
 			j_rw_saintattuned = {
-				name = "Saint {C:edition}(Attuned)",
+				name = "Saint {C:dark_edition}(Attuned)",
 				text = {
 					"At the start of {C:attention}Boss Blind{}",
 					"a random Joker is",
@@ -1327,6 +1368,15 @@ return {
 					"{C:green}#1# in #2#{} chance to",
 					"increase hand size by #3#",
 					"after defeating {C:attention}Boss Blind.",
+					"{C:inactive}(Currently {C:attention}+#4#{C:inactive} hand size)",
+				},
+			},
+			j_rw_survivor_ascended = {
+				name = "Survivor",
+				text = {
+					"{C:green}#1# in #2#{} chance to",
+					"increase hand size by #3#",
+					"after defeating {C:dark_edition,E:1}each {C:attention}Blind.",
 					"{C:inactive}(Currently {C:attention}+#4#{C:inactive} hand size)",
 				},
 			},
@@ -2363,6 +2413,7 @@ return {
 			k_foodrare = "Rare",
 			k_rw_enemy = "Enemy",
 			rw_rotted = "Rot",
+			rw_ascended = "Ascended",
 			rw_wbeehive = "Beehive",
 			rw_wcherrybomb = "Cherrybomb",
 			rw_wspear_ele = "Electric Spear",

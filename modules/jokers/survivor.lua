@@ -18,6 +18,7 @@ SMODS.Joker({
 				card.ability.extra.h_mod,
 				card.ability.extra.h_size,
 			},
+			key = card.config.center_key .. (card.ability.rw_ascended and "_ascended" or "")
 		}
 	end,
 	set_sprites = function(self, card, front)
@@ -42,7 +43,6 @@ SMODS.Joker({
 
 	calculate = function(self, card, context)
 		-- Temporary / Default 'ascension' requirement
-
 		if context.setting_blind and card.ability.rw_ascended ~= true then
 			card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend - 1
 		end
@@ -52,32 +52,16 @@ SMODS.Joker({
 			SMODS.Stickers["rw_ascended"]:apply(card, true)
 		end
 
-		if card.ability.rw_ascended == true and context.end_of_round and context.main_eval and SMODS.pseudorandom_probability(card, "rw_survivor", 1, card.ability.extra.odds, "rw_survivor") then
-			G.hand:change_size(-card.ability.extra.h_size)
-			card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_mod
-			G.hand:change_size(card.ability.extra.h_size)
-			return {
-				message = localize("k_upgrade_ex"),
-				colour = G.C.MULT,
-			}
-		end
-
-		--
-
-		if
-			G.GAME.last_blind.boss
-			and context.end_of_round
-			and context.main_eval
-			and SMODS.pseudorandom_probability(card, "rw_survivor", 1, card.ability.extra.odds, "rw_survivor")
-			and not card.ability.rw_ascended == true
-		then
-			G.hand:change_size(-card.ability.extra.h_size)
-			card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_mod
-			G.hand:change_size(card.ability.extra.h_size)
-			return {
-				message = localize("k_upgrade_ex"),
-				colour = G.C.MULT,
-			}
+		if context.end_of_round and context.main_eval and (card.ability.rw_ascended or G.GAME.last_blind.boss) then
+			if SMODS.pseudorandom_probability(card, "rw_survivor", 1, card.ability.extra.odds, "rw_survivor") then
+				G.hand:change_size(-card.ability.extra.h_size)
+				card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_mod
+				G.hand:change_size(card.ability.extra.h_size)
+				return {
+					message = localize("k_upgrade_ex"),
+					colour = G.C.MULT,
+				}
+			end
 		end
 	end,
 })

@@ -8,10 +8,18 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	attributes = { "slugcat", "chance", "ante" },
-	config = { extra = { center_table = -1, odds = 10, rounds_to_ascend = 5 }, slugcat = true, spear_strength = "weak" },
+	config = { extra = { center_table = -1, odds = 10, rounds_to_ascend = 5, asc_blindsize = 0.75 }, slugcat = true, spear_strength = "weak" },
 
 	loc_vars = function(self, info_queue, card)
-		return { vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_monk") } }
+		if card.ability.rw_ascended then
+			return {
+				vars = { card.ability.extra.asc_blindsize }, key = card.config.center_key .. "_ascended"
+			}
+		else
+			return {
+				vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "rw_monk") },
+			}
+		end
 	end,
 	set_sprites = function(self, card, front)
 		if card.ability and card.ability.rw_ascended == true then
@@ -34,7 +42,6 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		-- Temporary / Default 'ascension' requirement
-
 		if context.setting_blind and card.ability.rw_ascended ~= true then
 			card.ability.extra.rounds_to_ascend = card.ability.extra.rounds_to_ascend - 1
 		end
@@ -44,7 +51,6 @@ SMODS.Joker({
 			SMODS.Stickers["rw_ascended"]:apply(card, true)
 		end
 
-		--
 		if context.setting_blind and card.ability.rw_ascended == true then
 			return { xblindsize = 0.75 }
 		end
