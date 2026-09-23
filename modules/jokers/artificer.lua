@@ -83,12 +83,16 @@ SMODS.Joker({
 		end
 
 		if (context.remove_playing_cards or context.cards_destroyed) and not context.blueprint and not card.ability.rw_ascended then
+			local count = 0.0
+			for _, v in ipairs(context.removed) do
+				count = count + (v.ability.rw_artificer_halved and 0.5 or 1.0)
+			end
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "chips",
 				scalar_value = "bonus_chips",
 				operation = function(ref_table, ref_value, initial, change)
-					ref_table[ref_value] = initial + (change * #context.removed)
+					ref_table[ref_value] = initial + (change * count)
 				end,
 				message_colour = G.C.BLUE
 			})
@@ -109,25 +113,8 @@ SMODS.Joker({
 				and pseudorandom_element(destructable_cards, pseudoseed("explode"))
 				or nil
 			if card_to_destroy then
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						if SMODS.shatters(card_to_destroy) then
-							card_to_destroy:shatter()
-						else
-							card_to_destroy:start_dissolve()
-						end
-						return true
-					end
-				}))
-				SMODS.scale_card(card, {
-					ref_table = card.ability.extra,
-					ref_value = "chips",
-					scalar_value = "bonus_chips",
-					operation = function(ref_table, ref_value, initial, change)
-						ref_table[ref_value] = initial + (change / 2)
-					end,
-					no_message = true
-				})
+				card_to_destroy.ability.rw_artificer_halved = true
+				SMODS.destroy_cards(card_to_destroy)
 				SMODS.calculate_effect({
 					message = localize("k_destroyed_ex"),
 					colour = G.C.CHIPS
