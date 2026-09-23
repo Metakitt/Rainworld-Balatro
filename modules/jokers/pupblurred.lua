@@ -28,4 +28,7 @@ SMODS.Joker({
 			end
 		end
 	end,
+	in_pool = function(self, args)
+		return args.source ~= "sho"
+	end,
 })

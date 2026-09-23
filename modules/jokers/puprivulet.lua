@@ -41,4 +41,7 @@ SMODS.Joker({
 			SMODS.calculate_context { playing_card_added = true, cards = all_cards }
 		end
 	end,
+	in_pool = function(self, args)
+		return args.source ~= "sho"
+	end,
 })

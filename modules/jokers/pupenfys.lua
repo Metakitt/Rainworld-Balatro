@@ -25,4 +25,7 @@ SMODS.Joker({
 			SMODS.add_card({ set = "foods", area = G.consumeables, edition = "e_negative" })
 		end
 	end,
+	in_pool = function(self, args)
+		return args.source ~= "sho"
+	end,
 })

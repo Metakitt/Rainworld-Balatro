@@ -38,4 +38,7 @@ SMODS.Joker({
 			card.ability.extra.should_score = true
 		end
 	end,
+	in_pool = function(self, args)
+		return args.source ~= "sho"
+	end,
 })

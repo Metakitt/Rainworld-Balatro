@@ -31,5 +31,8 @@ SMODS.Joker({
 				card:grow_up()
 			end
 		end
-	end
+	end,
+	in_pool = function(self, args)
+		return args.source ~= "sho"
+	end,
 })

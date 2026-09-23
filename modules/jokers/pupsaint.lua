@@ -7,11 +7,12 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = false,
-	attributes = { "slugcat", "slugpup", "discard", "mult", "chips", spear_strength = "weak" },
+	attributes = { "slugcat", "slugpup", "discard", "mult", "chips" },
 	config = {
 		extra = { attuned = false, mult = 0, chips = 0, pupgain = 2, pupdiscards = 10, pupsaint_discards = 10, recharge = false, xmult = 1, recharging = "Ready", growth = 3 },
 		name = "Saint",
 		slugcat = true,
+		spear_strength = "weak",
 	},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { set = "Other", key = "slugpup_grows_up", vars = { card.ability.extra.growth } }
@@ -70,5 +71,8 @@ SMODS.Joker({
 				card.ability.extra.recharge = false
 			end
 		end
+	end,
+	in_pool = function(self, args)
+		return args.source ~= "sho"
 	end,
 })

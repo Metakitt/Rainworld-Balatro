@@ -88,4 +88,7 @@ SMODS.Joker({
 			card.ability.extra.munch = false
 		end
 	end,
+	in_pool = function(self, args)
+		return args.source ~= "sho"
+	end,
 })

@@ -36,5 +36,8 @@ SMODS.Joker {
         if context.joker_main then
             return { mult = card.ability.extra.pup_bee_mult * SCUG.bee_debuffed_count(G.playing_cards) }
         end
-    end
+    end,
+    in_pool = function(self, args)
+		return args.source ~= "sho"
+	end,
 }
