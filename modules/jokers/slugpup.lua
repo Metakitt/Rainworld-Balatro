@@ -7,7 +7,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	attributes = { "slugcat", "mult", "chips" },
+	attributes = { "slugcat", "slugpup", "mult", "chips" },
 	config = { extra = { mult = 4, chips = 10, spupx = 0, spupy = 0, generated = false, growth = 3 }, slugcat = true },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.mult, card.ability.extra.chips } }

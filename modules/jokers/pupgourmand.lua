@@ -23,7 +23,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	perishable_compat = false,
-	attributes = { "slugcat", "xmult", "scaling", "rw_food", "joker", "destroy_card" },
+	attributes = { "slugcat", "slugpup", "xmult", "scaling", "rw_food", "joker", "destroy_card" },
 	config = {
 		extra = {
 			xmult_mod = 1,

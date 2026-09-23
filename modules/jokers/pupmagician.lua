@@ -10,6 +10,7 @@ SMODS.Joker({
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
+	attributes = { "slugcat", "slugpup", "mult", "chips" },
 	perishable_compat = false,
 	config = {
 		extra = {

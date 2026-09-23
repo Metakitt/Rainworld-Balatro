@@ -8,7 +8,7 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	perishable_compat = false,
-	attributes = { "slugcat", "chips", "destroy_card", "chance", "scaling" },
+	attributes = { "slugcat", "slugpup", "chips", "destroy_card", "chance", "scaling" },
 	config = { extra = { chips = 0, pupbonus_chips = 20, pupodds = 10, growth = 3 }, slugcat = true, no_lodge = true, spear_strength = "strong" },
 
 	loc_vars = function(self, info_queue, card)

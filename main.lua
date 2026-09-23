@@ -194,6 +194,14 @@ SMODS.Attribute {
 SMODS.Attribute {
 	key = "killer"
 }
+-- Is a Slugpup
+SMODS.Attribute {
+	key = "slugpup"
+}
+-- Is a Machine or Iterator
+SMODS.Attribute {
+	key = "machine"
+}
 
 -- Food Joker Pool (if not defined)
 if not SMODS.ObjectTypes["Food"] then
