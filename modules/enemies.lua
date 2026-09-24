@@ -582,7 +582,8 @@ SCUG.spawn_enemy = function(args)
 				-- If this enemy exists, use it
 				if G.P_CENTERS[enemy_key] then
 					-- Don't spawn instakill enemies on boss blinds
-					valid_selection = not (G.GAME.blind_on_deck == "Boss" and G.P_CENTERS[enemy_key]:has_attribute("killer"))
+					valid_selection = not (G.GAME.blind_on_deck == "Boss" and SMODS.has_attribute(G.P_CENTERS[enemy_key], "killer")
+				)
 					-- Otherwise, use one lower on the list (more likely to exist, probably)
 				else
 					sendWarnMessage("Enemy " .. enemy_key .. " not enabled!", "Rainworld")
