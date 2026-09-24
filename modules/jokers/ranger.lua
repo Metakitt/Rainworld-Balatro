@@ -8,13 +8,9 @@ SMODS.Joker({
 	discovered = true,
 	blueprint_compat = true,
 	attributes = { "slugcat", "joker_slot", "hand_size", "hands", "passive" },
-	config = { extra = { jslot = 1, cslot = 1, h_size = 1, h_plays = 1 }, slugcat = true },
+	config = { extra = { jslot = 1, cslot = 1, h_size = 1, h_plays = 1 }, slugcat = true, card_limit = 1 },
 
 	add_to_deck = function(self, card, from_debuff)
-		if G.jokers then
-			G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-		end
-
 		ease_hands_played(-card.ability.extra.h_plays)
 		G.hand:change_size(card.ability.extra.h_size)
 		G.consumeables.config.card_limit = G.consumeables.config.card_limit + 1
@@ -22,10 +18,6 @@ SMODS.Joker({
 	end,
 
 	remove_from_deck = function(self, card, from_debuff)
-		if G.jokers then
-			G.jokers.config.card_limit = G.jokers.config.card_limit - 1
-		end
-
 		G.hand:change_size(-card.ability.extra.h_size)
 		G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.h_plays
 		ease_hands_played(card.ability.extra.h_plays)
